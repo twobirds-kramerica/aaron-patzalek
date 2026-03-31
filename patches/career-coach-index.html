@@ -1,0 +1,2641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Coach | Two Birds Innovation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0F1B2D;
+      --card: #1A2D44;
+      --border: #243d59;
+      --warm: #F8F6F1;
+      --teal: #00C9A7;
+      --teal-dim: #009e84;
+      --amber: #F4A261;
+      --muted: #8AA0B8;
+      --green: #2ECC71;
+      --yellow: #F39C12;
+      --red: #E74C3C;
+      --purple: #9B59B6;
+    }
+
+    body { background: var(--navy); color: var(--warm); font-family: 'DM Sans', system-ui, sans-serif; min-height: 100vh; font-size: 1rem; }
+
+    /* ── Util ── */
+    .hidden { display: none !important; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+    input, select, textarea { font-family: inherit; font-size: 1em; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* ── Header ── */
+    .app-header {
+      background: linear-gradient(135deg, #0a1520, #1A2D44);
+      border-bottom: 2px solid var(--teal);
+      padding: 14px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .app-logo { font-family: 'DM Serif Display', serif; font-size: 1.4em; color: var(--warm); }
+    .app-logo span { color: var(--teal); }
+    .app-tagline { color: var(--muted); font-size: 0.82em; margin-top: 2px; }
+    .header-actions { display: flex; gap: 8px; align-items: center; }
+    .btn-icon { background: none; border: 1px solid var(--border); color: var(--muted); padding: 6px 10px; border-radius: 6px; font-size: 1em; transition: border-color 0.2s; }
+    .btn-icon:hover { border-color: var(--teal); color: var(--teal); }
+
+    /* ── Onboarding ── */
+    #onboarding {
+      max-width: 640px; margin: 40px auto; padding: 0 20px 60px;
+    }
+    .wizard-progress { display: flex; gap: 8px; margin-bottom: 32px; }
+    .wizard-step {
+      flex: 1; height: 4px; border-radius: 2px; background: var(--border);
+      transition: background 0.3s;
+    }
+    .wizard-step.active { background: var(--teal); }
+    .wizard-step.done { background: var(--green); }
+
+    .onboard-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px;
+    }
+    .onboard-card h2 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 6px; color: var(--warm); }
+    .onboard-card p.sub { color: var(--muted); font-size: 0.92em; margin-bottom: 24px; }
+
+    .field-group { margin-bottom: 18px; }
+    .field-group label { display: block; font-size: 0.88em; font-weight: 600; color: var(--muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.4px; }
+    .field-group input, .field-group select, .field-group textarea {
+      width: 100%; padding: 10px 14px; background: #0F1B2D; border: 1px solid var(--border);
+      border-radius: 8px; color: var(--warm); outline: none; transition: border-color 0.2s;
+    }
+    .field-group input:focus, .field-group select:focus, .field-group textarea:focus { border-color: var(--teal); }
+    .field-group select option { background: var(--card); }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .radio-group { display: flex; gap: 10px; flex-wrap: wrap; }
+    .radio-group label { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 0.92em; font-weight: 400; color: var(--warm); text-transform: none; letter-spacing: 0; }
+    .radio-group input[type=radio] { accent-color: var(--teal); }
+
+    .priority-grid { display: grid; gap: 10px; }
+    .priority-row { display: flex; align-items: center; gap: 12px; }
+    .priority-row label { flex: 1; font-size: 0.92em; font-weight: 400; color: var(--warm); text-transform: none; letter-spacing: 0; }
+    .priority-row input[type=number] { width: 64px; text-align: center; }
+
+    .wizard-nav { display: flex; justify-content: space-between; margin-top: 28px; gap: 12px; }
+    .btn-primary { background: var(--teal); color: #0F1B2D; border: none; padding: 12px 28px; border-radius: 8px; font-weight: 700; font-size: 1em; transition: background 0.2s; }
+    .btn-primary:hover { background: var(--teal-dim); }
+    .btn-secondary { background: none; border: 1px solid var(--border); color: var(--muted); padding: 12px 20px; border-radius: 8px; font-size: 1em; }
+    .btn-secondary:hover { border-color: var(--teal); color: var(--teal); }
+
+    .api-notice { background: rgba(0,201,167,0.08); border: 1px solid rgba(0,201,167,0.3); border-radius: 8px; padding: 12px 16px; font-size: 0.85em; color: var(--teal); margin-top: 16px; }
+
+    /* ── Main Interface ── */
+    #main-app { display: flex; height: calc(100vh - 60px); overflow: hidden; }
+
+    .left-panel {
+      width: 340px; min-width: 280px; border-right: 1px solid var(--border);
+      display: flex; flex-direction: column; overflow: hidden;
+    }
+    .panel-header { padding: 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+    .panel-title { font-weight: 700; font-size: 1em; }
+    .job-count { background: var(--teal); color: #0F1B2D; border-radius: 12px; padding: 2px 8px; font-size: 0.78em; font-weight: 700; }
+
+    .filter-bar { padding: 10px 16px; border-bottom: 1px solid var(--border); display: flex; gap: 6px; flex-wrap: wrap; flex-shrink: 0; }
+    .filter-btn { background: none; border: 1px solid var(--border); color: var(--muted); padding: 4px 10px; border-radius: 20px; font-size: 0.78em; transition: all 0.2s; }
+    .filter-btn.active { background: var(--teal); border-color: var(--teal); color: #0F1B2D; font-weight: 700; }
+
+    .sort-bar { padding: 8px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .sort-bar label { font-size: 0.78em; color: var(--muted); }
+    .sort-bar select { background: var(--card); border: 1px solid var(--border); color: var(--warm); padding: 4px 8px; border-radius: 6px; font-size: 0.8em; }
+
+    .jobs-list { flex: 1; overflow-y: auto; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .jobs-empty { color: var(--muted); font-size: 0.9em; text-align: center; padding: 40px 20px; }
+
+    .job-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px;
+      cursor: pointer; transition: border-color 0.2s;
+    }
+    .job-card:hover { border-color: var(--teal); }
+    .job-card.selected { border-color: var(--teal); }
+    .job-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 8px; }
+    .job-title-co { flex: 1; }
+    .job-title-co strong { font-size: 0.95em; display: block; }
+    .job-title-co span { font-size: 0.82em; color: var(--muted); }
+    .score-circle {
+      width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.95em; flex-shrink: 0; border: 2px solid;
+    }
+    .score-high { border-color: var(--green); color: var(--green); }
+    .score-mid  { border-color: var(--yellow); color: var(--yellow); }
+    .score-low  { border-color: var(--red); color: var(--red); }
+
+    .job-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+    .badge { padding: 2px 8px; border-radius: 12px; font-size: 0.72em; font-weight: 600; }
+    .badge-apply-custom { background: rgba(0,201,167,0.15); color: var(--teal); }
+    .badge-apply-generic { background: rgba(243,156,18,0.15); color: var(--yellow); }
+    .badge-skip { background: rgba(231,76,60,0.1); color: var(--red); }
+    .badge-pending { background: rgba(138,160,184,0.15); color: var(--muted); }
+    .risk-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .risk-low { background: var(--green); }
+    .risk-medium { background: var(--yellow); }
+    .risk-high { background: var(--red); }
+
+    .left-footer { padding: 12px 16px; border-top: 1px solid var(--border); flex-shrink: 0; }
+    .btn-export { width: 100%; background: none; border: 1px solid var(--border); color: var(--muted); padding: 8px; border-radius: 8px; font-size: 0.88em; transition: all 0.2s; }
+    .btn-export:hover { border-color: var(--teal); color: var(--teal); }
+
+    /* ── Right panel ── */
+    .right-panel { flex: 1; overflow-y: auto; padding: 24px; }
+    .add-job-panel { max-width: 700px; margin: 0 auto; }
+    .add-job-panel h2 { font-family: 'DM Serif Display', serif; font-size: 1.5em; margin-bottom: 6px; }
+    .add-job-panel p { color: var(--muted); font-size: 0.9em; margin-bottom: 20px; }
+    .job-textarea { width: 100%; height: 240px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; color: var(--warm); resize: vertical; font-size: 0.92em; line-height: 1.5; }
+    .job-textarea:focus { outline: none; border-color: var(--teal); }
+    .analyse-btn { background: var(--teal); color: #0F1B2D; border: none; padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 1em; margin-top: 14px; transition: background 0.2s; width: 100%; }
+    .analyse-btn:hover { background: var(--teal-dim); }
+    .analyse-btn:disabled { opacity: 0.5; cursor: wait; }
+    .analysis-status { margin-top: 12px; color: var(--teal); font-size: 0.9em; min-height: 22px; }
+    .analysis-error { color: var(--red); }
+
+    /* ── Job Search Stats Card ── */
+    .job-stats-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+    .job-stats-card h3 { font-size: 1em; color: var(--muted); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.4px; font-weight: 600; }
+    .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .stat-item { background: var(--bg); border-radius: 8px; padding: 12px; text-align: center; }
+    .stat-item.stat-wide { grid-column: 1 / -1; }
+    .stat-value { display: block; font-size: 1.6em; font-weight: 700; color: var(--teal); }
+    .stat-label { display: block; font-size: 0.78em; color: var(--muted); margin-top: 2px; }
+    @media print { .job-stats-card { display: none; } }
+
+    /* ── Job Detail Panel ── */
+    .job-detail { max-width: 800px; }
+    .detail-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
+    .detail-title { font-family: 'DM Serif Display', serif; font-size: 1.7em; }
+    .detail-company { color: var(--muted); font-size: 1em; margin-top: 4px; }
+    .btn-close-detail { background: none; border: 1px solid var(--border); color: var(--muted); padding: 8px 14px; border-radius: 8px; }
+    .btn-close-detail:hover { border-color: var(--teal); color: var(--teal); }
+
+    .score-bars { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 24px; }
+    .score-bar-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+    .score-bar-card .label { font-size: 0.78em; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 8px; }
+    .score-bar-card .value { font-size: 1.6em; font-weight: 700; }
+    .meter { height: 6px; background: var(--border); border-radius: 3px; margin-top: 8px; overflow: hidden; }
+    .meter-fill { height: 100%; border-radius: 3px; transition: width 0.6s ease; }
+
+    .detail-sections { display: grid; gap: 16px; }
+    .detail-section { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+    .detail-section h3 { font-size: 0.88em; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { padding: 4px 10px; background: rgba(0,201,167,0.1); color: var(--teal); border-radius: 20px; font-size: 0.82em; }
+    .gap-item { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; font-size: 0.9em; }
+    .gap-item::before { content: "✗"; color: var(--red); flex-shrink: 0; }
+    .strength-item { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; font-size: 0.9em; }
+    .strength-item::before { content: "✓"; color: var(--green); flex-shrink: 0; }
+
+    /* Defendability slider */
+    .defend-row { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+    .defend-row label { font-size: 0.82em; color: var(--muted); white-space: nowrap; }
+    .defend-slider { flex: 1; min-width: 120px; accent-color: var(--teal); }
+    .suggestion-card { background: #0F1B2D; border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px; }
+    .suggestion-card input[type=checkbox] { accent-color: var(--teal); margin-top: 3px; flex-shrink: 0; }
+    .suggestion-text { font-size: 0.9em; line-height: 1.5; flex: 1; }
+    .btn-gen-cv { background: var(--teal); color: #0F1B2D; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 700; margin-top: 12px; transition: background 0.2s; }
+    .btn-gen-cv:hover { background: var(--teal-dim); }
+    .cv-output { width: 100%; height: 300px; background: #0F1B2D; border: 1px solid var(--border); border-radius: 8px; padding: 14px; color: var(--warm); resize: vertical; margin-top: 12px; font-size: 0.88em; }
+    .btn-copy { background: none; border: 1px solid var(--teal); color: var(--teal); padding: 8px 16px; border-radius: 6px; margin-top: 8px; }
+
+    /* Tracker */
+    .tracker-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; margin-bottom: 12px; }
+    .tracker-row .field-group { margin: 0; flex: 1; min-width: 140px; }
+    .tracker-notes { width: 100%; background: #0F1B2D; border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; color: var(--warm); resize: vertical; height: 80px; font-size: 0.88em; }
+
+    /* Settings panel */
+    #settings-panel {
+      position: fixed; top: 0; right: 0; width: 360px; height: 100vh;
+      background: var(--card); border-left: 1px solid var(--border);
+      padding: 24px; overflow-y: auto; z-index: 100;
+      transform: translateX(100%); transition: transform 0.3s ease;
+    }
+    #settings-panel.open { transform: translateX(0); }
+    #settings-panel h2 { font-family: 'DM Serif Display', serif; font-size: 1.4em; margin-bottom: 20px; }
+    .settings-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 99; display: none; }
+    .settings-overlay.open { display: block; }
+    .danger-btn { background: rgba(231,76,60,0.1); border: 1px solid var(--red); color: var(--red); padding: 10px 20px; border-radius: 8px; width: 100%; margin-top: 8px; font-size: 0.9em; }
+
+    /* Advanced settings / API key */
+    .advanced-settings summary {
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 0.82em;
+      padding: 8px 0;
+      border-top: 1px solid var(--border);
+      margin-top: 8px;
+      list-style: none;
+    }
+    .advanced-settings summary::-webkit-details-marker { display: none; }
+    .advanced-settings summary::before { content: '▶ '; font-size: 0.7em; }
+    details[open].advanced-settings summary::before { content: '▼ '; }
+
+    /* Premium badge */
+    .pro-badge { background: linear-gradient(135deg, #F4A261, #e87f3a); color: white; padding: 1px 6px; border-radius: 4px; font-size: 0.7em; font-weight: 700; vertical-align: middle; margin-left: 4px; }
+
+    /* Footer */
+    .app-footer { text-align: center; padding: 12px; color: var(--muted); font-size: 0.78em; border-top: 1px solid var(--border); }
+    .app-footer a { color: var(--teal); }
+
+    /* ── Hero ── */
+    .hero-section {
+      text-align: center;
+      padding: 32px 0 24px;
+    }
+    .hero-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      color: var(--warm);
+      display: inline-block;
+      position: relative;
+      margin-bottom: 14px;
+    }
+    .hero-headline::after {
+      content: '';
+      display: block;
+      height: 3px;
+      background: var(--teal);
+      border-radius: 2px;
+      width: 0;
+      animation: underline-grow 0.8s 0.3s ease forwards;
+    }
+    @keyframes underline-grow {
+      to { width: 100%; }
+    }
+    .hero-sub {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.6;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── Voice Input ── */
+    .mic-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .mic-btn:hover { border-color: var(--teal); color: var(--teal); }
+    .mic-btn.recording { border-color: var(--red); color: var(--red); animation: mic-pulse 0.8s infinite; }
+    @keyframes mic-pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+
+    /* ── Checkboxes ── */
+    .checkbox-group { display: flex; flex-wrap: wrap; gap: 10px; }
+    .checkbox-group label { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 0.92em; color: var(--warm); font-weight: 400; }
+    .checkbox-group input[type=checkbox] { accent-color: var(--teal); }
+
+    /* ── 768px: two-column to single column ── */
+    @media (max-width: 768px) {
+      #main-app { flex-direction: column; height: auto; overflow: visible; }
+      .left-panel { width: 100%; border-right: none; border-bottom: 1px solid var(--border); }
+      .right-panel { overflow-y: visible; }
+      #settings-panel { width: 100%; max-width: 100%; }
+      .detail-sections > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+    }
+
+    /* ── 700px (legacy breakpoint, kept for specificity) ── */
+    @media (max-width: 700px) {
+      .left-panel { max-height: 50vh; }
+    }
+
+    /* ── 600px: job list scrollable, panels stack ── */
+    @media (max-width: 600px) {
+      .jobs-list { overflow-y: auto; max-height: 40vh; }
+      .left-panel { max-height: none; }
+      .score-bars { grid-template-columns: 1fr 1fr; }
+      .tracker-row { flex-direction: column; }
+      .tracker-row .field-group { min-width: 0; width: 100%; }
+      .detail-header { flex-direction: column; gap: 12px; }
+      .btn-close-detail { align-self: flex-start; }
+    }
+
+    /* ── Phase 9 additions ── */
+
+    /* Job Market Insights panel */
+    .market-insights-panel {
+      background: var(--card);
+      border: 1px solid var(--teal);
+      border-left: 4px solid var(--teal);
+      border-radius: 10px;
+      margin-top: 28px;
+      overflow: hidden;
+    }
+    .market-insights-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      cursor: pointer;
+      user-select: none;
+      list-style: none;
+    }
+    .market-insights-summary::-webkit-details-marker { display: none; }
+    .market-insights-summary .mi-title {
+      font-size: 0.88em;
+      font-weight: 700;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .market-insights-summary .mi-title::before {
+      content: '📊';
+      font-size: 1em;
+    }
+    .market-insights-summary .mi-toggle {
+      font-size: 0.75em;
+      color: var(--muted);
+    }
+    details.market-insights-panel[open] .mi-toggle::after { content: '▲'; }
+    details.market-insights-panel:not([open]) .mi-toggle::after { content: '▼'; }
+    .market-insights-body {
+      padding: 0 16px 16px;
+      display: grid;
+      gap: 10px;
+    }
+    .mi-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88em;
+      line-height: 1.5;
+    }
+    .mi-label {
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+      min-width: 140px;
+      font-size: 0.82em;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .mi-value { color: var(--warm); font-weight: 500; }
+    .mi-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .mi-tag {
+      background: rgba(0,201,167,0.1);
+      color: var(--teal);
+      border-radius: 20px;
+      padding: 2px 9px;
+      font-size: 0.82em;
+    }
+    .mi-source {
+      font-size: 0.76em;
+      color: var(--muted);
+      padding-top: 6px;
+      border-top: 1px solid var(--border);
+      font-style: italic;
+    }
+    @media (max-width: 600px) {
+      .market-insights-body { grid-template-columns: 1fr; }
+      .mi-label { min-width: 0; width: 100%; margin-bottom: 2px; }
+      .mi-row { flex-direction: column; gap: 2px; }
+    }
+
+    /* Cover Letter Templates section */
+    .cover-letter-section {
+      margin-top: 28px;
+    }
+    .cover-letter-section h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1em;
+      margin-bottom: 6px;
+      color: var(--warm);
+    }
+    .cover-letter-section p.sub {
+      color: var(--muted);
+      font-size: 0.88em;
+      margin-bottom: 14px;
+    }
+    .cover-letter-section .field-group { margin-bottom: 12px; }
+    .cl-textarea {
+      width: 100%;
+      height: 320px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      color: var(--warm);
+      resize: vertical;
+      font-size: 0.88em;
+      line-height: 1.6;
+      font-family: inherit;
+    }
+    .cl-textarea:focus { outline: none; border-color: var(--teal); }
+    .cl-actions { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+    .btn-copy-cl {
+      background: none;
+      border: 1px solid var(--teal);
+      color: var(--teal);
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.88em;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-copy-cl:hover { background: var(--teal); color: #0F1B2D; }
+    @media (max-width: 600px) {
+      .cl-textarea { height: 240px; font-size: 16px; }
+    }
+
+    /* ── Phase 10 additions ── */
+
+    /* Mobile polish */
+    @media (max-width: 480px) {
+      .right-panel { padding: 14px; }
+      .add-job-panel { max-width: 100%; }
+      .job-textarea { width: 100%; font-size: 16px; }
+      .field-group input, .field-group select, .field-group textarea { font-size: 16px; }
+      .analyse-btn { min-height: 44px; font-size: 1em; }
+      .btn-primary, .btn-secondary { min-height: 44px; }
+      .filter-btn { min-height: 36px; padding: 6px 12px; }
+      .score-bars { grid-template-columns: 1fr 1fr; }
+      .detail-sections > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+    }
+    /* ── 375px: no horizontal scroll, all text readable ── */
+    @media (max-width: 380px) {
+      body { overflow-x: hidden; }
+      .score-bars { grid-template-columns: 1fr; }
+      .field-row { grid-template-columns: 1fr; }
+      .onboard-card { padding: 20px; }
+      .wizard-nav { flex-direction: column; gap: 8px; }
+      .wizard-nav button { width: 100%; }
+      .mi-label { font-size: 0.78em; }
+      .app-header { padding: 10px 12px; }
+      .app-logo { font-size: 1.15em; }
+      .right-panel { padding: 12px; }
+      .add-job-panel h2 { font-size: 1.2em; }
+    }
+
+    /* Ensure textarea is full-width on mobile generally */
+    .job-textarea { font-size: 16px; }
+
+    /* Demo card */
+    .demo-card {
+      background: linear-gradient(135deg, rgba(0,201,167,0.06), rgba(244,162,97,0.06));
+      border: 1px dashed var(--teal);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .demo-card-label {
+      display: inline-block;
+      background: var(--teal);
+      color: #0F1B2D;
+      font-size: 0.72em;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+    .demo-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2em;
+      margin-bottom: 4px;
+      color: var(--warm);
+    }
+    .demo-card .demo-sub {
+      color: var(--muted);
+      font-size: 0.85em;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+    .demo-score-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .demo-score-chip {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 14px;
+      text-align: center;
+      min-width: 80px;
+    }
+    .demo-score-chip .dsc-label { font-size: 0.72em; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; }
+    .demo-score-chip .dsc-value { font-size: 1.3em; font-weight: 700; margin-top: 2px; }
+    .demo-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+    .btn-try-demo {
+      background: none;
+      border: 1px solid var(--teal);
+      color: var(--teal);
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.92em;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      min-height: 44px;
+    }
+    .btn-try-demo:hover { background: var(--teal); color: #0F1B2D; }
+
+    /* Textarea row with Try Demo button */
+    .textarea-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .textarea-actions .hint {
+      font-size: 0.78em;
+      color: var(--muted);
+    }
+
+    /* History section */
+    .history-section {
+      max-width: 700px;
+      margin: 32px auto 0;
+      padding: 0 0 40px;
+    }
+    .history-section h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1em;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.82em;
+      margin-bottom: 10px;
+    }
+    .history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .history-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      gap: 12px;
+    }
+    .history-item:hover { border-color: var(--teal); }
+    .history-item-title {
+      font-size: 0.9em;
+      font-weight: 600;
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .history-item-meta {
+      font-size: 0.78em;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .history-score {
+      font-size: 0.82em;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+    .history-score-high { background: rgba(46,204,113,0.15); color: var(--green); }
+    .history-score-mid  { background: rgba(243,156,18,0.15); color: var(--yellow); }
+    .history-score-low  { background: rgba(231,76,60,0.1); color: var(--red); }
+    .history-score-none { background: rgba(138,160,184,0.1); color: var(--muted); }
+
+    /* Keyboard shortcuts panel */
+    #kbd-help-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 200; display: flex; align-items: center; justify-content: center;
+    }
+    #kbd-help-panel {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px 32px; max-width: 400px; width: 90%;
+    }
+    #kbd-help-panel h2 { font-family: 'DM Serif Display', serif; font-size: 1.3em; margin-bottom: 18px; }
+    .kbd-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+    .kbd-row:last-child { border-bottom: none; }
+    .kbd-row .kbd-desc { font-size: 0.9em; color: var(--muted); }
+    .kbd-key {
+      display: inline-block; background: #0F1B2D; border: 1px solid var(--border); border-radius: 5px;
+      padding: 2px 8px; font-size: 0.82em; font-family: monospace; color: var(--warm); white-space: nowrap;
+    }
+    #kbd-close-btn { margin-top: 18px; display: block; width: 100%; background: none; border: 1px solid var(--border); color: var(--muted); padding: 10px; border-radius: 8px; cursor: pointer; min-height: 44px; }
+    #kbd-close-btn:hover { border-color: var(--teal); color: var(--teal); }
+
+    /* Shortcut hint in UI */
+    .kbd-hint { font-size: 0.75em; color: var(--muted); opacity: 0.8; margin-left: 8px; }
+
+    /* ── 6A: Salary Negotiation Modal ── */
+    #settings-panel { overflow-y: auto; -webkit-overflow-scrolling: touch; }
+    .salary-modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 300;
+      display: flex; align-items: center; justify-content: center; padding: 16px;
+    }
+    .salary-modal {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 28px 28px 24px; max-width: 640px; width: 100%; max-height: 88vh;
+      overflow-y: auto; position: relative;
+    }
+    .salary-modal h2 {
+      font-family: 'DM Serif Display', serif; font-size: 1.3em; margin-bottom: 4px;
+      padding-right: 36px;
+    }
+    .salary-modal .modal-sub { color: var(--muted); font-size: 0.88em; margin-bottom: 20px; }
+    .salary-modal-close {
+      position: absolute; top: 18px; right: 18px; background: none;
+      border: 1px solid var(--border); color: var(--muted); padding: 4px 10px;
+      border-radius: 6px; font-size: 0.88em; cursor: pointer; transition: border-color 0.2s;
+    }
+    .salary-modal-close:hover { border-color: var(--teal); color: var(--teal); }
+    .salary-range-chip {
+      background: rgba(0,201,167,0.1); border: 1px solid rgba(0,201,167,0.35);
+      border-radius: 10px; padding: 12px 16px; margin-bottom: 18px; text-align: center;
+    }
+    .salary-range-chip .src-label { font-size: 0.78em; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 4px; }
+    .salary-range-chip .src-value { font-size: 1.4em; font-weight: 700; color: var(--teal); }
+    .salary-modal h3 { font-size: 0.82em; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin: 18px 0 8px; }
+    .salary-modal p { font-size: 0.92em; line-height: 1.65; color: var(--warm); margin-bottom: 10px; }
+    .salary-tactics { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 4px; }
+    .salary-tactics li {
+      background: #0F1B2D; border: 1px solid var(--border); border-radius: 8px;
+      padding: 10px 14px; font-size: 0.9em; line-height: 1.5; display: flex; gap: 10px;
+    }
+    .salary-tactics li::before { content: '✓'; color: var(--green); flex-shrink: 0; font-weight: 700; }
+    .salary-dont { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .salary-dont li {
+      background: rgba(231,76,60,0.07); border: 1px solid rgba(231,76,60,0.2);
+      border-radius: 8px; padding: 9px 14px; font-size: 0.9em; line-height: 1.5; display: flex; gap: 10px;
+    }
+    .salary-dont li::before { content: '✗'; color: var(--red); flex-shrink: 0; font-weight: 700; }
+    .salary-modal-loading { text-align: center; color: var(--teal); padding: 40px 0; font-size: 0.95em; }
+    .btn-salary-neg {
+      background: none; border: 1px solid var(--amber); color: var(--amber);
+      padding: 8px 16px; border-radius: 8px; font-size: 0.88em; font-weight: 600;
+      cursor: pointer; transition: background 0.2s, color 0.2s; margin-top: 12px;
+    }
+    .btn-salary-neg:hover { background: var(--amber); color: #0F1B2D; }
+
+    /* ── 6B: Red Flags ── */
+    details.red-flags-section {
+      background: rgba(231,76,60,0.06); border: 1px solid rgba(231,76,60,0.25);
+      border-radius: 10px; margin-top: 16px; overflow: hidden;
+    }
+    details.red-flags-section summary {
+      display: flex; align-items: center; gap: 8px; padding: 12px 16px;
+      cursor: pointer; list-style: none; user-select: none;
+      font-size: 0.88em; font-weight: 700; color: var(--red);
+    }
+    details.red-flags-section summary::-webkit-details-marker { display: none; }
+    details.red-flags-section summary .rf-toggle { margin-left: auto; font-size: 0.75em; color: var(--muted); }
+    details.red-flags-section[open] summary .rf-toggle::after { content: '▲'; }
+    details.red-flags-section:not([open]) summary .rf-toggle::after { content: '▼'; }
+    .red-flags-body { padding: 0 16px 14px; display: flex; flex-direction: column; gap: 7px; }
+    .red-flag-item {
+      font-size: 0.88em; line-height: 1.5; display: flex; gap: 8px; align-items: flex-start;
+    }
+    .red-flag-item::before { content: '⚠'; flex-shrink: 0; }
+    .no-red-flags { font-size: 0.88em; color: var(--green); padding: 0 0 10px; }
+
+    /* ── 6D: Industry Insights card ── */
+    .industry-insights-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-left: 4px solid var(--amber); border-radius: 10px; padding: 16px; margin-top: 16px;
+    }
+    .industry-insights-card .ii-header {
+      font-size: 0.78em; font-weight: 700; color: var(--amber); text-transform: uppercase;
+      letter-spacing: 0.5px; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+    }
+    .industry-insights-card .ii-header::before { content: '📈'; }
+    .ii-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .ii-stat { font-size: 0.86em; }
+    .ii-stat .ii-stat-label { color: var(--muted); font-size: 0.82em; text-transform: uppercase; letter-spacing: 0.3px; }
+    .ii-stat .ii-stat-value { color: var(--warm); font-weight: 600; margin-top: 2px; }
+    .ii-skills { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+    .ii-skill-tag {
+      background: rgba(244,162,97,0.12); color: var(--amber); border-radius: 20px;
+      padding: 2px 9px; font-size: 0.8em;
+    }
+    .ii-source { font-size: 0.75em; color: var(--muted); font-style: italic; margin-top: 8px; }
+    @media (max-width: 600px) { .ii-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- App Header -->
+<header class="app-header">
+  <div>
+    <div class="app-logo-row" style="display:flex;align-items:center;gap:10px;">
+      <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="#00C9A7">
+        <polygon points="14,1 16,13 14,11 12,13"/>
+        <polygon points="27,14 15,12 17,14 15,16"/>
+        <polygon points="14,27 12,15 14,17 16,15"/>
+        <polygon points="1,14 13,16 11,14 13,12"/>
+        <circle cx="14" cy="14" r="2.5"/>
+      </svg>
+      <div class="app-logo">Career <span>Coach</span></div>
+    </div>
+    <div class="app-tagline" data-en="We've got you. Let's get to work." data-fr="Nous sommes là pour vous. Au travail.">We've got you. Let's get to work.</div>
+  </div>
+  <div class="header-actions">
+    <button class="btn-icon" id="langToggleBtn" onclick="toggleLang()" aria-label="Toggle language / Basculer la langue">FR</button>
+    <button class="btn-icon" id="settingsBtn" title="Settings" aria-label="Settings">⚙</button>
+  </div>
+</header>
+
+<!-- Settings overlay -->
+<div class="settings-overlay" id="settingsOverlay"></div>
+<aside id="settings-panel" aria-label="Settings">
+  <h2>Settings</h2>
+
+  <p style="font-size:0.88em;color:var(--muted);margin-bottom:16px;" data-en="Career Coach uses AI to analyse your applications. The API key is already configured — you do not need to change anything here." data-fr="Career Coach utilise l'IA pour analyser vos candidatures. La clé API est déjà configurée — vous n'avez rien à modifier ici.">Career Coach uses AI to analyse your applications. The API key is already configured — you do not need to change anything here.</p>
+  <details class="advanced-settings">
+    <summary data-en="Advanced — for developers only" data-fr="Avancé — pour les développeurs uniquement">Advanced — for developers only</summary>
+    <div style="margin-top:14px;">
+      <div class="field-group">
+        <label>Anthropic API Key</label>
+        <input type="password" id="settingsApiKey" placeholder="sk-ant-..." autocomplete="off">
+        <p style="font-size:0.8em;color:var(--muted);margin-top:6px;">Stored only in your browser. Never sent anywhere except to the Anthropic API.</p>
+        <p style="font-size:0.8em;margin-top:8px;"><a href="https://console.anthropic.com" target="_blank" rel="noopener noreferrer" style="color:var(--teal);">Get a free API key →</a></p>
+      </div>
+      <button class="btn-primary" onclick="saveApiKey()" style="width:100%;">Save API Key</button>
+    </div>
+  </details>
+
+  <div style="margin-top:28px;border-top:1px solid var(--border);padding-top:20px;">
+    <button class="danger-btn" onclick="clearJobs()">Clear all jobs</button>
+    <button class="danger-btn" onclick="resetProfile()">Reset profile (return to onboarding)</button>
+    <button class="btn-export" style="margin-top:8px;" onclick="exportCSV()">Export CSV ↓</button>
+  </div>
+</aside>
+
+<!-- ONBOARDING WIZARD -->
+<div id="onboarding">
+
+  <div class="hero-section">
+    <h1 class="hero-headline" data-en="Your personal job application strategist." data-fr="Votre stratège personnel pour les candidatures.">Your personal job application strategist.</h1>
+    <p class="hero-sub" data-en="Career Coach analyses your CV against real job postings and tells you exactly where to focus your energy. Built for people who want to apply smarter, not just more." data-fr="Career Coach analyse votre CV par rapport aux offres d'emploi réelles et vous indique exactement où concentrer vos efforts. Conçu pour ceux qui veulent postuler avec plus d'intelligence, pas seulement plus souvent.">Career Coach analyses your CV against real job postings and tells you exactly where to focus your energy. Built for people who want to apply smarter, not just more.</p>
+  </div>
+
+  <div class="wizard-progress">
+    <div class="wizard-step active" id="ws1"></div>
+    <div class="wizard-step" id="ws2"></div>
+    <div class="wizard-step" id="ws3"></div>
+  </div>
+
+  <!-- Step 1 -->
+  <div id="step1" class="onboard-card">
+    <h2 data-en="About You" data-fr="À Propos de Vous">About You</h2>
+    <p class="sub" data-en="Step 1 of 3 — tell us about your situation so we can score jobs that actually fit." data-fr="Étape 1 de 3 — parlez-nous de votre situation pour que nous puissions évaluer les emplois qui vous conviennent vraiment.">Step 1 of 3 — tell us about your situation so we can score jobs that actually fit.</p>
+
+    <p class="voice-note" style="font-size:0.82em;color:var(--muted);margin-bottom:16px;" data-en="Prefer to speak? Tap 🎤 beside any field." data-fr="Préférez parler? Appuyez sur 🎤 à côté de n'importe quel champ.">Prefer to speak? Tap 🎤 beside any field.</p>
+
+    <div class="field-group">
+      <label>Your Name (optional)</label>
+      <div style="display:flex;gap:8px;align-items:flex-start;">
+        <input type="text" id="pName" placeholder="Your name (optional)" style="flex:1;">
+        <button type="button" class="mic-btn" onclick="startVoice(this,'pName')" aria-label="Voice input">🎤</button>
+      </div>
+    </div>
+    <div class="field-group">
+      <label>Employment Status</label>
+      <select id="pStatus">
+        <option value="">Select...</option>
+        <option>Currently employed</option>
+        <option>Recently laid off</option>
+        <option>Returning to work after a break</option>
+        <option>Changing careers</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Minimum Salary ($ CAD)</label>
+        <input type="number" id="pMinSal" placeholder="e.g. 65000">
+      </div>
+      <div class="field-group">
+        <label>Target Salary ($ CAD)</label>
+        <input type="number" id="pTargetSal" placeholder="e.g. 85000">
+      </div>
+    </div>
+    <div class="field-group">
+      <label>Location</label>
+      <div style="display:flex;gap:8px;align-items:flex-start;">
+        <input type="text" id="pLocation" placeholder="City, Province — e.g. London, ON" style="flex:1;">
+        <button type="button" class="mic-btn" onclick="startVoice(this,'pLocation')" aria-label="Voice input">🎤</button>
+      </div>
+    </div>
+    <div class="field-group">
+      <label>Open to Hybrid?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="hybrid" value="Yes"> Yes</label>
+        <label><input type="radio" name="hybrid" value="Depends"> Depends</label>
+        <label><input type="radio" name="hybrid" value="No"> No</label>
+      </div>
+    </div>
+    <div class="field-group">
+      <label>Open to Remote?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="remote" value="Yes"> Yes</label>
+        <label><input type="radio" name="remote" value="No"> No</label>
+      </div>
+    </div>
+    <div class="field-group">
+      <label>Willing to Relocate?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="relocate" value="Yes"> Yes</label>
+        <label><input type="radio" name="relocate" value="No"> No</label>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label data-en="Preferred Sectors (select all that apply)" data-fr="Secteurs préférés (sélectionnez tout ce qui s'applique)">Preferred Sectors (select all that apply)</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="sector" value="Private"> <span data-en="Private" data-fr="Privé">Private</span></label>
+        <label><input type="checkbox" name="sector" value="Public"> <span data-en="Public" data-fr="Public">Public</span></label>
+        <label><input type="checkbox" name="sector" value="Non-profit"> <span data-en="Non-profit" data-fr="Sans but lucratif">Non-profit</span></label>
+        <label><input type="checkbox" name="sector" value="Social enterprise"> <span data-en="Social enterprise" data-fr="Entreprise sociale">Social enterprise</span></label>
+        <label><input type="checkbox" name="sector" value="Startup"> <span data-en="Startup" data-fr="Démarrage">Startup</span></label>
+        <label><input type="checkbox" name="sector" value="Healthcare"> <span data-en="Healthcare" data-fr="Santé">Healthcare</span></label>
+        <label><input type="checkbox" name="sector" value="Education"> <span data-en="Education" data-fr="Éducation">Education</span></label>
+        <label><input type="checkbox" name="sector" value="Tech"> Tech</label>
+        <label><input type="checkbox" name="sector" value="Finance"> Finance</label>
+        <label><input type="checkbox" name="sector" value="Other"> <span data-en="Other" data-fr="Autre">Other</span></label>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label data-en="Work Type" data-fr="Type de travail">Work Type</label>
+      <div class="radio-group">
+        <label><input type="radio" name="workType" value="Full-time"> <span data-en="Full-time" data-fr="Temps plein">Full-time</span></label>
+        <label><input type="radio" name="workType" value="Part-time"> <span data-en="Part-time" data-fr="Temps partiel">Part-time</span></label>
+        <label><input type="radio" name="workType" value="Contract"> <span data-en="Contract" data-fr="Contrat">Contract</span></label>
+        <label><input type="radio" name="workType" value="Freelance"> Freelance</label>
+        <label><input type="radio" name="workType" value="Volunteer"> <span data-en="Volunteer" data-fr="Bénévolat">Volunteer</span></label>
+        <label><input type="radio" name="workType" value="Open to all" checked> <span data-en="Open to all" data-fr="Ouvert à tout">Open to all</span></label>
+      </div>
+    </div>
+
+    <div class="wizard-nav">
+      <span></span>
+      <button class="btn-primary" onclick="goStep(2)" data-en="Next →" data-fr="Suivant →">Next →</button>
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div id="step2" class="onboard-card hidden">
+    <h2 data-en="What Matters to You" data-fr="Ce Qui Compte Pour Vous">What Matters to You</h2>
+    <p class="sub" data-en="Step 2 of 3 — rank your priorities (1 = most important, 5 = least)." data-fr="Étape 2 de 3 — classez vos priorités (1 = le plus important, 5 = le moins).">Step 2 of 3 — rank your priorities (1 = most important, 5 = least).</p>
+
+    <div class="priority-grid" id="priorityGrid">
+      <div class="priority-row"><label>Salary &amp; Compensation</label><input type="number" id="p_salary" min="1" max="5" value="1"></div>
+      <div class="priority-row"><label>Work-Life Balance</label><input type="number" id="p_wlb" min="1" max="5" value="2"></div>
+      <div class="priority-row"><label>Job Security &amp; Stability</label><input type="number" id="p_security" min="1" max="5" value="3"></div>
+      <div class="priority-row"><label>Growth &amp; Learning</label><input type="number" id="p_growth" min="1" max="5" value="4"></div>
+      <div class="priority-row"><label>Company Culture &amp; Values</label><input type="number" id="p_culture" min="1" max="5" value="5"></div>
+    </div>
+
+    <div class="field-group" style="margin-top:18px;">
+      <label>Work Intensity</label>
+      <select id="pIntensity">
+        <option>Relaxed</option>
+        <option selected>Balanced</option>
+        <option>Intense</option>
+        <option>Whatever it takes</option>
+      </select>
+    </div>
+    <div class="field-group">
+      <label>Gig Work Acceptable?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="gig" value="Yes"> Yes</label>
+        <label><input type="radio" name="gig" value="Short-term only"> Short-term only</label>
+        <label><input type="radio" name="gig" value="No" checked> No</label>
+      </div>
+    </div>
+    <div class="field-group">
+      <label>Three Personal Values</label>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <div style="display:flex;gap:8px;align-items:flex-start;flex:1;min-width:120px;">
+          <input type="text" id="pVal1" placeholder="e.g. Integrity" style="flex:1;padding:8px 12px;background:#0F1B2D;border:1px solid var(--border);border-radius:8px;color:var(--warm);">
+          <button type="button" class="mic-btn" onclick="startVoice(this,'pVal1')" aria-label="Voice input">🎤</button>
+        </div>
+        <div style="display:flex;gap:8px;align-items:flex-start;flex:1;min-width:120px;">
+          <input type="text" id="pVal2" placeholder="e.g. Family" style="flex:1;padding:8px 12px;background:#0F1B2D;border:1px solid var(--border);border-radius:8px;color:var(--warm);">
+          <button type="button" class="mic-btn" onclick="startVoice(this,'pVal2')" aria-label="Voice input">🎤</button>
+        </div>
+        <div style="display:flex;gap:8px;align-items:flex-start;flex:1;min-width:120px;">
+          <input type="text" id="pVal3" placeholder="e.g. Creativity" style="flex:1;padding:8px 12px;background:#0F1B2D;border:1px solid var(--border);border-radius:8px;color:var(--warm);">
+          <button type="button" class="mic-btn" onclick="startVoice(this,'pVal3')" aria-label="Voice input">🎤</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;border-top:1px solid var(--border);padding-top:20px;">
+      <h3 style="font-family:'DM Serif Display',serif;font-size:1.1rem;margin-bottom:4px;color:var(--warm);" data-en="Things I definitely do NOT want" data-fr="Ce que je ne veux définitivement PAS">Things I definitely do NOT want</h3>
+      <p style="font-size:0.82em;color:var(--muted);margin-bottom:16px;" data-en="Jobs matching these will score lower." data-fr="Les offres correspondantes obtiendront une note plus basse.">Jobs matching these will score lower.</p>
+
+      <div class="field-group">
+        <label data-en="Industries to avoid" data-fr="Secteurs à éviter">Industries to avoid</label>
+        <input type="text" id="pAvoidIndustries" placeholder="e.g. Oil and gas, gambling, tobacco">
+      </div>
+
+      <div class="field-group">
+        <label data-en="Company types to avoid" data-fr="Types d'entreprises à éviter">Company types to avoid</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="avoidCompany" value="Government"> <span data-en="Government" data-fr="Gouvernement">Government</span></label>
+          <label><input type="checkbox" name="avoidCompany" value="Large enterprise"> <span data-en="Large enterprise" data-fr="Grande entreprise">Large enterprise</span></label>
+          <label><input type="checkbox" name="avoidCompany" value="Startup"> <span data-en="Startup" data-fr="Démarrage">Startup</span></label>
+          <label><input type="checkbox" name="avoidCompany" value="Non-profit"> <span data-en="Non-profit" data-fr="Organisme sans but lucratif">Non-profit</span></label>
+          <label><input type="checkbox" name="avoidCompany" value="Other"> <span data-en="Other" data-fr="Autre">Other</span></label>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label data-en="Work arrangements to avoid" data-fr="Arrangements de travail à éviter">Work arrangements to avoid</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="avoidArrangement" value="100% in-office"> <span data-en="100% in-office" data-fr="100 % en présentiel">100% in-office</span></label>
+          <label><input type="checkbox" name="avoidArrangement" value="Night shifts"> <span data-en="Night shifts" data-fr="Quarts de nuit">Night shifts</span></label>
+          <label><input type="checkbox" name="avoidArrangement" value="On-call"> <span data-en="On-call" data-fr="Garde">On-call</span></label>
+          <label><input type="checkbox" name="avoidArrangement" value="Heavy travel"> <span data-en="Heavy travel" data-fr="Voyages fréquents">Heavy travel</span></label>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label data-en="Anything else I want to avoid" data-fr="Autre chose que je veux éviter">Anything else I want to avoid</label>
+        <textarea id="pAvoidOther" class="job-textarea" style="height:80px;" placeholder="Describe anything else you want to avoid in a role or company..."></textarea>
+      </div>
+    </div>
+
+    <div class="wizard-nav">
+      <button class="btn-secondary" onclick="goStep(1)" data-en="← Back" data-fr="← Retour">← Back</button>
+      <button class="btn-primary" onclick="goStep(3)" data-en="Next →" data-fr="Suivant →">Next →</button>
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div id="step3" class="onboard-card hidden">
+    <h2 data-en="Your CV" data-fr="Votre CV">Your CV</h2>
+    <p class="sub" data-en="Step 3 of 3 — paste your CV so we can match you to jobs precisely." data-fr="Étape 3 de 3 — collez votre CV pour que nous puissions vous associer précisément aux offres d'emploi.">Step 3 of 3 — paste your CV so we can match you to jobs precisely.</p>
+
+    <div class="field-group">
+      <label>CV Text (paste full CV)</label>
+      <div style="margin-bottom:8px;">
+        <button type="button" class="mic-btn" onclick="startVoice(this,'pCV')" aria-label="Voice input" style="display:inline-flex;align-items:center;gap:6px;">🎤 <span style="font-size:0.88em;color:var(--muted);">Dictate CV</span></button>
+      </div>
+      <textarea id="pCV" class="job-textarea" placeholder="Paste your full CV text here — the more detail, the better the analysis"></textarea>
+    </div>
+    <details style="margin-bottom:16px;">
+      <summary style="cursor:pointer;color:var(--muted);font-size:0.88em;">+ Optional: paste an existing cover letter</summary>
+      <textarea id="pCoverLetter" class="job-textarea" style="margin-top:8px;height:160px;" placeholder="Paste an existing cover letter (optional)"></textarea>
+    </details>
+
+    <div class="api-notice">🔒 Your CV stays on your device. It's only sent to the AI when you click "Analyse" — and only to score a specific job. We never store it on a server.</div>
+
+    <div class="wizard-nav">
+      <button class="btn-secondary" onclick="goStep(2)" data-en="← Back" data-fr="← Retour">← Back</button>
+      <button class="btn-primary" onclick="saveProfile()" data-en="Save my profile →" data-fr="Sauvegarder mon profil →">Save my profile →</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="main-app" class="hidden">
+  <!-- Left: jobs list -->
+  <div class="left-panel">
+    <div class="panel-header">
+      <span class="panel-title">My Jobs <span class="job-count" id="jobCount">0</span></span>
+    </div>
+    <div class="filter-bar" id="filterBar">
+      <button class="filter-btn active" data-filter="all" onclick="setFilter('all', this)">All</button>
+      <button class="filter-btn" data-filter="apply custom" onclick="setFilter('apply custom', this)">Apply Custom</button>
+      <button class="filter-btn" data-filter="apply generic" onclick="setFilter('apply generic', this)">Apply Generic</button>
+      <button class="filter-btn" data-filter="skip" onclick="setFilter('skip', this)">Skip</button>
+      <button class="filter-btn" data-filter="pending" onclick="setFilter('pending', this)">Not Analysed</button>
+    </div>
+    <div class="sort-bar">
+      <label>Sort:</label>
+      <select id="sortSelect" onchange="renderJobList()">
+        <option value="score">Score ↓</option>
+        <option value="ats">ATS ↓</option>
+        <option value="date">Date Added ↓</option>
+        <option value="salary">Salary Match</option>
+      </select>
+    </div>
+    <div class="jobs-list" id="jobsList"></div>
+    <div class="left-footer">
+      <button class="btn-export" onclick="exportCSV()" data-en="↓ Export CSV" data-fr="↓ Exporter CSV">↓ Export CSV</button>
+      <button class="btn-export" onclick="exportApplicationsReport()" style="margin-top:6px;" data-en="↓ Export Application Report" data-fr="↓ Exporter le rapport de candidatures">↓ Export Application Report</button>
+      <button class="btn-export" onclick="printJobsTable()" style="margin-top:6px;" data-en="🖨 Print My Jobs" data-fr="🖨 Imprimer mes offres">🖨 Print My Jobs</button>
+    </div>
+  </div>
+
+  <!-- Right: add job / job detail -->
+  <div class="right-panel" id="rightPanel">
+    <!-- Job Search Stats Card -->
+    <div id="jobStatsCard" class="job-stats-card hidden">
+      <h3 data-en="Your Job Search" data-fr="Votre recherche d'emploi">Your Job Search</h3>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-value" id="statTotal">0</span>
+          <span class="stat-label" data-en="Jobs Analysed" data-fr="Offres analysées">Jobs Analysed</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="statAvgFit">—</span>
+          <span class="stat-label" data-en="Avg Fit Score" data-fr="Score moyen">Avg Fit Score</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="statApply">0</span>
+          <span class="stat-label" data-en="Recommended" data-fr="Recommandées">Recommended</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="statSkip">0</span>
+          <span class="stat-label" data-en="Skipped" data-fr="Ignorées">Skipped</span>
+        </div>
+        <div class="stat-item stat-wide">
+          <span class="stat-value" id="statDays">—</span>
+          <span class="stat-label" data-en="Days Since First Job" data-fr="Jours depuis la première offre">Days Since First Job</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="add-job-panel" id="addJobPanel">
+      <h2 data-en="Add a Job" data-fr="Ajouter une offre">Add a Job</h2>
+      <p>Paste a full job posting to analyse it against your profile. The AI will score the match, flag risks, and suggest CV tweaks.</p>
+      <div class="textarea-actions">
+        <span class="hint">Press <kbd class="kbd-key">?</kbd> for keyboard shortcuts</span>
+        <button class="btn-try-demo" onclick="tryDemo()" title="Fill with a sample posting to see what an analysis looks like">✦ Try Demo</button>
+      </div>
+      <textarea class="job-textarea" id="jobInput" placeholder="Paste job posting text here — include the full description for the best analysis"></textarea>
+      <button class="analyse-btn" id="analyseBtn" onclick="analyseJob()" data-en="Analyse this job" data-fr="Analyser cette offre">Analyse this job</button>
+      <div class="analysis-status" id="analysisStatus"></div>
+
+      <!-- Demo card — shown when textarea is empty and no history -->
+      <div class="demo-card hidden" id="demoCard">
+        <div class="demo-card-label">Demo Result</div>
+        <h3>Senior Product Manager — Acme Health Tech</h3>
+        <p class="demo-sub">This is what a Career Coach analysis looks like. The AI scores your CV against the job description, flags gaps and strengths, and tells you exactly how to apply.</p>
+        <div class="demo-score-row">
+          <div class="demo-score-chip"><div class="dsc-label">Composite</div><div class="dsc-value" style="color:#2ECC71">78</div></div>
+          <div class="demo-score-chip"><div class="dsc-label">ATS Match</div><div class="dsc-value" style="color:#00C9A7">82</div></div>
+          <div class="demo-score-chip"><div class="dsc-label">Overall Fit</div><div class="dsc-value" style="color:#9B59B6">74</div></div>
+          <div class="demo-score-chip"><div class="dsc-label">Salary</div><div class="dsc-value" style="font-size:0.9em;color:#F39C12">At Target</div></div>
+        </div>
+        <div class="demo-tags">
+          <span class="tag">Agile / Scrum</span>
+          <span class="tag">Stakeholder management</span>
+          <span class="tag">Data-driven</span>
+          <span class="tag">Patient-centred design</span>
+          <span class="tag">Regulated environment</span>
+        </div>
+        <p style="font-size:0.82em;color:var(--muted);margin-bottom:10px;line-height:1.5">
+          <strong style="color:var(--green)">Strengths:</strong> 7 years PM experience, healthcare domain knowledge, strong metrics track record.<br>
+          <strong style="color:var(--red)">Gaps:</strong> No HL7/FHIR experience listed, missing formal PMP certification.
+        </p>
+        <p style="font-size:0.82em;color:var(--teal);margin-bottom:14px">Recommendation: <strong>Apply with a customised CV</strong></p>
+        <button class="btn-try-demo" onclick="tryDemo()">Fill in sample job &amp; run your own analysis →</button>
+      </div>
+
+      <!-- Recent analyses history -->
+      <div class="history-section hidden" id="historySection">
+        <h3>Recent Analyses</h3>
+        <div class="history-list" id="historyList"></div>
+      </div>
+
+      <!-- Job Market Insights (9A) -->
+      <details class="market-insights-panel" id="marketInsightsPanel">
+        <summary class="market-insights-summary">
+          <span class="mi-title" data-en="Job Market Insights — Canada, March 2026" data-fr="Aperçu du marché de l'emploi — Canada, mars 2026">Job Market Insights — Canada, March 2026</span>
+          <span class="mi-toggle"></span>
+        </summary>
+        <div class="market-insights-body">
+          <div class="mi-row">
+            <span class="mi-label" data-en="Avg. Time to Hire" data-fr="Délai moyen d'embauche">Avg. Time to Hire</span>
+            <span class="mi-value" data-en="28 days" data-fr="28 jours">28 days</span>
+          </div>
+          <div class="mi-row">
+            <span class="mi-label" data-en="Top In-Demand Skills" data-fr="Compétences les plus recherchées">Top In-Demand Skills</span>
+            <div class="mi-tags">
+              <span class="mi-tag" data-en="AI Literacy" data-fr="Maîtrise de l'IA">AI Literacy</span>
+              <span class="mi-tag" data-en="Project Management" data-fr="Gestion de projet">Project Management</span>
+              <span class="mi-tag" data-en="Data Analysis" data-fr="Analyse de données">Data Analysis</span>
+              <span class="mi-tag" data-en="Bilingualism" data-fr="Bilinguisme">Bilingualism</span>
+            </div>
+          </div>
+          <div class="mi-row">
+            <span class="mi-label" data-en="Sectors Hiring Actively" data-fr="Secteurs en forte embauche">Sectors Hiring Actively</span>
+            <div class="mi-tags">
+              <span class="mi-tag" data-en="Healthcare" data-fr="Santé">Healthcare</span>
+              <span class="mi-tag" data-en="Clean Energy" data-fr="Énergie propre">Clean Energy</span>
+              <span class="mi-tag" data-en="Financial Services" data-fr="Services financiers">Financial Services</span>
+              <span class="mi-tag" data-en="Technology" data-fr="Technologie">Technology</span>
+            </div>
+          </div>
+          <div class="mi-row">
+            <span class="mi-label" data-en="Remote / Hybrid Roles" data-fr="Postes à distance / hybrides">Remote / Hybrid Roles</span>
+            <span class="mi-value" data-en="~35% of professional roles offer hybrid work" data-fr="~35 % des postes professionnels offrent un mode hybride">~35% of professional roles offer hybrid work</span>
+          </div>
+          <div class="mi-source" data-en="Source: Two Birds Innovation market summary, March 2026" data-fr="Source : Résumé du marché Two Birds Innovation, mars 2026">Source: Two Birds Innovation market summary, March 2026</div>
+        </div>
+      </details>
+
+      <!-- Cover Letter Templates (9C) -->
+      <div class="cover-letter-section" id="coverLetterSection">
+        <h3 data-en="Cover Letter Templates" data-fr="Modèles de lettre de présentation">Cover Letter Templates</h3>
+        <p class="sub" data-en="Choose a template, personalise it, then copy to your clipboard." data-fr="Choisissez un modèle, personnalisez-le, puis copiez dans le presse-papiers.">Choose a template, personalise it, then copy to your clipboard.</p>
+        <div class="field-group">
+          <label data-en="Select Template" data-fr="Choisir un modèle">Select Template</label>
+          <select id="clTemplateSelect" onchange="loadCoverLetterTemplate()">
+            <option value="" data-en="— Choose a template —" data-fr="— Choisir un modèle —">— Choose a template —</option>
+            <option value="standard" data-en="1. Standard Professional Application" data-fr="1. Candidature professionnelle standard">1. Standard Professional Application</option>
+            <option value="career-change" data-en="2. Career Change (Transferable Skills Focus)" data-fr="2. Réorientation professionnelle (compétences transférables)">2. Career Change (Transferable Skills Focus)</option>
+            <option value="return" data-en="3. Return to Workforce" data-fr="3. Retour sur le marché du travail">3. Return to Workforce</option>
+            <option value="mission" data-en="4. Mission-Driven Organisation" data-fr="4. Organisation à vocation sociale">4. Mission-Driven Organisation</option>
+            <option value="startup" data-en="5. Startup / Small Company (Personal Tone)" data-fr="5. Démarrage / petite entreprise (ton personnel)">5. Startup / Small Company (Personal Tone)</option>
+          </select>
+        </div>
+        <div id="clTemplateArea" class="hidden">
+          <textarea class="cl-textarea" id="clTextarea" spellcheck="true"></textarea>
+          <div class="cl-actions">
+            <button class="btn-copy-cl" onclick="copyCoverLetter()" data-en="Copy to clipboard" data-fr="Copier dans le presse-papiers">Copy to clipboard</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="job-detail hidden" id="jobDetailPanel"></div>
+  </div>
+</div>
+
+<!-- Keyboard shortcuts help overlay -->
+<div id="kbd-help-overlay" class="hidden" onclick="closeKbdHelp(event)">
+  <div id="kbd-help-panel">
+    <h2>Keyboard Shortcuts</h2>
+    <div class="kbd-row"><span class="kbd-desc">New analysis (focus textarea)</span><span><kbd class="kbd-key">N</kbd> or <kbd class="kbd-key">Enter</kbd></span></div>
+    <div class="kbd-row"><span class="kbd-desc">Clear textarea &amp; results</span><span><kbd class="kbd-key">Escape</kbd></span></div>
+    <div class="kbd-row"><span class="kbd-desc">Run analysis</span><span><kbd class="kbd-key">Ctrl</kbd> + <kbd class="kbd-key">Enter</kbd></span></div>
+    <div class="kbd-row"><span class="kbd-desc">Show this help panel</span><span><kbd class="kbd-key">?</kbd></span></div>
+    <button id="kbd-close-btn" onclick="closeKbdHelp()">Close</button>
+  </div>
+</div>
+
+<!-- 6A: Salary Negotiation Modal -->
+<div id="salaryModalOverlay" class="salary-modal-overlay hidden" onclick="closeSalaryModal(event)">
+  <div class="salary-modal" role="dialog" aria-modal="true" aria-labelledby="salaryModalTitle">
+    <button class="salary-modal-close" onclick="closeSalaryModal()" data-en="✕ Close" data-fr="✕ Fermer">✕ Close</button>
+    <h2 id="salaryModalTitle" data-en="Salary Negotiation Coach" data-fr="Coach en négociation salariale">Salary Negotiation Coach</h2>
+    <p class="modal-sub" id="salaryModalSub"></p>
+    <div id="salaryModalBody">
+      <div class="salary-modal-loading" data-en="Generating negotiation strategy…" data-fr="Génération de la stratégie de négociation…">Generating negotiation strategy…</div>
+    </div>
+  </div>
+</div>
+
+<div class="app-footer">
+  <span data-en="Career Coach by Two Birds Innovation" data-fr="Career Coach par Two Birds Innovation">Career Coach by Two Birds Innovation</span> &nbsp;|&nbsp;
+  <a href="pricing.html">Career Coach Pro — Coming Soon</a>
+</div>
+
+<script>
+// ── State ──
+let profile = null;
+let jobs = [];
+let currentFilter = 'all';
+let selectedJobId = null;
+const API_URL = 'https://api.anthropic.com/v1/messages';
+
+// ── Init ──
+function init() {
+  try { profile = JSON.parse(localStorage.getItem('cc_profile')); } catch(e) {}
+  try { jobs = JSON.parse(localStorage.getItem('cc_jobs')) || []; } catch(e) {}
+  const apiKey = localStorage.getItem('cc_api_key') || '';
+  document.getElementById('settingsApiKey').value = apiKey;
+
+  if (profile) showMainApp();
+  else showOnboarding();
+
+  document.getElementById('settingsBtn').onclick = openSettings;
+  document.getElementById('settingsOverlay').onclick = closeSettings;
+
+  // Demo card / history — hook textarea input event
+  const jobInput = document.getElementById('jobInput');
+  if (jobInput) {
+    jobInput.addEventListener('input', updateDemoCardVisibility);
+  }
+
+  // Initial demo card visibility
+  updateDemoCardVisibility();
+
+  applyLang();
+}
+
+// ── Onboarding ──
+function showOnboarding() {
+  document.getElementById('onboarding').classList.remove('hidden');
+  document.getElementById('main-app').classList.add('hidden');
+}
+
+function goStep(n) {
+  [1,2,3].forEach(i => {
+    document.getElementById('step'+i).classList.toggle('hidden', i !== n);
+    const ws = document.getElementById('ws'+i);
+    if (i < n) { ws.className = 'wizard-step done'; }
+    else if (i === n) { ws.className = 'wizard-step active'; }
+    else { ws.className = 'wizard-step'; }
+  });
+}
+
+function getRadio(name) {
+  const el = document.querySelector(`input[name="${name}"]:checked`);
+  return el ? el.value : '';
+}
+
+function saveProfile() {
+  profile = {
+    name: document.getElementById('pName').value.trim(),
+    status: document.getElementById('pStatus').value,
+    minSalary: document.getElementById('pMinSal').value,
+    targetSalary: document.getElementById('pTargetSal').value,
+    location: document.getElementById('pLocation').value.trim(),
+    hybrid: getRadio('hybrid'),
+    remote: getRadio('remote'),
+    relocate: getRadio('relocate'),
+    preferredSectors: [...document.querySelectorAll('[name="sector"]:checked')].map(e => e.value),
+    workType: getRadio('workType'),
+    priorities: {
+      salary: document.getElementById('p_salary').value,
+      workLifeBalance: document.getElementById('p_wlb').value,
+      security: document.getElementById('p_security').value,
+      growth: document.getElementById('p_growth').value,
+      culture: document.getElementById('p_culture').value
+    },
+    intensity: document.getElementById('pIntensity').value,
+    gig: getRadio('gig'),
+    values: [
+      document.getElementById('pVal1').value.trim(),
+      document.getElementById('pVal2').value.trim(),
+      document.getElementById('pVal3').value.trim()
+    ].filter(Boolean),
+    industriesToAvoid: document.getElementById('pAvoidIndustries').value.trim(),
+    companyTypesToAvoid: [...document.querySelectorAll('[name="avoidCompany"]:checked')].map(e => e.value),
+    workArrangementsToAvoid: [...document.querySelectorAll('[name="avoidArrangement"]:checked')].map(e => e.value),
+    otherAvoid: document.getElementById('pAvoidOther').value.trim(),
+    cv: document.getElementById('pCV').value.trim(),
+    coverLetter: document.getElementById('pCoverLetter').value.trim()
+  };
+  try {
+    localStorage.setItem('cc_profile', JSON.stringify(profile));
+  } catch(e) {
+    if (e.name === 'QuotaExceededError' || e.name === 'NS_ERROR_DOM_QUOTA_REACHED') {
+      alert('Browser storage is full. Export your data (CSV) and clear some old jobs to free up space.');
+      return;
+    }
+  }
+  showMainApp();
+}
+
+// ── Main app ──
+function showMainApp() {
+  document.getElementById('onboarding').classList.add('hidden');
+  document.getElementById('main-app').classList.remove('hidden');
+  renderJobList();
+  updateJobStats();
+}
+
+// ── Filters & sort ──
+function setFilter(f, btn) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderJobList();
+}
+
+function renderJobList() {
+  const sort = document.getElementById('sortSelect').value;
+  let list = [...jobs];
+
+  if (currentFilter !== 'all') {
+    if (currentFilter === 'pending') {
+      list = list.filter(j => !j.analysis);
+    } else {
+      list = list.filter(j => j.analysis && j.analysis.application_recommendation === currentFilter);
+    }
+  }
+
+  const salaryScore = s => ({ 'above target': 3, 'at target': 2, 'not specified': 1, 'below target': 0 }[s] ?? 1);
+  list.sort((a, b) => {
+    if (sort === 'score') return (b.compositeScore||0) - (a.compositeScore||0);
+    if (sort === 'ats') return ((b.analysis?.ats_score)||0) - ((a.analysis?.ats_score)||0);
+    if (sort === 'date') return new Date(b.addedAt) - new Date(a.addedAt);
+    if (sort === 'salary') return salaryScore(b.analysis?.salary_match) - salaryScore(a.analysis?.salary_match);
+    return 0;
+  });
+
+  const container = document.getElementById('jobsList');
+  document.getElementById('jobCount').textContent = jobs.length;
+
+  if (!list.length) {
+    container.innerHTML = `<div class="jobs-empty">${jobs.length ? 'No jobs match this filter.' : 'No jobs yet.<br>Paste a job posting on the right to get started.'}</div>`;
+    return;
+  }
+
+  container.innerHTML = list.map(job => {
+    const sc = job.compositeScore || 0;
+    const scoreClass = sc >= 70 ? 'score-high' : sc >= 45 ? 'score-mid' : 'score-low';
+    const rec = job.analysis?.application_recommendation || 'pending';
+    const badgeClass = { 'apply custom': 'badge-apply-custom', 'apply generic': 'badge-apply-generic', 'skip': 'badge-skip', 'pending': 'badge-pending' }[rec] || 'badge-pending';
+    const badgeLabel = rec === 'pending' ? 'Not Analysed' : rec.replace(/\b\w/g, c => c.toUpperCase());
+    const risk = job.analysis?.ai_risk_rating || '';
+    const riskClass = { low: 'risk-low', medium: 'risk-medium', high: 'risk-high' }[risk] || '';
+
+    return `<div class="job-card${job.id === selectedJobId ? ' selected' : ''}" onclick="openJobDetail('${job.id}')">
+      <div class="job-card-header">
+        <div class="job-title-co">
+          <strong>${job.analysis?.job_title || 'Untitled'}</strong>
+          <span>${job.analysis?.company || 'Unknown Company'}</span>
+        </div>
+        <div class="score-circle ${scoreClass}">${sc}</div>
+      </div>
+      <div class="job-badges">
+        <span class="badge ${badgeClass}">${badgeLabel}</span>
+        ${risk ? `<span class="badge" style="display:flex;align-items:center;gap:4px;background:none;padding:2px 4px;"><span class="risk-dot ${riskClass}"></span><span style="font-size:0.72em;color:var(--muted);">AI ${risk}</span></span>` : ''}
+        ${job.status && job.status !== 'Saved' ? `<span class="badge badge-pending">${job.status}</span>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+
+  updateJobStats();
+}
+
+// ── Job Search Stats Card ──
+function updateJobStats() {
+  const card = document.getElementById('jobStatsCard');
+  if (!card) return;
+  if (jobs.length === 0) { card.classList.add('hidden'); return; }
+  card.classList.remove('hidden');
+
+  document.getElementById('statTotal').textContent = jobs.length;
+
+  const analysed = jobs.filter(j => j.analysis);
+  const fits = analysed.map(j => j.analysis.overall_fit).filter(v => typeof v === 'number');
+  document.getElementById('statAvgFit').textContent = fits.length ? Math.round(fits.reduce((a,b) => a + b, 0) / fits.length) : '—';
+
+  document.getElementById('statApply').textContent = analysed.filter(j => j.analysis.application_recommendation === 'apply custom').length;
+  document.getElementById('statSkip').textContent = analysed.filter(j => j.analysis.application_recommendation === 'skip').length;
+
+  const dates = jobs.map(j => j.addedAt).filter(Boolean).map(d => new Date(d)).filter(d => !isNaN(d));
+  if (dates.length) {
+    const earliest = new Date(Math.min(...dates));
+    const days = Math.floor((Date.now() - earliest) / 86400000);
+    document.getElementById('statDays').textContent = days;
+  } else {
+    document.getElementById('statDays').textContent = '—';
+  }
+}
+
+// ── Analysis ──
+function buildProfileText() {
+  if (!profile) return '';
+  return `Name: ${profile.name || 'Not given'}
+Employment status: ${profile.status}
+Location: ${profile.location}
+Minimum salary: $${profile.minSalary} CAD
+Target salary: $${profile.targetSalary} CAD
+Open to hybrid: ${profile.hybrid}
+Open to remote: ${profile.remote}
+Willing to relocate: ${profile.relocate}
+Work intensity preference: ${profile.intensity}
+Gig work acceptable: ${profile.gig}
+Priority rankings (1=most important): Salary=${profile.priorities.salary}, Work-life balance=${profile.priorities.workLifeBalance}, Security=${profile.priorities.security}, Growth=${profile.priorities.growth}, Culture=${profile.priorities.culture}
+Personal values: ${profile.values.join(', ')}
+
+CV:
+${profile.cv}
+
+Sectors preferred: ${(profile.preferredSectors||[]).join(', ') || 'Not specified'}
+Work type: ${profile.workType || 'Not specified'}
+Industries to avoid: ${profile.industriesToAvoid || 'None'}
+Company types to avoid: ${(profile.companyTypesToAvoid||[]).join(', ') || 'None'}
+Work arrangements to avoid: ${(profile.workArrangementsToAvoid||[]).join(', ') || 'None'}
+Other avoidances: ${profile.otherAvoid || 'None'}`;
+}
+
+async function analyseJob() {
+  const jobText = document.getElementById('jobInput').value.trim();
+  if (!jobText) { setStatus('Please paste a job posting first.', true); return; }
+
+  const apiKey = localStorage.getItem('cc_api_key');
+  if (!apiKey) { setStatus('Please add your Anthropic API key in Settings (⚙).', true); return; }
+
+  setStatus('Analysing… this takes about 10 seconds.', false);
+  document.getElementById('analyseBtn').disabled = true;
+
+  const systemPrompt = `You are a career coach AI. Analyse the job posting against the candidate profile and return ONLY valid JSON with no markdown, no explanation, no code fences. Return exactly this structure:
+{"job_title":"string","company":"string","ats_score":0-100,"overall_fit":0-100,"salary_match":"above target|at target|below target|not specified","ai_risk_rating":"low|medium|high","ai_risk_note":"string","gig_eligible":true/false,"culture_signals":["array"],"company_size_estimate":"startup (<50)|mid-size (50-500)|large (500+)|unknown","volatility_estimate":"low|medium|high","days_posted":null,"application_recommendation":"apply custom|apply generic|skip","recommendation_reason":"string","cv_gaps":["array"],"cv_strengths":["array"],"custom_cv_suggestions":["array"],"defendability_note":"string"}`;
+
+  const userMsg = `CANDIDATE PROFILE:\n${buildProfileText()}\n\nJOB POSTING:\n${jobText}`;
+
+  try {
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 1500,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: userMsg }]
+      })
+    });
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error?.message || `HTTP ${res.status}`);
+    }
+
+    const data = await res.json();
+    const raw = data.content[0]?.text || '{}';
+    let analysis;
+    try { analysis = JSON.parse(raw); }
+    catch(e) {
+      const match = raw.match(/\{[\s\S]*\}/);
+      analysis = match ? JSON.parse(match[0]) : {};
+    }
+
+    const job = {
+      id: 'j' + Date.now(),
+      addedAt: new Date().toISOString(),
+      rawPosting: jobText,
+      analysis,
+      compositeScore: computeCompositeScore(analysis),
+      status: 'Saved',
+      statusDate: null,
+      notes: '',
+      cvVersions: []
+    };
+
+    jobs.unshift(job);
+    saveJobs();
+    renderJobList();
+    // Save to analysis history
+    saveToHistory(jobText, analysis, job.compositeScore);
+    document.getElementById('jobInput').value = '';
+    setStatus('');
+    updateDemoCardVisibility();
+    // gtag('event', 'analysis_complete', { score: job.compositeScore });
+    openJobDetail(job.id);
+
+  } catch(err) {
+    const isRate = err.message.includes('429') || err.message.toLowerCase().includes('rate');
+    let errMsg;
+    if (isRate) {
+      errMsg = 'Rate limit reached — please wait a moment and try again.';
+    } else if (err.message.includes('401') || err.message.toLowerCase().includes('auth')) {
+      errMsg = 'Invalid API key. Check your key in Settings (⚙).';
+    } else if (err.message.includes('429')) {
+      errMsg = 'Too many requests — please wait a moment and try again.';
+    } else if (err.message.includes('500') || err.message.includes('503')) {
+      errMsg = 'The AI service is temporarily unavailable. Please try again in a few minutes.';
+    } else {
+      errMsg = 'Analysis failed. Check your internet connection and API key, then try again.';
+    }
+    setStatus(errMsg, true);
+  } finally {
+    document.getElementById('analyseBtn').disabled = false;
+  }
+}
+
+function setStatus(msg, isErr) {
+  const el = document.getElementById('analysisStatus');
+  el.textContent = msg;
+  el.className = 'analysis-status' + (isErr ? ' analysis-error' : '');
+}
+
+function computeCompositeScore(a) {
+  if (!a || !a.ats_score) return 0;
+  const salMap = { 'above target': 100, 'at target': 75, 'below target': 25, 'not specified': 50 };
+  const riskMap = { low: 100, medium: 50, high: 0 };
+  const recMap = { 'apply custom': 100, 'apply generic': 60, skip: 0 };
+  return Math.round(
+    (a.ats_score || 0) * 0.30 +
+    (a.overall_fit || 0) * 0.25 +
+    (salMap[a.salary_match] || 50) * 0.20 +
+    (riskMap[a.ai_risk_rating] || 50) * 0.15 +
+    (recMap[a.application_recommendation] || 50) * 0.10
+  );
+}
+
+// ── Job Detail ──
+function openJobDetail(id) {
+  selectedJobId = id;
+  renderJobList();
+  const job = jobs.find(j => j.id === id);
+  if (!job) return;
+
+  document.getElementById('addJobPanel').classList.add('hidden');
+  const panel = document.getElementById('jobDetailPanel');
+  panel.classList.remove('hidden');
+
+  const a = job.analysis || {};
+  const sc = job.compositeScore || 0;
+  const fillColour = sc >= 70 ? '#2ECC71' : sc >= 45 ? '#F39C12' : '#E74C3C';
+
+  const statusOptions = ['Saved','Applied','Callback','Interview','Offer / Negotiating','Declined','Archived'];
+
+  panel.innerHTML = `
+    <div class="job-detail">
+      <div class="detail-header">
+        <div>
+          <div class="detail-title">${a.job_title || 'Job'}</div>
+          <div class="detail-company">${a.company || ''} &nbsp;·&nbsp; ${a.company_size_estimate || ''} &nbsp;·&nbsp; Volatility: ${a.volatility_estimate || 'unknown'}</div>
+        </div>
+        <button class="btn-close-detail" onclick="closeJobDetail()">✕ Close</button>
+      </div>
+
+      <!-- Score bars -->
+      <div class="score-bars">
+        <div class="score-bar-card">
+          <div class="label">Composite Score</div>
+          <div class="value" style="color:${fillColour}">${sc}</div>
+          <div class="meter"><div class="meter-fill" style="width:${sc}%;background:${fillColour}"></div></div>
+        </div>
+        <div class="score-bar-card">
+          <div class="label">ATS Match</div>
+          <div class="value">${a.ats_score || '—'}</div>
+          <div class="meter"><div class="meter-fill" style="width:${a.ats_score||0}%;background:var(--teal)"></div></div>
+        </div>
+        <div class="score-bar-card">
+          <div class="label">Overall Fit</div>
+          <div class="value">${a.overall_fit || '—'}</div>
+          <div class="meter"><div class="meter-fill" style="width:${a.overall_fit||0}%;background:var(--purple)"></div></div>
+        </div>
+        <div class="score-bar-card">
+          <div class="label">Salary Match</div>
+          <div class="value" style="font-size:1em">${a.salary_match || '—'}</div>
+          <div style="margin-top:6px;font-size:0.78em;color:var(--muted)">AI Risk: <span class="risk-dot ${a.ai_risk_rating==='low'?'risk-low':a.ai_risk_rating==='medium'?'risk-medium':'risk-high'}" style="vertical-align:middle"></span> ${a.ai_risk_rating||'unknown'}</div>
+          <div style="font-size:0.78em;color:var(--muted);margin-top:3px">${a.ai_risk_note||''}</div>
+        </div>
+      </div>
+
+      <!-- Recommendation -->
+      <div class="detail-section" style="margin-bottom:16px;">
+        <h3>Recommendation</h3>
+        <span class="badge badge-${(a.application_recommendation||'pending').replace(' ','-')}" style="font-size:0.9em;padding:4px 12px">${(a.application_recommendation||'pending').replace(/\b\w/g,c=>c.toUpperCase())}</span>
+        <p style="margin-top:10px;font-size:0.92em;line-height:1.6;color:var(--muted)">${a.recommendation_reason||''}</p>
+      </div>
+
+      <div class="detail-sections">
+        ${a.culture_signals?.length ? `<div class="detail-section"><h3>Culture Signals</h3><div class="tag-list">${a.culture_signals.map(s=>`<span class="tag">${s}</span>`).join('')}</div></div>` : ''}
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          ${a.cv_gaps?.length ? `<div class="detail-section"><h3>CV Gaps</h3>${a.cv_gaps.map(g=>`<div class="gap-item">${g}</div>`).join('')}</div>` : ''}
+          ${a.cv_strengths?.length ? `<div class="detail-section"><h3>CV Strengths</h3>${a.cv_strengths.map(s=>`<div class="strength-item">${s}</div>`).join('')}</div>` : ''}
+        </div>
+
+        <!-- CV Customisation -->
+        ${a.custom_cv_suggestions?.length ? `
+        <div class="detail-section">
+          <h3>CV Customisation <span class="pro-badge">Pro</span></h3>
+          <div class="defend-row">
+            <label>Tight (100% defensible)</label>
+            <input type="range" class="defend-slider" id="defendSlider" min="0" max="100" value="50" oninput="filterSuggestions()">
+            <label>Stretch (go further)</label>
+          </div>
+          <div id="suggestionsContainer">
+            ${a.custom_cv_suggestions.map((s,i)=>`
+              <div class="suggestion-card" data-idx="${i}">
+                <input type="checkbox" id="sug${i}" checked>
+                <label class="suggestion-text" for="sug${i}">${s}</label>
+              </div>`).join('')}
+          </div>
+          <p style="font-size:0.8em;color:var(--muted);margin-top:8px">${a.defendability_note||''}</p>
+          <button class="btn-gen-cv" onclick="generateCV('${job.id}')">Generate my tailored CV</button>
+          <div id="cvOutputArea" class="hidden">
+            <textarea class="cv-output" id="cvOutput" readonly></textarea>
+            <button class="btn-copy" onclick="copyCV()">Copy to clipboard</button>
+          </div>
+        </div>` : ''}
+
+        <!-- 6B: Red Flags -->
+        ${buildRedFlagsHTML(a, job.rawPosting)}
+
+        <!-- 6D: Industry Insights -->
+        ${buildIndustryInsightsHTML(a.job_title || '')}
+
+        <!-- 6A: Salary Negotiation button -->
+        <div class="detail-section" style="margin-top:16px;">
+          <h3 data-en="Salary Negotiation" data-fr="Négociation salariale">Salary Negotiation</h3>
+          <p style="font-size:0.88em;color:var(--muted);margin-bottom:4px;" data-en="Get AI-generated negotiation tactics specific to this role." data-fr="Obtenez des tactiques de négociation générées par l'IA pour ce poste.">Get AI-generated negotiation tactics specific to this role.</p>
+          <button class="btn-salary-neg" onclick="openSalaryModal('${job.id}')" data-en="💰 Help me negotiate salary" data-fr="💰 Aider à négocier le salaire">💰 Help me negotiate salary</button>
+        </div>
+
+        <!-- Job Tracker -->
+        <div class="detail-section">
+          <h3>Job Tracker <span class="pro-badge">Pro</span></h3>
+          <div class="tracker-row">
+            <div class="field-group">
+              <label>Status</label>
+              <select id="trackerStatus" onchange="updateTrackerStatus('${job.id}')">
+                ${statusOptions.map(s=>`<option${s===job.status?' selected':''}>${s}</option>`).join('')}
+              </select>
+            </div>
+            <div class="field-group">
+              <label>Date Applied</label>
+              <input type="date" id="trackerDate" value="${job.statusDate||''}" onchange="updateTrackerDate('${job.id}')">
+            </div>
+          </div>
+          <textarea class="tracker-notes" id="trackerNotes" placeholder="Notes..." onblur="updateTrackerNotes('${job.id}')">${job.notes||''}</textarea>
+          <button class="btn-secondary" style="margin-top:8px;font-size:0.82em" onclick="viewOriginalPosting('${job.id}')">View original posting</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function closeJobDetail() {
+  selectedJobId = null;
+  document.getElementById('addJobPanel').classList.remove('hidden');
+  document.getElementById('jobDetailPanel').classList.add('hidden');
+  renderJobList();
+  updateDemoCardVisibility();
+}
+
+function filterSuggestions() {
+  // Stretch slider — show all at 100, only first half at 0 (simplified)
+  const val = parseInt(document.getElementById('defendSlider')?.value || 50);
+  const cards = document.querySelectorAll('.suggestion-card');
+  const cutoff = Math.ceil(cards.length * (val / 100 + 0.3));
+  cards.forEach((c, i) => { c.style.opacity = i < cutoff ? '1' : '0.4'; });
+}
+
+async function generateCV(jobId) {
+  const job = jobs.find(j => j.id === jobId);
+  if (!job) return;
+  const apiKey = localStorage.getItem('cc_api_key');
+  if (!apiKey) { alert('Add your API key in Settings first.'); return; }
+
+  const checked = [...document.querySelectorAll('.suggestion-card')]
+    .filter(c => c.querySelector('input[type=checkbox]').checked)
+    .map(c => c.querySelector('.suggestion-text').textContent);
+
+  if (!checked.length) { alert('Select at least one suggestion to apply.'); return; }
+
+  const btn = document.querySelector('.btn-gen-cv');
+  btn.innerHTML = '⏳ Generating your tailored CV…'; btn.disabled = true;
+
+  try {
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 2000,
+        messages: [{
+          role: 'user',
+          content: `Rewrite this CV incorporating exactly these approved changes:\n${checked.map((c,i)=>`${i+1}. ${c}`).join('\n')}\n\nKeep everything else identical. Return only the full CV text, no explanation.\n\nORIGINAL CV:\n${profile.cv}`
+        }]
+      })
+    });
+    const data = await res.json();
+    const text = data.content[0]?.text || '';
+    document.getElementById('cvOutput').value = text;
+    document.getElementById('cvOutputArea').classList.remove('hidden');
+    job.cvVersions = job.cvVersions || [];
+    job.cvVersions.push({ date: new Date().toISOString(), text });
+    saveJobs();
+    // gtag('event', 'cv_customised', { job_id: jobId });
+  } catch(err) {
+    const isQuota = err.message && err.message.toLowerCase().includes('quota');
+    const isKey   = err.message && (err.message.includes('401') || err.message.toLowerCase().includes('auth'));
+    let msg;
+    if (isKey)   msg = 'Invalid API key. Check your key in Settings (⚙) and try again.';
+    else if (isQuota) msg = 'CV is too long to process. Try shortening your CV in your profile.';
+    else         msg = 'Could not generate CV. Check your API key and internet connection, then try again.';
+    const errEl = document.createElement('p');
+    errEl.style.cssText = 'color:var(--red,#c0392b);font-size:0.88em;margin-top:8px;';
+    errEl.textContent = msg;
+    btn.parentNode.insertBefore(errEl, btn.nextSibling);
+    setTimeout(function(){ if (errEl.parentNode) errEl.parentNode.removeChild(errEl); }, 8000);
+  } finally {
+    btn.innerHTML = 'Generate my tailored CV'; btn.disabled = false;
+  }
+}
+
+function copyCV() {
+  const t = document.getElementById('cvOutput');
+  navigator.clipboard.writeText(t.value).then(() => {
+    const btn = document.querySelector('.btn-copy');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy to clipboard', 2000);
+  });
+}
+
+function viewOriginalPosting(jobId) {
+  const job = jobs.find(j => j.id === jobId);
+  if (!job) return;
+  const w = window.open('', '_blank', 'width=700,height=600,scrollbars=yes');
+  w.document.write(`<pre style="font-family:sans-serif;padding:20px;white-space:pre-wrap">${job.rawPosting.replace(/</g,'&lt;')}</pre>`);
+}
+
+function updateTrackerStatus(jobId) {
+  const job = jobs.find(j => j.id === jobId);
+  if (!job) return;
+  job.status = document.getElementById('trackerStatus').value;
+  if (job.status === 'Applied' && !job.statusDate) {
+    job.statusDate = new Date().toISOString().split('T')[0];
+    const dateEl = document.getElementById('trackerDate');
+    if (dateEl) dateEl.value = job.statusDate;
+  }
+  saveJobs();
+}
+function updateTrackerDate(jobId) {
+  const job = jobs.find(j => j.id === jobId);
+  if (job) { job.statusDate = document.getElementById('trackerDate').value; saveJobs(); }
+}
+function updateTrackerNotes(jobId) {
+  const job = jobs.find(j => j.id === jobId);
+  if (job) { job.notes = document.getElementById('trackerNotes').value; saveJobs(); }
+}
+
+// ── Export ──
+function exportCSV() {
+  const headers = ['Job Title','Company','Date Added','Status','Composite Score','ATS Score','Fit Score','Salary Match','AI Risk','Recommendation','Date Applied','Notes'];
+  const rows = jobs.map(j => [
+    j.analysis?.job_title || '',
+    j.analysis?.company || '',
+    j.addedAt?.split('T')[0] || '',
+    j.status || '',
+    j.compositeScore || 0,
+    j.analysis?.ats_score || '',
+    j.analysis?.overall_fit || '',
+    j.analysis?.salary_match || '',
+    j.analysis?.ai_risk_rating || '',
+    j.analysis?.application_recommendation || '',
+    j.statusDate || '',
+    (j.notes || '').replace(/"/g,'""')
+  ].map(v => `"${v}"`).join(','));
+
+  const csv = [headers.join(','), ...rows].join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+  a.download = 'career-coach-jobs-' + new Date().toISOString().split('T')[0] + '.csv';
+  a.click();
+  // gtag('event', 'export_downloaded', { job_count: jobs.length });
+}
+
+// ── Settings ──
+function openSettings() {
+  document.getElementById('settings-panel').classList.add('open');
+  document.getElementById('settingsOverlay').classList.add('open');
+}
+function closeSettings() {
+  document.getElementById('settings-panel').classList.remove('open');
+  document.getElementById('settingsOverlay').classList.remove('open');
+}
+function saveApiKey() {
+  const key = document.getElementById('settingsApiKey').value.trim();
+  try {
+    localStorage.setItem('cc_api_key', key);
+  } catch(e) {
+    alert('Could not save API key — browser storage may be full.');
+    return;
+  }
+  closeSettings();
+  alert('API key saved.');
+}
+function clearJobs() {
+  if (!confirm('Clear all jobs? This cannot be undone.')) return;
+  jobs = [];
+  saveJobs();
+  closeJobDetail();
+  renderJobList();
+  closeSettings();
+}
+function resetProfile() {
+  if (!confirm('Reset your profile? You will return to the onboarding wizard.')) return;
+  localStorage.removeItem('cc_profile');
+  localStorage.removeItem('cc_jobs');
+  profile = null;
+  jobs = [];
+  closeSettings();
+  showOnboarding();
+  goStep(1);
+}
+
+// ── Persist ──
+function saveJobs() {
+  try {
+    localStorage.setItem('cc_jobs', JSON.stringify(jobs));
+  } catch(e) {
+    if (e.name === 'QuotaExceededError' || e.name === 'NS_ERROR_DOM_QUOTA_REACHED') {
+      setStatus('Browser storage is full. Export your jobs (CSV) and remove old applications to free up space.', true);
+    }
+  }
+}
+
+// ── Voice Input ──
+(function initVoice() {
+  if (!('SpeechRecognition' in window) && !('webkitSpeechRecognition' in window)) {
+    document.querySelectorAll('.mic-btn').forEach(b => b.style.display = 'none');
+  }
+})();
+
+function startVoice(btn, targetId) {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) return;
+  const rec = new SR();
+  const lang = localStorage.getItem('cc_lang') === 'fr' ? 'fr-CA' : 'en-CA';
+  rec.lang = lang;
+  rec.interimResults = false;
+  rec.maxAlternatives = 1;
+  btn.classList.add('recording');
+  rec.start();
+  rec.onresult = function(e) {
+    const transcript = e.results[0][0].transcript;
+    const el = document.getElementById(targetId);
+    if (el) el.value = (el.value ? el.value + ' ' : '') + transcript;
+    btn.classList.remove('recording');
+  };
+  rec.onerror = function() { btn.classList.remove('recording'); };
+  rec.onend = function() { btn.classList.remove('recording'); };
+}
+
+// ── Phase 10: Demo card, Keyboard shortcuts, History, Mobile polish ──
+
+// ── Demo job posting (sample) ──
+const DEMO_JOB = `Senior Product Manager — Acme Health Tech
+Location: Toronto, ON (Hybrid — 2 days/week in office)
+Salary: $110,000–$130,000 CAD + bonus + RRSP matching
+
+About the Role:
+Acme Health Tech is a fast-growing digital health company building software for primary care clinics across Canada. We're looking for an experienced Senior Product Manager to lead our patient-facing mobile product.
+
+You'll work cross-functionally with engineering, design, clinical advisors, and external clinic partners to define and deliver features that improve patient outcomes.
+
+Responsibilities:
+- Own the product roadmap for our patient engagement platform (iOS + Android)
+- Lead discovery, prioritisation, and delivery across 2 squads
+- Define success metrics and run regular A/B tests and user research
+- Collaborate with regulatory and clinical teams to ensure compliance with provincial health data requirements
+- Present quarterly roadmap reviews to the executive team
+- Mentor junior PMs on the team
+
+Requirements:
+- 5+ years of product management experience in a software company
+- Experience in healthcare, health-tech, or regulated industries preferred
+- Strong data analysis skills — comfortable with SQL and product analytics tools (Mixpanel, Amplitude)
+- Track record of shipping mobile products used by 10,000+ users
+- Excellent communication skills with both technical and non-technical stakeholders
+- PMP or similar certification is a strong asset
+
+Nice to Have:
+- Experience with HL7/FHIR healthcare data standards
+- French language skills
+- Background in UX research
+
+Why Join Us:
+- Mission-driven company improving healthcare access for Canadians
+- Flexible hybrid work with a collaborative, psychologically safe culture
+- Comprehensive health benefits + 4 weeks vacation
+- Annual learning budget of $2,000
+
+Apply by sending your CV and a brief cover letter to careers@acmehealthtech.ca`;
+
+// ── Try Demo ──
+function tryDemo() {
+  const textarea = document.getElementById('jobInput');
+  if (!textarea) return;
+  textarea.value = DEMO_JOB;
+  textarea.focus();
+  updateDemoCardVisibility();
+  setStatus('Sample job loaded — click "Analyse this job" to see a real analysis.', false);
+}
+
+// ── Demo card visibility ──
+function updateDemoCardVisibility() {
+  const textarea = document.getElementById('jobInput');
+  const demoCard = document.getElementById('demoCard');
+  const historySection = document.getElementById('historySection');
+  if (!textarea || !demoCard) return;
+
+  const isEmpty = !textarea.value.trim();
+  const history = getHistory();
+
+  if (isEmpty && !history.length) {
+    demoCard.classList.remove('hidden');
+  } else {
+    demoCard.classList.add('hidden');
+  }
+
+  if (history.length) {
+    historySection.classList.remove('hidden');
+    renderHistory();
+  } else {
+    historySection.classList.add('hidden');
+  }
+}
+
+// ── History ──
+const HISTORY_KEY = 'coach-history';
+const MAX_HISTORY = 10;
+
+function getHistory() {
+  try { return JSON.parse(localStorage.getItem(HISTORY_KEY)) || []; }
+  catch(e) { return []; }
+}
+
+function saveToHistory(jobText, analysisResult, compositeScore) {
+  const history = getHistory();
+  const firstLine = jobText.trim().split('\n')[0] || '';
+  const title = firstLine.length > 50 ? firstLine.substring(0, 50) + '…' : firstLine || 'Job Analysis';
+  const entry = {
+    id: 'h' + Date.now(),
+    title,
+    jobText,
+    analysisResult,
+    compositeScore,
+    savedAt: new Date().toISOString()
+  };
+  history.unshift(entry);
+  if (history.length > MAX_HISTORY) history.length = MAX_HISTORY;
+  try {
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+  } catch(e) {
+    /* Silent fail — history is a convenience feature */
+  }
+}
+
+function renderHistory() {
+  const history = getHistory();
+  const list = document.getElementById('historyList');
+  if (!list) return;
+
+  list.innerHTML = history.map(entry => {
+    const sc = entry.compositeScore || 0;
+    const scoreClass = sc >= 70 ? 'history-score-high' : sc >= 45 ? 'history-score-mid' : sc > 0 ? 'history-score-low' : 'history-score-none';
+    const date = entry.savedAt ? new Date(entry.savedAt).toLocaleDateString('en-CA', { month: 'short', day: 'numeric' }) : '';
+    return `<div class="history-item" onclick="restoreHistory('${entry.id}')">
+      <span class="history-item-title">${entry.title}</span>
+      <span class="history-item-meta">${date}</span>
+      ${sc > 0 ? `<span class="history-score ${scoreClass}">${sc}</span>` : '<span class="history-score history-score-none">—</span>'}
+    </div>`;
+  }).join('');
+}
+
+function restoreHistory(id) {
+  const history = getHistory();
+  const entry = history.find(h => h.id === id);
+  if (!entry) return;
+  const textarea = document.getElementById('jobInput');
+  if (textarea) {
+    textarea.value = entry.jobText;
+    textarea.focus();
+  }
+  updateDemoCardVisibility();
+  setStatus('Previous analysis restored — re-run to get a fresh result.', false);
+}
+
+// ── Keyboard shortcuts ──
+function openKbdHelp() {
+  document.getElementById('kbd-help-overlay').classList.remove('hidden');
+}
+
+function closeKbdHelp(e) {
+  if (e && e.target !== document.getElementById('kbd-help-overlay') && e.target !== document.getElementById('kbd-close-btn')) return;
+  document.getElementById('kbd-help-overlay').classList.add('hidden');
+}
+
+document.addEventListener('keydown', function(e) {
+  const tag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
+  const isEditable = tag === 'input' || tag === 'textarea' || tag === 'select';
+
+  // Ctrl+Enter triggers analysis from anywhere
+  if (e.ctrlKey && e.key === 'Enter') {
+    e.preventDefault();
+    document.getElementById('analyseBtn')?.click();
+    return;
+  }
+
+  // Keys that only fire when NOT in a text field
+  if (!isEditable) {
+    if (e.key === '?') {
+      e.preventDefault();
+      openKbdHelp();
+      return;
+    }
+    if (e.key === 'n' || e.key === 'N' || e.key === 'Enter') {
+      const kbdOverlay = document.getElementById('kbd-help-overlay');
+      if (!kbdOverlay.classList.contains('hidden')) return;
+      e.preventDefault();
+      const textarea = document.getElementById('jobInput');
+      if (textarea && !textarea.closest('.hidden')) {
+        textarea.focus();
+        textarea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+  }
+
+  // Escape: close help panel, then clear results/textarea
+  if (e.key === 'Escape') {
+    const kbdOverlay = document.getElementById('kbd-help-overlay');
+    if (!kbdOverlay.classList.contains('hidden')) {
+      kbdOverlay.classList.add('hidden');
+      return;
+    }
+    // If detail panel is open, close it
+    const detailPanel = document.getElementById('jobDetailPanel');
+    if (detailPanel && !detailPanel.classList.contains('hidden')) {
+      closeJobDetail();
+      return;
+    }
+    // Otherwise clear textarea
+    if (!isEditable) {
+      const textarea = document.getElementById('jobInput');
+      if (textarea) {
+        textarea.value = '';
+        setStatus('');
+        updateDemoCardVisibility();
+      }
+    }
+  }
+});
+
+// ── Language / i18n ──
+let currentLang = localStorage.getItem('cc_lang') || 'en';
+
+function applyLang() {
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.textContent = currentLang === 'fr' ? el.getAttribute('data-fr') : el.getAttribute('data-en');
+  });
+  const btn = document.getElementById('langToggleBtn');
+  if (btn) btn.textContent = currentLang === 'fr' ? 'EN' : 'FR';
+}
+
+function toggleLang() {
+  currentLang = currentLang === 'en' ? 'fr' : 'en';
+  localStorage.setItem('cc_lang', currentLang);
+  applyLang();
+}
+
+// ── Phase 9C: Cover Letter Templates ──
+const COVER_LETTER_TEMPLATES = {
+  standard: `[YOUR NAME]
+[Your City, Province] | [your.email@example.com] | [Phone Number]
+[Today's Date]
+
+Hiring Manager
+[COMPANY]
+[Company Address]
+
+Dear Hiring Manager,
+
+I am writing to express my strong interest in the [ROLE] position at [COMPANY]. With [X years] of experience in [your field], I have developed a track record of [key achievement — e.g., leading cross-functional teams, delivering projects on time and under budget, growing client accounts]. I am confident that my background aligns closely with the requirements you have outlined, and I am excited by the opportunity to contribute to [COMPANY]'s mission.
+
+In my most recent role as [Your Current/Last Title] at [Previous Company], I [describe a specific, measurable achievement — e.g., "led a team of six to redesign a client onboarding process, reducing time-to-activation by 40% and improving customer satisfaction scores by 18 points"]. I bring strong skills in [Skill 1], [Skill 2], and [Skill 3], and I am known for [a quality — e.g., clear communication, calm under pressure, collaborative problem-solving]. I am particularly drawn to [COMPANY] because of [specific reason — e.g., your commitment to sustainability, your reputation for innovation, your work in the healthcare sector].
+
+I would welcome the opportunity to discuss how my experience can add value to your team. Thank you for your time and consideration. I look forward to hearing from you.
+
+Sincerely,
+[YOUR NAME]`,
+
+  'career-change': `[YOUR NAME]
+[Your City, Province] | [your.email@example.com] | [Phone Number]
+[Today's Date]
+
+Hiring Manager
+[COMPANY]
+[Company Address]
+
+Dear Hiring Manager,
+
+Although my career path has taken a different route than a traditional candidate for the [ROLE] at [COMPANY], I believe my transferable skills and genuine enthusiasm for this field make me a compelling fit. I am making a deliberate transition from [Previous Field] to [New Field], and I am bringing with me a set of capabilities that are directly applicable to the work your team does.
+
+During my time in [Previous Field], I developed strong expertise in [Transferable Skill 1 — e.g., project coordination, stakeholder communication, data analysis, process improvement]. For example, [describe a specific achievement that maps to the new role — e.g., "I managed a portfolio of 12 accounts and coordinated deliverables across three departments, which mirrors the cross-functional coordination required in this role"]. I have also invested in building skills specific to this transition, including [relevant courses, certifications, or self-directed learning].
+
+I understand that a career change requires some leap of faith on your part, and I appreciate that. I am eager to prove myself quickly, and I am prepared to do the work to close any knowledge gaps. I would love the chance to speak with you about how my background can serve [COMPANY] in new and unexpected ways. Thank you for your consideration.
+
+Sincerely,
+[YOUR NAME]`,
+
+  return: `[YOUR NAME]
+[Your City, Province] | [your.email@example.com] | [Phone Number]
+[Today's Date]
+
+Hiring Manager
+[COMPANY]
+[Company Address]
+
+Dear Hiring Manager,
+
+I am writing to apply for the [ROLE] position at [COMPANY]. After a period away from the workforce to [brief, neutral explanation — e.g., care for a family member, focus on personal health, pursue education], I am ready to re-enter the professional world with renewed focus and a strong desire to contribute. My earlier career in [Your Field] gave me a solid foundation, and I have spent time during my break keeping my skills current and preparing for this return.
+
+Before my career break, I held positions where I [describe relevant responsibilities and achievements — e.g., "managed a team of eight and consistently exceeded quarterly targets"]. My core strengths include [Skill 1], [Skill 2], and [Skill 3], all of which remain highly relevant to the [ROLE]. During my time away, I also [briefly mention any relevant activity — e.g., completed an online certification in data analysis, volunteered as a project coordinator for a local non-profit, or kept current by following industry developments].
+
+I am committed, reliable, and genuinely excited to bring my experience to [COMPANY]. I welcome the opportunity to speak with you and address any questions about my time away from the workforce. Thank you for considering my application.
+
+Sincerely,
+[YOUR NAME]`,
+
+  mission: `[YOUR NAME]
+[Your City, Province] | [your.email@example.com] | [Phone Number]
+[Today's Date]
+
+[Hiring Manager's Name]
+[COMPANY]
+
+Dear [Hiring Manager's Name],
+
+I am writing to express my interest in the [ROLE] position at [COMPANY]. What draws me to your organisation is not just the role itself, but the mission behind the work. [One sentence about what specifically resonates — e.g., "Your commitment to expanding access to mental health services in underserved communities aligns deeply with the values that have guided my entire career."]
+
+In my previous role as [Your Previous Title] at [Previous Organisation], I [describe a mission-aligned achievement — e.g., "led a programme that connected 2,000 newcomer families with settlement services, reducing wait times by 40% through process redesign and community partnerships"]. I bring [X years] of experience in [relevant area], and I am particularly drawn to environments where measurable impact matters more than corporate optics. I understand the realities of working within tight budgets and high expectations, and I thrive in that space.
+
+I would welcome the opportunity to discuss how my experience and commitment to [COMPANY's] mission could contribute to your team's goals. Thank you for your time and for the important work you do.
+
+Sincerely,
+[YOUR NAME]`,
+
+  startup: `[YOUR NAME]
+[Your City, Province] | [your.email@example.com] | [Phone Number]
+[Today's Date]
+
+[Founder's Name or Hiring Manager]
+[COMPANY]
+
+Hi [First Name],
+
+I came across the [ROLE] opening at [COMPANY] and it immediately caught my attention — not just because of the role itself, but because of what [COMPANY] is building. [One sentence about why the company genuinely excites you — e.g., "The way you're approaching [problem] is exactly the kind of creative, mission-driven work I want to be part of."]
+
+I bring [X years] of experience in [relevant area], including [a specific, concrete achievement — e.g., "building a customer success function from scratch that scaled to 3,000 users in eight months"]. I thrive in environments where things move fast, where I have to wear multiple hats, and where my work has a visible impact on the company's direction. I am comfortable with ambiguity and I am the kind of person who figures things out rather than waiting for a playbook.
+
+I would love to chat — even just a 20-minute call to learn more about where you're headed and see if there's a fit. Thanks for taking the time to read this.
+
+[YOUR NAME]`
+};
+
+function loadCoverLetterTemplate() {
+  const select = document.getElementById('clTemplateSelect');
+  const area = document.getElementById('clTemplateArea');
+  const textarea = document.getElementById('clTextarea');
+  const key = select.value;
+
+  if (!key) {
+    area.classList.add('hidden');
+    return;
+  }
+
+  let text = COVER_LETTER_TEMPLATES[key] || '';
+
+  // Pre-fill [YOUR NAME] if profile name is set
+  if (profile && profile.name) {
+    text = text.replace(/\[YOUR NAME\]/g, profile.name);
+  }
+
+  textarea.value = text;
+  area.classList.remove('hidden');
+  textarea.focus();
+}
+
+function copyCoverLetter() {
+  const textarea = document.getElementById('clTextarea');
+  if (!textarea) return;
+  navigator.clipboard.writeText(textarea.value).then(() => {
+    const btn = document.querySelector('.btn-copy-cl');
+    const isFr = currentLang === 'fr';
+    btn.textContent = isFr ? 'Copié !' : 'Copied!';
+    setTimeout(() => {
+      btn.textContent = isFr ? 'Copier dans le presse-papiers' : 'Copy to clipboard';
+    }, 2000);
+  }).catch(() => {
+    textarea.select();
+    document.execCommand('copy');
+  });
+}
+
+// ── 6B: Red Flags Detection ──
+function detectRedFlags(analysis, rawPosting) {
+  const flags = [];
+  const posting = (rawPosting || '').toLowerCase();
+  const a = analysis || {};
+
+  // Salary concern
+  if (a.salary_match === 'below target') flags.push({ cat: 'Salary', msg: 'Salary is below your target — consider whether this meets your minimum requirements.' });
+  if (a.salary_match === 'not specified') flags.push({ cat: 'Salary', msg: 'No salary range is listed. Research market rates before applying or negotiating.' });
+
+  // No company name
+  if (!a.company || a.company === 'Unknown' || a.company === '') flags.push({ cat: 'Transparency', msg: 'Company name is not clearly stated. Anonymous postings can indicate opacity about the employer.' });
+
+  // Vague description — check for very short or keyword-stuffed postings
+  if (rawPosting && rawPosting.trim().length < 300) flags.push({ cat: 'Vague Description', msg: 'Job posting is very short. Legitimate roles usually include detailed responsibilities and requirements.' });
+
+  // Excessive requirements — many "required" skills
+  const reqMatches = (posting.match(/\brequired\b/g) || []).length;
+  if (reqMatches >= 6) flags.push({ cat: 'Excessive Requirements', msg: `Posting uses "required" ${reqMatches} times. May indicate unrealistic expectations or qualification gatekeeping.` });
+
+  // High turnover signals in text
+  const turnoverSignals = ['fast-paced environment', 'hit the ground running', 'self-starter', 'no hand-holding', 'sink or swim', 'hustle', 'wear many hats', 'do whatever it takes'];
+  const found = turnoverSignals.filter(s => posting.includes(s));
+  if (found.length >= 2) flags.push({ cat: 'High Turnover Signs', msg: `Posting uses phrases associated with high-pressure or unstable environments: "${found.slice(0,2).join('", "')}"${found.length > 2 ? `, +${found.length-2} more` : ''}.` });
+
+  // AI risk
+  if (a.ai_risk_rating === 'high') flags.push({ cat: 'AI Replacement Risk', msg: 'This role has been flagged as high risk for AI disruption. Evaluate long-term role stability.' });
+
+  // High volatility
+  if (a.volatility_estimate === 'high') flags.push({ cat: 'Company Volatility', msg: 'Company or role volatility is estimated as high. Research news and employee reviews before proceeding.' });
+
+  return flags;
+}
+
+function buildRedFlagsHTML(analysis, rawPosting) {
+  const flags = detectRedFlags(analysis, rawPosting);
+  const count = flags.length;
+  const isFr = currentLang === 'fr';
+  const summaryLabel = count === 0
+    ? (isFr ? '⚠️ Signaux d\'alerte — Aucun détecté' : '⚠️ Red Flags — None detected')
+    : (isFr ? `⚠️ Signaux d'alerte — ${count} détecté${count > 1 ? 's' : ''}` : `⚠️ Red Flags — ${count} detected`);
+
+  const catFr = { 'Salary': 'Salaire', 'Transparency': 'Transparence', 'Vague Description': 'Description vague',
+    'Excessive Requirements': 'Exigences excessives', 'High Turnover Signs': 'Signes de fort roulement',
+    'AI Replacement Risk': 'Risque de remplacement IA', 'Company Volatility': 'Volatilité de l\'entreprise' };
+
+  const body = count === 0
+    ? `<p class="no-red-flags">${isFr ? 'Aucun signal d\'alerte majeur détecté pour cette offre.' : 'No major red flags detected for this posting.'}</p>`
+    : flags.map(f => `<div class="red-flag-item"><div><strong style="font-size:0.82em;text-transform:uppercase;letter-spacing:0.3px;color:var(--red)">${isFr && catFr[f.cat] ? catFr[f.cat] : f.cat}:</strong> ${f.msg}</div></div>`).join('');
+
+  return `<details class="red-flags-section"${count > 0 ? ' open' : ''}>
+    <summary>${summaryLabel} <span class="rf-toggle"></span></summary>
+    <div class="red-flags-body">${body}</div>
+  </details>`;
+}
+
+// ── 6D: Industry Insights (static Canadian data) ──
+const INDUSTRY_INSIGHTS = {
+  tech: {
+    label: 'Technology',
+    timeToHire: '3–6 weeks',
+    remote: '~55% hybrid or fully remote',
+    skills: ['AI/ML literacy', 'Cloud (AWS/Azure/GCP)', 'DevOps/CI-CD', 'Cybersecurity', 'TypeScript/Python'],
+    source: 'Two Birds Innovation sector summary, Q1 2026'
+  },
+  healthcare: {
+    label: 'Healthcare',
+    timeToHire: '4–8 weeks',
+    remote: '~20% hybrid (clinical roles mostly in-person)',
+    skills: ['EMR/EHR systems', 'Patient advocacy', 'Regulated environment', 'Bilingualism', 'Data privacy (PHIPA)'],
+    source: 'Two Birds Innovation sector summary, Q1 2026'
+  },
+  trades: {
+    label: 'Skilled Trades',
+    timeToHire: '1–3 weeks',
+    remote: '~5% (mostly on-site)',
+    skills: ['Red Seal certification', 'Safety compliance', 'Blueprint reading', 'Equipment operation', 'Apprenticeship credentials'],
+    source: 'Two Birds Innovation sector summary, Q1 2026'
+  },
+  education: {
+    label: 'Education',
+    timeToHire: '6–12 weeks',
+    remote: '~30% hybrid (admin/curriculum roles)',
+    skills: ['Curriculum design', 'Inclusive education', 'LMS platforms', 'French language', 'Special needs support'],
+    source: 'Two Birds Innovation sector summary, Q1 2026'
+  },
+  finance: {
+    label: 'Finance & Banking',
+    timeToHire: '4–7 weeks',
+    remote: '~40% hybrid',
+    skills: ['Financial modelling', 'CPA/CFA credentials', 'Risk management', 'Regulatory compliance', 'Excel/Power BI'],
+    source: 'Two Birds Innovation sector summary, Q1 2026'
+  },
+  retail: {
+    label: 'Retail & Customer Service',
+    timeToHire: '1–2 weeks',
+    remote: '~10% (mostly in-person)',
+    skills: ['POS systems', 'Inventory management', 'Customer relations', 'Bilingualism', 'Loss prevention'],
+    source: 'Two Birds Innovation sector summary, Q1 2026'
+  },
+  nonprofit: {
+    label: 'Non-Profit & Social Services',
+    timeToHire: '5–9 weeks',
+    remote: '~35% hybrid',
+    skills: ['Grant writing', 'Community engagement', 'Program evaluation', 'Volunteer management', 'Donor relations'],
+    source: 'Two Birds Innovation sector summary, Q1 2026'
+  },
+  marketing: {
+    label: 'Marketing & Communications',
+    timeToHire: '3–5 weeks',
+    remote: '~50% hybrid or remote',
+    skills: ['Digital marketing', 'SEO/SEM', 'Content strategy', 'Analytics (GA4)', 'Social media management'],
+    source: 'Two Birds Innovation sector summary, Q1 2026'
+  },
+  logistics: {
+    label: 'Logistics & Supply Chain',
+    timeToHire: '2–4 weeks',
+    remote: '~15% hybrid',
+    skills: ['ERP systems (SAP)', 'Supply chain optimisation', 'Customs/import-export', 'Fleet management', 'Lean/Six Sigma'],
+    source: 'Two Birds Innovation sector summary, Q1 2026'
+  },
+  government: {
+    label: 'Government & Public Service',
+    timeToHire: '8–16 weeks',
+    remote: '~30% hybrid',
+    skills: ['Policy analysis', 'Bilingualism (EN/FR)', 'GC Suite / Phoenix', 'Security clearance', 'Stakeholder engagement'],
+    source: 'Two Birds Innovation sector summary, Q1 2026'
+  },
+  energy: {
+    label: 'Clean Energy & Sustainability',
+    timeToHire: '4–8 weeks',
+    remote: '~25% hybrid',
+    skills: ['Environmental assessment', 'Project management', 'Regulatory compliance', 'GIS / AutoCAD', 'Grant applications'],
+    source: 'Two Birds Innovation sector summary, Q1 2026'
+  }
+};
+
+function detectSector(jobTitle) {
+  const t = (jobTitle || '').toLowerCase();
+  if (/\b(software|developer|engineer|devops|data scientist|machine learning|ai|cloud|it |tech|product manager|scrum|agile|cybersec|full.?stack|front.?end|back.?end)\b/.test(t)) return 'tech';
+  if (/\b(nurse|doctor|physician|health|clinic|hospital|pharma|medical|patient|therapist|dental|physiotherapy)\b/.test(t)) return 'healthcare';
+  if (/\b(electrician|plumber|carpenter|welder|mechanic|hvac|trades|construction|millwright|ironworker)\b/.test(t)) return 'trades';
+  if (/\b(teacher|principal|education|curriculum|instructor|professor|tutor|school|librarian|early childhood)\b/.test(t)) return 'education';
+  if (/\b(accountant|finance|banker|investment|cpa|cfa|analyst|financial|auditor|controller|treasury)\b/.test(t)) return 'finance';
+  if (/\b(retail|store|sales associate|cashier|customer service|merchandising|buyer)\b/.test(t)) return 'retail';
+  if (/\b(non-profit|nonprofit|charity|social worker|community|fundrais|program coordinator|outreach)\b/.test(t)) return 'nonprofit';
+  if (/\b(marketing|communications|content|copywriter|seo|social media|brand|pr|public relations|campaign)\b/.test(t)) return 'marketing';
+  if (/\b(logistics|supply chain|warehouse|dispatcher|procurement|shipping|inventory|fleet)\b/.test(t)) return 'logistics';
+  if (/\b(government|public serv|policy|federal|provincial|municipal|city of|town of|ministry|crown)\b/.test(t)) return 'government';
+  if (/\b(energy|solar|wind|renewable|sustainability|environmental|cleantech|climate|carbon)\b/.test(t)) return 'energy';
+  return null;
+}
+
+function buildIndustryInsightsHTML(jobTitle) {
+  const sectorKey = detectSector(jobTitle);
+  if (!sectorKey) return '';
+  const d = INDUSTRY_INSIGHTS[sectorKey];
+  const isFr = currentLang === 'fr';
+  const heading = isFr ? `${d.label} — Marché de l'emploi au Canada` : `${d.label} — Hiring Landscape in Canada`;
+  const lbl1 = isFr ? 'Délai moyen d\'embauche' : 'Avg. Time to Hire';
+  const lbl2 = isFr ? 'Télétravail / Hybride' : 'Remote / Hybrid';
+  const srcLabel = isFr ? `Source : ${d.source}` : `Source: ${d.source}`;
+  return `<div class="industry-insights-card">
+    <div class="ii-header">${heading}</div>
+    <div class="ii-grid">
+      <div class="ii-stat">
+        <div class="ii-stat-label">${lbl1}</div>
+        <div class="ii-stat-value">${d.timeToHire}</div>
+      </div>
+      <div class="ii-stat">
+        <div class="ii-stat-label">${lbl2}</div>
+        <div class="ii-stat-value">${d.remote}</div>
+      </div>
+    </div>
+    <div class="ii-skills">${d.skills.map(s=>`<span class="ii-skill-tag">${s}</span>`).join('')}</div>
+    <div class="ii-ai-note" style="margin-top:10px;font-size:0.82em;color:var(--muted);font-style:italic;border-top:1px solid var(--border);padding-top:8px;">${isFr ? 'Les rôles nécessitant du jugement et des relations humaines sont les plus résilients face à l\'automatisation par l\'IA.' : 'Roles requiring judgment and human connection are most resilient to AI automation.'}</div>
+    <div class="ii-source">${srcLabel}</div>
+  </div>`;
+}
+
+// ── 6A: Salary Negotiation Modal ──
+let salaryModalJobId = null;
+
+function openSalaryModal(jobId) {
+  salaryModalJobId = jobId;
+  const job = jobs.find(j => j.id === jobId);
+  if (!job) return;
+  const a = job.analysis || {};
+  const titleText = `${a.job_title || 'Role'} — ${a.company || 'Company'}`;
+  document.getElementById('salaryModalSub').textContent = titleText;
+  document.getElementById('salaryModalBody').innerHTML = `<div class="salary-modal-loading" data-en="Generating negotiation strategy…" data-fr="Génération de la stratégie de négociation…">Generating negotiation strategy…</div>`;
+  document.getElementById('salaryModalOverlay').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  fetchSalaryNegotiation(job);
+}
+
+function closeSalaryModal(e) {
+  // If called from the overlay's onclick, only close when clicking the backdrop itself
+  if (e && e.target && e.target.id !== 'salaryModalOverlay' && !e.currentTarget?.classList?.contains('salary-modal-close')) return;
+  document.getElementById('salaryModalOverlay').classList.add('hidden');
+  document.body.style.overflow = '';
+}
+
+async function fetchSalaryNegotiation(job) {
+  const apiKey = localStorage.getItem('cc_api_key');
+  const a = job.analysis || {};
+  const jobTitle = a.job_title || 'this role';
+  const company = a.company || 'the company';
+
+  if (!apiKey) {
+    document.getElementById('salaryModalBody').innerHTML = `<p style="color:var(--red);font-size:0.92em;">Please add your Anthropic API key in Settings (⚙) first.</p>`;
+    return;
+  }
+
+  const prompt = `Based on this job posting: ${jobTitle} at ${company}, generate salary negotiation advice for a Canadian job seeker. Include: 1) Estimated salary range in CAD, 2) A 2-paragraph negotiation script, 3) Three specific tactics for this role, 4) Two things NOT to say. Keep it practical and concise. Return ONLY valid JSON with this structure: {"salary_range":"string","script_para1":"string","script_para2":"string","tactics":["string","string","string"],"dont_say":["string","string"]}`;
+
+  try {
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 800,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error?.message || `HTTP ${res.status}`);
+    }
+
+    const data = await res.json();
+    const raw = data.content[0]?.text || '{}';
+    let neg;
+    try { neg = JSON.parse(raw); }
+    catch(e) {
+      const match = raw.match(/\{[\s\S]*\}/);
+      neg = match ? JSON.parse(match[0]) : null;
+    }
+    if (!neg) throw new Error('Could not parse negotiation response.');
+
+    document.getElementById('salaryModalBody').innerHTML = `
+      <div class="salary-range-chip">
+        <div class="src-label" data-en="Estimated Salary Range (CAD)" data-fr="Fourchette salariale estimée (CAD)">Estimated Salary Range (CAD)</div>
+        <div class="src-value">${neg.salary_range || '—'}</div>
+      </div>
+      <h3 data-en="Negotiation Script" data-fr="Script de négociation">Negotiation Script</h3>
+      <p>${neg.script_para1 || ''}</p>
+      <p>${neg.script_para2 || ''}</p>
+      <h3 data-en="Three Tactics for This Role" data-fr="Trois tactiques pour ce poste">Three Tactics for This Role</h3>
+      <ul class="salary-tactics">
+        ${(neg.tactics || []).map(t => `<li>${t}</li>`).join('')}
+      </ul>
+      <h3 data-en="What NOT to Say" data-fr="Ce qu'il ne faut PAS dire">What NOT to Say</h3>
+      <ul class="salary-dont">
+        ${(neg.dont_say || []).map(d => `<li>${d}</li>`).join('')}
+      </ul>`;
+    applyLang();
+  } catch(err) {
+    const isKey = err.message && (err.message.includes('401') || err.message.toLowerCase().includes('auth'));
+    const msg = isKey
+      ? 'Invalid API key. Check your key in Settings (⚙) and try again.'
+      : 'Could not load negotiation strategy. Check your internet connection and try again.';
+    document.getElementById('salaryModalBody').innerHTML = '<p style="color:var(--red,#c0392b);font-size:0.92em;">' + msg + '</p>';
+  }
+}
+
+// ── Print Jobs Table (clean, no UI chrome) ──
+function printJobsTable() {
+  const isFr = currentLang === 'fr';
+  const title = isFr ? 'Mon tableau de candidatures' : 'My Job Applications';
+  const headers = isFr
+    ? ['Entreprise', 'Poste', 'Score', 'Recommandation', 'Statut', 'Notes']
+    : ['Company', 'Role', 'Score', 'Recommendation', 'Status', 'Notes'];
+
+  const rows = jobs.map(j => {
+    const a = j.analysis || {};
+    return `<tr>
+      <td>${a.company || '—'}</td>
+      <td>${a.job_title || '—'}</td>
+      <td style="text-align:center;font-weight:700">${j.compositeScore || '—'}</td>
+      <td>${a.application_recommendation || '—'}</td>
+      <td>${j.status || '—'}</td>
+      <td style="font-size:0.85em">${(j.notes || '').replace(/</g,'&lt;')}</td>
+    </tr>`;
+  }).join('');
+
+  const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${title}</title>
+<style>
+  body{font-family:'Segoe UI',Arial,sans-serif;color:#111;background:#fff;margin:0;padding:24px}
+  h1{font-size:1.3em;margin-bottom:16px}
+  table{width:100%;border-collapse:collapse;font-size:0.88em}
+  th{background:#0F1B2D;color:#fff;padding:8px 10px;text-align:left;font-weight:600}
+  td{padding:7px 10px;border-bottom:1px solid #e5e5e5;vertical-align:top}
+  tr:nth-child(even){background:#f9f9f9}
+  .footer{margin-top:24px;font-size:0.78em;color:#999;text-align:center;border-top:1px solid #e5e5e5;padding-top:12px}
+  @media print{body{padding:12px}}
+</style></head><body>
+  <h1>${title}</h1>
+  ${jobs.length ? `<table><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table>` : `<p>No jobs tracked yet.</p>`}
+  <div class="footer">${isFr ? 'Généré par Career Coach — Two Birds Innovation' : 'Generated by Career Coach — Two Birds Innovation'}</div>
+</body></html>`;
+
+  const w = window.open('', '_blank');
+  if (w) { w.document.write(html); w.document.close(); w.print(); }
+}
+
+// ── 6C: Enhanced HTML Report (with Red Flags column and Industry Sector) ──
+function exportApplicationsReport() {
+  const isFr = currentLang === 'fr';
+  const userName = (profile && profile.name) ? profile.name : '';
+  const today = new Date().toLocaleDateString(isFr ? 'fr-CA' : 'en-CA', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  const title = isFr
+    ? `Rapport de candidatures${userName ? ' — ' + userName : ''} — ${today}`
+    : `Job Application Report${userName ? ' — ' + userName : ''} — ${today}`;
+
+  const scoreColour = score => {
+    if (typeof score !== 'number') return '#666';
+    return score >= 70 ? '#2ECC71' : score >= 45 ? '#F39C12' : '#E74C3C';
+  };
+
+  const footer = isFr
+    ? 'Généré par Career Coach — Two Birds Innovation'
+    : 'Generated by Career Coach — Two Birds Innovation';
+
+  const headers = isFr
+    ? ['Entreprise', 'Poste', 'Date ajoutée', 'Statut', 'Score', 'ATS', 'Adéquation', 'Correspondance salariale', 'Risque IA', 'Recommandation', 'Signaux d\'alerte', 'Notes']
+    : ['Company', 'Role', 'Date Added', 'Status', 'Score', 'ATS', 'Fit', 'Salary Match', 'AI Risk', 'Recommendation', 'Red Flags', 'Notes'];
+
+  const tableRows = jobs.map(j => {
+    const flags = detectRedFlags(j.analysis || {}, j.rawPosting || '');
+    const flagsCell = flags.length === 0
+      ? `<span style="color:#2ECC71">None</span>`
+      : flags.map(f => `<span style="color:#E74C3C;display:block;font-size:0.82em">⚠ ${f.cat}</span>`).join('');
+    const sc = j.compositeScore || 0;
+    const sector = detectSector(j.analysis?.job_title || '');
+    const sectorLabel = sector ? INDUSTRY_INSIGHTS[sector]?.label || '' : '';
+    return `<tr>
+      <td>${j.analysis?.company || '—'}</td>
+      <td>${j.analysis?.job_title || '—'}${sectorLabel ? `<br><span style="font-size:0.78em;color:#888">${sectorLabel}</span>` : ''}</td>
+      <td>${j.addedAt?.split('T')[0] || '—'}</td>
+      <td>${j.status || '—'}</td>
+      <td style="color:${scoreColour(sc)};font-weight:700;text-align:center">${sc}</td>
+      <td style="text-align:center">${j.analysis?.ats_score || '—'}</td>
+      <td style="text-align:center">${j.analysis?.overall_fit || '—'}</td>
+      <td>${j.analysis?.salary_match || '—'}</td>
+      <td>${j.analysis?.ai_risk_rating || '—'}</td>
+      <td>${j.analysis?.application_recommendation || '—'}</td>
+      <td>${flagsCell}</td>
+      <td style="font-size:0.85em;color:#555">${(j.notes || '').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</td>
+    </tr>`;
+  }).join('');
+
+  const html = `<!DOCTYPE html>
+<html lang="${isFr ? 'fr' : 'en'}">
+<head>
+<meta charset="UTF-8">
+<title>${title}</title>
+<style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #111; background: #fff; margin: 0; padding: 32px; }
+  h1 { font-size: 1.3em; margin-bottom: 4px; }
+  .sub { color: #666; font-size: 0.9em; margin-bottom: 24px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85em; }
+  th { background: #0F1B2D; color: #fff; padding: 9px 10px; text-align: left; font-weight: 600; white-space: nowrap; }
+  td { padding: 8px 10px; border-bottom: 1px solid #e5e5e5; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) { background: #f9f9f9; }
+  .footer { margin-top: 32px; font-size: 0.78em; color: #999; text-align: center; border-top: 1px solid #e5e5e5; padding-top: 14px; }
+  .print-btn { display: inline-block; margin-top: 16px; padding: 8px 18px; background: #0F1B2D; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9em; }
+  @media print {
+    body { padding: 16px; }
+    .print-btn { display: none; }
+  }
+</style>
+</head>
+<body>
+  <h1>${title}</h1>
+  <div class="sub">${jobs.length} ${isFr ? 'offres suivies' : 'applications tracked'}</div>
+  <button class="print-btn" onclick="window.print()">${isFr ? 'Imprimer' : 'Print'}</button>
+  ${jobs.length ? `<br><br><table>
+    <thead><tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+    <tbody>${tableRows}</tbody>
+  </table>` : `<p style="color:#999">${isFr ? 'Aucune offre enregistrée.' : 'No jobs tracked yet.'}</p>`}
+  <div class="footer">${footer}</div>
+</body>
+</html>`;
+
+  const w = window.open('', '_blank');
+  if (w) { w.document.write(html); w.document.close(); }
+}
+
+// ── Boot ──
+init();
+</script>
+</body>
+</html>
