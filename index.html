@@ -8,6 +8,138 @@
     <meta name="description" content="Fractional AI leadership and product strategy for small and medium businesses in Southwestern Ontario. $2,500 AI Workflow Audit. $4,000/month retainer.">
     <link rel="stylesheet" href="css/style.css">
 
+    <style>
+        /* Projects Section */
+        .projects {
+            background: var(--bg-alt, #f7f5f0);
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .project-card {
+            background: var(--bg, #fff);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card h3 {
+            margin-bottom: 0.75rem;
+            color: var(--heading, #2d4a3e);
+        }
+        .project-card p {
+            flex: 1;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .project-tech {
+            font-size: 0.875rem;
+            color: var(--text-muted, #6b7b74);
+            margin-bottom: 1.25rem;
+        }
+        .project-link {
+            display: inline-block;
+            font-weight: 600;
+            color: var(--accent, #2a9d8f);
+            text-decoration: none;
+        }
+        .project-link:hover,
+        .project-link:focus {
+            text-decoration: underline;
+        }
+
+        /* Service includes list */
+        .service-includes {
+            margin-top: 1rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border, #e0ddd5);
+        }
+        .service-includes strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .service-includes ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .service-includes ul li {
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: 0.35rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .service-includes ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent, #2a9d8f);
+            font-weight: 700;
+        }
+
+        /* Availability banner */
+        .availability-banner {
+            background: var(--accent, #2a9d8f);
+            color: #fff;
+            text-align: center;
+            padding: 1.25rem 1rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+
+        /* Contact details grid */
+        .contact-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        .contact-details a {
+            color: var(--accent, #2a9d8f);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .contact-details a:hover,
+        .contact-details a:focus {
+            text-decoration: underline;
+        }
+
+        /* Mailto form */
+        .contact-form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+        .contact-form-row label {
+            font-weight: 500;
+        }
+        .contact-form-row select {
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border, #ccc);
+            font-size: 1rem;
+            background: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
     <!-- Person Schema -->
     <script type="application/ld+json">
     {
@@ -75,6 +207,7 @@
             <nav class="main-nav">
                 <a href="#services">Services</a>
                 <a href="#proof">Proof of Work</a>
+                <a href="#projects">Projects</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#contact">Contact</a>
             </nav>
@@ -89,11 +222,12 @@
                 <span class="green-dot"></span>
                 Available for new clients — Q2 2026
             </div>
-            <h1>Fractional AI &amp; Product Leadership</h1>
-            <p class="hero-subtitle">I help small and medium businesses in Southwestern Ontario adopt AI workflows, ship products, and make better decisions — without hiring a full-time exec.</p>
+            <h1>Aaron Patzalek</h1>
+            <p class="hero-subtitle">Senior Product Manager turned AI Consultant</p>
+            <p class="hero-tagline">St. Thomas, Ontario — building locally, thinking globally</p>
             <div class="hero-cta">
-                <a href="#pricing" class="btn btn-primary">See Pricing</a>
-                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                <a href="#proof" class="btn btn-primary">See my work</a>
+                <a href="#contact" class="btn btn-secondary">Let's talk</a>
             </div>
         </div>
     </section>
@@ -106,10 +240,28 @@
                 <div class="service-card">
                     <h3>AI Workflow Audit</h3>
                     <p>A 30-day deep dive into your operations. I identify where AI can save time, reduce errors, and unlock growth — then deliver a prioritised action plan you can execute immediately.</p>
+                    <div class="service-includes">
+                        <strong>What's included:</strong>
+                        <ul>
+                            <li>Full operations review</li>
+                            <li>AI opportunity mapping</li>
+                            <li>Prioritised action plan</li>
+                            <li>Executive summary report</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="service-card">
                     <h3>Fractional AI Leadership</h3>
                     <p>One dedicated day per week, focused entirely on your business. I lead discovery, build prototypes, train your team, and ship production-ready solutions. Month-to-month commitment.</p>
+                    <div class="service-includes">
+                        <strong>What's included:</strong>
+                        <ul>
+                            <li>One dedicated day per week</li>
+                            <li>AI strategy &amp; execution</li>
+                            <li>Product development</li>
+                            <li>Team coaching &amp; workshops</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="service-card">
                     <h3>Product Strategy</h3>
@@ -160,6 +312,43 @@
         </div>
     </section>
 
+    <!-- About -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2>About Aaron</h2>
+            <p>Twenty years building products people trust. Most recently at Telus, where I led teams shipping digital products to millions of Canadians. In early 2026, I left deliberately — not because the work was wrong, but because I wanted to build something that mattered closer to home.</p>
+            <p>I live in St. Thomas, Ontario, with my twin daughters. Everything I build starts from one instinct: trust-first design. If people trust the tool, they'll use it. If they use it, it works.</p>
+            <p>That instinct is what drives Two Birds Innovation — making complex things feel safe for the people who need them most.</p>
+        </div>
+    </section>
+
+    <!-- Signature Projects -->
+    <section id="projects" class="section projects">
+        <div class="container">
+            <h2>Signature Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Digital Confidence Centre</h3>
+                    <p>Free bilingual digital literacy platform for Canadian seniors. 19 modules. WCAG 2.1 AA. Used by libraries across Ontario.</p>
+                    <span class="project-tech">Built with: HTML/CSS/JS</span>
+                    <a href="https://twobirds-kramerica.github.io/digital-confidence/" class="project-link" target="_blank" rel="noopener">View Live &rarr;</a>
+                </div>
+                <div class="project-card">
+                    <h3>Clarity</h3>
+                    <p>Free AI business diagnostic for Ontario SMEs. Answer 7 questions, get a SWOT analysis and action plan in 60 seconds.</p>
+                    <span class="project-tech">Built with: HTML/CSS/JS, Anthropic API</span>
+                    <a href="https://twobirds-kramerica.github.io/clarity/" class="project-link" target="_blank" rel="noopener">View Live &rarr;</a>
+                </div>
+                <div class="project-card">
+                    <h3>Career Coach</h3>
+                    <p>AI-powered job application tracker and analysis tool. Helps job seekers organise, prioritise, and improve their applications.</p>
+                    <span class="project-tech">Built with: HTML/CSS/JS, Anthropic API</span>
+                    <a href="https://twobirds-kramerica.github.io/career-coach/" class="project-link" target="_blank" rel="noopener">View Live &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Pricing -->
     <section id="pricing" class="section pricing">
         <div class="container">
@@ -196,31 +385,52 @@
         </div>
     </section>
 
-    <!-- About -->
-    <section id="about" class="section about">
-        <div class="container">
-            <h2>About Aaron</h2>
-            <p>I am a product leader and AI strategist based in St. Thomas, Ontario. I founded Two Birds Innovation to help small and medium businesses adopt AI workflows without the overhead of a full-time hire.</p>
-            <p>My approach is hands-on: I do not just advise — I build, ship, and iterate alongside your team. Every engagement produces working software, trained staff, and measurable outcomes.</p>
-        </div>
-    </section>
+    <!-- Availability Banner -->
+    <div class="availability-banner" role="status">
+        Currently accepting 2 new clients for Q2 2026
+    </div>
 
     <!-- Contact -->
     <section id="contact" class="section contact">
         <div class="container">
             <h2>Let's Talk</h2>
-            <p>Ready to explore what AI can do for your business? Send me a message and I will respond within one business day.</p>
-            <a href="mailto:aaron@twobirds.ca?subject=Consulting%20Inquiry%20%E2%80%94%20Two%20Birds%20Innovation" class="btn btn-primary btn-large contact-btn">
-                Email Aaron
-            </a>
-            <p class="contact-note">Or email directly: <a href="mailto:aaron@twobirds.ca?subject=Consulting%20Inquiry%20%E2%80%94%20Two%20Birds%20Innovation">aaron@twobirds.ca</a></p>
+            <p>Ready to explore what AI can do for your business? Reach out however works best for you.</p>
+
+            <div class="contact-details">
+                <span><a href="mailto:aaron.patzalek@gmail.com">aaron.patzalek@gmail.com</a></span>
+                <span><a href="tel:+15199339294">519-933-9294</a></span>
+                <span><a href="https://linkedin.com/in/aaronpatzalek" target="_blank" rel="noopener">LinkedIn</a></span>
+            </div>
+
+            <div class="contact-form-row">
+                <label for="inquiry-type">I'm interested in:</label>
+                <select id="inquiry-type">
+                    <option value="AI Audit">AI Audit</option>
+                    <option value="Fractional Leadership">Fractional Leadership</option>
+                    <option value="Speaking">Speaking</option>
+                    <option value="Just saying hi">Just saying hi</option>
+                </select>
+                <a href="mailto:aaron.patzalek@gmail.com?subject=AI%20Audit%20Inquiry" class="btn btn-primary btn-large contact-btn" id="contact-mailto">
+                    Send Email
+                </a>
+            </div>
+            <script>
+                (function() {
+                    var select = document.getElementById('inquiry-type');
+                    var link = document.getElementById('contact-mailto');
+                    select.addEventListener('change', function() {
+                        var subject = encodeURIComponent(this.value + ' Inquiry');
+                        link.href = 'mailto:aaron.patzalek@gmail.com?subject=' + subject;
+                    });
+                })();
+            </script>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="site-footer">
         <div class="container">
-            <p>&copy; 2026 Aaron Patzalek · Two Birds Innovation · St. Thomas, Ontario</p>
+            <p>&copy; 2026 Aaron Patzalek. Two Birds Innovation.</p>
         </div>
     </footer>
 
