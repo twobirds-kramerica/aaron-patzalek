@@ -541,7 +541,9 @@ img { max-width: 100%; height: auto; }
 }
 
 .project-badge--live { background: #E8F8F5; color: #1A7A5E; }
-.project-badge--soon { background: #FEF9E7; color: #9A7B16; }
+.project-badge--beta { background: #EBF5FB; color: #1565C0; }
+.project-badge--dev { background: #FEF9E7; color: #9A7B16; }
+.project-badge--concept { background: #F3E8FF; color: #6B21A8; }
 .project-badge--active { background: #EBF5FB; color: #1565C0; }
 
 .card--outlined {
@@ -658,6 +660,108 @@ img { max-width: 100%; height: auto; }
 
 @media (max-width: 768px) {
   .skills-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Philosophy Banner ───────────────────────── */
+.philosophy-banner { padding: var(--space-12) var(--space-6); }
+
+.philosophy-quote {
+  border: none;
+  margin: 0 auto var(--space-4);
+  padding: 0;
+  max-width: var(--max-width-prose, 680px);
+}
+
+.philosophy-quote p {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  font-style: italic;
+  color: var(--text-inverse);
+  line-height: var(--leading-tight);
+}
+
+.philosophy-mantra {
+  font-size: var(--text-lg);
+  color: #BDBDBD;
+  font-weight: var(--font-medium);
+}
+
+/* ── Brand Story ────────────────────────────── */
+.story-content {
+  max-width: var(--max-width-prose, 680px);
+  margin: 0 auto;
+}
+
+.story-content p {
+  margin-bottom: var(--space-4);
+  line-height: var(--leading-relaxed);
+}
+
+.story-content h3 {
+  font-size: var(--text-xl);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-3);
+}
+
+.story-list {
+  margin: var(--space-4) 0;
+  padding-left: var(--space-6);
+}
+
+.story-list li {
+  margin-bottom: var(--space-3);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+/* ── Company Logo Row ───────────────────────── */
+.company-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+}
+
+.company-logo-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) var(--space-4);
+  background: var(--bg-card);
+  border: 1px solid var(--border-default, #D5DBDB);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--text-secondary);
+  min-height: 40px;
+}
+
+/* ── Timeline Detail ────────────────────────── */
+.timeline-detail {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--text-muted, #5A6B78);
+  line-height: var(--leading-relaxed);
+  margin-top: 2px;
+}
+
+/* ── Card Vision Statement ──────────────────── */
+.card-vision {
+  font-size: var(--text-sm);
+  font-style: italic;
+  color: var(--text-muted);
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border-light, #EAEDED);
+}
+
+/* ── Headshot TODO ──────────────────────────── */
+.headshot-todo {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  text-align: center;
+  font-style: italic;
+  margin-top: var(--space-2);
 }
 
 /* ── Reduced Motion ─────────────────────────── */
