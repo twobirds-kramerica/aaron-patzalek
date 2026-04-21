@@ -1,0 +1,10 @@
+/* Inter variable font — self-hosted from rsms/inter v4.0 (SIL OFL 1.1).
+   Single variable file covers all weights 100-900. See OFL.txt for licence. */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('InterVariable.woff2') format('woff2-variations'),
+       url('InterVariable.woff2') format('woff2');
+}
