@@ -755,6 +755,20 @@ img { max-width: 100%; height: auto; }
   border-top: 1px solid var(--border-light, #EAEDED);
 }
 
+.card-cta {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  margin-top: var(--space-2);
+}
+.card-cta a {
+  color: var(--color-accent, #0a6);
+  text-decoration: none;
+}
+.card-cta a:hover,
+.card-cta a:focus-visible {
+  text-decoration: underline;
+}
+
 /* ── Headshot TODO ──────────────────────────── */
 .headshot-todo {
   font-size: var(--text-sm);
