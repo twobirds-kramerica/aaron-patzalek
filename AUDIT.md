@@ -1,5 +1,19 @@
 # Aaron Patzalek — Personal Brand Site HAL Stack Rigor Audit
 
+> **⚠ PROGRESS UPDATE 2026-04-22** — 3 of 5 §8 Top-5 next-actions have SHIPPED; 2 remain open (and need Aaron input / design time). Do NOT treat §8 as an untouched backlog.
+>
+> | # | Action | Status |
+> |---|---|---|
+> | 1 | OG card + headshot | **Open** — design work, blocked on Aaron's time (P2 in aaron-todos-2026-04-21) |
+> | 2 | Link to Clarity's $2,500 offer from "What I'm Building" | **Shipped** in `7d79fb7` feat(routing) Clarity CTA on brand site |
+> | 3 | One-sentence offer above contact form | **Shipped** in `7d79fb7` (contact-form one-liner, same commit) |
+> | 4 | File one testimonial | **Open** — blocked on testimonial quote existing |
+> | 5 | Move inline nav JS to external file | **Shipped** in `e6d3148` S-AARON-NAV-EXTRACT (moved to `js/main.js`) |
+>
+> Also shipped post-audit: stale preconnect cleanup in patch files (`8dadf5d` S-037) — ancillary to §8.
+
+
+
 **Audit date:** 2026-04-21
 **Auditor:** Claude Code (Opus 4.7 · max-mode autonomous) for Aaron Patzalek
 **Sprint:** S-AARON-HYGIENE (self-directed; same rigor pattern as S-CLARITY and S-KEVIN earlier today)
