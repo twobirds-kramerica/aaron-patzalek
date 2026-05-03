@@ -1,0 +1,63 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Aaron Patzalek — Product Leader and Founder, Two Birds Innovation">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0D1B2A"/>
+      <stop offset="60%" stop-color="#0D2A45"/>
+      <stop offset="100%" stop-color="#0052A3"/>
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00897B"/>
+      <stop offset="100%" stop-color="#0066CC"/>
+    </linearGradient>
+    <clipPath id="card-clip">
+      <rect width="1200" height="630" rx="0"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg-grad)"/>
+
+  <!-- Decorative circles (right side) -->
+  <circle cx="1050" cy="200" r="240" fill="rgba(0,102,204,0.12)"/>
+  <circle cx="1120" cy="480" r="160" fill="rgba(0,137,123,0.1)"/>
+  <circle cx="900" cy="580" r="80" fill="rgba(0,102,204,0.08)"/>
+
+  <!-- Left accent bar -->
+  <rect x="0" y="0" width="6" height="630" fill="url(#accent-grad)"/>
+
+  <!-- Bottom tint bar -->
+  <rect x="0" y="560" width="1200" height="70" fill="rgba(0,0,0,0.35)"/>
+
+  <!-- Initials badge -->
+  <circle cx="120" cy="200" r="64" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+  <text x="120" y="220" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="48" font-weight="700" fill="white" text-anchor="middle" letter-spacing="-1">AP</text>
+
+  <!-- Name -->
+  <text x="216" y="172" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="68" font-weight="700" fill="white" letter-spacing="-2">Aaron Patzalek</text>
+
+  <!-- Title line -->
+  <text x="218" y="220" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="30" font-weight="400" fill="rgba(255,255,255,0.75)">Product Leader&#160;&#160;·&#160;&#160;Founder, Two Birds Innovation</text>
+
+  <!-- Divider line -->
+  <line x1="80" y1="268" x2="780" y2="268" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+
+  <!-- Tagline -->
+  <text x="80" y="330" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="300" fill="rgba(255,255,255,0.65)" font-style="italic">&#x201C;Building tools that empower people to act for themselves.&#x201D;</text>
+
+  <!-- Stats row -->
+  <text x="80" y="410" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="600" fill="#5DB8FF">20+ years</text>
+  <text x="80" y="444" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="400" fill="rgba(255,255,255,0.55)">Senior PM · TELUS, Staples, Start.ca</text>
+
+  <text x="360" y="410" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="600" fill="#4ECDC4">St. Thomas, ON</text>
+  <text x="360" y="444" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="400" fill="rgba(255,255,255,0.55)">Southwestern Ontario</text>
+
+  <text x="620" y="410" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="600" fill="#FFB347">Canadian-built</text>
+  <text x="620" y="444" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="400" fill="rgba(255,255,255,0.55)">Two Birds Innovation</text>
+
+  <!-- URL bottom left -->
+  <text x="80" y="603" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" fill="rgba(255,255,255,0.45)">aaron.patzalek @ twobirds-kramerica.github.io</text>
+
+  <!-- Calendly CTA bottom right -->
+  <rect x="860" y="568" width="300" height="44" rx="6" fill="rgba(0,137,123,0.7)" stroke="rgba(0,200,180,0.4)" stroke-width="1"/>
+  <text x="1010" y="595" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="600" fill="white" text-anchor="middle">Book a Free Call</text>
+</svg>
