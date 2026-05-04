@@ -36,6 +36,6 @@ Aaron's approach sits at the intersection of two frameworks: Essentialism (strip
 
 Before founding Two Birds, Aaron spent 5+ years at TELUS and Koodo, where he led product teams shipping software used by millions. At Staples Canada, he managed web-to-print platform delivery and contributed to process improvement as a Six Sigma SME. At Start.ca, Goodwill, and Peavey, he brought the same pattern: arrive, map the system, strip the waste, build what matters, ship.
 
-Aaron holds a diploma from Fanshawe College and a Certified Scrum Master designation. He's an INTJ systems thinker, a solo parent, and someone who believes the best technology amplifies human judgment rather than replacing it.
+Aaron holds a diploma from Fanshawe College and a Certified Scrum Master designation. He's an INTJ systems thinker, a parent of twins, and someone who believes the best technology amplifies human judgment rather than replacing it.
 
 He is building towards CA$10,000/month in revenue by September 2026 — through library partnerships, SME consulting, and digital products that prove their worth by the outcomes they create.

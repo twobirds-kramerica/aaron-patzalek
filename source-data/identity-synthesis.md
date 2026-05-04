@@ -61,7 +61,7 @@ Aaron is a systems-thinking generalist with 20+ years of cross-industry product 
 - _Detail: TODO — mine from Drive CV folder_
 
 **Consulting — Two Birds Innovation (2026-present)**
-- Founded early 2026. Solo founder, sole income earner, solo parent of twin 6-year-old daughters
+- Founded early 2026. Solo founder, sole income earner, married parent of twin 6-year-old daughters
 - DCC: 29 modules, bilingual EN/FR, WCAG AA, 241+ pages, free for seniors across Canada
 - HAL Stack: Voice-first AI infrastructure, 4-layer sovereignty model, 31-persona boardroom, sprint automation
 - Clarity: AI business diagnostic for SMEs (concept stage)
