@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en-CA" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; connect-src 'self';">
+  <link rel="preload" href="fonts/inter/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <title>Consulting — Aaron Patzalek | Process Improvement &amp; AI Adoption, Southwestern Ontario</title>
+  <meta name="description" content="Aaron Patzalek offers consulting for SME service businesses in southwestern Ontario. Process improvement, AI adoption, and operational clarity — no jargon, no retainer.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://twobirds-kramerica.github.io/aaron-patzalek/consulting.html">
+  <meta property="og:title" content="Consulting — Aaron Patzalek | Process Improvement &amp; AI Adoption">
+  <meta property="og:description" content="Helping SME service businesses in southwestern Ontario run leaner, think clearer, and adopt AI without the chaos.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://twobirds-kramerica.github.io/aaron-patzalek/consulting.html">
+  <meta property="og:locale" content="en_CA">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* ── Page-specific overrides ── */
+    .consult-nav {
+      background: var(--tbi-navy);
+      padding: 0 var(--space-6);
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .consult-nav .nav-logo {
+      color: var(--tbi-white);
+      text-decoration: none;
+      font-weight: var(--font-bold);
+      font-size: var(--text-lg);
+    }
+    .consult-nav .back-link {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: var(--text-sm);
+      transition: color var(--duration-fast);
+    }
+    .consult-nav .back-link:hover { color: var(--tbi-white); }
+
+    .consult-hero {
+      background: var(--tbi-navy);
+      color: var(--tbi-white);
+      padding: var(--space-20) var(--space-6) var(--space-16);
+      text-align: center;
+    }
+    .consult-hero .eyebrow {
+      display: inline-block;
+      background: rgba(0,102,204,0.35);
+      border: 1px solid rgba(0,102,204,0.6);
+      border-radius: var(--radius-full);
+      padding: var(--space-1) var(--space-4);
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: var(--space-5);
+    }
+    .consult-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: var(--font-bold);
+      line-height: var(--leading-tight);
+      max-width: 780px;
+      margin: 0 auto var(--space-6);
+    }
+    .consult-hero h1 span { color: #5DADE2; }
+    .consult-hero .hero-sub {
+      font-size: var(--text-xl);
+      color: rgba(255,255,255,0.75);
+      max-width: 600px;
+      margin: 0 auto var(--space-8);
+      line-height: var(--leading-relaxed);
+    }
+    .hero-cta-row {
+      display: flex;
+      gap: var(--space-4);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-book {
+      display: inline-block;
+      padding: var(--space-4) var(--space-8);
+      border-radius: var(--radius-md);
+      font-size: var(--text-lg);
+      font-weight: var(--font-semibold);
+      text-decoration: none;
+      transition: background var(--duration-fast), transform var(--duration-fast);
+      min-height: var(--tap-target-lg);
+      display: inline-flex;
+      align-items: center;
+    }
+    .btn-book-primary {
+      background: var(--tbi-blue);
+      color: var(--tbi-white);
+    }
+    .btn-book-primary:hover { background: var(--tbi-blue-hover); transform: translateY(-1px); }
+    .btn-book-ghost {
+      background: transparent;
+      color: var(--tbi-white);
+      border: 2px solid rgba(255,255,255,0.4);
+    }
+    .btn-book-ghost:hover { border-color: var(--tbi-white); transform: translateY(-1px); }
+
+    .consult-main {
+      max-width: var(--max-width-content);
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+
+    /* ── Problem section ── */
+    .problem-section {
+      padding: var(--space-16) 0 var(--space-12);
+    }
+    .section-label {
+      font-size: var(--text-sm);
+      font-weight: var(--font-bold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--tbi-blue);
+      margin: 0 0 var(--space-3);
+    }
+    .problem-section h2 {
+      font-size: var(--text-3xl);
+      color: var(--text-primary);
+      margin: 0 0 var(--space-6);
+      line-height: var(--leading-tight);
+    }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--space-5);
+      margin-top: var(--space-8);
+    }
+    .problem-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-sm);
+    }
+    .problem-card .p-icon { font-size: 1.75rem; margin-bottom: var(--space-3); display: block; }
+    .problem-card h3 { font-size: var(--text-lg); color: var(--text-primary); margin: 0 0 var(--space-2); }
+    .problem-card p { font-size: var(--text-base); color: var(--text-secondary); line-height: var(--leading-relaxed); margin: 0; }
+
+    /* ── Offer section ── */
+    .offer-section {
+      background: var(--bg-highlight);
+      border-radius: var(--radius-xl);
+      padding: var(--space-12) var(--space-10);
+      margin-bottom: var(--space-12);
+    }
+    .offer-section h2 {
+      font-size: var(--text-3xl);
+      color: var(--text-primary);
+      margin: 0 0 var(--space-3);
+      line-height: var(--leading-tight);
+    }
+    .offer-section .offer-sub {
+      font-size: var(--text-lg);
+      color: var(--text-secondary);
+      margin: 0 0 var(--space-8);
+      max-width: 580px;
+      line-height: var(--leading-relaxed);
+    }
+    .offer-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+    .offer-list li {
+      display: flex;
+      gap: var(--space-4);
+      align-items: flex-start;
+      font-size: var(--text-lg);
+      color: var(--text-primary);
+      line-height: var(--leading-relaxed);
+    }
+    .offer-list li .check {
+      width: 24px;
+      height: 24px;
+      background: var(--tbi-blue);
+      color: #fff;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ── Credential strip ── */
+    .cred-strip {
+      display: flex;
+      gap: var(--space-8);
+      flex-wrap: wrap;
+      align-items: center;
+      border-top: 2px solid var(--border-light);
+      border-bottom: 2px solid var(--border-light);
+      padding: var(--space-6) 0;
+      margin-bottom: var(--space-12);
+    }
+    .cred-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+    .cred-num {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+      color: var(--tbi-blue);
+      line-height: 1;
+    }
+    .cred-label {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+
+    /* ── How it works ── */
+    .how-section {
+      margin-bottom: var(--space-16);
+    }
+    .how-section h2 {
+      font-size: var(--text-3xl);
+      color: var(--text-primary);
+      margin: 0 0 var(--space-8);
+    }
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-6);
+    }
+    .how-step {
+      position: relative;
+      padding: var(--space-6);
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+    }
+    .how-step .step-num {
+      font-size: var(--text-3xl);
+      font-weight: var(--font-bold);
+      color: var(--border-light);
+      line-height: 1;
+      margin-bottom: var(--space-3);
+    }
+    .how-step h3 { font-size: var(--text-lg); margin: 0 0 var(--space-2); }
+    .how-step p { font-size: var(--text-base); color: var(--text-secondary); line-height: var(--leading-relaxed); margin: 0; }
+
+    /* ── Booking section ── */
+    .booking-section {
+      background: var(--tbi-navy);
+      color: var(--tbi-white);
+      border-radius: var(--radius-xl);
+      padding: var(--space-12) var(--space-10);
+      margin-bottom: var(--space-16);
+      text-align: center;
+    }
+    .booking-section h2 {
+      font-size: var(--text-3xl);
+      margin: 0 0 var(--space-3);
+    }
+    .booking-section p {
+      font-size: var(--text-lg);
+      color: rgba(255,255,255,0.75);
+      max-width: 520px;
+      margin: 0 auto var(--space-10);
+      line-height: var(--leading-relaxed);
+    }
+    .booking-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--space-5);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .booking-card {
+      background: rgba(255,255,255,0.07);
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      text-align: left;
+    }
+    .booking-card .book-duration {
+      font-size: var(--text-sm);
+      font-weight: var(--font-bold);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #5DADE2;
+      margin-bottom: var(--space-2);
+    }
+    .booking-card h3 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-bold);
+      margin: 0 0 var(--space-3);
+      color: var(--tbi-white);
+    }
+    .booking-card p {
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.65);
+      line-height: var(--leading-relaxed);
+      margin: 0 0 var(--space-5);
+    }
+    .booking-card a {
+      display: block;
+      width: 100%;
+      padding: var(--space-3) 0;
+      text-align: center;
+      border-radius: var(--radius-md);
+      font-weight: var(--font-semibold);
+      font-size: var(--text-base);
+      text-decoration: none;
+      transition: background var(--duration-fast);
+      min-height: var(--tap-target);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .book-link-primary {
+      background: var(--tbi-blue);
+      color: var(--tbi-white);
+    }
+    .book-link-primary:hover { background: var(--tbi-blue-hover); }
+    .book-link-ghost {
+      background: transparent;
+      color: var(--tbi-white);
+      border: 1.5px solid rgba(255,255,255,0.35);
+    }
+    .book-link-ghost:hover { border-color: var(--tbi-white); }
+
+    /* ── Contact fallback ── */
+    .contact-fallback {
+      text-align: center;
+      padding: var(--space-8) 0 var(--space-16);
+      color: var(--text-secondary);
+      font-size: var(--text-base);
+    }
+    .contact-fallback a {
+      color: var(--tbi-blue);
+      font-weight: var(--font-semibold);
+    }
+
+    /* ── Footer ── */
+    .consult-footer {
+      background: var(--tbi-navy);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: var(--space-8) var(--space-6);
+      font-size: var(--text-sm);
+    }
+    .consult-footer a { color: rgba(255,255,255,0.75); text-decoration: none; }
+    .consult-footer a:hover { color: var(--tbi-white); }
+
+    @media (max-width: 600px) {
+      .consult-hero { padding: var(--space-12) var(--space-4) var(--space-10); }
+      .offer-section, .booking-section { padding: var(--space-8) var(--space-5); }
+      .cred-strip { gap: var(--space-5); }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<nav class="consult-nav" aria-label="Site navigation">
+  <a href="/" class="nav-logo">Two Birds Innovation</a>
+  <a href="index.html" class="back-link">← Back to Aaron Patzalek</a>
+</nav>
+
+<header class="consult-hero" role="banner" id="main">
+  <div class="eyebrow">Consulting · Southwestern Ontario</div>
+  <h1>Your business has more capacity.<br><span>You just can't see it yet.</span></h1>
+  <p class="hero-sub">
+    Process improvement and AI adoption for SME service businesses
+    that are ready to run leaner — without hiring a team or signing a retainer.
+  </p>
+  <div class="hero-cta-row">
+    <a href="https://cal.com/twobirds-4n5ajg/30min" target="_blank" rel="noopener" class="btn-book btn-book-primary">
+      Book a 30-min Discovery Call →
+    </a>
+    <a href="#how-it-works" class="btn-book btn-book-ghost">
+      See How It Works ↓
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="consult-main">
+
+    <!-- Problem -->
+    <section class="problem-section" aria-labelledby="problem-heading">
+      <p class="section-label">Who this is for</p>
+      <h2 id="problem-heading">Sound familiar?</h2>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <span class="p-icon" aria-hidden="true">🔁</span>
+          <h3>The same thing breaks every week</h3>
+          <p>You keep fixing the same problems — a late invoice, a missed handoff, a task that falls through the cracks — because no one has mapped out why it keeps happening.</p>
+        </div>
+        <div class="problem-card">
+          <span class="p-icon" aria-hidden="true">🤖</span>
+          <h3>AI looks useful but you don't know where to start</h3>
+          <p>Everyone's telling you to adopt AI, but you don't want to spend money on tools that don't fit, change how your team works, or create more confusion than they solve.</p>
+        </div>
+        <div class="problem-card">
+          <span class="p-icon" aria-hidden="true">📋</span>
+          <h3>The way you work isn't written down anywhere</h3>
+          <p>Your processes live in people's heads. When someone leaves, or a busy season hits, things break — and you spend your energy firefighting instead of growing.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Credentials -->
+    <div class="cred-strip" role="list" aria-label="Background">
+      <div class="cred-item" role="listitem">
+        <span class="cred-num">20+</span>
+        <span class="cred-label">years in product &amp; operations</span>
+      </div>
+      <div class="cred-item" role="listitem">
+        <span class="cred-num">TELUS</span>
+        <span class="cred-label">most recent senior PM role</span>
+      </div>
+      <div class="cred-item" role="listitem">
+        <span class="cred-num">St. Thomas</span>
+        <span class="cred-label">based in southwestern Ontario</span>
+      </div>
+      <div class="cred-item" role="listitem">
+        <span class="cred-num">No retainer</span>
+        <span class="cred-label">project-based, no lock-in</span>
+      </div>
+    </div>
+
+    <!-- Offer -->
+    <section class="offer-section" aria-labelledby="offer-heading">
+      <p class="section-label">What I do</p>
+      <h2 id="offer-heading">Clear problems. Practical fixes. Tools that fit.</h2>
+      <p class="offer-sub">
+        I work with service businesses in southwestern Ontario to find the gaps in how they operate
+        and close them — with process documentation, workflow redesign, and AI tools that actually match how you work.
+      </p>
+      <ul class="offer-list">
+        <li>
+          <span class="check" aria-hidden="true">✓</span>
+          <span><strong>Process mapping and documentation</strong> — get your critical workflows out of people's heads and into a format your whole team can follow</span>
+        </li>
+        <li>
+          <span class="check" aria-hidden="true">✓</span>
+          <span><strong>Bottleneck diagnosis</strong> — find the one or two things that are costing you the most time and revenue, and a clear path to fixing them</span>
+        </li>
+        <li>
+          <span class="check" aria-hidden="true">✓</span>
+          <span><strong>AI tool evaluation and adoption</strong> — honest assessment of which AI tools fit your business, which are hype, and how to implement without disrupting what already works</span>
+        </li>
+        <li>
+          <span class="check" aria-hidden="true">✓</span>
+          <span><strong>Implementation support</strong> — I stay through the rollout, not just the planning</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-section" id="how-it-works" aria-labelledby="how-heading">
+      <p class="section-label">How it works</p>
+      <h2 id="how-heading">Simple. No retainer. No jargon.</h2>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="step-num" aria-hidden="true">01</div>
+          <h3>Discovery call</h3>
+          <p>30 minutes. You describe what's breaking or what you want to improve. I ask questions. No pitch.</p>
+        </div>
+        <div class="how-step">
+          <div class="step-num" aria-hidden="true">02</div>
+          <h3>Scoped proposal</h3>
+          <p>A short, plain-language document: what we'll do, what it'll cost, how long it'll take. No vague "phase 2" language.</p>
+        </div>
+        <div class="how-step">
+          <div class="step-num" aria-hidden="true">03</div>
+          <h3>We do the work</h3>
+          <p>I work alongside your team — not above them. You see progress weekly.</p>
+        </div>
+        <div class="how-step">
+          <div class="step-num" aria-hidden="true">04</div>
+          <h3>You keep everything</h3>
+          <p>All documentation, diagrams, and recommendations are yours. No dependency on me to maintain them.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking -->
+    <section class="booking-section" aria-labelledby="booking-heading">
+      <h2 id="booking-heading">Let's talk</h2>
+      <p>Pick the format that suits you. The 15-minute call is a quick fit check. The 30-minute call is where we dig into your specific situation.</p>
+      <div class="booking-cards">
+        <div class="booking-card">
+          <p class="book-duration">15 minutes</p>
+          <h3>Intro call</h3>
+          <p>Quick fit check — is this the right kind of problem for me? No prep needed.</p>
+          <a href="https://cal.com/twobirds-4n5ajg/15min" target="_blank" rel="noopener" class="book-link-ghost">Book 15-min call →</a>
+        </div>
+        <div class="booking-card">
+          <p class="book-duration">30 minutes</p>
+          <h3>Discovery call</h3>
+          <p>Walk me through your situation. I'll have questions. You'll leave with at least one useful observation.</p>
+          <a href="https://cal.com/twobirds-4n5ajg/30min" target="_blank" rel="noopener" class="book-link-primary">Book 30-min call →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact fallback -->
+    <div class="contact-fallback">
+      <p>Prefer to reach out directly? Email <a href="mailto:aaron.patzalek@gmail.com">aaron.patzalek@gmail.com</a></p>
+    </div>
+
+  </div>
+</main>
+
+<footer class="consult-footer" role="contentinfo">
+  <p>
+    <a href="index.html">Aaron Patzalek</a> ·
+    <a href="https://twobirds-kramerica.github.io/two-birds-innovation/" target="_blank" rel="noopener">Two Birds Innovation</a> ·
+    St. Thomas, Ontario · Canada
+  </p>
+  <p style="margin-top: var(--space-2);">© 2026 Two Birds Innovation · No data collected</p>
+</footer>
+
+</body>
+</html>
