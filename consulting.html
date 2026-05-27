@@ -206,6 +206,15 @@
       padding: var(--space-6) 0;
       margin-bottom: var(--space-12);
     }
+    .cred-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 15%;
+      border: 2px solid var(--border-light);
+      flex-shrink: 0;
+    }
     .cred-item {
       display: flex;
       flex-direction: column;
@@ -442,6 +451,7 @@
 
     <!-- Credentials -->
     <div class="cred-strip" role="list" aria-label="Background">
+      <img src="images/aaron-headshot.jpg" alt="Aaron Patzalek" class="cred-photo" width="80" height="80" role="presentation">
       <div class="cred-item" role="listitem">
         <span class="cred-num">20+</span>
         <span class="cred-label">years in product &amp; operations</span>
