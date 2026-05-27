@@ -341,11 +341,34 @@
       padding: var(--space-8) 0 var(--space-16);
       color: var(--text-secondary);
       font-size: var(--text-base);
+      line-height: var(--leading-loose);
     }
     .contact-fallback a {
       color: var(--tbi-blue);
       font-weight: var(--font-semibold);
+      text-decoration: none;
     }
+    .contact-fallback a:hover { text-decoration: underline; }
+    .show-phone-btn {
+      background: none;
+      border: 1.5px solid var(--tbi-blue);
+      color: var(--tbi-blue);
+      border-radius: var(--radius-md);
+      padding: var(--space-1) var(--space-4);
+      font-size: var(--text-base);
+      font-weight: var(--font-semibold);
+      font-family: var(--font-sans);
+      cursor: pointer;
+      transition: background var(--duration-fast), color var(--duration-fast);
+      vertical-align: middle;
+    }
+    .show-phone-btn:hover { background: var(--tbi-blue); color: var(--tbi-white); }
+    .phone-revealed {
+      color: var(--tbi-blue);
+      font-weight: var(--font-semibold);
+      text-decoration: none;
+    }
+    .phone-revealed:hover { text-decoration: underline; }
 
     /* ── Footer ── */
     .consult-footer {
@@ -515,7 +538,14 @@
 
     <!-- Contact fallback -->
     <div class="contact-fallback">
-      <p>Prefer to reach out directly? Email <a href="mailto:aaron.patzalek@gmail.com">aaron.patzalek@gmail.com</a></p>
+      <p>Prefer to reach out directly?</p>
+      <p>
+        <a href="mailto:aaron.patzalek@gmail.com">aaron.patzalek@gmail.com</a>
+        &nbsp;&middot;&nbsp;
+        <button class="show-phone-btn" onclick="revealPhone(this)" aria-label="Show phone number">📞 Show phone number</button>
+        &nbsp;&middot;&nbsp;
+        <a href="https://www.linkedin.com/in/aaronpatzalek/" target="_blank" rel="noopener">LinkedIn</a>
+      </p>
     </div>
 
   </div>
@@ -525,10 +555,21 @@
   <p>
     <a href="index.html">Aaron Patzalek</a> ·
     <a href="https://twobirds-kramerica.github.io/two-birds-innovation/" target="_blank" rel="noopener">Two Birds Innovation</a> ·
+    <a href="https://www.linkedin.com/in/aaronpatzalek/" target="_blank" rel="noopener">LinkedIn</a> ·
     St. Thomas, Ontario · Canada
   </p>
   <p style="margin-top: var(--space-2);">© 2026 Two Birds Innovation · No data collected</p>
 </footer>
 
+<script>
+  function revealPhone(btn) {
+    var p = atob('NTE5LTkzMy05Mjk0');
+    var a = document.createElement('a');
+    a.href = 'tel:+1' + p.replace(/-/g, '');
+    a.className = 'phone-revealed';
+    a.textContent = '☎️ ' + p;
+    btn.parentNode.replaceChild(a, btn);
+  }
+</script>
 </body>
 </html>
