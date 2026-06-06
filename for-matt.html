@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Two Birds Innovation — What Aaron Is Building</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --teal:       #2A7B6F;
+  --teal-lt:    #3db89f;
+  --teal-dk:    #1a5249;
+  --navy:       #0f1c2e;
+  --navy-mid:   #1a2d45;
+  --navy-lt:    #243858;
+  --slate:      #1e2a38;
+  --cream:      #f8f5f0;
+  --text:       #1a1a1a;
+  --muted:      #5a6472;
+  --border:     #dee5e2;
+  --amber:      #d97706;
+  --purple:     #7c3aed;
+  --blue:       #2563eb;
+  --gold:       #f59e0b;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: #fff;
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ─── HERO ─────────────────────────────── */
+.hero {
+  background: var(--navy);
+  padding: 52px 24px 44px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: var(--teal);
+  opacity: 0.08;
+}
+.hero-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--teal-lt);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: clamp(28px, 8vw, 40px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--teal-lt);
+}
+.hero-sub {
+  font-size: 15px;
+  color: #8aafc4;
+  line-height: 1.7;
+  max-width: 440px;
+}
+.hero-meta {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  gap: 24px;
+}
+.hero-stat {
+  text-align: left;
+}
+.hero-stat-n {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--teal-lt);
+  line-height: 1;
+}
+.hero-stat-l {
+  font-size: 11px;
+  color: #6a8a9e;
+  margin-top: 3px;
+  line-height: 1.3;
+}
+
+/* ─── SECTION WRAPPER ───────────────────── */
+.section {
+  padding: 40px 24px;
+  border-bottom: 1px solid var(--border);
+}
+.section-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--teal);
+  margin-bottom: 10px;
+}
+h2 {
+  font-size: clamp(20px, 5vw, 26px);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--navy);
+  margin-bottom: 16px;
+}
+p { color: #3a4552; line-height: 1.75; margin-bottom: 14px; }
+p:last-child { margin-bottom: 0; }
+strong { color: var(--text); }
+
+.callout {
+  background: #f0f9f6;
+  border-left: 3px solid var(--teal);
+  padding: 14px 16px;
+  border-radius: 0 8px 8px 0;
+  margin: 20px 0;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--slate);
+  line-height: 1.6;
+}
+
+/* ─── WORKFLOW DIAGRAM ──────────────────── */
+.flow {
+  margin: 24px 0;
+  position: relative;
+}
+.flow-step {
+  display: flex;
+  gap: 0;
+  position: relative;
+}
+.flow-step + .flow-step {
+  margin-top: 0;
+}
+.flow-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 48px;
+  flex-shrink: 0;
+}
+.flow-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.flow-connector {
+  width: 2px;
+  flex: 1;
+  min-height: 24px;
+  background: linear-gradient(to bottom, var(--teal), #d0e8e4);
+  margin: 0 auto;
+}
+.flow-step:last-child .flow-connector { display: none; }
+.flow-body {
+  flex: 1;
+  padding: 8px 0 28px 16px;
+}
+.flow-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.flow-desc {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.flow-tag {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  background: #e8f4f0;
+  color: var(--teal-dk);
+}
+
+/* ─── ARCHITECTURE DIAGRAM ──────────────── */
+.arch-section {
+  background: var(--navy);
+  padding: 40px 20px;
+  border-bottom: none;
+}
+.arch-section .section-label { color: var(--teal-lt); }
+.arch-section h2 { color: #fff; }
+.arch-section p { color: #8aafc4; }
+
+.arch-diagram {
+  margin: 28px 0 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.arch-layer {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.arch-layer-head {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.arch-layer-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.arch-layer-headtext {
+  flex: 1;
+}
+.arch-layer-name {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  line-height: 1;
+}
+.arch-layer-role {
+  font-size: 11px;
+  opacity: 0.65;
+  margin-top: 2px;
+}
+
+.arch-layer-body {
+  padding: 12px 16px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.arch-chip {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+/* Layer: Products */
+.layer-products { background: #0d2b23; }
+.layer-products .arch-layer-head { background: #0f3829; border-bottom: 1px solid rgba(45,180,140,0.2); }
+.layer-products .arch-layer-name { color: #5ef5c8; }
+.layer-products .arch-layer-role { color: #3db89f; }
+.layer-products .arch-layer-icon { background: rgba(45,180,140,0.15); }
+.layer-products .arch-chip { background: rgba(45,180,140,0.12); color: #7fffd4; border: 1px solid rgba(45,180,140,0.2); }
+
+/* Layer: HAL */
+.layer-hal { background: #0e1e35; }
+.layer-hal .arch-layer-head { background: #112540; border-bottom: 1px solid rgba(59,130,246,0.2); }
+.layer-hal .arch-layer-name { color: #7dd3fc; }
+.layer-hal .arch-layer-role { color: #5b93ba; }
+.layer-hal .arch-layer-icon { background: rgba(59,130,246,0.12); }
+.layer-hal .arch-chip { background: rgba(59,130,246,0.1); color: #93c5fd; border: 1px solid rgba(59,130,246,0.2); }
+
+/* Layer: AI */
+.layer-ai { background: #16102a; }
+.layer-ai .arch-layer-head { background: #1c1338; border-bottom: 1px solid rgba(139,92,246,0.25); }
+.layer-ai .arch-layer-name { color: #c4b5fd; }
+.layer-ai .arch-layer-role { color: #9570d4; }
+.layer-ai .arch-layer-icon { background: rgba(139,92,246,0.12); }
+.layer-ai .arch-chip { background: rgba(139,92,246,0.1); color: #d8b4fe; border: 1px solid rgba(139,92,246,0.2); }
+
+/* Layer: Infra */
+.layer-infra { background: #1e1508; }
+.layer-infra .arch-layer-head { background: #261c0a; border-bottom: 1px solid rgba(245,158,11,0.2); }
+.layer-infra .arch-layer-name { color: #fcd34d; }
+.layer-infra .arch-layer-role { color: #b8922a; }
+.layer-infra .arch-layer-icon { background: rgba(245,158,11,0.1); }
+.layer-infra .arch-chip { background: rgba(245,158,11,0.08); color: #fde68a; border: 1px solid rgba(245,158,11,0.2); }
+
+/* Arrow between layers */
+.arch-arrow {
+  text-align: center;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.arch-arrow-line {
+  width: 2px;
+  height: 12px;
+  background: rgba(255,255,255,0.12);
+}
+.arch-arrow-head {
+  width: 0; height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid rgba(255,255,255,0.12);
+}
+.arch-arrow-label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* ─── OVERNIGHT LOOP ────────────────────── */
+.loop-section {
+  background: var(--slate);
+  padding: 40px 20px;
+}
+.loop-section .section-label { color: var(--teal-lt); }
+.loop-section h2 { color: #fff; }
+
+.loop-timeline {
+  margin: 24px 0;
+  position: relative;
+}
+.loop-track {
+  position: absolute;
+  left: 19px;
+  top: 20px;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #2a5a50, #1a2d45, #2a1a45, #3a2a10, #2a5a50);
+}
+.loop-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  position: relative;
+}
+.loop-dot {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.loop-content {}
+.loop-time {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 2px;
+}
+.loop-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2px;
+}
+.loop-detail {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.5;
+}
+
+/* ─── PRODUCTS GRID ─────────────────────── */
+.products-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 20px;
+}
+.product-card {
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 18px 14px;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.product-card.featured {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #f0f9f6 0%, #e8f4f1 100%);
+  border-color: var(--teal);
+}
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: 12px 12px 0 0;
+}
+.product-card.featured::before { background: var(--teal); }
+.product-card.cc::before { background: var(--blue); }
+.product-card.clarity::before { background: #0ea5e9; }
+.product-card.kevsca::before { background: var(--amber); }
+.product-card.tbi::before { background: var(--teal-dk); }
+.product-card.ap::before { background: #64748b; }
+
+.product-emoji { font-size: 26px; margin-bottom: 10px; display: block; }
+.product-name {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+.product-badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+.badge-live { background: #d1fae5; color: #065f46; }
+.badge-building { background: #fef3c7; color: #92400e; }
+
+.product-desc {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* ─── STATS ────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin: 20px 0;
+}
+.stat-box {
+  background: var(--cream);
+  border-radius: 10px;
+  padding: 16px 12px;
+  text-align: center;
+}
+.stat-n {
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--teal);
+  line-height: 1;
+}
+.stat-l {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* ─── SOVEREIGNTY ───────────────────────── */
+.sov-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 20px 0;
+}
+.sov-item {
+  background: var(--cream);
+  border-radius: 10px;
+  padding: 14px;
+  border-left: 3px solid var(--teal);
+}
+.sov-vs {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.sov-choice {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--teal-dk);
+  margin-bottom: 2px;
+}
+.sov-not {
+  font-size: 11px;
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+/* ─── CLOSING ───────────────────────────── */
+.closing {
+  background: var(--navy);
+  padding: 44px 24px;
+  text-align: center;
+}
+.closing h2 { color: #fff; margin-bottom: 12px; }
+.closing p { color: #8aafc4; max-width: 400px; margin: 0 auto 16px; }
+.closing-url {
+  display: inline-block;
+  margin-top: 12px;
+  background: var(--teal);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+}
+.closing-fine {
+  margin-top: 28px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.2);
+}
+</style>
+</head>
+<body>
+
+<!-- ── HERO ──────────────────────────────── -->
+<div class="hero">
+  <div class="hero-label">Two Birds Innovation · St. Thomas, Ontario</div>
+  <h1>I built the<br><em>shop floor</em> first.<br>The products<br>come second.</h1>
+  <p class="hero-sub">A one-person AI product studio running a fully autonomous development workflow — six live products, nightly automated builds, zero hosting costs.</p>
+  <div class="hero-meta">
+    <div class="hero-stat">
+      <div class="hero-stat-n">6</div>
+      <div class="hero-stat-l">products<br>live or building</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-n">2am</div>
+      <div class="hero-stat-l">overnight<br>build runs</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-n">$0</div>
+      <div class="hero-stat-l">monthly<br>hosting cost</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── THE MODEL ─────────────────────────── -->
+<div class="section">
+  <div class="section-label">The Model</div>
+  <h2>A software studio that runs itself overnight</h2>
+  <p>Most people using AI are using it like an assistant. I'm using it as the engineer. I spent six months building the <strong>infrastructure</strong> — the shop floor — before worrying about the products that sit on top of it.</p>
+  <p>The result: an idea can land in a backlog at midnight and have committed code, passing smoke tests, and a health report waiting for me by morning. One person running a studio that ships like a five-person team.</p>
+  <div class="callout">The tech stack is deliberately sovereign — I own it. GitHub Pages instead of Vercel, Python stdlib instead of npm packages, Windows Task Scheduler instead of a cloud cron service. Same instinct as running Nagios on-prem instead of paying for a monitoring SaaS. You build it once, you own it, it doesn't fail when a pricing tier changes.</div>
+</div>
+
+<!-- ── HOW IT WORKS ───────────────────────── -->
+<div class="section">
+  <div class="section-label">The Workflow</div>
+  <h2>From idea to live — one sprint</h2>
+
+  <div class="flow">
+    <div class="flow-step">
+      <div class="flow-left">
+        <div class="flow-num">1</div>
+        <div class="flow-connector"></div>
+      </div>
+      <div class="flow-body">
+        <div class="flow-title">Idea → Notion backlog</div>
+        <div class="flow-desc">Sprints are filed with priority, effort/return rating, and owner. A Python vetting script blocks any task the agent should just handle autonomously — nothing hits the human queue that doesn't need a human.</div>
+        <span class="flow-tag">Python + Notion API</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-left">
+        <div class="flow-num">2</div>
+        <div class="flow-connector"></div>
+      </div>
+      <div class="flow-body">
+        <div class="flow-title">next-sprint.py locks the sprint</div>
+        <div class="flow-desc">A script pulls the top Ready item, marks it In Progress in Notion, prints the brief to the terminal. No manual copy-paste. Design-gated UI sprints are automatically skipped until the gate is cleared.</div>
+        <span class="flow-tag">Notion sync · auto-lock</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-left">
+        <div class="flow-num">3</div>
+        <div class="flow-connector"></div>
+      </div>
+      <div class="flow-body">
+        <div class="flow-title">Claude Code CLI executes</div>
+        <div class="flow-desc">The AI agent reads the codebase, writes and edits files, runs PowerShell and Python, commits to Git — all in the terminal. I can walk away. A token guard limits runaway sessions to 50 tool calls per turn.</div>
+        <span class="flow-tag">Autonomous · monitored</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-left">
+        <div class="flow-num">4</div>
+        <div class="flow-connector"></div>
+      </div>
+      <div class="flow-body">
+        <div class="flow-title">Static HTML pushed to GitHub Pages</div>
+        <div class="flow-desc">No build step, no Node.js, no npm in the product repos. Git push → GitHub deploys in seconds. Zero hosting bill. WCAG accessibility checks run automatically via GitHub Actions on every push.</div>
+        <span class="flow-tag">Git · GitHub Pages · axe-core CI</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-left">
+        <div class="flow-num">5</div>
+        <div class="flow-connector"></div>
+      </div>
+      <div class="flow-body">
+        <div class="flow-title">Overnight build at 2am</div>
+        <div class="flow-desc">Playwright smoke tests, Lighthouse audits, backlog health, live data refresh, 10-repo sync, uptime monitor. Windows Task Scheduler — no external cron service.</div>
+        <span class="flow-tag">Playwright · Python · Task Scheduler</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-left">
+        <div class="flow-num">6</div>
+      </div>
+      <div class="flow-body">
+        <div class="flow-title">Session-start health check</div>
+        <div class="flow-desc">Six checks fire when I open the terminal: smoke test status, overnight build age, autonomy audit (agent-doable items cleared before I see anything), monitoring summary. Aaron sees only what genuinely needs a human.</div>
+        <span class="flow-tag">AWR enforcement loop</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ARCHITECTURE DIAGRAM ──────────────── -->
+<div class="arch-section">
+  <div class="section-label">Architecture</div>
+  <h2>Four layers, one person running them</h2>
+
+  <div class="arch-diagram">
+
+    <!-- L1: Products -->
+    <div class="arch-layer layer-products">
+      <div class="arch-layer-head">
+        <div class="arch-layer-icon">🌐</div>
+        <div class="arch-layer-headtext">
+          <div class="arch-layer-name">L1 — Products</div>
+          <div class="arch-layer-role">What users see · GitHub Pages</div>
+        </div>
+      </div>
+      <div class="arch-layer-body">
+        <span class="arch-chip">🧠 Digital Confidence Centre</span>
+        <span class="arch-chip">💼 Career Coach</span>
+        <span class="arch-chip">📡 Clarity</span>
+        <span class="arch-chip">🏢 Two Birds Innovation</span>
+        <span class="arch-chip">👤 Aaron Patzalek</span>
+        <span class="arch-chip">🏠 KevsCasa</span>
+      </div>
+    </div>
+
+    <div class="arch-arrow">
+      <div class="arch-arrow-line"></div>
+      <div class="arch-arrow-head"></div>
+      <div class="arch-arrow-label">built by</div>
+    </div>
+
+    <!-- L2: HAL Stack -->
+    <div class="arch-layer layer-hal">
+      <div class="arch-layer-head">
+        <div class="arch-layer-icon">⚙️</div>
+        <div class="arch-layer-headtext">
+          <div class="arch-layer-name">L2 — HAL Stack</div>
+          <div class="arch-layer-role">Automation layer · runs overnight</div>
+        </div>
+      </div>
+      <div class="arch-layer-body">
+        <span class="arch-chip">Sprint system</span>
+        <span class="arch-chip">Notion sync</span>
+        <span class="arch-chip">Overnight build (2am)</span>
+        <span class="arch-chip">Playwright smoke tests</span>
+        <span class="arch-chip">Uptime monitor</span>
+        <span class="arch-chip">Autonomy audit</span>
+        <span class="arch-chip">Session health check</span>
+        <span class="arch-chip">Daily briefing</span>
+        <span class="arch-chip">LFS data updater</span>
+        <span class="arch-chip">Approved outbox sender</span>
+      </div>
+    </div>
+
+    <div class="arch-arrow">
+      <div class="arch-arrow-line"></div>
+      <div class="arch-arrow-head"></div>
+      <div class="arch-arrow-label">directed by</div>
+    </div>
+
+    <!-- L3: AI Layer -->
+    <div class="arch-layer layer-ai">
+      <div class="arch-layer-head">
+        <div class="arch-layer-icon">🤖</div>
+        <div class="arch-layer-headtext">
+          <div class="arch-layer-name">L3 — AI Layer</div>
+          <div class="arch-layer-role">The engineer · Claude Code CLI</div>
+        </div>
+      </div>
+      <div class="arch-layer-body">
+        <span class="arch-chip">Claude Code CLI</span>
+        <span class="arch-chip">47 AI personas</span>
+        <span class="arch-chip">Founding Board (6)</span>
+        <span class="arch-chip">Mentor committee</span>
+        <span class="arch-chip">MCP — Notion</span>
+        <span class="arch-chip">MCP — Gmail</span>
+        <span class="arch-chip">MCP — Calendly</span>
+        <span class="arch-chip">Voice-check protocol</span>
+        <span class="arch-chip">Token guard (runaway limiter)</span>
+        <span class="arch-chip">Design gate</span>
+      </div>
+    </div>
+
+    <div class="arch-arrow">
+      <div class="arch-arrow-line"></div>
+      <div class="arch-arrow-head"></div>
+      <div class="arch-arrow-label">runs on</div>
+    </div>
+
+    <!-- L4: Infrastructure -->
+    <div class="arch-layer layer-infra">
+      <div class="arch-layer-head">
+        <div class="arch-layer-icon">🏗️</div>
+        <div class="arch-layer-headtext">
+          <div class="arch-layer-name">L4 — Infrastructure</div>
+          <div class="arch-layer-role">Sovereign · open source · no SaaS lock-in</div>
+        </div>
+      </div>
+      <div class="arch-layer-body">
+        <span class="arch-chip">GitHub Pages (hosting)</span>
+        <span class="arch-chip">GitHub Actions (WCAG CI)</span>
+        <span class="arch-chip">Git — 10 repos</span>
+        <span class="arch-chip">Codeberg mirror</span>
+        <span class="arch-chip">Windows Task Scheduler</span>
+        <span class="arch-chip">Python stdlib only</span>
+        <span class="arch-chip">Static HTML/CSS/JS</span>
+        <span class="arch-chip">No npm in products</span>
+        <span class="arch-chip">smtplib (no SendGrid)</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── OVERNIGHT LOOP ────────────────────── -->
+<div class="loop-section">
+  <div class="section-label">The Overnight Loop</div>
+  <h2>What runs every night at 2am</h2>
+
+  <div class="loop-timeline">
+    <div class="loop-track"></div>
+
+    <div class="loop-item">
+      <div class="loop-dot" style="background:#0f3829;">🔄</div>
+      <div class="loop-content">
+        <div class="loop-time">2:00 am · nightly</div>
+        <div class="loop-name">10 repos pulled and pushed</div>
+        <div class="loop-detail">All product and portfolio repos synced from remote, pushed to GitHub + Codeberg mirror.</div>
+      </div>
+    </div>
+
+    <div class="loop-item">
+      <div class="loop-dot" style="background:#112540;">📊</div>
+      <div class="loop-content">
+        <div class="loop-time">2:01 am · nightly</div>
+        <div class="loop-name">Lighthouse audits — all 5 products</div>
+        <div class="loop-detail">Performance, Accessibility, Best Practices, SEO scored. Results written to quality/lighthouse-results/.</div>
+      </div>
+    </div>
+
+    <div class="loop-item">
+      <div class="loop-dot" style="background:#1c1338;">🧪</div>
+      <div class="loop-content">
+        <div class="loop-time">2:03 am · nightly</div>
+        <div class="loop-name">Playwright smoke tests</div>
+        <div class="loop-detail">Headless Chromium hits all 5 live products. Checks key elements, exercises user flows. Screenshots on failure.</div>
+      </div>
+    </div>
+
+    <div class="loop-item">
+      <div class="loop-dot" style="background:#261c0a;">🔍</div>
+      <div class="loop-content">
+        <div class="loop-time">2:05 am · nightly</div>
+        <div class="loop-name">Autonomy audit</div>
+        <div class="loop-detail">Scans every open human-facing backlog item. Anything the AI can handle gets flagged EXECUTE_NOW — it never reaches Aaron.</div>
+      </div>
+    </div>
+
+    <div class="loop-item">
+      <div class="loop-dot" style="background:#112540;">📬</div>
+      <div class="loop-content">
+        <div class="loop-time">2:06 am · nightly</div>
+        <div class="loop-name">Approved outbox sender</div>
+        <div class="loop-detail">Emails Aaron approved in the outbox folder are sent via smtplib. No SendGrid, no subscription.</div>
+      </div>
+    </div>
+
+    <div class="loop-item">
+      <div class="loop-dot" style="background:#0f3829;">📰</div>
+      <div class="loop-content">
+        <div class="loop-time">2:07 am · nightly</div>
+        <div class="loop-name">CoS daily briefing generated</div>
+        <div class="loop-detail">COS Logan v3 reads session wins + Notion P1 items, writes a morning briefing. Ready when the laptop opens.</div>
+      </div>
+    </div>
+
+    <div class="loop-item">
+      <div class="loop-dot" style="background:#261c0a;">📈</div>
+      <div class="loop-content">
+        <div class="loop-time">20th of month</div>
+        <div class="loop-name">StatCan LFS data refresh</div>
+        <div class="loop-detail">Pulls Statistics Canada Table 14-10-0287-01 (57MB CSV). Extracts latest national unemployment rate. Updates Career Coach automatically.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── PRODUCTS ───────────────────────────── -->
+<div class="section">
+  <div class="section-label">The Products</div>
+  <h2>What's running on the shop floor</h2>
+
+  <div class="products-grid">
+
+    <div class="product-card featured">
+      <span class="product-emoji">🧠</span>
+      <div class="product-name">Digital Confidence Centre</div>
+      <span class="product-badge badge-live">Live</span>
+      <div class="product-desc">29-module digital literacy platform for seniors. Built to fill the gap left when federal DLEP funding was cut in March 2025 — 200,000+ seniors lost access to digital skills programs. DCC fills it. Quiz system, bionic reading, dyslexia font, dark mode. Target: library licensing at CA$500–$2,000/yr per site.</div>
+    </div>
+
+    <div class="product-card cc">
+      <span class="product-emoji">💼</span>
+      <div class="product-name">Career Coach</div>
+      <span class="product-badge badge-live">Live</span>
+      <div class="product-desc">AI-assisted job search. Pulls live StatCan unemployment data monthly. CV customisation, salary research protocol.</div>
+    </div>
+
+    <div class="product-card clarity">
+      <span class="product-emoji">📡</span>
+      <div class="product-name">Clarity</div>
+      <span class="product-badge badge-live">Live</span>
+      <div class="product-desc">Telecom clarity tool. Helps people understand what plan they actually need and what they're overpaying for.</div>
+    </div>
+
+    <div class="product-card kevsca">
+      <span class="product-emoji">🏠</span>
+      <div class="product-name">KevsCasa</div>
+      <span class="product-badge badge-building">Building</span>
+      <div class="product-desc">Apartment search assistant for newcomers to Canada. Cloudflare-hosted (sovereignty exception for scale).</div>
+    </div>
+
+    <div class="product-card tbi">
+      <span class="product-emoji">🏢</span>
+      <div class="product-name">Two Birds Innovation</div>
+      <span class="product-badge badge-live">Live</span>
+      <div class="product-desc">Agency site. AI consulting, grant writing, product builds for clients. SR&amp;ED tracked.</div>
+    </div>
+
+    <div class="product-card ap">
+      <span class="product-emoji">👤</span>
+      <div class="product-name">Aaron Patzalek</div>
+      <span class="product-badge badge-live">Live</span>
+      <div class="product-desc">Personal portfolio. Consulting, speaking, solopreneur story.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── SOVEREIGNTY ───────────────────────── -->
+<div class="section">
+  <div class="section-label">Architecture Principle</div>
+  <h2>Sovereign by design — every tool gets audited</h2>
+  <p>Before any tool lands in the stack, it passes a sovereignty check. The question: if this service disappears tomorrow, what breaks? Same logic as self-hosted vs. cloud in traditional IT.</p>
+
+  <div class="sov-grid">
+    <div class="sov-item">
+      <div class="sov-vs">Hosting</div>
+      <div class="sov-choice">GitHub Pages</div>
+      <div class="sov-not">Vercel / Netlify</div>
+    </div>
+    <div class="sov-item">
+      <div class="sov-vs">Scripting</div>
+      <div class="sov-choice">Python stdlib</div>
+      <div class="sov-not">npm packages</div>
+    </div>
+    <div class="sov-item">
+      <div class="sov-vs">Scheduler</div>
+      <div class="sov-choice">Task Scheduler</div>
+      <div class="sov-not">Cloud cron SaaS</div>
+    </div>
+    <div class="sov-item">
+      <div class="sov-vs">Monitoring</div>
+      <div class="sov-choice">uptime-monitor.py</div>
+      <div class="sov-not">Datadog / PagerDuty</div>
+    </div>
+    <div class="sov-item">
+      <div class="sov-vs">Smoke tests</div>
+      <div class="sov-choice">Playwright OSS</div>
+      <div class="sov-not">BrowserStack SaaS</div>
+    </div>
+    <div class="sov-item">
+      <div class="sov-vs">Email send</div>
+      <div class="sov-choice">smtplib (Gmail)</div>
+      <div class="sov-not">SendGrid / Mailchimp</div>
+    </div>
+    <div class="sov-item">
+      <div class="sov-vs">Backup mirror</div>
+      <div class="sov-choice">Codeberg.org</div>
+      <div class="sov-not">GitHub only</div>
+    </div>
+    <div class="sov-item">
+      <div class="sov-vs">Frontend</div>
+      <div class="sov-choice">Static HTML/CSS</div>
+      <div class="sov-not">React / Next.js</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── STATS ────────────────────────────── -->
+<div class="section" style="background: var(--cream);">
+  <div class="section-label">By the Numbers</div>
+  <h2>What's running right now</h2>
+  <div class="stats-grid">
+    <div class="stat-box">
+      <div class="stat-n">5</div>
+      <div class="stat-l">live products on GH Pages</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-n">47</div>
+      <div class="stat-l">AI personas in the decision system</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-n">10</div>
+      <div class="stat-l">Git repos synced nightly</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-n">29</div>
+      <div class="stat-l">DCC learning modules live</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-n">6.6%</div>
+      <div class="stat-l">live StatCan unemployment rate in Career Coach</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-n">$0</div>
+      <div class="stat-l">monthly hosting cost across all products</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CLOSING ────────────────────────────── -->
+<div class="closing">
+  <h2>Where it's heading</h2>
+  <p>DCC institutional licensing to libraries, Career Coach lead capture, first outbound consulting client through Two Birds. The shop floor is built — now it's time to fill it with orders.</p>
+  <p style="font-size:13px; color: rgba(255,255,255,0.35); margin-top: 8px;">The SR&amp;ED program considers this qualifying research. Time logs tracked since May 2026.</p>
+  <a class="closing-url" href="https://twobirds-kramerica.github.io/two-birds-innovation/">twobirds-kramerica.github.io</a>
+  <div class="closing-fine">Two Birds Innovation · St. Thomas, Ontario · Built with the HAL Stack · June 2026</div>
+</div>
+
+</body>
+</html>
