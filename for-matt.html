@@ -204,135 +204,137 @@ strong { color: var(--text); }
   color: var(--teal-dk);
 }
 
-/* ─── ARCHITECTURE DIAGRAM ──────────────── */
+/* ─── ARCHITECTURE PYRAMID ──────────────── */
 .arch-section {
   background: var(--navy);
-  padding: 40px 20px;
+  padding: 40px 20px 52px;
   border-bottom: none;
 }
 .arch-section .section-label { color: var(--teal-lt); }
 .arch-section h2 { color: #fff; }
-.arch-section p { color: #8aafc4; }
+.arch-section p { color: #8aafc4; margin-bottom: 0; }
 
-.arch-diagram {
-  margin: 28px 0 8px;
+.arch-pyramid {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 4px;
+  margin: 28px 0 0;
 }
 
-.arch-layer {
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.06);
-}
+/* Pyramid taper — L1 narrowest (top), L5 full-width (base) */
+.arch-pyr-l1 { margin: 0 12%; }
+.arch-pyr-l2 { margin: 0 7%;  }
+.arch-pyr-l3 { margin: 0 3%;  }
+.arch-pyr-l4 { margin: 0 1%;  }
+.arch-pyr-l5 { margin: 0;     }
 
-.arch-layer-head {
-  padding: 12px 16px;
+.arch-pyr-layer { border-radius: 10px; overflow: hidden; }
+
+.arch-pyr-head {
+  padding: 10px 12px;
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.arch-layer-icon {
-  width: 32px;
-  height: 32px;
+.arch-lnum {
+  width: 36px;
+  height: 36px;
   border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  flex-shrink: 0;
-}
-.arch-layer-headtext {
-  flex: 1;
-}
-.arch-layer-name {
-  font-size: 13px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  line-height: 1;
-}
-.arch-layer-role {
-  font-size: 11px;
-  opacity: 0.65;
-  margin-top: 2px;
-}
-
-.arch-layer-body {
-  padding: 12px 16px 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-}
-.arch-chip {
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.2px;
-}
-
-/* Layer: Products */
-.layer-products { background: #0d2b23; }
-.layer-products .arch-layer-head { background: #0f3829; border-bottom: 1px solid rgba(45,180,140,0.2); }
-.layer-products .arch-layer-name { color: #5ef5c8; }
-.layer-products .arch-layer-role { color: #3db89f; }
-.layer-products .arch-layer-icon { background: rgba(45,180,140,0.15); }
-.layer-products .arch-chip { background: rgba(45,180,140,0.12); color: #7fffd4; border: 1px solid rgba(45,180,140,0.2); }
-
-/* Layer: HAL */
-.layer-hal { background: #0e1e35; }
-.layer-hal .arch-layer-head { background: #112540; border-bottom: 1px solid rgba(59,130,246,0.2); }
-.layer-hal .arch-layer-name { color: #7dd3fc; }
-.layer-hal .arch-layer-role { color: #5b93ba; }
-.layer-hal .arch-layer-icon { background: rgba(59,130,246,0.12); }
-.layer-hal .arch-chip { background: rgba(59,130,246,0.1); color: #93c5fd; border: 1px solid rgba(59,130,246,0.2); }
-
-/* Layer: AI */
-.layer-ai { background: #16102a; }
-.layer-ai .arch-layer-head { background: #1c1338; border-bottom: 1px solid rgba(139,92,246,0.25); }
-.layer-ai .arch-layer-name { color: #c4b5fd; }
-.layer-ai .arch-layer-role { color: #9570d4; }
-.layer-ai .arch-layer-icon { background: rgba(139,92,246,0.12); }
-.layer-ai .arch-chip { background: rgba(139,92,246,0.1); color: #d8b4fe; border: 1px solid rgba(139,92,246,0.2); }
-
-/* Layer: Infra */
-.layer-infra { background: #1e1508; }
-.layer-infra .arch-layer-head { background: #261c0a; border-bottom: 1px solid rgba(245,158,11,0.2); }
-.layer-infra .arch-layer-name { color: #fcd34d; }
-.layer-infra .arch-layer-role { color: #b8922a; }
-.layer-infra .arch-layer-icon { background: rgba(245,158,11,0.1); }
-.layer-infra .arch-chip { background: rgba(245,158,11,0.08); color: #fde68a; border: 1px solid rgba(245,158,11,0.2); }
-
-/* Arrow between layers */
-.arch-arrow {
-  text-align: center;
-  padding: 10px 0;
+  background: rgba(255,255,255,0.07);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 1;
 }
-.arch-arrow-line {
-  width: 2px;
-  height: 12px;
-  background: rgba(255,255,255,0.12);
+.arch-lnum-num  { font-size: 16px; font-weight: 900; color: #fff; }
+.arch-lnum-lbl  { font-size: 7px; text-transform: uppercase; letter-spacing: 0.8px; color: rgba(255,255,255,0.38); font-weight: 700; }
+
+.arch-pyr-headtext { flex: 1; min-width: 0; }
+.arch-pyr-name { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; line-height: 1.1; }
+.arch-pyr-role { font-size: 10px; opacity: 0.55; margin-top: 3px; }
+
+.arch-pyr-body { padding: 9px 12px 13px; display: flex; flex-wrap: wrap; gap: 5px; }
+.arch-pchip { padding: 3px 8px; border-radius: 20px; font-size: 11px; font-weight: 500; }
+
+/* L1: Products */
+.pyr-l1 { background: #0d2b23; }
+.pyr-l1 .arch-pyr-head { background: #0f3829; border-bottom: 1px solid rgba(45,180,140,0.2); }
+.pyr-l1 .arch-pyr-name { color: #5ef5c8; }
+.pyr-l1 .arch-pyr-role { color: #3db89f; }
+.pyr-l1 .arch-pchip { background: rgba(45,180,140,0.12); color: #7fffd4; border: 1px solid rgba(45,180,140,0.2); }
+
+/* L2: HAL Stack */
+.pyr-l2 { background: #0e1e35; }
+.pyr-l2 .arch-pyr-head { background: #112540; border-bottom: 1px solid rgba(59,130,246,0.2); }
+.pyr-l2 .arch-pyr-name { color: #7dd3fc; }
+.pyr-l2 .arch-pyr-role { color: #5b93ba; }
+.pyr-l2 .arch-pchip { background: rgba(59,130,246,0.1); color: #93c5fd; border: 1px solid rgba(59,130,246,0.2); }
+
+/* L3: AI + Governance */
+.pyr-l3 { background: #16102a; }
+.pyr-l3 .arch-pyr-head { background: #1c1338; border-bottom: 1px solid rgba(139,92,246,0.25); }
+.pyr-l3 .arch-pyr-name { color: #c4b5fd; }
+.pyr-l3 .arch-pyr-role { color: #9570d4; }
+.pyr-l3 .arch-pchip { background: rgba(139,92,246,0.1); color: #d8b4fe; border: 1px solid rgba(139,92,246,0.2); }
+
+/* L4: Infrastructure */
+.pyr-l4 { background: #1e1508; }
+.pyr-l4 .arch-pyr-head { background: #261c0a; border-bottom: 1px solid rgba(245,158,11,0.2); }
+.pyr-l4 .arch-pyr-name { color: #fcd34d; }
+.pyr-l4 .arch-pyr-role { color: #b8922a; }
+.pyr-l4 .arch-pchip { background: rgba(245,158,11,0.08); color: #fde68a; border: 1px solid rgba(245,158,11,0.2); }
+
+/* L5: Sovereignty Foundation */
+.pyr-l5 { background: #1a0a1e; }
+.pyr-l5 .arch-pyr-head { background: #220d28; border-bottom: 1px solid rgba(236,72,153,0.2); }
+.pyr-l5 .arch-pyr-name { color: #f9a8d4; }
+.pyr-l5 .arch-pyr-role { color: #b06090; }
+.pyr-l5 .arch-pchip { background: rgba(236,72,153,0.08); color: #fbb6ce; border: 1px solid rgba(236,72,153,0.15); }
+
+/* ─── GOVERNANCE / HARD RULES ────────────── */
+.gov-section {
+  background: #070e1a;
+  padding: 40px 20px;
 }
-.arch-arrow-head {
-  width: 0; height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 8px solid rgba(255,255,255,0.12);
+.gov-section .section-label { color: var(--teal-lt); }
+.gov-section h2 { color: #fff; margin-bottom: 10px; }
+.gov-section > p { color: #5a7080; font-size: 14px; }
+
+.rules-list { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
+.rule-card {
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.055);
+  overflow: hidden;
 }
-.arch-arrow-label {
-  font-size: 10px;
-  color: rgba(255,255,255,0.25);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-weight: 600;
-  margin-top: 4px;
+.rule-head {
+  padding: 11px 14px 9px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
 }
+.rule-icon { font-size: 16px; flex-shrink: 0; width: 22px; text-align: center; }
+.rule-headtext { flex: 1; }
+.rule-name { font-size: 13.5px; font-weight: 800; color: #fff; line-height: 1.2; }
+.rule-trigger { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+.rule-body { padding: 10px 14px 13px; font-size: 13px; color: rgba(255,255,255,0.42); line-height: 1.65; }
+.rule-body strong { color: rgba(255,255,255,0.78); font-weight: 600; }
+
+.rule-card.rc-design  { border-left: 3px solid var(--teal); }
+.rule-card.rc-design  .rule-trigger { color: var(--teal-lt); }
+.rule-card.rc-persona { border-left: 3px solid #7c3aed; }
+.rule-card.rc-persona .rule-trigger { color: #a78bfa; }
+.rule-card.rc-voice   { border-left: 3px solid #2563eb; }
+.rule-card.rc-voice   .rule-trigger { color: #7dd3fc; }
+.rule-card.rc-sov     { border-left: 3px solid var(--amber); }
+.rule-card.rc-sov     .rule-trigger { color: #fbbf24; }
+.rule-card.rc-awr     { border-left: 3px solid #ec4899; }
+.rule-card.rc-awr     .rule-trigger { color: #f9a8d4; }
+.rule-card.rc-token   { border-left: 3px solid #ef4444; }
+.rule-card.rc-token   .rule-trigger { color: #fca5a5; }
 
 /* ─── OVERNIGHT LOOP ────────────────────── */
 .loop-section {
@@ -647,115 +649,205 @@ strong { color: var(--text); }
   </div>
 </div>
 
-<!-- ── ARCHITECTURE DIAGRAM ──────────────── -->
+<!-- ── ARCHITECTURE PYRAMID ──────────────── -->
 <div class="arch-section">
   <div class="section-label">Architecture</div>
-  <h2>Four layers, one person running them</h2>
+  <h2>Five layers, one person running them</h2>
+  <p>Products sit on automation, automation is directed by AI, AI runs on infrastructure, infrastructure is constrained by sovereignty principles at the base.</p>
 
-  <div class="arch-diagram">
+  <div class="arch-pyramid">
 
     <!-- L1: Products -->
-    <div class="arch-layer layer-products">
-      <div class="arch-layer-head">
-        <div class="arch-layer-icon">🌐</div>
-        <div class="arch-layer-headtext">
-          <div class="arch-layer-name">L1 — Products</div>
-          <div class="arch-layer-role">What users see · GitHub Pages</div>
+    <div class="arch-pyr-layer pyr-l1 arch-pyr-l1">
+      <div class="arch-pyr-head">
+        <div class="arch-lnum"><div class="arch-lnum-num">1</div><div class="arch-lnum-lbl">L1</div></div>
+        <div class="arch-pyr-headtext">
+          <div class="arch-pyr-name">Products</div>
+          <div class="arch-pyr-role">What users see · GitHub Pages</div>
         </div>
       </div>
-      <div class="arch-layer-body">
-        <span class="arch-chip">🧠 Digital Confidence Centre</span>
-        <span class="arch-chip">💼 Career Coach</span>
-        <span class="arch-chip">📡 Clarity</span>
-        <span class="arch-chip">🏢 Two Birds Innovation</span>
-        <span class="arch-chip">👤 Aaron Patzalek</span>
-        <span class="arch-chip">🏠 KevsCasa</span>
+      <div class="arch-pyr-body">
+        <span class="arch-pchip">DCC</span>
+        <span class="arch-pchip">Career Coach</span>
+        <span class="arch-pchip">Clarity</span>
+        <span class="arch-pchip">Two Birds</span>
+        <span class="arch-pchip">Aaron Patzalek</span>
+        <span class="arch-pchip">KevsCasa</span>
       </div>
-    </div>
-
-    <div class="arch-arrow">
-      <div class="arch-arrow-line"></div>
-      <div class="arch-arrow-head"></div>
-      <div class="arch-arrow-label">built by</div>
     </div>
 
     <!-- L2: HAL Stack -->
-    <div class="arch-layer layer-hal">
-      <div class="arch-layer-head">
-        <div class="arch-layer-icon">⚙️</div>
-        <div class="arch-layer-headtext">
-          <div class="arch-layer-name">L2 — HAL Stack</div>
-          <div class="arch-layer-role">Automation layer · runs overnight</div>
+    <div class="arch-pyr-layer pyr-l2 arch-pyr-l2">
+      <div class="arch-pyr-head">
+        <div class="arch-lnum"><div class="arch-lnum-num">2</div><div class="arch-lnum-lbl">L2</div></div>
+        <div class="arch-pyr-headtext">
+          <div class="arch-pyr-name">HAL Stack</div>
+          <div class="arch-pyr-role">Automation · overnight build</div>
         </div>
       </div>
-      <div class="arch-layer-body">
-        <span class="arch-chip">Sprint system</span>
-        <span class="arch-chip">Notion sync</span>
-        <span class="arch-chip">Overnight build (2am)</span>
-        <span class="arch-chip">Playwright smoke tests</span>
-        <span class="arch-chip">Uptime monitor</span>
-        <span class="arch-chip">Autonomy audit</span>
-        <span class="arch-chip">Session health check</span>
-        <span class="arch-chip">Daily briefing</span>
-        <span class="arch-chip">LFS data updater</span>
-        <span class="arch-chip">Approved outbox sender</span>
+      <div class="arch-pyr-body">
+        <span class="arch-pchip">Sprint system</span>
+        <span class="arch-pchip">Notion sync</span>
+        <span class="arch-pchip">Overnight build (2am)</span>
+        <span class="arch-pchip">Playwright smoke tests</span>
+        <span class="arch-pchip">Uptime monitor</span>
+        <span class="arch-pchip">Autonomy audit</span>
+        <span class="arch-pchip">Session health check</span>
+        <span class="arch-pchip">Daily briefing (Logan v3)</span>
+        <span class="arch-pchip">LFS data updater</span>
       </div>
     </div>
 
-    <div class="arch-arrow">
-      <div class="arch-arrow-line"></div>
-      <div class="arch-arrow-head"></div>
-      <div class="arch-arrow-label">directed by</div>
-    </div>
-
-    <!-- L3: AI Layer -->
-    <div class="arch-layer layer-ai">
-      <div class="arch-layer-head">
-        <div class="arch-layer-icon">🤖</div>
-        <div class="arch-layer-headtext">
-          <div class="arch-layer-name">L3 — AI Layer</div>
-          <div class="arch-layer-role">The engineer · Claude Code CLI</div>
+    <!-- L3: AI + Governance -->
+    <div class="arch-pyr-layer pyr-l3 arch-pyr-l3">
+      <div class="arch-pyr-head">
+        <div class="arch-lnum"><div class="arch-lnum-num">3</div><div class="arch-lnum-lbl">L3</div></div>
+        <div class="arch-pyr-headtext">
+          <div class="arch-pyr-name">AI + Governance</div>
+          <div class="arch-pyr-role">The engineer · 47 personas · hard rules</div>
         </div>
       </div>
-      <div class="arch-layer-body">
-        <span class="arch-chip">Claude Code CLI</span>
-        <span class="arch-chip">47 AI personas</span>
-        <span class="arch-chip">Founding Board (6)</span>
-        <span class="arch-chip">Mentor committee</span>
-        <span class="arch-chip">MCP — Notion</span>
-        <span class="arch-chip">MCP — Gmail</span>
-        <span class="arch-chip">MCP — Calendly</span>
-        <span class="arch-chip">Voice-check protocol</span>
-        <span class="arch-chip">Token guard (runaway limiter)</span>
-        <span class="arch-chip">Design gate</span>
+      <div class="arch-pyr-body">
+        <span class="arch-pchip">Claude Code CLI</span>
+        <span class="arch-pchip">Scrappy Pack (6)</span>
+        <span class="arch-pchip">Founding Board (6)</span>
+        <span class="arch-pchip">Boardroom (22)</span>
+        <span class="arch-pchip">Mentor committee (4)</span>
+        <span class="arch-pchip">Inner Circle</span>
+        <span class="arch-pchip">MCP — Notion / Gmail / Calendly</span>
+        <span class="arch-pchip">Design gate</span>
+        <span class="arch-pchip">Voice-check protocol</span>
+        <span class="arch-pchip">/impeccable audit</span>
+        <span class="arch-pchip">Token guard</span>
       </div>
-    </div>
-
-    <div class="arch-arrow">
-      <div class="arch-arrow-line"></div>
-      <div class="arch-arrow-head"></div>
-      <div class="arch-arrow-label">runs on</div>
     </div>
 
     <!-- L4: Infrastructure -->
-    <div class="arch-layer layer-infra">
-      <div class="arch-layer-head">
-        <div class="arch-layer-icon">🏗️</div>
-        <div class="arch-layer-headtext">
-          <div class="arch-layer-name">L4 — Infrastructure</div>
-          <div class="arch-layer-role">Sovereign · open source · no SaaS lock-in</div>
+    <div class="arch-pyr-layer pyr-l4 arch-pyr-l4">
+      <div class="arch-pyr-head">
+        <div class="arch-lnum"><div class="arch-lnum-num">4</div><div class="arch-lnum-lbl">L4</div></div>
+        <div class="arch-pyr-headtext">
+          <div class="arch-pyr-name">Infrastructure</div>
+          <div class="arch-pyr-role">Hosting · CI/CD · local compute</div>
         </div>
       </div>
-      <div class="arch-layer-body">
-        <span class="arch-chip">GitHub Pages (hosting)</span>
-        <span class="arch-chip">GitHub Actions (WCAG CI)</span>
-        <span class="arch-chip">Git — 10 repos</span>
-        <span class="arch-chip">Codeberg mirror</span>
-        <span class="arch-chip">Windows Task Scheduler</span>
-        <span class="arch-chip">Python stdlib only</span>
-        <span class="arch-chip">Static HTML/CSS/JS</span>
-        <span class="arch-chip">No npm in products</span>
-        <span class="arch-chip">smtplib (no SendGrid)</span>
+      <div class="arch-pyr-body">
+        <span class="arch-pchip">GitHub Pages</span>
+        <span class="arch-pchip">GitHub Actions (WCAG CI)</span>
+        <span class="arch-pchip">Git · 10 repos</span>
+        <span class="arch-pchip">Codeberg mirror</span>
+        <span class="arch-pchip">Windows Task Scheduler</span>
+        <span class="arch-pchip">Python stdlib</span>
+        <span class="arch-pchip">smtplib (no SendGrid)</span>
+      </div>
+    </div>
+
+    <!-- L5: Sovereignty Foundation -->
+    <div class="arch-pyr-layer pyr-l5 arch-pyr-l5">
+      <div class="arch-pyr-head">
+        <div class="arch-lnum"><div class="arch-lnum-num">5</div><div class="arch-lnum-lbl">L5</div></div>
+        <div class="arch-pyr-headtext">
+          <div class="arch-pyr-name">Sovereignty Foundation</div>
+          <div class="arch-pyr-role">Principles that constrain every choice above</div>
+        </div>
+      </div>
+      <div class="arch-pyr-body">
+        <span class="arch-pchip">Static HTML/CSS/JS only</span>
+        <span class="arch-pchip">No npm in products</span>
+        <span class="arch-pchip">Open-source first</span>
+        <span class="arch-pchip">Self-hosted before SaaS</span>
+        <span class="arch-pchip">Canadian English</span>
+        <span class="arch-pchip">SR&amp;ED-tracked research</span>
+        <span class="arch-pchip">Decapitation-checklist gated</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── GOVERNANCE / HARD RULES ──────────── -->
+<div class="gov-section">
+  <div class="section-label">Governance</div>
+  <h2>The hard rules — enforced on every sprint</h2>
+  <p>These aren't preferences. They're gates. If a rule fires, the sprint stops until it's cleared.</p>
+
+  <div class="rules-list">
+
+    <div class="rule-card rc-design">
+      <div class="rule-head">
+        <div class="rule-icon">🔒</div>
+        <div class="rule-headtext">
+          <div class="rule-name">Design Gate</div>
+          <div class="rule-trigger">Fires before any UI sprint starts</div>
+        </div>
+      </div>
+      <div class="rule-body">
+        Four conditions must be true before a UI sprint locks: <strong>PRODUCT.md exists</strong> for the product, <strong>/impeccable audit</strong> has run this quarter with findings documented, <strong>Aaron has approved the shape brief</strong> for structural changes, and <strong>dark mode tested on Android Chrome</strong>. Any one missing — sprint doesn't start.
+      </div>
+    </div>
+
+    <div class="rule-card rc-persona">
+      <div class="rule-head">
+        <div class="rule-icon">🧑‍🤝‍🧑</div>
+        <div class="rule-headtext">
+          <div class="rule-name">Persona Panel Review</div>
+          <div class="rule-trigger">Fires at every Stage 3+ sprint completion</div>
+        </div>
+      </div>
+      <div class="rule-body">
+        Before results are committed, the sprint is reviewed by a panel of <strong>47 AI personas</strong>: the Scrappy Pack (Cash, Visibility, Time, Simplicity, Long Game, Sovereignty), the Founding Board (6 strategic advisors), and the Inner Circle. A <strong>REWORK verdict blocks the commit</strong>. The panel exists to catch what a solo operator misses when heads-down in the work.
+      </div>
+    </div>
+
+    <div class="rule-card rc-voice">
+      <div class="rule-head">
+        <div class="rule-icon">🎙️</div>
+        <div class="rule-headtext">
+          <div class="rule-name">Voice Check</div>
+          <div class="rule-trigger">Fires before any content leaves the system</div>
+        </div>
+      </div>
+      <div class="rule-body">
+        Every email, landing page, outreach draft, or grant submission is scanned against a <strong>banned word list</strong> — hedging language, filler phrases, over-promising claims. A compliance tag is appended proving the scan ran. Nothing goes out unscanned.
+      </div>
+    </div>
+
+    <div class="rule-card rc-sov">
+      <div class="rule-head">
+        <div class="rule-icon">🛡️</div>
+        <div class="rule-headtext">
+          <div class="rule-name">Sovereignty Check</div>
+          <div class="rule-trigger">Fires before any tool is added to the stack</div>
+        </div>
+      </div>
+      <div class="rule-body">
+        Before any SaaS, API, or third-party dependency is recommended, a <strong>decapitation checklist</strong> is consulted. The question: if this service disappears tomorrow, what breaks? Self-hosted or open-source equivalent required first. <strong>No paid service without proof no sovereign alternative exists.</strong> Same instinct as running Nagios on-prem.
+      </div>
+    </div>
+
+    <div class="rule-card rc-awr">
+      <div class="rule-head">
+        <div class="rule-icon">⚡</div>
+        <div class="rule-headtext">
+          <div class="rule-name">Autonomy Gate (AWR)</div>
+          <div class="rule-trigger">Fires before any task is filed to Aaron's queue</div>
+        </div>
+      </div>
+      <div class="rule-body">
+        A 3-point check before any task reaches Aaron: (1) Can PowerShell or Python execute this? (2) Can an MCP tool handle it? (3) Does it only need files and scripts? If any answer is yes — <strong>the agent does it</strong>, no human involved. Only genuinely human tasks (physical action, legal signing, strategic judgment) ever reach the queue.
+      </div>
+    </div>
+
+    <div class="rule-card rc-token">
+      <div class="rule-head">
+        <div class="rule-icon">🔢</div>
+        <div class="rule-headtext">
+          <div class="rule-name">Token Guard</div>
+          <div class="rule-trigger">Always on — limits every AI session</div>
+        </div>
+      </div>
+      <div class="rule-body">
+        Hard limit of <strong>50 tool calls per AI turn</strong>. Prevents runaway sessions where the AI loops without making progress, burning compute and context window. Resets on each new message. The guard fired three times while building this system — it paid for itself on day one.
       </div>
     </div>
 
