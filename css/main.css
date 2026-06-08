@@ -503,7 +503,7 @@ img { max-width: 100%; height: auto; }
   padding: var(--space-8);
   box-shadow: var(--shadow-lg);
   margin-bottom: var(--space-8);
-  border-left: 4px solid var(--brand);
+  border-top: 4px solid var(--brand);
 }
 
 .featured-content h3 { margin-bottom: var(--space-2); }
