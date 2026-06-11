@@ -85,7 +85,7 @@ img { max-width: 100%; height: auto; }
 }
 .nav-links a:hover { color: var(--text-primary); }
 
-.nav-cta {
+.nav-links a.nav-cta {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -100,7 +100,7 @@ img { max-width: 100%; height: auto; }
   min-height: var(--tap-target);
   transition: background var(--duration-fast);
 }
-.nav-cta:hover { background: var(--brand-hover); }
+.nav-links a.nav-cta:hover { background: var(--brand-hover); color: var(--text-inverse); }
 
 .nav-toggle {
   display: none;
