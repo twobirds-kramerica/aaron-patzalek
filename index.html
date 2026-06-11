@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https://formspree.io;">
   <link rel="preload" href="fonts/inter/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
   <title>Aaron Patzalek, Founder | Two Birds Innovation | St. Thomas, Ontario</title>
-  <meta name="description" content="Product leader and founder of Two Birds Innovation. 20+ years across telecom, retail, and eCommerce. Building sovereign digital tools that empower people to act for themselves.">
+  <meta name="description" content="Product leader and founder of Two Birds Innovation. 15+ years across telecom, retail, and eCommerce. Building sovereign digital tools that empower people to act for themselves.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://twobirds-kramerica.github.io/aaron-patzalek/">
   <meta property="og:title" content="Aaron Patzalek, Founder | Two Birds Innovation">
@@ -16,7 +16,7 @@
   <meta property="og:image" content="https://twobirds-kramerica.github.io/aaron-patzalek/images/og-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Aaron Patzalek, Product Leader and Founder, Two Birds Innovation. 20+ years in product. St. Thomas, Ontario.">
+  <meta property="og:image:alt" content="Aaron Patzalek, Product Leader and Founder, Two Birds Innovation. 15+ years in product. St. Thomas, Ontario.">
   <meta property="og:locale" content="en_CA">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/main.css">
@@ -31,6 +31,24 @@
       margin: 0 auto var(--space-6);
       border: 3px solid var(--border-light);
     }
+    .hero-headshot {
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 15%;
+      display: block;
+      margin: 0 auto var(--space-6);
+      border: 4px solid var(--bg-card);
+      box-shadow: var(--shadow-md);
+    }
+    .nav-logo { display: inline-flex; align-items: center; gap: var(--space-2); }
+    .nav-mark {
+      font-family: var(--font-mono);
+      font-weight: var(--font-bold);
+      letter-spacing: -0.12em;
+      color: var(--brand);
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -38,7 +56,7 @@
     "@type": "Person",
     "name": "Aaron Patzalek",
     "jobTitle": "Founder, Two Birds Innovation",
-    "description": "Product leader and solopreneur. 20+ years across telecom, retail, and eCommerce. Building sovereign digital tools in St. Thomas, Ontario.",
+    "description": "Product leader and founder. 15+ years across telecom, retail, and eCommerce. Building sovereign digital tools in St. Thomas, Ontario.",
     "url": "https://twobirds-kramerica.github.io/aaron-patzalek/",
     "email": "aaron.patzalek@gmail.com",
     "address": {
@@ -62,7 +80,10 @@
 
 <!-- ===== Navigation ===== -->
 <nav class="nav" aria-label="Main navigation">
-  <a href="/" class="nav-logo">Aaron Patzalek</a>
+  <a href="/" class="nav-logo">
+    <span class="nav-mark" aria-hidden="true">&gt;&lt;</span>
+    Aaron Patzalek
+  </a>
   <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
   <ul class="nav-links">
     <li><a href="#work">Work</a></li>
@@ -76,21 +97,22 @@
 <!-- ===== Hero ===== -->
 <section class="hero" id="main">
   <div class="hero-inner">
+    <img src="images/aaron-headshot.jpg" alt="Aaron Patzalek" class="hero-headshot" width="132" height="132">
     <h1>Building tools that empower people<br><span>to act for themselves.</span></h1>
     <p class="hero-sub">
       I'm Aaron Patzalek, a product leader turned founder based in St. Thomas, Ontario.
-      After 20+ years shipping software at TELUS, Staples, and Start.ca, I started
+      After 15+ years leading product teams at TELUS, Staples, and Start.ca, I started
       Two Birds Innovation to build digital tools that respect your intelligence,
       your time, and your right to stay in the driver's seat.
     </p>
     <div class="hero-meta">
       <span>&#127809; St. Thomas, Ontario</span>
-      <span>&#128188; 20+ years in product</span>
+      <span>&#128188; 15+ years in product</span>
       <span>&#127464;&#127462; Canadian-built</span>
     </div>
     <div class="hero-actions">
-      <a href="consulting.html" class="btn btn-primary">Book a Discovery Call &rarr;</a>
       <a href="#work" class="btn btn-ghost">See What I've Built &darr;</a>
+      <a href="consulting.html" class="btn btn-primary">Book a Discovery Call &rarr;</a>
     </div>
   </div>
 </section>
@@ -103,25 +125,24 @@
     <div class="section-header">
       <h2 class="section-title">What I'm Building</h2>
       <p class="section-subtitle">
-        Four live tools. All free. All Canadian-built.
+        Four products, built solo with AI. All free. All Canadian-built.
       </p>
     </div>
 
     <!-- DCC -->
     <div class="featured-project">
       <div class="featured-content">
-        <span class="project-badge project-badge--beta">Live</span>
+        <span class="project-badge project-badge--dev">In development</span>
         <h3 class="project-title">Digital Confidence Centre</h3>
         <p class="project-desc">
           A free digital literacy platform for Canadian seniors. 29 adult modules covering
-          online safety, banking, video calls, government benefits, and AI literacy. Built
+          online safety, banking, video calls, government benefits, and digital confidence. Built
           with anxiety-first design. Module 1 teaches the escape hatch before anything else.
           Includes a built-in outcome reporting layer for grant compliance.
         </p>
         <ul class="project-stats">
           <li><strong>29</strong> adult modules</li>
           <li><strong>27</strong> benefits guides</li>
-          <li><strong>25</strong> kids activities</li>
           <li><strong>Free</strong> for everyone</li>
         </ul>
         <p class="card-cta" style="margin-top:0.75rem"><a href="https://twobirds-kramerica.github.io/digital-confidence/" target="_blank" rel="noopener">View the programme &rarr;</a></p>
@@ -133,9 +154,9 @@
         <span class="project-badge project-badge--beta">Diagnostic</span>
         <h3 class="card-title">Clarity</h3>
         <p class="card-desc">
-          A free AI readiness diagnostic for Canadian SMEs. Seven questions, industry benchmark
-          comparison, PIPEDA privacy assessment, and a personalised SWOT analysis with priority
-          actions. Results downloadable instantly.
+          A free AI readiness diagnostic for Canadian small and medium businesses. Seven questions,
+          an industry benchmark comparison, a Canadian privacy law check, and a personalised
+          strengths-and-gaps analysis with priority actions. Results downloadable instantly.
         </p>
         <p class="card-cta"><a href="https://twobirds-kramerica.github.io/clarity/" target="_blank" rel="noopener">Run a free diagnostic &rarr;</a></p>
       </div>
@@ -145,7 +166,7 @@
         <p class="card-desc">
           Seven AI tools for every stage of a job search: job analysis, cover letter,
           interview prep, salary negotiation, follow-up email, LinkedIn optimiser, and
-          ATS keyword analysis. BYOK model: your keys, your data.
+          résumé keyword analysis. You bring your own API key, so your data stays yours.
         </p>
         <p class="card-cta"><a href="https://twobirds-kramerica.github.io/career-coach/" target="_blank" rel="noopener">Try Career Coach &rarr;</a></p>
       </div>
@@ -155,17 +176,17 @@
         <p class="card-desc">
           An apartment search tool built for one person and configurable for any city.
           Ranked listings, neighbourhood safety ratings, contact tracking, commute calculator,
-          and a move-out countdown. Piloting with Ontario settlement agencies.
+          and a move-out countdown. In private beta with Ontario settlement agencies.
         </p>
-        <p class="card-cta"><a href="https://kevins-apartment-search.pages.dev" target="_blank" rel="noopener">View live site &rarr;</a></p>
+        <p class="card-cta"><span style="color:var(--text-muted)">Private beta &middot; not yet public</span></p>
       </div>
-      <div class="card" style="border-style: dashed; border-top: 3px solid #888; opacity: 0.85;">
+      <div class="card" style="border-top: 3px solid #6B21A8;">
         <span class="project-badge project-badge--concept">Infrastructure</span>
         <h3 class="card-title">HAL Stack</h3>
         <p class="card-desc">
           The operating system behind all Two Birds products. A four-layer sovereignty
-          model, autonomous sprint system, and effort-benefit backlog framework.
-          All in markdown, JSON, and vanilla JavaScript. Zero dependencies.
+          model, an autonomous build system, and an effort-versus-return backlog framework.
+          This is how one person ships ten products. Zero outside dependencies.
         </p>
         <p class="card-vision">If every vendor disappeared tomorrow, the work continues.</p>
       </div>
@@ -186,7 +207,7 @@
         The name is personal and deliberate: everything I build is, at its core, for them.
       </p>
       <p>
-        But the name carries a deeper meaning. Fraternal twins start at the exact same point
+        But the name carries a deeper meaning. They start at the exact same point
         yet grow into uniquely different people. That's the philosophy behind every product:
         ideas, growth, and people must be empowered to travel in their own sovereign directions.
         Not corralled. Not automated. Sovereign.
@@ -251,24 +272,27 @@
           <div class="timeline-item">
             <span class="timeline-date">2026&ndash;present</span>
             <span class="timeline-role">Founder,Two Birds Innovation</span>
-            <span class="timeline-detail">AI tools, digital literacy, SME consulting. Solo founder, St. Thomas ON.</span>
+            <span class="timeline-detail">AI tools, digital literacy, and consulting for small and medium businesses. St. Thomas, Ontario.</span>
           </div>
           <div class="timeline-item">
             <span class="timeline-date">2020&ndash;2025</span>
             <span class="timeline-role">Senior Product Manager,TELUS / Koodo</span>
-            <span class="timeline-detail">Koodo Internet product launch. Software used by millions of Canadians.</span>
+            <span class="timeline-detail">Led the Koodo Internet product launch. Products used by millions of Canadians.</span>
           </div>
           <div class="timeline-item">
+            <!-- TODO: Aaron to confirm exact Start.ca dates -->
             <span class="timeline-date">2018&ndash;2020</span>
             <span class="timeline-role">Senior Product Manager,Start.ca</span>
-            <span class="timeline-detail">VoIP, IPTV, and Internet products for a regional ISP.</span>
+            <span class="timeline-detail">Phone, TV, and Internet products for a regional Internet provider.</span>
           </div>
           <div class="timeline-item">
+            <!-- TODO: Aaron to confirm Peavey Mart role title and dates -->
             <span class="timeline-date">2015&ndash;2018</span>
             <span class="timeline-role">Manager, eCommerce,Peavey Mart</span>
             <span class="timeline-detail">eCommerce sales and operations for a national retail chain.</span>
           </div>
           <div class="timeline-item">
+            <!-- TODO: Aaron to confirm Goodwill role title and dates -->
             <span class="timeline-date">2012&ndash;2015</span>
             <span class="timeline-role">Senior Manager, eCommerce,Goodwill Canada</span>
             <span class="timeline-detail">Online auctions, eBay integration, bridging non-profit operations with digital commerce.</span>
@@ -291,7 +315,7 @@
 
         <div class="about-stats">
           <div class="stat">
-            <div class="stat-number">20+</div>
+            <div class="stat-number">15+</div>
             <div class="stat-label">Years in product</div>
           </div>
           <div class="stat">
@@ -322,7 +346,7 @@
           <div class="skill-group">
             <h4>Process</h4>
             <ul>
-              <li>Six Sigma (SME/stakeholder)</li>
+              <li>Six Sigma (subject-matter expert / stakeholder)</li>
               <li>Scrum Master (certified)</li>
               <li>Process mapping &amp; improvement</li>
               <li>Vendor management</li>
@@ -352,7 +376,7 @@
         <ul class="credentials-list">
           <li>Fanshawe College,Business Marketing (1999)</li>
           <li>Certified Scrum Master (Scrum.org)</li>
-          <li>Six Sigma SME,stakeholder on Black Belt projects</li>
+          <li>Six Sigma subject-matter expert,stakeholder on Black Belt projects</li>
         </ul>
       </div>
     </div>
