@@ -1,71 +1,32 @@
 <!DOCTYPE html>
-<html lang="en-CA" data-theme="light">
+<html lang="en-CA">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https://formspree.io;">
-  <link rel="preload" href="fonts/inter/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
-  <title>Aaron Patzalek, Founder | Two Birds Innovation | St. Thomas, Ontario</title>
-  <meta name="description" content="Founder of Two Birds Innovation. 20 years in services development, category expansion, and company strategy across retail, ecommerce, and telco. I put in the time so you don't have to.">
+  <title>Aaron Patzalek | Product &amp; Operations Leader | St. Thomas, Ontario</title>
+  <meta name="description" content="Senior product and operations leader. 20 years in retail, eCommerce, and telecom. I help teams do more with less. Based in St. Thomas, Ontario.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://twobirds-kramerica.github.io/aaron-patzalek/">
-  <meta property="og:title" content="Aaron Patzalek, Founder | Two Birds Innovation">
-  <meta property="og:description" content="Product leader and founder of Two Birds Innovation. Building sovereign digital tools that empower people to act for themselves.">
+  <meta property="og:title" content="Aaron Patzalek | Product &amp; Operations Leader">
+  <meta property="og:description" content="Senior product and operations leader. 20 years in retail, eCommerce, and telecom. I help teams do more with less.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://twobirds-kramerica.github.io/aaron-patzalek/">
   <meta property="og:image" content="https://twobirds-kramerica.github.io/aaron-patzalek/images/og-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Aaron Patzalek, Founder, Two Birds Innovation. 20 years in product and strategy. St. Thomas, Ontario.">
+  <meta property="og:image:alt" content="Aaron Patzalek, product and operations leader. St. Thomas, Ontario.">
   <meta property="og:locale" content="en_CA">
-  <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/main.css">
-  <style>
-    .about-headshot {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center 15%;
-      display: block;
-      margin: 0 auto var(--space-6);
-      border: 3px solid var(--border-light);
-    }
-    .hero-headshot {
-      width: 132px;
-      height: 132px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center 15%;
-      display: block;
-      margin: 0 auto var(--space-6);
-      border: 4px solid var(--bg-card);
-      box-shadow: var(--shadow-md);
-    }
-    .nav-logo { display: inline-flex; align-items: center; gap: var(--space-2); }
-    .nav-mark {
-      font-family: var(--font-mono);
-      font-weight: var(--font-bold);
-      letter-spacing: -0.12em;
-      color: var(--brand);
-    }
-    .availability-note {
-      font-size: var(--text-sm);
-      color: var(--text-muted);
-      margin-top: var(--space-4);
-    }
-    .availability-note a {
-      color: var(--brand);
-      font-weight: var(--font-medium);
-    }
-  </style>
+  <link rel="preload" href="fonts/dm-sans/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/dm-sans/DMSans-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/index.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Aaron Patzalek",
     "jobTitle": "Founder, Two Birds Innovation",
-    "description": "Founder. 20 years in services development, category expansion, and company strategy across retail, ecommerce, and telco. Building sovereign digital tools in St. Thomas, Ontario.",
+    "description": "Senior product and operations leader. 20 years in services development, category expansion, and company strategy across retail, eCommerce, and telecom. Based in St. Thomas, Ontario.",
     "url": "https://twobirds-kramerica.github.io/aaron-patzalek/",
     "email": "aaron.patzalek@gmail.com",
     "address": {
@@ -75,7 +36,7 @@
       "addressCountry": "CA"
     },
     "alumniOf": { "@type": "EducationOrganization", "name": "Fanshawe College" },
-    "knowsAbout": ["Product Management", "Digital Literacy", "Process Improvement", "eCommerce", "Telecom", "AI Tool Evaluation"],
+    "knowsAbout": ["Product Management", "Process Improvement", "AI Tool Evaluation", "eCommerce", "Operations", "Telecom"],
     "worksFor": {
       "@type": "Organization",
       "name": "Two Birds Innovation"
@@ -87,412 +48,92 @@
 
 <a href="#main" class="skip-link">Skip to main content</a>
 
-<!-- ===== Navigation ===== -->
-<nav class="nav" aria-label="Main navigation">
-  <a href="/" class="nav-logo">
-    <span class="nav-mark" aria-hidden="true">&gt;&lt;</span>
-    Aaron Patzalek
-  </a>
-  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
-  <ul class="nav-links">
-    <li><a href="#work">Work</a></li>
-    <li><a href="#story">Story</a></li>
-    <li><a href="#career">Career</a></li>
-    <li><a href="consulting.html">Consulting</a></li>
-    <li><a href="#contact" class="nav-cta">Get in Touch &rarr;</a></li>
-  </ul>
+<!-- Nav -->
+<nav class="ap-nav" aria-label="Site navigation">
+  <a href="/" class="ap-nav-logo">Aaron Patzalek</a>
+  <a href="consulting.html" class="ap-nav-cta">Book a call &rarr;</a>
 </nav>
 
-<!-- ===== Hero ===== -->
-<section class="hero" id="main">
-  <div class="hero-inner">
-    <img src="images/aaron-headshot.jpg" alt="Aaron Patzalek" class="hero-headshot" width="132" height="132">
-    <h1>Building tools that empower people<br><span>to act for themselves.</span></h1>
-    <p class="hero-sub">
-      I'm Aaron Patzalek, a founder based in St. Thomas, Ontario. Twenty years in services
-      development, category expansion, and company strategy across retail, ecommerce, and telco.
-      I started Two Birds Innovation with a simple mandate: I put in the time so you don't have to.
-    </p>
-    <div class="hero-meta">
-      <span>&#127809; St. Thomas, Ontario</span>
-      <span>&#128188; 20 years in product</span>
-      <span>&#127464;&#127462; Canadian-built</span>
-    </div>
-    <div class="hero-actions">
-      <a href="#work" class="btn btn-ghost">See What I've Built &darr;</a>
-      <a href="consulting.html" class="btn btn-primary">Book a Discovery Call &rarr;</a>
-    </div>
-    <p class="availability-note">Currently accepting consulting projects &middot; <a href="consulting.html">Book a free discovery call &rarr;</a></p>
-  </div>
-</section>
+<main id="main">
+  <div class="ap-wrap">
 
-<!-- Philosophy banner removed 2026-06-04: motivational language anti-pattern -->
+    <!-- Hero -->
+    <section class="ap-hero" aria-labelledby="hero-name">
+      <h1 id="hero-name">Aaron Patzalek</h1>
+      <p class="ap-positioning">Senior product and operations leader. I help teams do more with less.</p>
+      <a href="https://calendly.com/twobirdsinnovation/30min" target="_blank" rel="noopener" class="ap-btn">
+        Book a 30-min discovery call &rarr;
+      </a>
+    </section>
 
-<!-- ===== Work / Products ===== -->
-<section class="section section--grey" id="work">
-  <div class="section-inner">
-    <div class="section-header">
-      <h2 class="section-title">What I'm Building</h2>
-      <p class="section-subtitle">
-        Four products, built solo with AI. All free. All Canadian-built.
-      </p>
-    </div>
+    <hr class="ap-divider">
 
-    <!-- DCC -->
-    <div class="featured-project">
-      <div class="featured-content">
-        <span class="project-badge project-badge--dev">In development</span>
-        <h3 class="project-title">Digital Confidence Centre</h3>
-        <p class="project-desc">
-          A free digital literacy platform for Canadian seniors. 29 adult modules covering
-          online safety, banking, video calls, government benefits, and digital confidence. Built
-          with anxiety-first design. Module 1 teaches the escape hatch before anything else.
-          Includes a built-in outcome reporting layer for grant compliance.
-        </p>
-        <ul class="project-stats">
-          <li><strong>29</strong> adult modules</li>
-          <li><strong>27</strong> benefits guides</li>
-          <li><strong>Free</strong> for everyone</li>
-        </ul>
-        <p class="card-cta" style="margin-top:0.75rem"><a href="https://twobirds-kramerica.github.io/digital-confidence/" target="_blank" rel="noopener">View the programme &rarr;</a></p>
-      </div>
-    </div>
+    <!-- Evidence: 3 specific outcomes -->
+    <section class="ap-section" aria-labelledby="outcomes-label">
+      <p class="ap-label" id="outcomes-label">20 years. Specific results.</p>
+      <ol class="ap-outcomes">
+        <li>
+          <strong>Scaled Koodo Internet to 60,000+ subscribers across Central and Eastern Canada.</strong>
+          <span>Reduced churn by 30% as Senior Product Manager at TELUS (2024&ndash;2025). Managed the full subscriber lifecycle across a multi-province footprint.</span>
+        </li>
+        <li>
+          <strong>Doubled Staples Canada&rsquo;s eCommerce platform to $30M in annual revenue.</strong>
+          <span>Held full P&amp;L ownership over 14 years. Built three sub-teams from scratch: UX Design, Web Operations, and Analytics. Started as Category Manager; left as Senior PM (2005&ndash;2019).</span>
+        </li>
+        <li>
+          <strong>Led a 15-person team to record online sales growth at Goodwill Canada.</strong>
+          <span>Overhauled digital retail operations and applied Six Sigma to redesign fulfilment workflows from scratch (2020&ndash;2021).</span>
+        </li>
+      </ol>
+    </section>
 
-    <div class="card-grid">
-      <div class="card" style="border-top: 3px solid #5E6E41;">
-        <span class="project-badge project-badge--beta">Diagnostic</span>
-        <h3 class="card-title">Clarity</h3>
-        <p class="card-desc">
-          A free AI readiness diagnostic for Canadian small and medium businesses. Seven questions,
-          an industry benchmark comparison, a Canadian privacy law check, and a personalised
-          strengths-and-gaps analysis with priority actions. Results downloadable instantly.
-        </p>
-        <p class="card-cta"><a href="https://twobirds-kramerica.github.io/clarity/" target="_blank" rel="noopener">Run a free diagnostic &rarr;</a></p>
-      </div>
-      <div class="card" style="border-top: 3px solid #00C9A7;">
-        <span class="project-badge project-badge--beta">Job Tools</span>
-        <h3 class="card-title">Career Coach</h3>
-        <p class="card-desc">
-          Seven AI tools for every stage of a job search: job analysis, cover letter,
-          interview prep, salary negotiation, follow-up email, LinkedIn optimiser, and
-          résumé keyword analysis. You bring your own API key, so your data stays yours.
-        </p>
-        <p class="card-cta"><a href="https://twobirds-kramerica.github.io/career-coach/" target="_blank" rel="noopener">Try Career Coach &rarr;</a></p>
-      </div>
-      <div class="card" style="border-top: 3px solid #E07B39;">
-        <span class="project-badge project-badge--beta">Housing</span>
-        <h3 class="card-title">KevsCasa</h3>
-        <p class="card-desc">
-          An apartment search tool built for one person and configurable for any city.
-          Ranked listings, neighbourhood safety ratings, contact tracking, commute calculator,
-          and a move-out countdown. In private beta with Ontario settlement agencies.
-        </p>
-        <p class="card-cta"><span style="color:var(--text-muted)">Private beta &middot; not yet public</span></p>
-      </div>
-      <div class="card" style="border-top: 3px solid #6B21A8;">
-        <span class="project-badge project-badge--concept">Infrastructure</span>
-        <h3 class="card-title">HAL Stack</h3>
-        <p class="card-desc">
-          The operating system behind all Two Birds products. A four-layer sovereignty
-          model, an autonomous build system, and an effort-versus-return backlog framework.
-          This is how one person ships ten products. Zero outside dependencies.
-        </p>
-        <p class="card-vision">If every vendor disappeared tomorrow, the work continues.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <hr class="ap-divider">
 
-<!-- ===== Brand Story ===== -->
-<section class="section section--white" id="story">
-  <div class="section-inner">
-    <div class="section-header">
-      <h2 class="section-title">The Story Behind Two Birds</h2>
-    </div>
-    <div class="story-content">
-      <p>
-        The name comes from my twin daughters, fraternal twins, both girls.
-        In British and Canadian slang, "birds" has historically referred to girls.
-        The name is personal and deliberate: everything I build is, at its core, for them.
-      </p>
-      <p>
-        But the name carries a deeper meaning. They start at the exact same point
-        yet grow into uniquely different people. That's the philosophy behind every product:
-        ideas, growth, and people must be empowered to travel in their own sovereign directions.
-        Not corralled. Not automated. Sovereign.
-      </p>
-
-      <h3>The Chevrons &gt;&lt;</h3>
-      <p>
-        The Two Birds logo is two offset chevrons (angle brackets from code)
-        pointing in opposite directions. They represent:
-      </p>
-      <ul class="story-list">
-        <li><strong>Navigational forces:</strong> the intersection of headwinds (the challenge of change and displacement) and tailwinds (the momentum of AI)</li>
-        <li><strong>The meeting point:</strong> where the "Honest Helper" (the consultancy) meets the "Brave User"</li>
-        <li><strong>Fraternal paths:</strong> related but distinct, like the twins who inspired the name</li>
-        <li><strong>Code:</strong> the angle bracket is the most fundamental symbol in programming</li>
-      </ul>
-
-      <h3>Sovereignty Over Autonomy</h3>
-      <p>
-        Most companies in this space build tools that act <em>for</em> the user:
-        replacing human effort, making decisions on your behalf, creating dependency.
-        I build tools that empower the user to act for <em>themselves</em>.
-        The user retains ownership of their data, their logic, and their destiny.
-        That's not a feature. It's a design philosophy.
-      </p>
-
-      <h3>The Framework</h3>
-      <p>
-        Every decision passes through two lenses:
-        <strong>Essentialism</strong> (strip away 60% of the noise, do fewer things better)
-        and <strong>Lovability</strong> (design what remains for deep human resonance:
-        build things people love, not just use).
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Career ===== -->
-<section class="section section--grey" id="career">
-  <div class="section-inner">
-    <div class="section-header">
-      <h2 class="section-title">Career</h2>
-      <p class="section-subtitle">
-        The pattern at every stop: arrive, map the system, strip the waste, build what matters, ship.
-      </p>
-    </div>
-
-    <div class="about-grid">
-      <div class="about-text">
-
-        <!-- Company Logo Row -->
-        <div class="company-logos" aria-label="Companies worked with">
-          <span class="company-logo-item" title="TELUS / Koodo">TELUS</span>
-          <span class="company-logo-item" title="Start.ca">Start.ca</span>
-          <span class="company-logo-item" title="Staples Canada">Staples</span>
-          <span class="company-logo-item" title="Goodwill Canada">Goodwill</span>
-          <span class="company-logo-item" title="Peavey Mart">Peavey</span>
+    <!-- Services -->
+    <section class="ap-section" aria-labelledby="services-label">
+      <p class="ap-label" id="services-label">What I do</p>
+      <div class="ap-services">
+        <div>
+          <p class="ap-service-name">Process mapping and documentation</p>
+          <p class="ap-service-desc">Get your critical workflows out of people&rsquo;s heads and into a format your whole team can follow. When someone leaves or a busy season hits, the system holds.</p>
+          <p class="ap-service-note">Project-based &middot; No retainer</p>
         </div>
-
-        <!-- Timeline -->
-        <div class="timeline">
-          <div class="timeline-item">
-            <span class="timeline-date">2026&ndash;present</span>
-            <span class="timeline-role">Founder,Two Birds Innovation</span>
-            <span class="timeline-detail">AI tools, digital literacy, and consulting for small and medium businesses.</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-date">2024&ndash;2025</span>
-            <span class="timeline-role">Senior Product Manager, Emerging Markets,TELUS / Koodo</span>
-            <span class="timeline-detail">Led the Koodo Internet line across Central and Eastern Canada. Scaled to 60,000+ subscribers; reduced churn by 30%.</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-date">2022&ndash;2024</span>
-            <span class="timeline-role">Product Manager,Start.ca (acquired by TELUS, 2023)</span>
-            <span class="timeline-detail">Internet, digital TV, and phone product lines for a London, ON provider — continued through TELUS acquisition.</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-date">2021&ndash;2022</span>
-            <span class="timeline-role">Senior eCommerce Manager,Peavey Industries</span>
-            <span class="timeline-detail">Front-end site operations and long-term roadmap for a complex, multi-brand retail catalogue.</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-date">2020&ndash;2021</span>
-            <span class="timeline-role">Senior eCommerce Manager,Goodwill Industries Canada</span>
-            <span class="timeline-detail">Overhauled digital retail operations; led a team of 15 to record online sales growth. Applied Six Sigma to redesign fulfilment workflows.</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-date">2005&ndash;2019</span>
-            <span class="timeline-role">Category Manager &rarr; Senior Product Manager,Staples Canada</span>
-            <span class="timeline-detail">14 years. Built three foundational sub-teams from scratch: UX Design, Web Operations, and Analytics. Doubled eCommerce platform to $30M in annual revenue. P&amp;L ownership, national service line expansion, enterprise platform integration.</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-date">1998&ndash;2005</span>
-            <span class="timeline-role">Progressive Management,Restaurant Industry</span>
-            <span class="timeline-detail">Seven years. First real job. Where I learned process improvement by necessity,when the Friday night rush hits, you either have a system or you have chaos.</span>
-          </div>
+        <div>
+          <p class="ap-service-name">AI tool evaluation and adoption</p>
+          <p class="ap-service-desc">An honest read on which AI tools fit your business, which are hype, and how to roll them out without disrupting what already works. I stay through the rollout, not just the planning.</p>
+          <p class="ap-service-note">Project-based &middot; No retainer</p>
+        </div>
+        <div>
+          <p class="ap-service-name">Operational improvement</p>
+          <p class="ap-service-desc">Find the one or two things costing you the most time and revenue, and a clear path to fixing them. Rooted in Six Sigma and 20 years of doing this across retail, eCommerce, and telecom.</p>
+          <p class="ap-service-note">Project-based &middot; No retainer</p>
         </div>
       </div>
+    </section>
 
-      <div class="about-sidebar">
-        <img src="images/aaron-headshot.jpg" alt="Aaron Patzalek" class="about-headshot" width="200" height="200">
+    <hr class="ap-divider">
 
-        <div class="about-stats">
-          <div class="stat">
-            <div class="stat-number">20</div>
-            <div class="stat-label">Years in product</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">6</div>
-            <div class="stat-label">Industries</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">29</div>
-            <div class="stat-label">DCC modules</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">INTJ</div>
-            <div class="stat-label">Systems thinker</div>
-          </div>
-        </div>
+    <!-- Bottom CTA -->
+    <section class="ap-cta-block" aria-labelledby="cta-label">
+      <h2 id="cta-label">Ready to talk?</h2>
+      <p>30 minutes. You describe what&rsquo;s breaking. I ask questions. No pitch.</p>
+      <a href="https://calendly.com/twobirdsinnovation/30min" target="_blank" rel="noopener" class="ap-btn ap-btn-full">
+        Book a 30-min discovery call &rarr;
+      </a>
+    </section>
 
-        <h3 style="margin-top: var(--space-6); margin-bottom: var(--space-3); font-size: var(--text-lg);">Skills</h3>
-        <div class="skills-grid">
-          <div class="skill-group">
-            <h4>Product</h4>
-            <ul>
-              <li>Product strategy &amp; roadmap</li>
-              <li>Stakeholder management</li>
-              <li>Backlog management</li>
-              <li>User research</li>
-            </ul>
-          </div>
-          <div class="skill-group">
-            <h4>Process</h4>
-            <ul>
-              <li>Six Sigma (subject-matter expert / stakeholder)</li>
-              <li>Scrum Master (certified)</li>
-              <li>Process mapping &amp; improvement</li>
-              <li>Vendor management</li>
-            </ul>
-          </div>
-          <div class="skill-group">
-            <h4>People</h4>
-            <ul>
-              <li>Team building &amp; coaching</li>
-              <li>Cross-functional delivery</li>
-              <li>Technical communication</li>
-              <li>Mentoring</li>
-            </ul>
-          </div>
-          <div class="skill-group">
-            <h4>Technical</h4>
-            <ul>
-              <li>AI tool evaluation</li>
-              <li>HTML / CSS / JavaScript</li>
-              <li>Accessibility (WCAG AA)</li>
-              <li>eCommerce &amp; web-to-print</li>
-            </ul>
-          </div>
-        </div>
+  </div><!-- /.ap-wrap -->
+</main>
 
-        <h3 style="margin-top: var(--space-6); margin-bottom: var(--space-3); font-size: var(--text-lg);">Education</h3>
-        <ul class="credentials-list">
-          <li>Fanshawe College,Business Marketing (1999)</li>
-          <li>Certified Scrum Master (Scrum.org)</li>
-          <li>Six Sigma subject-matter expert,stakeholder on Black Belt projects</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Approach ===== -->
-<section class="section section--white" id="approach">
-  <div class="section-inner">
-    <div class="section-header">
-      <h2 class="section-title">How I Work</h2>
-    </div>
-    <div class="approach-grid">
-      <div class="approach-item">
-        <h3>Essentialism</h3>
-        <p>Strip away 60% of the noise. Do fewer things, but do them well enough that people love them. Say no to good so you can say yes to great.</p>
-      </div>
-      <div class="approach-item">
-        <h3>Sovereignty</h3>
-        <p>Your data stays yours. Your decisions stay yours. Every product works at four layers,from cloud to fully offline. No vendor lock-in. No surprise paywalls.</p>
-      </div>
-      <div class="approach-item">
-        <h3>Lead from the Back</h3>
-        <p>I provide the engine and the vantage point. You sit at the steering wheel and drive your own progress. I don't do things for people,I empower people to do things for themselves.</p>
-      </div>
-      <div class="approach-item">
-        <h3>Ship and Iterate</h3>
-        <p>Perfect is the enemy of done. Build the minimum lovable thing, get it in front of real people, and improve based on what you learn.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CTA ===== -->
-<section class="section section--dark">
-  <div class="section-inner">
-    <div class="section-header">
-      <h2 class="section-title">Let's Build Something Together</h2>
-      <p class="section-subtitle">
-        Whether you need a product leader, a digital literacy partner for your community,
-        or a diagnostic tool for your business,I'd like to hear about it.
-      </p>
-    </div>
-    <div class="hero-actions">
-      <a href="consulting.html" class="btn btn-primary">Book a Discovery Call &rarr;</a>
-      <a href="https://www.linkedin.com/in/aaronpatzalek/" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn &nearr;</a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Contact ===== -->
-<section class="section section--white" id="contact">
-  <div class="section-inner">
-    <div class="section-header">
-      <h2 class="section-title">Get in Touch</h2>
-      <p class="section-subtitle">Briefs, partnerships, community projects, or just a conversation about what you're building,I read every message.</p>
-    </div>
-    <div class="contact-grid">
-      <div class="contact-info">
-        <h3>Let's talk.</h3>
-        <p>
-          I'm always interested in conversations about product, digital literacy,
-          community partnerships, or interesting problems worth solving.
-        </p>
-        <div class="contact-detail">
-          <span aria-hidden="true">&#128205;</span>
-          <span>St. Thomas, Ontario, Canada</span>
-        </div>
-        <div class="contact-detail">
-          <span aria-hidden="true">&#128231;</span>
-          <a href="mailto:aaron.patzalek@gmail.com">aaron.patzalek@gmail.com</a>
-        </div>
-        <div class="contact-detail">
-          <span aria-hidden="true">&#128279;</span>
-          <a href="https://www.linkedin.com/in/aaronpatzalek/" target="_blank" rel="noopener">linkedin.com/in/aaronpatzalek</a>
-        </div>
-      </div>
-      <form action="https://formspree.io/f/xeerqryj" method="POST">
-        <div class="form-field">
-          <label for="contact-name">Name</label>
-          <input type="text" id="contact-name" name="name" required placeholder="Your name">
-        </div>
-        <div class="form-field">
-          <label for="contact-email">Email</label>
-          <input type="email" id="contact-email" name="email" required placeholder="you@example.com">
-        </div>
-        <div class="form-field">
-          <label for="contact-message">Message</label>
-          <textarea id="contact-message" name="message" required placeholder="What's on your mind?"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary" style="width:100%;">Send Message &rarr;</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Footer ===== -->
-<footer class="footer">
-  <ul class="footer-links">
-    <li><a href="#work">Work</a></li>
-    <li><a href="#story">Story</a></li>
-    <li><a href="#career">Career</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="https://www.linkedin.com/in/aaronpatzalek/" target="_blank" rel="noopener">LinkedIn</a></li>
-    <li><a href="privacy.html">Privacy Policy</a></li>
-  </ul>
-  <p class="footer-copy">&copy; 2026 Aaron Patzalek &middot; Two Birds Innovation &middot; St. Thomas, Ontario, Canada.</p>
+<!-- Footer -->
+<footer class="ap-footer" aria-label="Site footer">
+  <nav class="ap-footer-links" aria-label="Footer navigation">
+    <a href="consulting.html">Consulting</a>
+    <a href="https://www.linkedin.com/in/aaronpatzalek/" target="_blank" rel="noopener">LinkedIn &nearr;</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </nav>
+  <span>&copy; 2026 Aaron Patzalek &middot; Two Birds Innovation &middot; St. Thomas, Ontario</span>
 </footer>
-
-<script src="js/main.js" defer></script>
 
 </body>
 </html>
