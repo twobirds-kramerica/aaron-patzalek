@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en-CA" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; connect-src 'self';">
+  <link rel="preload" href="fonts/inter/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <title>AI for Small Business | Elgin County &amp; Southwestern Ontario | Aaron Patzalek</title>
+  <meta name="description" content="Practical AI adoption for small businesses in Elgin County and southwestern Ontario. The AI Workflow Audit: $2,500 flat fee, five business days, plain-English written findings. No retainer.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://twobirds-kramerica.github.io/aaron-patzalek/ai-for-smes.html">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <meta property="og:title" content="AI for Small Business | Elgin County | Aaron Patzalek">
+  <meta property="og:description" content="Practical AI adoption for service businesses in Elgin County. $2,500 flat. Five business days. Written findings, 90-day plan, debrief call.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://twobirds-kramerica.github.io/aaron-patzalek/ai-for-smes.html">
+  <meta property="og:locale" content="en_CA">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* ── Page-specific overrides ── */
+    .consult-nav {
+      background: var(--tbi-navy);
+      padding: 0 var(--space-6);
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .consult-nav .nav-logo {
+      color: var(--tbi-white);
+      text-decoration: none;
+      font-weight: var(--font-bold);
+      font-size: var(--text-lg);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .consult-nav .nav-mark {
+      font-family: var(--font-mono);
+      font-weight: var(--font-bold);
+      letter-spacing: -0.12em;
+      color: #5DADE2;
+    }
+    .consult-nav .back-link {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: var(--text-sm);
+      transition: color var(--duration-fast);
+    }
+    .consult-nav .back-link:hover { color: var(--tbi-white); }
+
+    .page-hero {
+      background: var(--tbi-navy);
+      color: var(--tbi-white);
+      padding: var(--space-20) var(--space-6) var(--space-16);
+      text-align: center;
+    }
+    .page-hero .eyebrow {
+      display: inline-block;
+      background: rgba(0,102,204,0.35);
+      border: 1px solid rgba(0,102,204,0.6);
+      border-radius: var(--radius-full);
+      padding: var(--space-1) var(--space-4);
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: var(--space-5);
+    }
+    .page-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: var(--font-bold);
+      line-height: var(--leading-tight);
+      max-width: 720px;
+      margin: 0 auto var(--space-6);
+    }
+    .page-hero h1 span { color: #5DADE2; }
+    .page-hero .hero-sub {
+      font-size: var(--text-xl);
+      color: rgba(255,255,255,0.75);
+      max-width: 580px;
+      margin: 0 auto var(--space-8);
+      line-height: var(--leading-relaxed);
+    }
+    .hero-cta-row {
+      display: flex;
+      gap: var(--space-4);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--space-4) var(--space-8);
+      border-radius: var(--radius-md);
+      font-size: var(--text-lg);
+      font-weight: var(--font-semibold);
+      text-decoration: none;
+      background: var(--tbi-blue);
+      color: var(--tbi-white);
+      min-height: var(--tap-target-lg);
+      transition: background var(--duration-fast), transform var(--duration-fast);
+    }
+    .btn-primary:hover { background: var(--tbi-blue-hover); transform: translateY(-1px); }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--space-4) var(--space-8);
+      border-radius: var(--radius-md);
+      font-size: var(--text-lg);
+      font-weight: var(--font-semibold);
+      text-decoration: none;
+      background: transparent;
+      color: var(--tbi-white);
+      border: 2px solid rgba(255,255,255,0.4);
+      min-height: var(--tap-target-lg);
+      transition: border-color var(--duration-fast), transform var(--duration-fast);
+    }
+    .btn-ghost:hover { border-color: var(--tbi-white); transform: translateY(-1px); }
+
+    .page-main {
+      max-width: var(--max-width-content);
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+
+    /* ── Section labels ── */
+    .section-label {
+      font-size: var(--text-sm);
+      font-weight: var(--font-bold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--tbi-blue);
+      margin: 0 0 var(--space-3);
+    }
+
+    /* ── Problem section ── */
+    .problem-section {
+      padding: var(--space-16) 0 var(--space-12);
+    }
+    .problem-section h2 {
+      font-size: var(--text-3xl);
+      color: var(--text-primary);
+      margin: 0 0 var(--space-6);
+      line-height: var(--leading-tight);
+    }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--space-5);
+      margin-top: var(--space-8);
+    }
+    .problem-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-sm);
+    }
+    .problem-card .p-icon { font-size: 1.75rem; margin-bottom: var(--space-3); display: block; }
+    .problem-card h3 { font-size: var(--text-lg); color: var(--text-primary); margin: 0 0 var(--space-2); }
+    .problem-card p { font-size: var(--text-base); color: var(--text-secondary); line-height: var(--leading-relaxed); margin: 0; }
+
+    /* ── Audit offer ── */
+    .offer-section {
+      background: var(--bg-highlight);
+      border-radius: var(--radius-xl);
+      padding: var(--space-12) var(--space-10);
+      margin-bottom: var(--space-12);
+    }
+    .audit-price-badge {
+      display: inline-block;
+      background: var(--tbi-blue);
+      color: var(--tbi-white);
+      border-radius: var(--radius-full);
+      padding: var(--space-2) var(--space-5);
+      font-size: var(--text-lg);
+      font-weight: var(--font-bold);
+      margin-bottom: var(--space-4);
+      letter-spacing: 0.02em;
+    }
+    .offer-section h2 {
+      font-size: var(--text-3xl);
+      color: var(--text-primary);
+      margin: 0 0 var(--space-3);
+      line-height: var(--leading-tight);
+    }
+    .offer-sub {
+      font-size: var(--text-lg);
+      color: var(--text-secondary);
+      margin: 0 0 var(--space-8);
+      max-width: 580px;
+      line-height: var(--leading-relaxed);
+    }
+    .offer-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+    .offer-list li {
+      display: flex;
+      gap: var(--space-4);
+      align-items: flex-start;
+      font-size: var(--text-lg);
+      color: var(--text-primary);
+      line-height: var(--leading-relaxed);
+    }
+    .offer-list li .check {
+      width: 24px;
+      height: 24px;
+      background: var(--tbi-blue);
+      color: #fff;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .offer-detail-link {
+      display: inline-block;
+      margin-top: var(--space-8);
+      color: var(--tbi-blue);
+      font-weight: var(--font-semibold);
+      font-size: var(--text-base);
+      text-decoration: none;
+    }
+    .offer-detail-link:hover { text-decoration: underline; }
+
+    /* ── Local section ── */
+    .local-section {
+      margin-bottom: var(--space-12);
+    }
+    .local-section h2 {
+      font-size: var(--text-3xl);
+      color: var(--text-primary);
+      margin: 0 0 var(--space-4);
+    }
+    .local-section p {
+      font-size: var(--text-lg);
+      color: var(--text-secondary);
+      max-width: 620px;
+      line-height: var(--leading-relaxed);
+      margin: 0 0 var(--space-4);
+    }
+    .local-who {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+    .local-who-tag {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-default);
+      border-radius: var(--radius-full);
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      color: var(--text-secondary);
+    }
+
+    /* ── How it works ── */
+    .how-section {
+      margin-bottom: var(--space-16);
+    }
+    .how-section h2 {
+      font-size: var(--text-3xl);
+      color: var(--text-primary);
+      margin: 0 0 var(--space-8);
+    }
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-6);
+    }
+    .how-step {
+      padding: var(--space-6);
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+    }
+    .how-step .step-num {
+      font-size: var(--text-3xl);
+      font-weight: var(--font-bold);
+      color: var(--border-light);
+      line-height: 1;
+      margin-bottom: var(--space-3);
+    }
+    .how-step h3 { font-size: var(--text-lg); margin: 0 0 var(--space-2); }
+    .how-step p { font-size: var(--text-base); color: var(--text-secondary); line-height: var(--leading-relaxed); margin: 0; }
+
+    /* ── CTA block ── */
+    .cta-block {
+      background: var(--tbi-navy);
+      color: var(--tbi-white);
+      border-radius: var(--radius-xl);
+      padding: var(--space-12) var(--space-10);
+      margin-bottom: var(--space-16);
+      text-align: center;
+    }
+    .cta-block h2 {
+      font-size: var(--text-3xl);
+      margin: 0 0 var(--space-3);
+    }
+    .cta-block p {
+      font-size: var(--text-lg);
+      color: rgba(255,255,255,0.75);
+      max-width: 520px;
+      margin: 0 auto var(--space-8);
+      line-height: var(--leading-relaxed);
+    }
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--space-4) var(--space-10);
+      border-radius: var(--radius-md);
+      font-size: var(--text-lg);
+      font-weight: var(--font-semibold);
+      text-decoration: none;
+      background: var(--tbi-blue);
+      color: var(--tbi-white);
+      min-height: var(--tap-target-lg);
+      transition: background var(--duration-fast), transform var(--duration-fast);
+    }
+    .btn-cta:hover { background: var(--tbi-blue-hover); transform: translateY(-1px); }
+
+    /* ── Footer ── */
+    .page-footer {
+      background: var(--tbi-navy);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: var(--space-8) var(--space-6);
+      font-size: var(--text-sm);
+    }
+    .page-footer a { color: rgba(255,255,255,0.75); text-decoration: none; }
+    .page-footer a:hover { color: var(--tbi-white); }
+
+    @media (max-width: 600px) {
+      .page-hero { padding: var(--space-12) var(--space-4) var(--space-10); }
+      .offer-section, .cta-block { padding: var(--space-8) var(--space-5); }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<nav class="consult-nav" aria-label="Site navigation">
+  <a href="index.html" class="nav-logo">
+    <span class="nav-mark" aria-hidden="true">&gt;&lt;</span>
+    Aaron Patzalek
+  </a>
+  <a href="consulting.html" class="back-link">Book a call &rarr;</a>
+</nav>
+
+<header class="page-hero" role="banner" id="main">
+  <div class="eyebrow">Elgin County &middot; Southwestern Ontario</div>
+  <h1>AI that fits <span>your business.</span></h1>
+  <p class="hero-sub">
+    Most small businesses in Elgin County are running AI tools they barely use.
+    The AI Workflow Audit tells you which ones are worth keeping, which to drop,
+    and what to do next. $2,500 flat. Five business days.
+  </p>
+  <div class="hero-cta-row">
+    <a href="#how-it-works" class="btn-ghost">How it works &#x2193;</a>
+    <a href="https://calendly.com/twobirdsinnovation/30min" target="_blank" rel="noopener" class="btn-primary">
+      Book a 30-min discovery call &#x2192;
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="page-main">
+
+    <!-- Problem -->
+    <section class="problem-section" aria-labelledby="problem-heading">
+      <p class="section-label">What we hear from Elgin County businesses</p>
+      <h2 id="problem-heading">Does any of this sound familiar?</h2>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <span class="p-icon" aria-hidden="true">&#x1F4B8;</span>
+          <h3>You're paying for tools you barely open</h3>
+          <p>ChatGPT Plus, Copilot, Notion AI, something from a webinar. Each $20 or $30 a month. But you'd struggle to say exactly what time any of them are saving you.</p>
+        </div>
+        <div class="problem-card">
+          <span class="p-icon" aria-hidden="true">&#x1F914;</span>
+          <h3>You tried an AI tool and it didn't stick</h3>
+          <p>You signed up, watched the tutorial, used it for a week, then went back to the way you always did it. Not because AI can't help, but because the tool didn't fit how you actually work.</p>
+        </div>
+        <div class="problem-card">
+          <span class="p-icon" aria-hidden="true">&#x1F4E3;</span>
+          <h3>Everyone says adopt AI, but no one says how</h3>
+          <p>Your industry newsletter says you need AI. So does your accountant. But the advice is always general. Your business is specific, and no one has looked at it specifically.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Audit offer -->
+    <section class="offer-section" aria-labelledby="offer-heading">
+      <p class="section-label">The fix</p>
+      <div class="audit-price-badge">$2,500 flat fee</div>
+      <h2 id="offer-heading">The AI Workflow Audit</h2>
+      <p class="offer-sub">
+        Five business days. A written deliverable you can act on.
+        No retainer required after. No follow-up pitch.
+      </p>
+      <ul class="offer-list">
+        <li>
+          <span class="check" aria-hidden="true">&#x2713;</span>
+          <span><strong>AI tool inventory.</strong> Every tool you're running, what it costs, and whether it's earning its keep.</span>
+        </li>
+        <li>
+          <span class="check" aria-hidden="true">&#x2713;</span>
+          <span><strong>Process gap map.</strong> The parts of your operation where AI could actually save time, and where it would just add noise.</span>
+        </li>
+        <li>
+          <span class="check" aria-hidden="true">&#x2713;</span>
+          <span><strong>Priority matrix.</strong> Which tools to keep, which to cut, and which to try next, in order of impact and ease.</span>
+        </li>
+        <li>
+          <span class="check" aria-hidden="true">&#x2713;</span>
+          <span><strong>Written implementation plan.</strong> A 90-day roadmap with specific actions, not general advice.</span>
+        </li>
+        <li>
+          <span class="check" aria-hidden="true">&#x2713;</span>
+          <span><strong>One-hour debrief call.</strong> We walk through the findings together so you leave with a clear next step.</span>
+        </li>
+      </ul>
+      <a href="consulting.html" class="offer-detail-link">See full audit details and booking options &#x2192;</a>
+    </section>
+
+    <!-- Local section -->
+    <section class="local-section" aria-labelledby="local-heading">
+      <p class="section-label">Based in St. Thomas</p>
+      <h2 id="local-heading">Local knowledge. No travel fees.</h2>
+      <p>
+        I'm based in St. Thomas and work with businesses across Elgin County and the broader
+        southwestern Ontario region. I can meet in person or work remotely, whichever suits you.
+        No travel fees for businesses within 45 minutes of St. Thomas.
+      </p>
+      <p>Businesses I typically work with:</p>
+      <div class="local-who" role="list">
+        <span class="local-who-tag" role="listitem">Accountants and bookkeepers</span>
+        <span class="local-who-tag" role="listitem">Insurance brokers</span>
+        <span class="local-who-tag" role="listitem">Real estate offices</span>
+        <span class="local-who-tag" role="listitem">Healthcare administration</span>
+        <span class="local-who-tag" role="listitem">Trades businesses</span>
+        <span class="local-who-tag" role="listitem">Property management</span>
+        <span class="local-who-tag" role="listitem">Professional services</span>
+        <span class="local-who-tag" role="listitem">Retail owners</span>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-section" id="how-it-works" aria-labelledby="how-heading">
+      <p class="section-label">How it works</p>
+      <h2 id="how-heading">Three steps. Five business days. One written report.</h2>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="step-num" aria-hidden="true">01</div>
+          <h3>Discovery call</h3>
+          <p>30 minutes. You walk me through your current tools, your workflows, and where things feel inefficient. No prep needed.</p>
+        </div>
+        <div class="how-step">
+          <div class="step-num" aria-hidden="true">02</div>
+          <h3>The audit</h3>
+          <p>Over five business days, I review what you're running, map your key processes, and build the priority matrix.</p>
+        </div>
+        <div class="how-step">
+          <div class="step-num" aria-hidden="true">03</div>
+          <h3>Written report and debrief</h3>
+          <p>You receive the written findings and implementation plan. We walk through them together on a one-hour call.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-block" aria-labelledby="cta-heading">
+      <h2 id="cta-heading">Ready to find out where you actually stand?</h2>
+      <p>30 minutes to hear about your business. Then we'll tell you whether the audit makes sense for you. No pitch if it doesn't.</p>
+      <a href="https://calendly.com/twobirdsinnovation/30min" target="_blank" rel="noopener" class="btn-cta">
+        Book a 30-min discovery call &#x2192;
+      </a>
+    </section>
+
+  </div>
+</main>
+
+<footer class="page-footer" role="contentinfo">
+  <p>
+    <a href="index.html">Aaron Patzalek</a> &middot;
+    <a href="consulting.html">AI Workflow Audit</a> &middot;
+    <a href="dcc-for-libraries.html">For Libraries</a> &middot;
+    <a href="https://twobirds-kramerica.github.io/two-birds-innovation/" target="_blank" rel="noopener">Two Birds Innovation</a> &middot;
+    <a href="https://www.linkedin.com/in/aaronpatzalek/" target="_blank" rel="noopener">LinkedIn</a> &middot;
+    <a href="privacy.html">Privacy Policy</a> &middot;
+    St. Thomas, Ontario &middot; Canada
+  </p>
+  <p style="margin-top: var(--space-2);">&copy; 2026 Two Birds Innovation &middot; No data collected</p>
+</footer>
+
+</body>
+</html>

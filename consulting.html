@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; connect-src 'self';">
   <link rel="preload" href="fonts/inter/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
-  <title>Consulting | Aaron Patzalek | Process Improvement &amp; AI Adoption, Southwestern Ontario</title>
-  <meta name="description" content="Aaron Patzalek offers consulting for small and medium service businesses in southwestern Ontario. Process improvement, AI adoption, and operational clarity. No jargon, no retainer.">
+  <title>AI Workflow Audit | Aaron Patzalek | $2,500 Flat Fee | Southwestern Ontario</title>
+  <meta name="description" content="The AI Workflow Audit: a $2,500 flat-fee review of your business's AI tools and workflows. Five business days, a written report, a 90-day action plan, and a debrief call. No retainer. Southwestern Ontario.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://twobirds-kramerica.github.io/aaron-patzalek/consulting.html">
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-  <meta property="og:title" content="Consulting | Aaron Patzalek | Process Improvement &amp; AI Adoption">
-  <meta property="og:description" content="Helping small and medium service businesses in southwestern Ontario run leaner, think clearer, and adopt AI without the chaos.">
+  <meta property="og:title" content="AI Workflow Audit | Aaron Patzalek | $2,500 Flat Fee">
+  <meta property="og:description" content="A $2,500 flat-fee review of your AI tools and workflows. Written report, 90-day action plan, debrief call. No retainer. Southwestern Ontario.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://twobirds-kramerica.github.io/aaron-patzalek/consulting.html">
   <meta property="og:locale" content="en_CA">
@@ -403,10 +403,89 @@
     .consult-footer a { color: rgba(255,255,255,0.75); text-decoration: none; }
     .consult-footer a:hover { color: var(--tbi-white); }
 
+    /* ── Audit offer ── */
+    .audit-price-badge {
+      display: inline-block;
+      background: var(--tbi-blue);
+      color: var(--tbi-white);
+      border-radius: var(--radius-full);
+      padding: var(--space-2) var(--space-5);
+      font-size: var(--text-lg);
+      font-weight: var(--font-bold);
+      margin-bottom: var(--space-4);
+      letter-spacing: 0.02em;
+    }
+    .audit-cols {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: var(--space-10);
+      margin-top: var(--space-8);
+      align-items: start;
+    }
+    .audit-col-label {
+      font-size: var(--text-sm);
+      font-weight: var(--font-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--tbi-blue);
+      margin: 0 0 var(--space-4);
+    }
+    .audit-right {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+    }
+    .audit-fit-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .audit-fit-list li {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: var(--leading-relaxed);
+      padding-left: var(--space-5);
+      position: relative;
+    }
+    .audit-fit-list li::before {
+      content: '\2022';
+      position: absolute;
+      left: 0;
+      color: var(--tbi-blue);
+      font-weight: var(--font-bold);
+    }
+
+    /* ── Social proof ── */
+    .social-proof {
+      background: var(--bg-highlight);
+      border-radius: var(--radius-xl);
+      padding: var(--space-10);
+      margin-bottom: var(--space-12);
+      text-align: center;
+    }
+    .social-proof h2 {
+      font-size: var(--text-2xl);
+      color: var(--text-primary);
+      margin: 0 0 var(--space-4);
+    }
+    .sp-sub {
+      font-size: var(--text-lg);
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto var(--space-4);
+      line-height: var(--leading-relaxed);
+    }
+
     @media (max-width: 600px) {
       .consult-hero { padding: var(--space-12) var(--space-4) var(--space-10); }
       .offer-section, .booking-section { padding: var(--space-8) var(--space-5); }
       .cred-strip { gap: var(--space-5); }
+      .audit-cols { grid-template-columns: 1fr; gap: var(--space-6); }
+      .social-proof { padding: var(--space-8) var(--space-5); }
     }
   </style>
 </head>
@@ -423,11 +502,11 @@
 </nav>
 
 <header class="consult-hero" role="banner" id="main">
-  <div class="eyebrow">Consulting · Southwestern Ontario</div>
-  <h1>There's usually a better path.<br><span>Let's find it together.</span></h1>
+  <div class="eyebrow">AI Workflow Audit &middot; $2,500 Flat Fee &middot; 5 Business Days</div>
+  <h1>Find out exactly which AI tools<br><span>fit your business.</span></h1>
   <p class="hero-sub">
-    Process improvement and AI adoption for small and medium service businesses
-    in southwestern Ontario. No team to hire. No retainer to sign.
+    A plain-English inventory of what you're running, what's worth keeping,
+    and a 90-day plan to get there. $2,500 flat. No retainer.
   </p>
   <div class="hero-cta-row">
     <a href="#how-it-works" class="btn-book btn-book-ghost">
@@ -486,32 +565,51 @@
       </div>
     </div>
 
-    <!-- Offer -->
+    <!-- Audit Offer -->
     <section class="offer-section" aria-labelledby="offer-heading">
-      <p class="section-label">What I do</p>
-      <h2 id="offer-heading">Clear problems. Practical fixes. Tools that fit.</h2>
+      <p class="section-label">The audit</p>
+      <div class="audit-price-badge">$2,500 flat fee</div>
+      <h2 id="offer-heading">The AI Workflow Audit</h2>
       <p class="offer-sub">
-        I work with service businesses in southwestern Ontario to find the gaps in how they operate
-        and close them, with process documentation, workflow redesign, and AI tools that actually match how you work.
+        Five business days. A written deliverable you can act on immediately.
+        No retainer required after, no follow-up pitch.
       </p>
-      <ul class="offer-list">
-        <li>
-          <span class="check" aria-hidden="true">✓</span>
-          <span><strong>Process mapping and documentation.</strong> Get your critical workflows out of people's heads and into a format your whole team can follow.</span>
-        </li>
-        <li>
-          <span class="check" aria-hidden="true">✓</span>
-          <span><strong>Bottleneck diagnosis.</strong> Find the one or two things costing you the most time and revenue, and a clear path to fixing them.</span>
-        </li>
-        <li>
-          <span class="check" aria-hidden="true">✓</span>
-          <span><strong>AI tool evaluation and adoption.</strong> An honest read on which AI tools fit your business, which are hype, and how to roll them out without disrupting what already works.</span>
-        </li>
-        <li>
-          <span class="check" aria-hidden="true">✓</span>
-          <span><strong>Implementation support.</strong> I stay through the rollout, not just the planning.</span>
-        </li>
-      </ul>
+      <div class="audit-cols">
+        <div>
+          <p class="audit-col-label">What you get</p>
+          <ul class="offer-list">
+            <li>
+              <span class="check" aria-hidden="true">&#x2713;</span>
+              <span><strong>AI tool inventory.</strong> Every tool you're running, what it costs, and an honest assessment of whether it's earning its keep.</span>
+            </li>
+            <li>
+              <span class="check" aria-hidden="true">&#x2713;</span>
+              <span><strong>Process gap map.</strong> The workflows where AI could save you time, and the ones where it would just add noise.</span>
+            </li>
+            <li>
+              <span class="check" aria-hidden="true">&#x2713;</span>
+              <span><strong>Priority matrix.</strong> Which tools to keep, which to cut, and which to try next, in order of impact and ease.</span>
+            </li>
+            <li>
+              <span class="check" aria-hidden="true">&#x2713;</span>
+              <span><strong>Written implementation plan.</strong> A 90-day roadmap with specific actions, not general advice.</span>
+            </li>
+            <li>
+              <span class="check" aria-hidden="true">&#x2713;</span>
+              <span><strong>One-hour debrief call.</strong> We walk through the findings together so you leave with a clear next step.</span>
+            </li>
+          </ul>
+        </div>
+        <aside class="audit-right">
+          <p class="audit-col-label">Right for you if&hellip;</p>
+          <ul class="audit-fit-list">
+            <li>You're paying for AI tools but not sure which ones are actually working</li>
+            <li>You want to adopt AI but don't know where the real opportunities are in your operation</li>
+            <li>You've heard general AI advice before and it went nowhere</li>
+            <li>You want something written and specific, not a conversation that ends with another proposal</li>
+          </ul>
+        </aside>
+      </div>
     </section>
 
     <!-- How it works -->
@@ -614,6 +712,16 @@
       <p style="font-size:0.78rem;color:#777;margin-top:0.75rem">Powered by Clarity · Built by Two Birds Innovation · Your data never leaves your browser</p>
     </section>
 
+    <!-- Social proof -->
+    <section class="social-proof" aria-labelledby="social-heading">
+      <p class="section-label">Early results</p>
+      <h2 id="social-heading">First audits in progress.</h2>
+      <p class="sp-sub">The AI Workflow Audit is in its pilot phase with a small group of businesses in Elgin County and southwestern Ontario. Client testimonials will appear here once the first engagements close in Q3 2026. If you want to be in that first group, spots are limited.</p>
+      <a href="https://calendly.com/twobirdsinnovation/30min" target="_blank" rel="noopener" class="btn-book btn-book-primary" style="margin-top:var(--space-6);">
+        Book a discovery call &#x2192;
+      </a>
+    </section>
+
     <!-- Booking -->
     <section class="booking-section" aria-labelledby="booking-heading">
       <h2 id="booking-heading">Let's talk</h2>
@@ -652,6 +760,8 @@
 <footer class="consult-footer" role="contentinfo">
   <p>
     <a href="index.html">Aaron Patzalek</a> ·
+    <a href="ai-for-smes.html">AI for SMEs</a> ·
+    <a href="dcc-for-libraries.html">For Libraries</a> ·
     <a href="https://twobirds-kramerica.github.io/two-birds-innovation/" target="_blank" rel="noopener">Two Birds Innovation</a> ·
     <a href="https://www.linkedin.com/in/aaronpatzalek/" target="_blank" rel="noopener">LinkedIn</a> ·
     <a href="privacy.html">Privacy Policy</a> ·
