@@ -132,15 +132,15 @@ Aaron is a systems-thinking generalist with 20+ years of cross-industry product 
 
 **STATUS: TODO** — Aaron to compile. Suggested outreach list based on career history:
 
-1. Phil from St. Thomas employment centre (current relationship)
-2. Dave Dame (Smile.io era referral connection)
+1. Employment services contact in St. Thomas (current relationship)
+2. Former referral connection from Smile.io era
 3. Former TELUS/Koodo product team colleagues
 4. Former Start.ca colleagues
 5. Former Staples Canada team members
 6. Former Goodwill Canada contacts
-7. Brenda (real DCC beta tester — if comfortable with testimonial)
+7. DCC beta tester (senior participant — if comfortable with testimonial)
 8. Library partners in Ontario (once DCC partnerships established)
-9. Mike K (referenced in session notes as a contact)
+9. Contact referenced in session notes
 10. Any Fanshawe College connections
 
 ---
