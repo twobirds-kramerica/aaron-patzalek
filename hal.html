@@ -4,20 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Two Birds Innovation — HAL Stack</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0c10'/%3E%3Cline x1='10' y1='8' x2='22' y2='16' stroke='%234f8cff' stroke-width='3.8' stroke-linecap='round'/%3E%3Cline x1='22' y1='16' x2='10' y2='24' stroke='%234f8cff' stroke-width='3.8' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c0e14'/%3E%3Cline x1='10' y1='8' x2='22' y2='16' stroke='%23e09820' stroke-width='3.8' stroke-linecap='round'/%3E%3Cline x1='22' y1='16' x2='10' y2='24' stroke='%23e09820' stroke-width='3.8' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="fonts/inter/inter.css">
+  <link rel="stylesheet" href="fonts/dm-serif-display/dm-serif-display.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:           #0b0c10;
-      --bg-card:      #12141b;
-      --bg-lift:      #1a1d27;
-      --text:         #e8eaf0;
-      --muted:        #7f8499;
-      --dim:          #555a6e;
-      --accent:       #4f8cff;
-      --accent-soft:  rgba(79,140,255,.10);
-      --accent-b:     rgba(79,140,255,.22);
+      --bg:           #0c0e14;
+      --bg-card:      #141820;
+      --bg-lift:      #1d2130;
+      --text:         #e2e5ef;
+      --muted:        #7a8498;
+      --dim:          #4a5268;
+      --accent:       #e09820;
+      --accent-soft:  rgba(224,152,32,.10);
+      --accent-b:     rgba(224,152,32,.22);
       --teal:         #2dd4bf;
       --teal-soft:    rgba(45,212,191,.09);
       --teal-b:       rgba(45,212,191,.22);
@@ -28,10 +30,11 @@
       --border:       rgba(255,255,255,.065);
       --r:            10px;
       --mono:         'JetBrains Mono','Fira Code',Consolas,monospace;
+      --serif:        'DM Serif Display',Georgia,serif;
     }
 
     body {
-      font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+      font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.65;
@@ -97,10 +100,10 @@
     }
 
     .hero h1 {
-      font-size: clamp(2rem,5.5vw,3.6rem);
+      font-size: clamp(2.6rem,6vw,4.2rem);
       font-weight: 700;
-      line-height: 1.12;
-      letter-spacing: -.025em;
+      line-height: 1.08;
+      letter-spacing: -.03em;
       margin-bottom: 16px;
     }
 
@@ -194,13 +197,14 @@
     }
 
     .build-num {
-      font-size: 3.6rem;
-      font-weight: 700;
-      font-family: var(--mono);
+      font-size: 5.2rem;
+      font-weight: 400;
+      font-family: var(--serif);
       color: var(--accent);
-      line-height: 1;
+      line-height: .95;
       flex-shrink: 0;
-      min-width: 4.5ch;
+      min-width: 3ch;
+      letter-spacing: -.02em;
     }
 
     .build-label { font-size: .9rem; color: var(--muted); line-height: 1.6; }
@@ -319,12 +323,12 @@
     .arch-row:last-child { border-bottom: none; }
     .arch-row:hover { background: var(--bg-lift); }
 
-    .arch-row.ai-layer { background: rgba(79,140,255,.04); animation: ai-glow 3s ease-in-out infinite; }
+    .arch-row.ai-layer { background: rgba(224,152,32,.04); animation: ai-glow 3s ease-in-out infinite; }
     @keyframes ai-glow {
-      0%,100% { background: rgba(79,140,255,.04); }
-      50%      { background: rgba(79,140,255,.08); }
+      0%,100% { background: rgba(224,152,32,.04); }
+      50%      { background: rgba(224,152,32,.08); }
     }
-    .arch-row.ai-layer:hover { background: rgba(79,140,255,.12); }
+    .arch-row.ai-layer:hover { background: rgba(224,152,32,.12); }
 
     .arch-num {
       display: flex; align-items: flex-start; justify-content: center;
