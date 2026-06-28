@@ -419,6 +419,43 @@
       display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
     }
 
+    /* ── PILL TOOLTIPS ── */
+    .pill[data-tip] { cursor: pointer; position: relative; }
+    .pill[data-tip]:hover { border-color: var(--accent-b); background: var(--bg-lift); }
+
+    .pill-popover {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      background: #1d2130;
+      border: 1px solid var(--accent-b);
+      border-radius: 10px;
+      padding: 16px 18px;
+      max-width: 300px;
+      font-size: .82rem;
+      color: var(--text);
+      line-height: 1.65;
+      box-shadow: 0 8px 32px rgba(0,0,0,.5);
+      pointer-events: none;
+    }
+    .pill-popover.visible { display: block; }
+    .pill-popover-title {
+      font-weight: 600;
+      font-size: .88rem;
+      margin-bottom: 6px;
+      color: var(--accent);
+      font-family: var(--mono);
+    }
+    .pill-popover-close {
+      position: absolute;
+      top: 10px; right: 12px;
+      font-size: 14px;
+      color: var(--muted);
+      cursor: pointer;
+      pointer-events: all;
+      line-height: 1;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 620px) {
       .zero-block { flex-direction: column; gap: 12px; }
@@ -426,6 +463,22 @@
       .step-n { font-size: 1.1rem; }
       .loop-row { grid-template-columns: 28px 1fr; }
       .loop-time { display: none; }
+
+      /* build block: number left, text right — no vertical stack */
+      .build-block {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 16px;
+        align-items: center;
+        padding: 18px 18px;
+      }
+      .build-num {
+        font-size: 3.4rem;
+        min-width: unset;
+      }
+      .build-label {
+        font-size: .82rem;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -518,11 +571,11 @@
 <!-- ═══ CONNECTED ══════════════════════════════════════════════════════ -->
 <section class="reveal">
   <div class="eyebrow">What's Connected</div>
-  <h2>The stack, as of June 20, 2026</h2>
+  <h2>The stack, as of June 2026</h2>
   <p>Numbers from the most recent capability snapshot.</p>
 
   <div class="callout">
-    <div class="callout-eye">📊 Capability snapshot — June 20, 2026</div>
+    <div class="callout-eye">📊 Capability snapshot — June 2026</div>
     <div class="callout-row">
       <div>
         <div class="callout-n">6</div>
@@ -639,7 +692,7 @@
 <!-- ═══ ARCHITECTURE ══════════════════════════════════════════════════════ -->
 <section class="reveal">
   <div class="eyebrow">Architecture</div>
-  <h2>Five layers. One person running them.</h2>
+  <h2>Five layers. Built to run without babysitting.</h2>
   <p style="margin-bottom:26px;">Products on top. Automation in the middle. AI as the engine. Sovereignty principles at the base. Every choice above L5 must survive the test: "if this vendor disappeared tomorrow, what breaks?"</p>
 
   <div class="arch">
@@ -650,15 +703,15 @@
       <div class="arch-content">
         <div class="arch-label">Products — what users see · GitHub Pages</div>
         <div class="arch-pills">
-          <span class="pill">DCC Adults</span>
-          <span class="pill">DCC Kids</span>
-          <span class="pill">Career Coach</span>
-          <span class="pill">Clarity</span>
-          <span class="pill">KevsCasa</span>
-          <span class="pill">TALON</span>
-          <span class="pill">Job Agent</span>
-          <span class="pill">The Chronicler</span>
-          <span class="pill">Two Birds</span>
+          <span class="pill" data-tip-title="DCC Adults" data-tip="29-module bilingual digital literacy platform for seniors. WCAG AA compliant. Licensing model for libraries and municipalities.">DCC Adults</span>
+          <span class="pill" data-tip-title="DCC Kids" data-tip="Digital literacy curriculum for children ages 4–9. Online safety, AI literacy, technology judgment. Built on the same codebase as the adult platform.">DCC Kids</span>
+          <span class="pill" data-tip-title="Career Coach" data-tip="AI-assisted job search tool. Pulls live StatCan unemployment data monthly. Targets employment agencies and college career centres.">Career Coach</span>
+          <span class="pill" data-tip-title="Clarity" data-tip="Free 15-minute AI readiness diagnostic for SME owners. Produces a SWOT and action plan. Qualifies consulting leads before they book a call.">Clarity</span>
+          <span class="pill" data-tip-title="KevsCasa" data-tip="Apartment search and tracking dashboard. Portfolio piece exploring white-label housing navigation.">KevsCasa</span>
+          <span class="pill" data-tip-title="TALON" data-tip="Intelligence mining tool. Captures competitor moves, market shifts, and hiring patterns and routes that signal directly into the HAL Stack.">TALON</span>
+          <span class="pill" data-tip-title="Job Agent" data-tip="Automated job matching. Monitors job boards, matches against a CV profile, surfaces the highest-fit opportunities.">Job Agent</span>
+          <span class="pill" data-tip-title="The Chronicler" data-tip="Structured memory layer. Captures every decision, sprint, and pivot in a searchable log any agent can query.">The Chronicler</span>
+          <span class="pill" data-tip-title="2 Birds Innovation" data-tip="Private consulting practice. Process mapping, bottleneck diagnosis, and operations improvement. Fractional engagement model.">2 Birds Innovation</span>
         </div>
       </div>
     </div>
@@ -668,13 +721,13 @@
       <div class="arch-content">
         <div class="arch-label">HAL Stack — automation · overnight build</div>
         <div class="arch-pills">
-          <span class="pill">Sprint system</span>
-          <span class="pill">Notion sync</span>
-          <span class="pill">Overnight build (2am)</span>
-          <span class="pill">Playwright smoke tests</span>
-          <span class="pill">Uptime monitor</span>
-          <span class="pill">Autonomy audit</span>
-          <span class="pill">Daily briefing (Logan v3)</span>
+          <span class="pill" data-tip-title="Sprint system" data-tip="Notion-backed queue of tasks filed with priority, effort/return rating, and owner. A Python vetting script filters what the agent handles autonomously.">Sprint system</span>
+          <span class="pill" data-tip-title="Notion sync" data-tip="Every sprint status, session state, and backlog item stays live in Notion. Claude Code reads and writes Notion directly via MCP — no manual updates.">Notion sync</span>
+          <span class="pill" data-tip-title="Overnight build (2am)" data-tip="Windows Task Scheduler fires at 2am every night. Runs repo syncs, Lighthouse audits, smoke tests, autonomy audit, outbox sender, and morning briefing. No external cron service.">Overnight build (2am)</span>
+          <span class="pill" data-tip-title="Playwright smoke tests" data-tip="Headless Chromium hits every live product nightly. Checks key page elements and user flows. Screenshots are saved on failure.">Playwright smoke tests</span>
+          <span class="pill" data-tip-title="Uptime monitor" data-tip="uptime-monitor.py checks all product URLs nightly. Logs status codes. Flags anything that returns an error before the morning session starts.">Uptime monitor</span>
+          <span class="pill" data-tip-title="Autonomy audit" data-tip="Scans every open backlog item each night. Anything the agent can execute without human input gets flagged EXECUTE_NOW and never hits Aaron's queue.">Autonomy audit</span>
+          <span class="pill" data-tip-title="Daily briefing (Logan v3)" data-tip="Logan is the morning briefing agent. Reads overnight results and Notion P1 items, writes a plain-English summary. Ready when the laptop opens.">Daily briefing (Logan v3)</span>
         </div>
       </div>
     </div>
@@ -684,16 +737,16 @@
       <div class="arch-content">
         <div class="arch-label">AI + Governance — the engineer · 47 personas · hard rules</div>
         <div class="arch-pills">
-          <span class="pill">Claude Code CLI</span>
-          <span class="pill hi">41 MCPs connected</span>
-          <span class="pill hi">200+ skills</span>
-          <span class="pill hi">7 custom agents</span>
-          <span class="pill">Scrappy Pack (6)</span>
-          <span class="pill">Founding Board (22)</span>
-          <span class="pill">Inner Circle</span>
-          <span class="pill">Design gate</span>
-          <span class="pill">Voice-check protocol</span>
-          <span class="pill">Token guard (50 calls/turn)</span>
+          <span class="pill" data-tip-title="Claude Code CLI" data-tip="The AI agent that executes sprints. Reads the codebase, writes and edits files, runs PowerShell and Python, commits to Git — all from the terminal. No human typing code.">Claude Code CLI</span>
+          <span class="pill hi" data-tip-title="41 MCPs connected" data-tip="MCP (Model Context Protocol) connections let Claude Code talk to external tools directly — Notion, GitHub, Gmail, Google Drive, Slack, and 36 more. Applied automatically when the task calls for them.">41 MCPs connected</span>
+          <span class="pill hi" data-tip-title="200+ skills" data-tip="Skills are reusable instruction sets that Claude loads on demand — like a reference book the agent reads before executing a specialised task. Applied automatically; no explicit command needed. Examples: WCAG audit skill, learning design skill, sprint formatting skill.">200+ skills</span>
+          <span class="pill hi" data-tip-title="7 custom agents" data-tip="Purpose-built agents for specific sprint types: overnight build agent, autonomy audit agent, CoS briefing agent, and others. Each has its own instruction set and runs without human prompting.">7 custom agents</span>
+          <span class="pill" data-tip-title="Scrappy Pack (6)" data-tip="Six advisory sub-personas that review every substantive output: The Researcher, Why Not, The Fifth Why, The Ripper, The Sovereignty Check, and one more. They catch blind spots before anything ships.">Scrappy Pack (6)</span>
+          <span class="pill" data-tip-title="Founding Board (22)" data-tip="22 synthetic personas across six departments — strategy, legal, engineering, marketing, operations, product. They review Stage 3+ sprint outputs before commit. A REWORK verdict blocks the push.">Founding Board (22)</span>
+          <span class="pill" data-tip-title="Inner Circle" data-tip="Two seats that report directly: The Hand (Chief of Staff equivalent — synthesises all team output) and the Love Balance Advisor (tracks workload and wellbeing, can override other agents).">Inner Circle</span>
+          <span class="pill" data-tip-title="Design gate" data-tip="Four conditions must be met before any UI sprint starts: PRODUCT.md exists, an accessibility audit has run this quarter, Aaron approved the shape brief, dark mode tested on Android Chrome. One missing — sprint stops.">Design gate</span>
+          <span class="pill" data-tip-title="Voice-check protocol" data-tip="Every email, landing page, or grant submission is scanned against a banned word list before it leaves the system. A compliance tag is appended proving the scan ran.">Voice-check protocol</span>
+          <span class="pill" data-tip-title="Token guard (50 calls/turn)" data-tip="Hard limit of 50 tool calls per AI turn. Prevents runaway sessions where the agent loops without progress. Fired three times during system construction.">Token guard (50 calls/turn)</span>
         </div>
       </div>
     </div>
@@ -703,13 +756,13 @@
       <div class="arch-content">
         <div class="arch-label">Infrastructure — hosting · CI/CD · local compute</div>
         <div class="arch-pills">
-          <span class="pill">GitHub Pages</span>
-          <span class="pill">GitHub Actions (15+ workflows)</span>
-          <span class="pill">Git · 10 repos</span>
-          <span class="pill">Codeberg mirror</span>
-          <span class="pill">Windows Task Scheduler</span>
-          <span class="pill">Python stdlib</span>
-          <span class="pill">smtplib (no SendGrid)</span>
+          <span class="pill" data-tip-title="GitHub Pages" data-tip="All products are hosted on GitHub Pages. Static HTML files, deployed on git push. $0 cost. No server to maintain or secure.">GitHub Pages</span>
+          <span class="pill" data-tip-title="GitHub Actions (15+ workflows)" data-tip="Automated workflows that fire on every code push. Run WCAG accessibility checks, deploy to GitHub Pages, validate HTML, and more. No manual QA step.">GitHub Actions (15+ workflows)</span>
+          <span class="pill" data-tip-title="Git · 10 repos" data-tip="10 GitHub repositories: one per product plus portfolio and infrastructure repos. Examples: digital-confidence (DCC Adults), career-coach, aaron-patzalek (this site), two-birds-portfolio (HAL Stack command centre).">Git · 10 repos</span>
+          <span class="pill" data-tip-title="Codeberg mirror" data-tip="Every repo is mirrored nightly to Codeberg.org — an independent, non-commercial git host. If GitHub disappeared tomorrow, the entire codebase is safe and deployable elsewhere.">Codeberg mirror</span>
+          <span class="pill" data-tip-title="Windows Task Scheduler" data-tip="The overnight build runs via Windows Task Scheduler at 2am — no cloud cron service, no subscription, no external dependency. The laptop runs it locally.">Windows Task Scheduler</span>
+          <span class="pill" data-tip-title="Python stdlib" data-tip="All automation scripts use Python's built-in standard library only. No third-party packages to install, update, or break. Runs on any Python 3.x install.">Python stdlib</span>
+          <span class="pill" data-tip-title="smtplib (no SendGrid)" data-tip="Outbound emails are sent via Python's smtplib directly through Gmail. No SendGrid, no Mailchimp, no subscription. One less vendor in the stack.">smtplib (no SendGrid)</span>
         </div>
       </div>
     </div>
@@ -884,7 +937,7 @@
     <div class="product">
       <div class="product-icon">🏠</div>
       <div class="product-name">KevsCasa</div>
-      <span class="badge badge-live">Live</span>
+      <span class="badge badge-build">In development</span>
       <div class="product-for">→ Rental Seekers · Housing Navigators</div>
       <p class="product-body">Apartment search and tracking dashboard. Started as a personal civic tool for a friend in London, ON. Live portfolio piece. Being positioned as a white-label housing navigator.</p>
     </div>
@@ -915,10 +968,10 @@
 
     <div class="product">
       <div class="product-icon">🏢</div>
-      <div class="product-name">Two Birds Innovation</div>
+      <div class="product-name">Private Consulting</div>
       <span class="badge badge-pre">Pre-release</span>
-      <div class="product-for">→ Southwestern Ontario SMEs</div>
-      <p class="product-body">Consulting practice. Process mapping, bottleneck diagnosis, operations improvement — with technology as one of the tools, not the pitch. Fractional model: one dedicated day per week. CA$2,000–$2,500/day.</p>
+      <div class="product-for">→ Founders · Operators · Service Businesses</div>
+      <p class="product-body">Process mapping, bottleneck diagnosis, and operations improvement — with technology as one of the tools, not the pitch. Fractional engagement model. Reach out via aaronpatzalek.com to explore fit.</p>
     </div>
   </div>
 </section>
@@ -954,6 +1007,13 @@
   <span>Two Birds Innovation · St. Thomas, Ontario · Built on the HAL Stack</span>
   <span>Last updated June 2026</span>
 </footer>
+
+<!-- ═══ PILL POPOVER ═══════════════════════════════════════════════════════ -->
+<div class="pill-popover" id="pill-popover" role="tooltip" aria-live="polite">
+  <span class="pill-popover-close" id="pill-popover-close" aria-label="Close">✕</span>
+  <div class="pill-popover-title" id="pill-popover-title"></div>
+  <div id="pill-popover-body"></div>
+</div>
 
 <script>
   // ── SCROLL REVEAL ──────────────────────────────────────────
@@ -1032,7 +1092,68 @@
     }
     if (stat) stat.textContent = display;
   })();
-</script>
+  // ── PILL POPOVERS ──────────────────────────────────────────
+  (function() {
+    const popover  = document.getElementById('pill-popover');
+    const popTitle = document.getElementById('pill-popover-title');
+    const popBody  = document.getElementById('pill-popover-body');
+    const popClose = document.getElementById('pill-popover-close');
 
+    function showPopover(pill, e) {
+      const title = pill.dataset.tipTitle || pill.textContent;
+      const body  = pill.dataset.tip;
+      if (!body) return;
+      popTitle.textContent = title;
+      popBody.textContent  = body;
+      popover.classList.add('visible');
+      positionPopover(e);
+    }
+
+    function positionPopover(e) {
+      const pw = popover.offsetWidth  || 300;
+      const ph = popover.offsetHeight || 120;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      let x = e.clientX + 14;
+      let y = e.clientY + 14;
+      if (x + pw > vw - 12) x = e.clientX - pw - 14;
+      if (y + ph > vh - 12) y = e.clientY - ph - 14;
+      popover.style.left = Math.max(8, x) + 'px';
+      popover.style.top  = Math.max(8, y) + 'px';
+    }
+
+    function hidePopover() {
+      popover.classList.remove('visible');
+    }
+
+    document.querySelectorAll('.pill[data-tip]').forEach(pill => {
+      pill.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (popover.classList.contains('visible') && popTitle.textContent === (pill.dataset.tipTitle || pill.textContent)) {
+          hidePopover();
+        } else {
+          showPopover(pill, e);
+        }
+      });
+      // keyboard accessible
+      pill.setAttribute('tabindex', '0');
+      pill.setAttribute('role', 'button');
+      pill.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          showPopover(pill, { clientX: pill.getBoundingClientRect().left, clientY: pill.getBoundingClientRect().bottom });
+        }
+      });
+    });
+
+    popClose.addEventListener('click', hidePopover);
+    document.addEventListener('click', function(e) {
+      if (!popover.contains(e.target)) hidePopover();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') hidePopover();
+    });
+  })();
+</script>
 </body>
 </html>
