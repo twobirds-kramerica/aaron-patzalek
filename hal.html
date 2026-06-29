@@ -553,7 +553,7 @@
       <span class="stat-label">hosting<br>cost</span>
     </div>
     <div class="stat">
-      <span class="stat-num" data-counter="47" data-suffix="">47</span>
+      <span class="stat-num" data-counter="51" data-suffix="">51</span>
       <span class="stat-label">AI personas<br>in the stack</span>
     </div>
   </div>
@@ -590,7 +590,7 @@
         <div class="callout-l">skills across<br>four tiers</div>
       </div>
       <div>
-        <div class="callout-n">7</div>
+        <div class="callout-n">10</div>
         <div class="callout-l">custom agents<br>for specific sprint types</div>
       </div>
     </div>
@@ -734,12 +734,12 @@
     <div class="arch-row ai-layer">
       <div class="arch-num">L3</div>
       <div class="arch-content">
-        <div class="arch-label">AI + Governance — the engineer · 47 personas · hard rules</div>
+        <div class="arch-label">AI + Governance — the engineer · 51 personas · hard rules</div>
         <div class="arch-pills">
           <span class="pill" data-tip-title="Claude Code CLI" data-tip="The AI agent that executes sprints. Reads the codebase, writes and edits files, runs PowerShell and Python, commits to Git — all from the terminal. No human typing code.">Claude Code CLI</span>
           <span class="pill hi" data-tip-title="41 MCPs connected" data-tip="MCP (Model Context Protocol) connections let Claude Code talk to external tools directly — Notion, GitHub, Gmail, Google Drive, Slack, and 36 more. Applied automatically when the task calls for them.">41 MCPs connected</span>
           <span class="pill hi" data-tip-title="200+ skills" data-tip="Skills are reusable instruction sets that Claude loads on demand — like a reference book the agent reads before executing a specialised task. Applied automatically; no explicit command needed. Examples: WCAG audit skill, learning design skill, sprint formatting skill.">200+ skills</span>
-          <span class="pill hi" data-tip-title="7 custom agents" data-tip="Purpose-built agents for specific sprint types: overnight build agent, autonomy audit agent, CoS briefing agent, and others. Each has its own instruction set and runs without human prompting.">7 custom agents</span>
+          <span class="pill hi" data-tip-title="10 custom agents" data-tip="Purpose-built agents for specific sprint types: overnight build agent, autonomy audit agent, CoS briefing agent, and others. Each has its own instruction set and runs without human prompting.">10 custom agents</span>
           <span class="pill" data-tip-title="Scrappy Pack (6)" data-tip="Six advisory sub-personas that review every substantive output: The Researcher, Why Not, The Fifth Why, The Ripper, The Sovereignty Check, and one more. They catch blind spots before anything ships.">Scrappy Pack (6)</span>
           <span class="pill" data-tip-title="Founding Board (22)" data-tip="22 synthetic personas across six departments — strategy, legal, engineering, marketing, operations, product. They review Stage 3+ sprint outputs before commit. A REWORK verdict blocks the push.">Founding Board (22)</span>
           <span class="pill" data-tip-title="Inner Circle" data-tip="Two seats that report directly: The Hand (Chief of Staff equivalent — synthesises all team output) and the Love Balance Advisor (tracks workload and wellbeing, can override other agents).">Inner Circle</span>
@@ -1145,6 +1145,15 @@
       if (e.key === 'Escape') hidePopover();
     });
   })();
+
+  // Live stat: overnight builds count from two-birds-portfolio repo
+  fetch('https://raw.githubusercontent.com/twobirds-kramerica/two-birds-portfolio/master/hal-stack/data/hal-stats.json')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      var el = document.getElementById('stat-builds');
+      if (el && d.overnight_builds != null) el.textContent = d.overnight_builds;
+    })
+    .catch(function(){});
 </script>
 </body>
 </html>
