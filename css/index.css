@@ -146,6 +146,30 @@ a:focus-visible {
 
 .ap-btn-full { width: 100%; justify-content: center; font-size: 1.0625rem; }
 
+/* ── Credibility ──────────────────────────────── */
+.ap-credibility {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.125rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--ap-border);
+}
+
+.ap-headshot-placeholder {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--ap-border);
+  flex-shrink: 0;
+}
+
+.ap-credibility-bio {
+  font-size: 0.9375rem;
+  color: var(--ap-ink-2);
+  line-height: 1.55;
+}
+
 /* ── Divider ──────────────────────────────────── */
 .ap-divider { border: none; border-top: 1px solid var(--ap-border); }
 
@@ -300,4 +324,5 @@ a:focus-visible {
   .ap-section { padding: 2.5rem 0; }
   .ap-cta-block { padding: 2.5rem 0 3.5rem; }
   .ap-footer { padding: 1.25rem 1rem; }
+  .ap-credibility { flex-direction: column; gap: 0.875rem; }
 }
