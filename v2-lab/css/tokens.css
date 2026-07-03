@@ -1,0 +1,191 @@
+/* ============================================================================
+   Aaron Patzalek v2 -- Design Tokens  ·  "Ink & Copper"  ·  Fable pass (2026-07-03)
+   ----------------------------------------------------------------------------
+   Identity: senior operator. Warm paper + near-black ink + one copper accent.
+   Distinct from DCC (Trust Blue / Merriweather), Clarity (Fraunces + Inter)
+   and Career Coach (DM Serif + DM Sans).
+
+   Fonts: Bricolage Grotesque (headings, SIL OFL, variable opsz/wght)
+        + Inter (body, SIL OFL, variable). Both self-hosted in ../fonts/.
+
+   --------------------------------------------------------------------------
+   VERIFIED WCAG 2.2 AA CONTRAST (computed 2026-07-03)
+   --------------------------------------------------------------------------
+   LIGHT THEME
+     text        #20262E on bg      #FAF9F7  → 14.5:1  (AAA)
+     text        #20262E on surface #FFFFFF  → 15.2:1  (AAA)
+     text-light  #4E5A66 on bg      #FAF9F7  →  6.7:1  (AA+)
+     text-light  #4E5A66 on surface #FFFFFF  →  7.1:1  (AAA)
+     link/accent #9C4A0A on bg      #FAF9F7  →  5.9:1  (AA+)
+     link/accent #9C4A0A on white            →  6.2:1  (AA+)
+     white       on button  #9C4A0A          →  6.2:1  (AA+)  ← primary CTA
+     white       on button  #20262E          → 15.2:1  (AAA)  ← ink button
+     accent-deep #7A3D08 on accent-light #F7ECE1 → 7.2:1 (AAA)
+   DARK THEME
+     text        #EDEBE7 on bg      #15181C  → 15.0:1  (AAA)
+     text        #EDEBE7 on surface #1E2228  → 13.4:1  (AAA)
+     text-light  #A8B0B9 on bg      #15181C  →  8.1:1  (AAA)
+     text-light  #A8B0B9 on surface #1E2228  →  7.3:1  (AAA)
+     link/accent #EFA45E on bg      #15181C  →  8.6:1  (AAA)
+     link/accent #EFA45E on surface #1E2228  →  7.7:1  (AAA)
+     ink #15181C on button #EFA45E           →  8.6:1  (AAA)  ← primary CTA
+     accent-deep #F2C494 on accent-light #2E2013 → 9.8:1 (AAA)
+   Focus rings: #9C4A0A on light bg (5.9:1) · #EFA45E on dark bg (8.6:1).
+   Rule enforced: no text token below 4.5:1 on any surface it is used on.
+   ========================================================================== */
+
+/* --- Self-hosted fonts ---------------------------------------------------- */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('../fonts/bricolage-grotesque/BricolageGrotesque-Variable-latin.woff2') format('woff2');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2212, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('../fonts/bricolage-grotesque/BricolageGrotesque-Variable-latin-ext.woff2') format('woff2');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/inter/InterVariable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+
+  /* --- Colour: surfaces --------------------------------------------------- */
+  --color-bg:            #FAF9F7;  /* warm paper */
+  --color-surface:       #FFFFFF;  /* cards */
+  --color-surface-alt:   #F2F0EC;  /* quiet fills, code-ish strips */
+  --color-accent-light:  #F7ECE1;  /* copper-tinted fill */
+
+  /* --- Colour: ink + copper ------------------------------------------------ */
+  --color-primary:        #20262E; /* ink -- headings, ink buttons (15.2:1 vs white) */
+  --color-accent:         #9C4A0A; /* copper -- links, accents, CTA (5.9:1 on bg) */
+  --color-accent-hover:   #7A3D08;
+  --color-accent-deep:    #7A3D08; /* copper text on accent-light fill (7.2:1) */
+  --color-accent-raw:     #C86B1E; /* DECORATIVE ONLY (rules, marks) -- never text */
+
+  /* --- Colour: text -------------------------------------------------------- */
+  --color-text:           #20262E; /* 14.5:1 on bg */
+  --color-text-light:     #4E5A66; /* meta/captions only -- 6.7:1 on bg */
+  --color-text-inverse:   #FFFFFF;
+  --color-text-link:      #9C4A0A;
+  --color-text-link-hover:#7A3D08;
+
+  /* --- Colour: structure ---------------------------------------------------- */
+  --color-border:         #E2DED7;
+  --color-border-strong:  #C4BEB4;
+
+  /* --- Buttons (theme-flipped below) ---------------------------------------- */
+  --color-btn-bg:         #9C4A0A;
+  --color-btn-text:       #FFFFFF;
+  --color-btn-hover:      #7A3D08;
+  --color-btn-2-bg:       transparent;
+  --color-btn-2-text:     #20262E;
+  --color-btn-2-border:   #C4BEB4;
+
+  /* --- Typography ------------------------------------------------------------ */
+  --font-heading: 'Bricolage Grotesque', 'Segoe UI', 'Helvetica Neue', sans-serif;
+  --font-body:    'Inter', -apple-system, 'Segoe UI', 'Helvetica Neue', sans-serif;
+  --font-mono:    ui-monospace, 'Cascadia Code', Consolas, monospace;
+
+  --font-size-base: 17px;
+  --font-size-sm:   15px;
+  --font-size-h1:   clamp(2.5rem, 5.4vw + 1rem, 4.15rem);
+  --font-size-h2:   clamp(1.7rem, 2.4vw + 0.9rem, 2.3rem);
+  --font-size-h3:   1.2rem;
+  --font-size-lead: clamp(1.1rem, 0.7vw + 0.95rem, 1.28rem);
+
+  --line-height-tight: 1.06;
+  --line-height-body:  1.65;
+
+  /* --- Spacing (4px base) ------------------------------------------------------ */
+  --space-1: 4px;  --space-2: 8px;   --space-3: 12px; --space-4: 16px;
+  --space-5: 20px; --space-6: 24px;  --space-8: 32px; --space-10: 40px;
+  --space-12: 48px; --space-16: 64px; --space-20: 80px; --space-28: 112px;
+
+  /* --- Radius / shadow ----------------------------------------------------------- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 3px rgba(32, 38, 46, 0.06);
+  --shadow-md: 0 3px 14px rgba(32, 38, 46, 0.08);
+  --shadow-lg: 0 10px 34px rgba(32, 38, 46, 0.12);
+
+  /* --- Motion -------------------------------------------------------------------- */
+  --motion-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --motion-1: 140ms;
+  --motion-2: 240ms;
+  --motion-3: 420ms;
+
+  /* --- Focus ring ------------------------------------------------------------------ */
+  --focus-ring-color: #9C4A0A;
+  --focus-ring: 3px solid var(--focus-ring-color);
+  --focus-ring-offset: 2px;
+
+  /* --- Layout ---------------------------------------------------------------------- */
+  --container-max: 1080px;
+  --content-max: 66ch;
+  --nav-height: 68px;
+  --tap-target: 44px;
+}
+
+/* ============================================================================
+   DARK THEME -- data-theme="dark" on <html>. Verified pairs in header table.
+   ========================================================================== */
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg:            #15181C;
+  --color-surface:       #1E2228;
+  --color-surface-alt:   #262B32;
+  --color-accent-light:  #2E2013;
+
+  --color-primary:        #EDEBE7;
+  --color-accent:         #EFA45E;  /* 8.6:1 on bg */
+  --color-accent-hover:   #F2C494;
+  --color-accent-deep:    #F2C494;  /* 9.8:1 on accent-light */
+  --color-accent-raw:     #C86B1E;
+
+  --color-text:           #EDEBE7;
+  --color-text-light:     #A8B0B9;
+  --color-text-inverse:   #15181C;
+  --color-text-link:      #EFA45E;
+  --color-text-link-hover:#F2C494;
+
+  --color-border:         #333941;
+  --color-border-strong:  #4A525C;
+
+  --color-btn-bg:         #EFA45E;  /* ink text on amber -- 8.6:1 */
+  --color-btn-text:       #15181C;
+  --color-btn-hover:      #F2C494;
+  --color-btn-2-bg:       transparent;
+  --color-btn-2-text:     #EDEBE7;
+  --color-btn-2-border:   #4A525C;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 3px 14px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 10px 34px rgba(0, 0, 0, 0.55);
+
+  --focus-ring-color: #EFA45E;
+}
+
+/* Honour reduced motion globally. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-1: 0ms;
+    --motion-2: 0ms;
+    --motion-3: 0ms;
+  }
+}
