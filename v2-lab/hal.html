@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The HAL Stack | An Operator's AI System That Ships | Aaron Patzalek</title>
+  <meta name="description" content="How a non-technical operator designed and orchestrated an autonomous AI system that builds, tests, and ships real products overnight. A working case study, not a pitch.">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2320262E'/%3E%3Cline x1='10' y1='8' x2='22' y2='16' stroke='%23C86B1E' stroke-width='3.8' stroke-linecap='round'/%3E%3Cline x1='22' y1='16' x2='10' y2='24' stroke='%23C86B1E' stroke-width='3.8' stroke-linecap='round'/%3E%3C/svg%3E">
+  <meta property="og:title" content="The HAL Stack | An Operator's AI System That Ships">
+  <meta property="og:description" content="One non-technical operator. An AI system that designs, builds, tests, and ships real products overnight. Every claim on this page is verifiable.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_CA">
+
+  <script>
+    // Set theme before first paint: saved preference wins, then OS preference.
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('ap-theme'); } catch (e) {}
+      var dark = saved ? saved === 'dark'
+        : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (dark) document.documentElement.setAttribute('data-theme', 'dark');
+    })();
+  </script>
+
+  <link rel="preload" href="fonts/bricolage-grotesque/BricolageGrotesque-Variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/inter/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+
+  <style>
+    /* ── HAL page-specific components. Tokens only; every text/surface pair
+       below is a verified combination from tokens.css. ─────────────────── */
+
+    /* Hero framing line */
+    .hal-hero-note {
+      font-family: var(--font-mono);
+      font-size: var(--font-size-sm);
+      color: var(--color-text-light);            /* 6.7:1 on bg */
+      margin: 0 0 var(--space-6);
+      display: flex; align-items: flex-start; gap: var(--space-2);
+    }
+    .hal-hero-note::before { content: '//'; color: var(--color-accent); } /* 5.9:1 */
+
+    /* Role split: what Aaron does vs what the system does */
+    .role-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+    .role-col {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      box-shadow: var(--shadow-sm);
+    }
+    .role-col h3 { margin-bottom: var(--space-4); }
+    .role-col ul { margin: 0; padding: 0 0 0 1.2em; }
+    .role-col li { margin-bottom: var(--space-3); font-size: 0.98rem; }
+    .role-col li:last-child { margin-bottom: 0; }
+    .role-tag {
+      display: inline-block;
+      font-family: var(--font-heading); font-size: 0.75rem; font-weight: 660;
+      letter-spacing: 0.11em; text-transform: uppercase;
+      padding: 3px 12px; border-radius: var(--radius-pill);
+      margin-bottom: var(--space-4);
+    }
+    .role-tag.human { background: var(--color-accent-light); color: var(--color-accent-deep); }   /* 7.2:1 */
+    .role-tag.machine { background: var(--color-surface-alt); color: var(--color-text); }
+    @media (max-width: 720px) { .role-grid { grid-template-columns: 1fr; } }
+
+    /* Nightly loop timeline */
+    .loop { display: grid; gap: var(--space-3); margin: 0; padding: 0; list-style: none; }
+    .loop-row {
+      display: grid; grid-template-columns: 110px 1fr; gap: var(--space-5);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-4) var(--space-5);
+      align-items: baseline;
+    }
+    .loop-time {
+      font-family: var(--font-mono); font-size: 0.8rem;
+      color: var(--color-accent);                 /* 5.9:1 light / 8.6:1 dark on surface-adjacent */
+      letter-spacing: 0.04em; white-space: nowrap;
+    }
+    .loop-title { font-weight: 600; font-size: 0.98rem; margin: 0 0 2px; max-width: none; }
+    .loop-detail { font-size: var(--font-size-sm); color: var(--color-text-light); margin: 0; max-width: none; }
+    @media (max-width: 560px) {
+      .loop-row { grid-template-columns: 1fr; gap: var(--space-1); }
+    }
+
+    /* Run log: the concrete evening */
+    .runlog {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    .runlog-head {
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2) var(--space-4);
+      padding: var(--space-3) var(--space-6);
+      background: var(--color-surface-alt);
+      border-bottom: 1px solid var(--color-border);
+      font-family: var(--font-mono); font-size: 0.78rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--color-text-light);            /* 7.3:1 dark / 6.7:1+ light on surface-alt */
+    }
+    .runlog ol { margin: 0; padding: 0; list-style: none; counter-reset: run; }
+    .runlog li {
+      counter-increment: run;
+      display: grid; grid-template-columns: 44px 1fr; gap: var(--space-4);
+      padding: var(--space-5) var(--space-6);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .runlog li:last-child { border-bottom: none; }
+    .runlog li::before {
+      content: counter(run, decimal-leading-zero);
+      font-family: var(--font-heading);
+      font-variation-settings: 'opsz' 96;
+      font-weight: 760; font-size: 1.25rem; line-height: 1.4;
+      color: var(--color-accent);
+    }
+    .runlog h3 { font-size: 1.02rem; margin-bottom: 2px; }
+    .runlog p { font-size: var(--font-size-sm); color: var(--color-text-light); margin: 0; max-width: none; }
+
+    /* Rules strip */
+    .rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-5); }
+    .rule {
+      border-top: 3px solid var(--color-border-strong);
+      padding-top: var(--space-5);
+    }
+    .rule h3 { font-size: 1.05rem; margin-bottom: var(--space-2); }
+    .rule p { font-size: 0.95rem; color: var(--color-text); margin: 0; }
+
+    /* Portfolio status badges reuse .badge; add a quieter variant */
+    .badge.quiet { background: var(--color-surface-alt); color: var(--color-text); }
+
+    .product-links { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="wordmark" aria-label="Aaron Patzalek, home">
+      <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true">
+        <rect width="32" height="32" rx="7" fill="var(--color-primary)"/>
+        <line x1="10" y1="8" x2="22" y2="16" stroke="var(--color-accent-raw)" stroke-width="3.8" stroke-linecap="round"/>
+        <line x1="22" y1="16" x2="10" y2="24" stroke="var(--color-accent-raw)" stroke-width="3.8" stroke-linecap="round"/>
+      </svg>
+      Aaron Patzalek
+    </a>
+    <nav class="site-nav" aria-label="Site navigation">
+      <a class="nav-link" href="#system">How it works</a>
+      <a class="nav-link" href="#one-evening">One evening</a>
+      <a class="nav-link" href="#portfolio">The products</a>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme">
+        <span class="icon-moon" aria-hidden="true">&#9789;</span>
+        <span class="icon-sun" aria-hidden="true">&#9788;</span>
+      </button>
+      <a href="https://calendly.com/twobirdsinnovation/30min" target="_blank" rel="noopener" class="btn nav-cta">Book a conversation</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="wrap">
+      <p class="eyebrow">The HAL Stack &middot; A working case study</p>
+      <h1 id="hero-heading">An operator's AI stack <span class="accent">that ships.</span></h1>
+      <p class="hal-hero-note">Designed and orchestrated by a non-programmer. Every line of code written by AI agents.</p>
+      <p class="lead">I'm not a developer. I'm an operator who spent 20 years turning "leadership wants this" into "the team shipped it." In late 2024 I pointed that skill at AI: instead of writing code, I designed the system, wrote the rules, and built the review gates. The system does the building. This page shows what that looks like when it's real.</p>
+      <div class="hero-ctas">
+        <a href="#one-evening" class="btn">See one evening's output <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a href="index.html" class="btn btn-ghost">Back to the main site</a>
+      </div>
+      <ul class="hero-meta">
+        <li>Running since January 2026</li>
+        <li>Static products, $0 hosting</li>
+        <li>Every claim on this page is verifiable in the repositories</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= NUMBERS ================= -->
+  <section class="numbers" aria-label="The system at a glance">
+    <div class="wrap">
+      <div class="numbers-grid">
+        <div class="num"><span class="num-val">7</span><span class="num-label">products in the portfolio, each with a written strategy brief</span></div>
+        <div class="num"><span class="num-val">10</span><span class="num-label">repositories, synced and smoke-tested nightly</span></div>
+        <div class="num"><span class="num-val">30</span><span class="num-label">written governance rules, each one earned from a real failure</span></div>
+        <div class="num"><span class="num-val">$0</span><span class="num-label">product hosting: static sites, no servers, no vendor lock-in</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= THE SYSTEM ================= -->
+  <section class="section" id="system" aria-labelledby="system-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2 id="system-heading">I don't write the code. I run the shop.</h2>
+        <p>The honest division of labour: I do the judgement work a machine shouldn't do, and the system does the execution work a person shouldn't have to. The interesting part isn't the AI. It's the management structure around it.</p>
+      </div>
+
+      <div class="role-grid">
+        <div class="role-col reveal">
+          <span class="role-tag human">My job</span>
+          <h3>Design, rules, and sign-off</h3>
+          <ul>
+            <li><strong>Set direction.</strong> Which products exist, who they serve, what "good" means for each one.</li>
+            <li><strong>Write the rules.</strong> A living rulebook of about 30 governance rules: accessibility gates, privacy defaults, a ban on destructive actions without written approval, honesty requirements for reporting.</li>
+            <li><strong>Review and decide.</strong> Nothing user-facing goes out without my personal review. The system files decisions it can't make into a queue and waits.</li>
+            <li><strong>Learn from failures.</strong> Every rule in the rulebook is dated and traceable to the specific failure that caused it. The rulebook is a scar registry, and that's why it works.</li>
+          </ul>
+        </div>
+        <div class="role-col reveal">
+          <span class="role-tag machine">The system's job</span>
+          <h3>Build, test, verify, report</h3>
+          <ul>
+            <li><strong>Execute sprints.</strong> AI agents read the task queue, write the code, commit it, and push it. Work is broken into sprints with completion gates.</li>
+            <li><strong>Verify its own output.</strong> A product change can't be reported "done" until an automated browser test passes against the live page. Reporting success without proof is treated as the same failure class as fabricating data.</li>
+            <li><strong>Run the night shift.</strong> Repository syncs, accessibility audits, smoke tests, uptime checks, and a morning briefing, unattended.</li>
+            <li><strong>Filter my inbox.</strong> An autonomy audit scans every open task nightly. Anything the system can do itself never reaches me.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= NIGHTLY LOOP ================= -->
+  <section class="section" id="nightly" aria-labelledby="nightly-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The night shift</p>
+        <h2 id="nightly-heading">What runs while I sleep</h2>
+        <p>Every night, on a schedule, with no one watching. This is the maintenance work that quietly kills most solo operations, made automatic.</p>
+      </div>
+      <ul class="loop">
+        <li class="loop-row reveal">
+          <span class="loop-time">repos</span>
+          <div><p class="loop-title">All 10 repositories synced and mirrored</p><p class="loop-detail">Pulled, pushed, and backed up to an independent second host. If the primary host disappeared tomorrow, nothing is lost.</p></div>
+        </li>
+        <li class="loop-row reveal">
+          <span class="loop-time">quality</span>
+          <div><p class="loop-title">Performance and accessibility audits</p><p class="loop-detail">Lighthouse scores for every product, logged over time. Accessibility checks also run automatically on every code push.</p></div>
+        </li>
+        <li class="loop-row reveal">
+          <span class="loop-time">smoke tests</span>
+          <div><p class="loop-title">Automated browser tests against every live product</p><p class="loop-detail">A headless browser opens each site, checks key elements and flows, and saves a screenshot when something fails.</p></div>
+        </li>
+        <li class="loop-row reveal">
+          <span class="loop-time">triage</span>
+          <div><p class="loop-title">Autonomy audit of the whole backlog</p><p class="loop-detail">Every open task is checked: can the system do this without me? If yes, it's flagged for execution and never hits my queue.</p></div>
+        </li>
+        <li class="loop-row reveal">
+          <span class="loop-time">dashboard</span>
+          <div><p class="loop-title">The command dashboard rebuilds itself</p><p class="loop-detail">A private dashboard aggregates the job pipeline, backlog, deadlines, and recent builds from the source files, then redeploys. It cannot go stale because no one has to remember to update it.</p></div>
+        </li>
+        <li class="loop-row reveal">
+          <span class="loop-time">briefing</span>
+          <div><p class="loop-title">Morning briefing written</p><p class="loop-detail">A plain-English summary of what happened overnight and what genuinely needs a human, waiting when I open the laptop.</p></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= ONE EVENING ================= -->
+  <section class="section" id="one-evening" aria-labelledby="evening-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Proof, not promise</p>
+        <h2 id="evening-heading">One evening, start to finish</h2>
+        <p>On the evening of July 2, 2026, I left the system running with a mandate and went out with my kids. This is the actual output from that run, taken from the report it wrote for me. Nothing here is hypothetical.</p>
+      </div>
+
+      <div class="runlog reveal">
+        <div class="runlog-head">
+          <span>Autonomous run &middot; July 2026</span>
+          <span>Source: committed run report</span>
+        </div>
+        <ol>
+          <li>
+            <div>
+              <h3>Three products rebuilt, each with its own visual identity</h3>
+              <p>Digital Confidence Centre, Clarity, and Career Coach each got a full design rebuild: distinct typography and palette per product, verified for accessibility contrast in both light and dark modes, deployed as live previews for my review.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>A two-way, self-maintaining dashboard shipped</h3>
+              <p>A private command deck that reads the whole operation from source files, and writes back: marking an item done on the dashboard updates the underlying database. Confirmed with a real round-trip test before it was reported working.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>The dashboard was wired to rebuild itself nightly</h3>
+              <p>One addition to the overnight build means the dashboard can never drift out of date. Maintenance cost to me: zero.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>It stopped itself at three products</h3>
+              <p>The system could have kept rebuilding the rest of the portfolio. It chose not to, because my own diagnosis on file was "built but never reviewed by me," and six more unreviewed products would recreate that exact problem. It queued the rest and asked which one I wanted next.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>It reported its gaps, not just its wins</h3>
+              <p>The run report has a section titled "Honest gaps": what it deliberately didn't touch, what still needs my decision, and one piece of cleanup it owed. Every decision it needed from me was filed as a two-minute question, not buried in a transcript.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="proof-note reveal" style="margin-top: var(--space-8); margin-bottom: 0;">
+        <p><strong>Why item four matters most:</strong> anyone can make an AI produce volume. The hard part, and the part I actually built, is a system with enough judgement encoded in it to stop, flag the risk, and wait for a human. That's not a demo trick. That's operations.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RULES ================= -->
+  <section class="section" id="rules" aria-labelledby="rules-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The rulebook</p>
+        <h2 id="rules-heading">Rules written in scar tissue</h2>
+        <p>A sample of the standing rules the system operates under. Each one exists because something specific went wrong once, and I decided it would never go wrong silently again. The full rulebook runs to about 30 of these.</p>
+      </div>
+      <div class="rules-grid">
+        <div class="rule reveal">
+          <h3>No success without proof</h3>
+          <p>No product change may be reported "done" until an automated test passes against the live page. Written after a bug was "fixed" three times while staying broken: the loop was verifying that commits were made, not that the page worked.</p>
+        </div>
+        <div class="rule reveal">
+          <h3>Never present a partial as complete</h3>
+          <p>Any answer built on an incomplete read of the data must say so up front, unmissably. A silent partial is treated as the same severity as fabricating data. Written after a data source quietly truncated and three items were missed.</p>
+        </div>
+        <div class="rule reveal">
+          <h3>Nothing destructive without written approval</h3>
+          <p>No deletion of databases, files, history, or deployments without explicit confirmation in the current session. No exceptions, including for the system's own convenience.</p>
+        </div>
+        <div class="rule reveal">
+          <h3>Don't hand a human machine-doable work</h3>
+          <p>Before anything lands in my queue, a three-point check runs: can a script do it, can a connected tool do it, does it only need files? If any answer is yes, the system does it. A task once sat in my queue for 17 days that took the system 30 seconds.</p>
+        </div>
+        <div class="rule reveal">
+          <h3>Privacy by default</h3>
+          <p>Any repository containing real personal data is private by default. Public is opt-in and requires explicit approval. Products collect nothing they don't need, which for most of them means nothing at all.</p>
+        </div>
+        <div class="rule reveal">
+          <h3>Own the exit</h3>
+          <p>Before any external tool or service joins the stack, one question: if this vendor disappeared tomorrow, what breaks? Static hosting, standard-library scripts, and a mirrored second host mean the answer stays "nothing important."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PORTFOLIO ================= -->
+  <section class="section" id="portfolio" aria-labelledby="portfolio-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The products</p>
+        <h2 id="portfolio-heading">Seven products. First client: ourselves.</h2>
+        <p>Everything below was built on the system described above, by one person. Each product has a written strategy brief covering its market, its differentiation, and honestly, its open problems. The statuses below are real, including the unflattering ones.</p>
+      </div>
+      <div class="products-grid">
+        <div class="product-card reveal">
+          <div class="product-top"><h3>Digital Confidence Centre</h3><span class="badge">Live</span></div>
+          <p class="product-for">For libraries, municipalities, and older adults</p>
+          <p>A 29-module digital literacy platform, WCAG AA accessible, built to help fill the gap left when federal digital literacy funding was cut. Rebuilt with a warmer identity in the July 2026 run.</p>
+          <div class="product-links">
+            <a class="card-link" href="https://twobirds-kramerica.github.io/digital-confidence/" target="_blank" rel="noopener">Open the product <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-top"><h3>Clarity</h3><span class="badge">Live</span></div>
+          <p class="product-for">For Ontario small business owners</p>
+          <p>A free AI readiness diagnostic: a short, honest assessment in, a personalised SWOT and action plan out. The v2 rebuild, with its own editorial identity, shipped as a preview in the July 2026 run.</p>
+          <div class="product-links">
+            <a class="card-link" href="https://twobirds-kramerica.github.io/clarity/" target="_blank" rel="noopener">Open the product <span class="arrow" aria-hidden="true">&rarr;</span></a>
+            <a class="card-link" href="https://twobirds-kramerica.github.io/clarity/v2-lab/" target="_blank" rel="noopener">v2 preview <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-top"><h3>Career Coach</h3><span class="badge">Live</span></div>
+          <p class="product-for">For job seekers and career centres</p>
+          <p>An AI-assisted job search tool that pulls live Statistics Canada unemployment data monthly. The v2 rebuild introduced a verdict-driven flow that tells you plainly whether a posting is worth your time.</p>
+          <div class="product-links">
+            <a class="card-link" href="https://twobirds-kramerica.github.io/career-coach/" target="_blank" rel="noopener">Open the product <span class="arrow" aria-hidden="true">&rarr;</span></a>
+            <a class="card-link" href="https://twobirds-kramerica.github.io/career-coach/v2-lab/" target="_blank" rel="noopener">v2 preview <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-top"><h3>Digital Confidence Centre: Kids</h3><span class="badge quiet">Building</span></div>
+          <p class="product-for">For families, school boards, and libraries</p>
+          <p>Digital literacy for children, built around family co-use rather than solo screen time. No logins, no data collection, Canadian escalation paths. The strategy brief is candid: the curriculum giants are free, so the wedge is the model, not more modules.</p>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-top"><h3>KevsCasa</h3><span class="badge quiet">In development</span></div>
+          <p class="product-for">For housing navigators and the families they serve</p>
+          <p>A ranked apartment shortlist tool born from a real search for a real person. Its edge is verification: knowing which listings are genuine, current, and safe. Repositioning toward settlement workers who search on behalf of others.</p>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-top"><h3>Norm</h3><span class="badge quiet">Pre-build</span></div>
+          <p class="product-for">For regulated Canadian professionals</p>
+          <p>A technology-readiness diagnostic with sourced Canadian benchmarks, so an adviser can see where their own practice stands before advising clients on technology. Spec complete; deliberately held at the gate until one positioning decision is made.</p>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-top"><h3>This site</h3><span class="badge">Live</span></div>
+          <p class="product-for">The shop window, built in the same shop</p>
+          <p>aaronpatzalek.com, including the page you're reading, was designed, built, tested, and deployed through the same system: design tokens, accessibility verification in both themes, automated checks on every push.</p>
+          <div class="product-links">
+            <a class="card-link" href="index.html">Visit the main site <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHAT THIS IS NOT ================= -->
+  <section class="section" id="honest" aria-labelledby="honest-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Keeping it honest</p>
+        <h2 id="honest-heading">What this is not</h2>
+      </div>
+      <div class="role-col reveal" style="max-width: 72ch;">
+        <ul>
+          <li><strong>It's not a claim that I'm an engineer.</strong> I can't review a pull request line by line, and I don't pretend to. What I can do is design a system where the checks don't depend on me being one.</li>
+          <li><strong>It's not fully hands-off.</strong> The system runs unattended for hours, not weeks. It works because a human sets direction, reviews output, and makes the calls it queues up. That's by design, not a limitation I'm hiding.</li>
+          <li><strong>It's not finished.</strong> Several products above are previews or pre-build, and the run reports say so plainly. I'd rather show real statuses than a wall of green badges.</li>
+          <li><strong>It's not for sale as software.</strong> The HAL Stack is how I work, and the strongest evidence I can offer of what that work looks like. The thing on offer is the operator.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CLOSE / CTA ================= -->
+  <section class="section" id="contact" aria-labelledby="close-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The point of all this</p>
+        <h2 id="close-heading">This is how I would work for you</h2>
+        <p>If you're hiring: this is what it looks like when I'm given an ambiguous problem and room to operate. Direction gets set, systems get built, output gets verified, and the reporting is honest about what's done and what isn't. If you run a business: I've already made the mistakes on my own products, on my own time. You get the version that ships.</p>
+      </div>
+      <div class="cta-block" style="margin-top: 0;">
+        <h2>Worth a conversation?</h2>
+        <p>30 minutes. Bring a problem, ambiguity welcome. I'll tell you honestly whether I'm the right fit, and if I'm not, where to look instead.</p>
+        <a href="https://calendly.com/twobirdsinnovation/30min" target="_blank" rel="noopener" class="btn">Book a free conversation <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <p class="cta-alt">Hiring instead? Reach me on <a href="https://www.linkedin.com/in/aaronpatzalek/" target="_blank" rel="noopener">LinkedIn</a> or at <a href="mailto:aaron.patzalek@gmail.com">aaron.patzalek@gmail.com</a>.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" aria-label="Site footer">
+  <div class="wrap footer-row">
+    <ul class="footer-links">
+      <li><a href="index.html">Main site</a></li>
+      <li><a href="https://www.linkedin.com/in/aaronpatzalek/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:aaron.patzalek@gmail.com">Email</a></li>
+    </ul>
+    <span>&copy; 2026 Aaron Patzalek &middot; Two Birds Innovation &middot; St. Thomas, Ontario</span>
+  </div>
+</footer>
+
+<script src="js/theme.js"></script>
+  <script src="feedback-widget.js" defer></script>
+</body>
+</html>
