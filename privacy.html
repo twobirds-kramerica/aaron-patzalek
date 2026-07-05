@@ -1,103 +1,259 @@
 <!DOCTYPE html>
-<html lang="en-CA" data-theme="light">
+<html lang="en-CA">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy — Aaron Patzalek | Two Birds Innovation</title>
-  <meta name="description" content="Privacy Policy for Aaron Patzalek's consulting portfolio. Contact form submissions are handled via Formspree. No analytics, no tracking.">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https://formspree.io;">
+  <title>Privacy Policy | Aaron Patzalek | Two Birds Innovation</title>
+  <meta name="description" content="Privacy Policy for the Aaron Patzalek and Two Birds Innovation websites and free tools. Minimal-data by design. Draft, pending professional review.">
   <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://twobirds-kramerica.github.io/aaron-patzalek/privacy.html">
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-  <link rel="preload" href="fonts/inter/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="preload" href="fonts/dm-sans/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/index.css">
   <style>
-    .legal-page {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: var(--space-12) var(--space-6) var(--space-20);
+    .legal-main { padding: 3rem 0 4rem; }
+    .legal-back { display: inline-block; font-size: 0.875rem; color: var(--ap-blue); text-decoration: none; margin-bottom: 2rem; }
+    .legal-back:hover { text-decoration: underline; }
+    .legal-main h1 { font-size: clamp(1.875rem, 5vw, 2.5rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 0.5rem; text-wrap: balance; }
+    .legal-meta { font-size: 0.875rem; color: var(--ap-ink-2); margin-bottom: 2rem; }
+    .legal-draft { background: #FFF8E6; border: 1.5px solid #B8860B; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 2.5rem; font-size: 0.9375rem; line-height: 1.55; color: #4a3d00; }
+    .legal-draft strong { color: #4a3d00; }
+    .legal-body h2 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.01em; margin: 2.5rem 0 0.75rem; color: var(--ap-ink); }
+    .legal-body h3 { font-size: 1.0625rem; font-weight: 700; margin: 1.75rem 0 0.5rem; color: var(--ap-ink); }
+    .legal-body p { margin-bottom: 1rem; color: var(--ap-ink); line-height: 1.65; }
+    .legal-body ul { margin: 0 0 1rem 1.25rem; }
+    .legal-body li { margin-bottom: 0.5rem; line-height: 1.6; color: var(--ap-ink); }
+    .legal-body a { color: var(--ap-blue); }
+    .legal-body strong { font-weight: 700; }
+    .legal-table { width: 100%; border-collapse: collapse; margin-bottom: 1.25rem; font-size: 0.9375rem; }
+    .legal-table th, .legal-table td { border: 1px solid var(--ap-border); padding: 0.625rem 0.75rem; text-align: left; vertical-align: top; color: var(--ap-ink); }
+    .legal-table th { background: var(--ap-border); font-weight: 700; }
+    @media (prefers-color-scheme: dark) {
+      .legal-draft { background: #2b2410; border-color: #8a6d00; color: #f0dfa0; }
+      .legal-draft strong { color: #E0A800; }
+      .legal-table th { background: #1f2937; }
     }
-    .legal-page h1 { margin-bottom: var(--space-2); }
-    .legal-page .meta { color: var(--text-secondary); font-size: var(--text-sm); margin-bottom: var(--space-10); }
-    .legal-summary {
-      background: var(--bg-highlight);
-      border: 2px solid #0066CC;
-      border-radius: 8px;
-      padding: var(--space-5) var(--space-6);
-      margin-bottom: var(--space-10);
-      font-size: var(--text-base);
-    }
-    .legal-summary p { margin: 0; }
-    .legal-section { margin-bottom: var(--space-8); }
-    .legal-section h2 { font-size: var(--text-lg); color: #0066CC; margin-bottom: var(--space-3); }
-    .legal-section p { margin-bottom: var(--space-3); color: var(--text-primary); }
-    .legal-section p:last-child { margin-bottom: 0; }
-    .legal-section ul { padding-left: var(--space-5); margin-bottom: var(--space-3); }
-    .legal-section li { margin-bottom: var(--space-2); }
-    .back-link { display: inline-block; color: #0066CC; text-decoration: none; margin-bottom: var(--space-8); font-size: var(--text-sm); }
-    .back-link:hover { text-decoration: underline; }
-    .back-link:focus-visible { outline: 3px solid #0066CC; outline-offset: 3px; }
-    .legal-footer { margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--border-default); font-size: var(--text-sm); color: var(--text-muted); }
   </style>
 </head>
 <body>
-  <div class="legal-page">
-    <a href="index.html" class="back-link">&#8592; Back to portfolio</a>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<nav class="ap-nav" aria-label="Site navigation">
+  <a href="index.html" class="ap-nav-logo">Aaron Patzalek</a>
+  <a href="consulting.html" class="ap-nav-cta">Book a call &rarr;</a>
+</nav>
+
+<main id="main">
+  <div class="ap-wrap legal-main">
+    <a href="index.html" class="legal-back">&#8592; Back to portfolio</a>
 
     <h1>Privacy Policy</h1>
-    <p class="meta">Aaron Patzalek &middot; Two Birds Innovation &middot; Last updated: June 2026</p>
+    <p class="legal-meta">Two Birds Innovation &middot; St. Thomas, Ontario &middot; Effective 4 July 2026 &middot; Last updated July 2026</p>
 
-    <div class="legal-summary">
-      <p><strong>Plain language summary:</strong> This site collects your contact details only if you fill in and submit the contact form or book a consulting call. Contact form data goes to Formspree for delivery. Booking data goes to Calendly. There are no analytics, no tracking, and no cookies.</p>
+    <div class="legal-draft">
+      <strong>Draft, pending professional review.</strong> This is a draft template and not legal, tax, or financial advice. Have a licensed Ontario lawyer or accountant review it before you rely on it.
     </div>
 
-    <section class="legal-section">
-      <h2>Contact Form</h2>
-      <p>When you use the contact form on this site, the following information is submitted to <strong>Formspree</strong> (formspree.io), a third-party form delivery service:</p>
+    <div class="legal-body">
+      <p><strong>Organization:</strong> Two Birds Innovation ("Two Birds", "we", "us", "our"), St. Thomas, Ontario, Canada.</p>
+      <p>This Privacy Policy explains how Two Birds Innovation handles information in connection with our websites and free digital products, including the Digital Confidence Centre (a free digital-literacy and scam-safety web tool), our job-search tool, and other static web tools we publish (together, the "Products").</p>
+      <p>We built these Products to be <strong>minimal-data by design</strong>. In plain terms: we try to collect as little information as possible, and most of our Products collect <strong>no personal information about you at all</strong>.</p>
+      <p>This policy is written to be consistent with Canada's federal <em>Personal Information Protection and Electronic Documents Act</em> (PIPEDA) and applicable Ontario law. See the "Which laws apply" section below.</p>
+
+      <h2>1. Summary (the short version)</h2>
       <ul>
-        <li>Your name</li>
-        <li>Your email address</li>
-        <li>The message you typed</li>
+        <li>The Digital Confidence Centre and our other static tools have <strong>no accounts and no login</strong>, and do <strong>not</strong> ask you for or collect personal information.</li>
+        <li>We do <strong>not</strong> sell, rent, or trade your information to anyone. Ever.</li>
+        <li>We do <strong>not</strong> use your information for targeted advertising, and we do <strong>not</strong> run third-party ad networks on our Products.</li>
+        <li>Where we measure how our Products are used, we use <strong>aggregate, no-personally-identifiable-information (no-PII) analytics</strong>. See Section 4.</li>
+        <li>Some Products may offer an <strong>optional</strong> email sign-up (for example, to receive an update or a resource). This is opt-in only, and you can unsubscribe at any time. See Section 5.</li>
+        <li>Data that stays <strong>on your own device</strong> (such as browser local storage used to remember your progress or preferences) is not sent to us.</li>
       </ul>
-      <p>This data is delivered to me via email. Formspree may store your submission temporarily to facilitate delivery. Review <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Formspree's privacy policy</a> for details on their data handling.</p>
-      <p>I use the information you submit only to respond to your inquiry. I do not add you to any mailing list or share your contact details.</p>
-    </section>
+      <p>If you only read one section, read this one. The rest is the detail behind it.</p>
 
-    <section class="legal-section">
-      <h2>Booking Calls</h2>
-      <p>If you book a consulting call using the scheduling links on the consulting page, your booking request is processed by <strong>Calendly</strong> (calendly.com), a third-party scheduling service. The following information is collected by Calendly at the time of booking:</p>
+      <h2>2. What we do NOT collect</h2>
+      <p>Across the Digital Confidence Centre and our other static web tools, we do <strong>not</strong>:</p>
       <ul>
-        <li>Your name</li>
-        <li>Your email address</li>
-        <li>Your selected meeting time</li>
+        <li>create user accounts, profiles, or logins;</li>
+        <li>ask for your name, address, phone number, date of birth, or government identifiers;</li>
+        <li>collect payment or financial information (our free Products are free, there is nothing to pay);</li>
+        <li>require you to sign in with Google, Facebook, or any other identity provider;</li>
+        <li>sell, rent, license, or trade any information about you;</li>
+        <li>use your information to target ads to you, or allow third parties to do so on our Products;</li>
+        <li>build advertising or tracking profiles about you.</li>
       </ul>
-      <p>This data is used solely to schedule and confirm the meeting. Review <a href="https://calendly.com/legal/privacy-notice" target="_blank" rel="noopener noreferrer">Calendly's privacy notice</a> for details on their data handling. I use the information to prepare for and conduct the meeting only.</p>
-    </section>
+      <p>Where a specific Product does collect something (for example, an <strong>optional</strong> email address you choose to provide, see Section 5), that collection is described in this policy, and you are told about it at the point where you provide it.</p>
 
-    <section class="legal-section">
-      <h2>Analytics and Tracking</h2>
-      <p>This site does not use Google Analytics, cookies, or any tracking service. No data about your visit is collected or sent anywhere.</p>
-    </section>
+      <h2>3. Information we may handle, and why</h2>
+      <p>We keep the categories of information we handle deliberately small:</p>
+      <table class="legal-table">
+        <thead>
+          <tr><th>Category</th><th>What it is</th><th>Why we handle it</th><th>Basis</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Aggregate usage data</td>
+            <td>Non-identifying counts and trends (for example, how many people visited a page, roughly which region a visit came from, which browser type) via privacy-respecting analytics.</td>
+            <td>To understand which tools are useful and to improve them.</td>
+            <td>Implied consent / legitimate low-risk purpose (see Section 6)</td>
+          </tr>
+          <tr>
+            <td>Technical / server data</td>
+            <td>Standard information your browser and our hosting/CDN provider exchange to serve a page (for example, IP address at the network layer, timestamp, requested file). We do not use this to identify individuals and it is handled by our hosting/CDN provider.</td>
+            <td>To deliver the site, keep it available, and protect it from abuse.</td>
+            <td>Necessary to provide the service; security</td>
+          </tr>
+          <tr>
+            <td>Optional email address</td>
+            <td>Only if you choose to submit it through an opt-in form on a Product.</td>
+            <td>To send you the specific thing you asked for (for example, an update or resource).</td>
+            <td>Express opt-in consent (see Section 5)</td>
+          </tr>
+          <tr>
+            <td>On-device data (local storage)</td>
+            <td>Progress, answers, or preferences a tool saves in <strong>your own browser</strong>. This stays on your device and is not transmitted to us.</td>
+            <td>So a tool can remember where you were or what you set.</td>
+            <td>Stays on your device; not collected by us</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>We do <strong>not</strong> combine these categories to identify you, and we do <strong>not</strong> attempt to re-identify aggregate analytics data.</p>
 
-    <section class="legal-section">
-      <h2>Cookies</h2>
-      <p>This site does not use cookies.</p>
-    </section>
+      <h2>4. Analytics (aggregate, no personal profiles)</h2>
+      <p>To understand whether our free Products are actually helping people, we may use <strong>privacy-respecting, aggregate analytics</strong>. Where analytics are used, they are chosen and configured to measure <strong>trends in the aggregate</strong>, such as page views and referrers, not to build a profile of you as an individual. We do not use them to sell data or to serve targeted ads.</p>
+      <p>If and when we add, remove, or change an analytics tool, we will update this section. If you want to see exactly what is in use on a given day, contact us (Section 12).</p>
 
-    <section class="legal-section">
-      <h2>Your Rights Under PIPEDA</h2>
-      <p>Under Canada's Personal Information Protection and Electronic Documents Act (PIPEDA), you have the right to access, correct, and request deletion of any personal information I hold about you. If you have submitted a contact form and would like your information removed, email me and I will delete it promptly.</p>
-    </section>
+      <h2>5. Optional email capture (opt-in only)</h2>
+      <p>Some Products may include an <strong>optional</strong> form where you can choose to give us your email address, for example, to receive a specific resource, an update, or a notification you requested.</p>
+      <p>If you use one of these forms:</p>
+      <ul>
+        <li>Giving your email is <strong>entirely optional</strong>. The Product still works without it.</li>
+        <li>We use your email <strong>only</strong> for the specific purpose stated on the form.</li>
+        <li>We do <strong>not</strong> sell or share it, and we do <strong>not</strong> add you to unrelated mailing lists.</li>
+        <li>You can <strong>unsubscribe or ask us to delete it at any time</strong>, use the unsubscribe link in any message, or contact us (Section 12).</li>
+        <li>Emails you submit may be stored or processed by our email or form provider.</li>
+      </ul>
+      <p>If a Product does not show an email form, then that Product does not collect your email.</p>
 
-    <section class="legal-section">
-      <h2>Contact</h2>
-      <p><a href="mailto:aaron.patzalek@gmail.com">aaron.patzalek@gmail.com</a><br>
-      Two Birds Innovation &middot; St. Thomas, Ontario, Canada</p>
-    </section>
+      <h2>6. Consent</h2>
+      <p>Under PIPEDA, we rely on <strong>consent</strong> appropriate to the sensitivity of the information:</p>
+      <ul>
+        <li><strong>Express (opt-in) consent</strong> for anything you actively submit, such as an optional email address (Section 5). You choose to provide it, for a stated purpose.</li>
+        <li><strong>Implied consent</strong> for low-risk, non-identifying aggregate analytics and the standard technical data needed to serve a web page, where the purpose is one a reasonable person would consider appropriate.</li>
+      </ul>
+      <p>You can <strong>withdraw consent</strong> at any time (subject to legal or contractual limits), for example by unsubscribing, asking us to delete an optional email, or clearing your browser's local storage. To withdraw consent, contact us (Section 12). Withdrawing consent will not affect the lawfulness of anything done before you withdrew it.</p>
+      <p>We do <strong>not</strong> require you to consent to the collection, use, or disclosure of information beyond what is needed to provide a Product, as a condition of using that Product.</p>
 
-    <footer class="legal-footer">
-      <p>&copy; 2026 Aaron Patzalek &middot; Two Birds Innovation &middot; <a href="index.html">Back to portfolio</a></p>
-    </footer>
+      <h2>7. How we use information</h2>
+      <p>We use the limited information described above only to:</p>
+      <ul>
+        <li>deliver, host, and secure the Products;</li>
+        <li>understand, in the aggregate, how the Products are used, so we can improve them;</li>
+        <li>respond to you and provide anything you specifically requested (for example, via an optional email form);</li>
+        <li>comply with legal obligations.</li>
+      </ul>
+      <p>We do <strong>not</strong> use information for automated decision-making that produces legal or similarly significant effects about you.</p>
+
+      <h2>8. Disclosure and service providers (third-party processors)</h2>
+      <p>We do <strong>not sell</strong> your information and we do <strong>not</strong> disclose it for anyone else's independent marketing.</p>
+      <p>We do rely on a small number of reputable service providers ("processors") to operate the Products. These are listed here generically; specific vendors may change over time:</p>
+      <ul>
+        <li><strong>Hosting / static site delivery:</strong> GitHub Pages, serves the website files.</li>
+        <li><strong>Content delivery network (CDN) / security:</strong> our CDN provider, delivers content quickly and helps protect against abuse.</li>
+        <li><strong>Analytics:</strong> see Section 4.</li>
+        <li><strong>Email / form handling (only where an optional form exists):</strong> see Section 5.</li>
+      </ul>
+      <p>Each provider only handles the information needed to perform its function, and is expected to protect it with safeguards comparable to those in this policy. We may also disclose information <strong>if required by law</strong> (for example, in response to a valid legal request), or to protect the rights, safety, or property of Two Birds, our users, or the public.</p>
+      <h3>Storage outside Canada</h3>
+      <p>Some providers may store or process data <strong>outside Canada</strong> (for example, in the United States or other countries). When data is handled outside Canada, it may be subject to the laws of that country, including lawful access by foreign courts, law enforcement, or government agencies. We choose providers we consider reputable and, where practical, prefer providers or configurations that keep data in Canada.</p>
+
+      <h2>9. Cookies and local storage</h2>
+      <ul>
+        <li>Our static Products aim to be <strong>cookie-light</strong>. Where our privacy-respecting analytics can work <strong>without</strong> cookies, we prefer that configuration.</li>
+        <li>Some tools use <strong>browser local storage</strong> on <strong>your own device</strong> to remember your progress, answers, or preferences. This stays on your device and is not transmitted to us. You can clear it any time through your browser settings.</li>
+        <li>Any provider listed in Section 8 may set limited technical cookies needed for security or delivery; where an optional analytics tool sets a cookie, that is disclosed in Section 4.</li>
+      </ul>
+      <p>You can control or block cookies through your browser settings. Blocking cookies will not stop our core static tools from working, though it may affect features that rely on remembering your on-device preferences.</p>
+
+      <h2>10. Data retention</h2>
+      <ul>
+        <li><strong>Aggregate analytics</strong> are retained only in non-identifying, aggregate form, for as long as it is useful to understand usage trends, in line with the retention period of the analytics tool in use.</li>
+        <li><strong>Standard server / CDN logs</strong> are retained by our hosting/CDN provider for a limited period for security and operations, then discarded, according to that provider's practices.</li>
+        <li><strong>Optional email addresses</strong> are retained only until you unsubscribe or ask us to delete them, or until they are no longer needed for the purpose you gave them for, whichever comes first.</li>
+        <li><strong>On-device local storage</strong> is retained on <strong>your</strong> device until you clear it.</li>
+      </ul>
+      <p>We do not keep personal information longer than necessary for the purpose it was collected for, or as required by law.</p>
+
+      <h2>11. Security</h2>
+      <p>We take reasonable steps to protect information appropriate to its sensitivity, including:</p>
+      <ul>
+        <li>serving Products over <strong>encrypted connections (HTTPS)</strong>;</li>
+        <li>minimizing what we collect in the first place (the strongest protection is data we never hold);</li>
+        <li>relying on reputable hosting, CDN, and (where used) email/form providers with their own security safeguards;</li>
+        <li>limiting who can access any optional email data we do hold.</li>
+      </ul>
+      <p>No method of transmission or storage is completely secure, and we cannot guarantee absolute security. If we ever become aware of a privacy breach that creates a real risk of significant harm, we will respond in accordance with our obligations under PIPEDA, which may include notifying affected individuals and the Office of the Privacy Commissioner of Canada.</p>
+
+      <h2>12. Your rights: access, correction, and questions</h2>
+      <p>Subject to legal limits, you have the right to:</p>
+      <ul>
+        <li><strong>Ask what personal information we hold about you</strong> (in most cases, for our static tools, the answer is "none");</li>
+        <li><strong>Access</strong> that information;</li>
+        <li><strong>Correct</strong> it if it is inaccurate;</li>
+        <li><strong>Withdraw consent</strong> or ask us to <strong>delete</strong> an optional email you provided;</li>
+        <li><strong>Ask how</strong> your information has been used or disclosed.</li>
+      </ul>
+      <p>To make a request, contact our privacy contact:</p>
+      <p><strong>Privacy contact:</strong> Aaron Patzalek, Two Birds Innovation<br>
+      Email: <a href="mailto:aaron.patzalek@gmail.com">aaron.patzalek@gmail.com</a><br>
+      St. Thomas, Ontario, Canada</p>
+      <p>We will respond within the timeframe required by PIPEDA (generally <strong>30 days</strong>), and will let you know if we need more time or cannot fulfill a request (with reasons). There is normally no charge; if a request would involve a cost, we will tell you first.</p>
+      <p>If you are not satisfied with our response, you may contact the <strong>Office of the Privacy Commissioner of Canada</strong> (<a href="https://www.priv.gc.ca" target="_blank" rel="noopener noreferrer">www.priv.gc.ca</a>). For matters that fall under Ontario provincial oversight, you may also contact the <strong>Information and Privacy Commissioner of Ontario</strong> (<a href="https://www.ipc.on.ca" target="_blank" rel="noopener noreferrer">www.ipc.on.ca</a>).</p>
+
+      <h2>13. Younger users (including Digital Confidence Centre youth users)</h2>
+      <p>The Digital Confidence Centre is designed to be safe for a wide audience, including seniors and youth.</p>
+      <ul>
+        <li>For youth users of the Digital Confidence Centre and our other free tools: we <strong>do not collect personal information, do not create accounts, and do not run targeted advertising</strong>. There is nothing to sign up for and nothing that profiles a young person.</li>
+        <li>We do not knowingly collect personal information from children. If a Product ever offers an <strong>optional</strong> email form, it is <strong>not</strong> directed at children, and we ask that anyone under the age of majority in Ontario <strong>not</strong> submit personal information without a parent or guardian's involvement.</li>
+        <li>If you believe a child has provided us personal information (for example, through an optional email form) and you would like it removed, contact us (Section 12) and we will delete it.</li>
+      </ul>
+      <p>We treat information from younger users with extra care, consistent with PIPEDA guidance on obtaining meaningful consent from, and protecting, minors.</p>
+
+      <h2>14. Which laws apply</h2>
+      <ul>
+        <li>Two Birds Innovation is based in <strong>St. Thomas, Ontario, Canada</strong>, and operates under <strong>Canadian federal</strong> and <strong>Ontario provincial</strong> law.</li>
+        <li>Our handling of personal information in the course of commercial activity is governed primarily by Canada's <strong>PIPEDA</strong>.</li>
+        <li>Depending on the activity, other laws may apply, such as <strong>Canada's Anti-Spam Legislation (CASL)</strong> for any commercial electronic messages (for example, an optional email you opt into), and applicable <strong>Ontario</strong> law.</li>
+        <li>If you access our Products from outside Canada, you understand your information will be handled as described in this policy and under Canadian law.</li>
+      </ul>
+      <p>Nothing in this policy limits any rights you have under applicable law.</p>
+
+      <h2>15. Changes to this policy</h2>
+      <p>We may update this Privacy Policy from time to time (for example, if we change an analytics tool or add an optional feature). When we do, we will change the "Last updated" date at the top. Material changes will be highlighted on the affected Product where practical. Your continued use of a Product after an update means you accept the revised policy.</p>
+
+      <h2>16. Contact</h2>
+      <p><strong>Two Birds Innovation</strong><br>
+      Attn: Aaron Patzalek, Privacy Contact<br>
+      Email: <a href="mailto:aaron.patzalek@gmail.com">aaron.patzalek@gmail.com</a><br>
+      St. Thomas, Ontario, Canada</p>
+      <p>Questions, access requests, corrections, or complaints about privacy can all be sent to the address above. We take them seriously and will respond promptly.</p>
+    </div>
   </div>
+</main>
+
+<footer class="ap-footer" aria-label="Site footer">
+  <nav class="ap-footer-links" aria-label="Footer navigation">
+    <a href="consulting.html">Consulting</a>
+    <a href="services.html">Services</a>
+    <a href="https://www.linkedin.com/in/aaronpatzalek/" target="_blank" rel="noopener">LinkedIn &nearr;</a>
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="disclaimer.html">Disclaimer</a>
+  </nav>
+  <span>&copy; 2026 Aaron Patzalek &middot; Two Birds Innovation &middot; St. Thomas, Ontario</span>
+</footer>
+
 </body>
 </html>
