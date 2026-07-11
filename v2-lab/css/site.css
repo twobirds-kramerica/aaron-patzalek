@@ -389,3 +389,9 @@ html[data-theme="dark"] .cta-block {
 }
 /* No-JS safety: html gets .js from theme.js; without it, everything is visible. */
 html:not(.js) .reveal { opacity: 1; transform: none; }
+
+/* --- External-link framing - every off-site link says so, in words -------- */
+.ext-note {
+  font-family: var(--font-heading); font-size: var(--font-size-sm);
+  color: inherit; white-space: nowrap;
+}
