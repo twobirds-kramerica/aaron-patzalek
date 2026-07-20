@@ -522,7 +522,7 @@
   </p>
 
   <div class="build-block" style="margin-bottom:36px;">
-    <div class="build-num" id="build-count">—</div>
+    <div class="build-num" id="build-count">40+</div>
     <div class="build-label">
       <strong>Autonomous overnight builds since January 2026.</strong>
       Every night at 2am: 10 repos synced, every product smoke-tested,
@@ -533,7 +533,7 @@
 
   <div class="stats-bar stagger">
     <div class="stat">
-      <span class="stat-num" data-counter="9" data-suffix="">9</span>
+      <span class="stat-num" data-counter="8" data-suffix="">8</span>
       <span class="stat-label">products<br>in development</span>
     </div>
     <div class="stat">
@@ -545,7 +545,7 @@
       <span class="stat-label">skills<br>available</span>
     </div>
     <div class="stat">
-      <span class="stat-num" id="stat-builds">—</span>
+      <span class="stat-num" id="stat-builds">40+</span>
       <span class="stat-label">overnight<br>builds run</span>
     </div>
     <div class="stat">
@@ -1060,28 +1060,27 @@
   document.querySelectorAll('[data-counter]').forEach(el => counterObserver.observe(el));
   document.querySelectorAll('.stats-bar').forEach(el => counterObserver.observe(el));
 
-  // ── OVERNIGHT BUILD COUNT (dynamic, grows daily) ────────────
+  // ── OVERNIGHT BUILD COUNT ────────────────────────────────────
+  // Static snapshot from hal-stack/data/hal-stats.json (two-birds-portfolio,
+  // a private repo — not fetchable client-side from a public GH Pages site).
+  // Update this value by hand when the count materially changes.
   (function() {
-    const inception = new Date('2026-01-15'); // system operational
-    const today     = new Date();
-    const days = Math.max(0, Math.floor((today - inception) / (1000*60*60*24)));
-    const display   = days + '+';
+    const BUILD_COUNT = 40; // snapshot: 2026-07-20
     const hero = document.getElementById('build-count');
     const stat = document.getElementById('stat-builds');
     if (hero) {
-      // animate count-up
       let current = 0;
       const dur = 1400;
       const start = performance.now();
       function tick(now) {
         const p = Math.min((now - start) / dur, 1);
         const e = 1 - Math.pow(1 - p, 3);
-        hero.textContent = Math.round(days * e) + '+';
+        hero.textContent = Math.round(BUILD_COUNT * e) + '+';
         if (p < 1) requestAnimationFrame(tick);
       }
       requestAnimationFrame(tick);
     }
-    if (stat) stat.textContent = display;
+    if (stat) stat.textContent = BUILD_COUNT + '+';
   })();
   // ── PILL POPOVERS ──────────────────────────────────────────
   (function() {
@@ -1145,15 +1144,6 @@
       if (e.key === 'Escape') hidePopover();
     });
   })();
-
-  // Live stat: overnight builds count from two-birds-portfolio repo
-  fetch('https://raw.githubusercontent.com/twobirds-kramerica/two-birds-portfolio/master/hal-stack/data/hal-stats.json')
-    .then(function(r){ return r.json(); })
-    .then(function(d){
-      var el = document.getElementById('stat-builds');
-      if (el && d.overnight_builds != null) el.textContent = d.overnight_builds;
-    })
-    .catch(function(){});
 </script>
 </body>
 </html>
