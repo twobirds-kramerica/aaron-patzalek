@@ -519,17 +519,17 @@
   <p class="hero-intro">
     Aaron Patzalek is a services strategist and product builder with 20 years in category development,
     innovation, and customer experience. He founded Two Birds Innovation in early 2026. What followed was
-    six months of building a sovereign AI operating system — no developer, no team, pure architecture
+    months of intensive building of a sovereign AI operating system — no developer, no team, pure architecture
     and iteration. This page shows what's running on it.
   </p>
 
   <div class="build-block" style="margin-bottom:36px;">
-    <div class="build-num" id="build-count">40+</div>
+    <div class="build-num" id="build-count">3,700+</div>
     <div class="build-label">
-      <strong>Autonomous overnight builds since January 2026.</strong>
-      Every night at 2am: 10 repos synced, every product smoke-tested,
-      Lighthouse audited, uptime checked, morning briefing written.
-      No supervision. One business person. Zero lines of code written by hand.
+      <strong>Commits across 13 repositories since early 2026.</strong>
+      Every one written through an AI agent — reading the codebase, editing files,
+      running the tests, and committing to Git. One business person,
+      no engineering team, zero lines of code written by hand.
     </div>
   </div>
 
@@ -547,8 +547,8 @@
       <span class="stat-label">skills<br>available</span>
     </div>
     <div class="stat">
-      <span class="stat-num" id="stat-builds">40+</span>
-      <span class="stat-label">overnight<br>builds run</span>
+      <span class="stat-num">13</span>
+      <span class="stat-label">repositories<br>built</span>
     </div>
     <div class="stat">
       <span class="stat-num">$0</span>
@@ -1119,27 +1119,23 @@
   document.querySelectorAll('[data-counter]').forEach(el => counterObserver.observe(el));
   document.querySelectorAll('.stats-bar').forEach(el => counterObserver.observe(el));
 
-  // ── OVERNIGHT BUILD COUNT ────────────────────────────────────
-  // Static snapshot from hal-stack/data/hal-stats.json (two-birds-portfolio,
-  // a private repo — not fetchable client-side from a public GH Pages site).
-  // Update this value by hand when the count materially changes.
+  // ── COMMIT COUNT ─────────────────────────────────────────────
+  // Verifiable snapshot: total commits across 13 local repos
+  // (git rev-list --count --all, summed). Update by hand when it materially changes.
   (function() {
-    const BUILD_COUNT = 40; // snapshot: 2026-07-20
+    const COMMIT_COUNT = 3700; // snapshot: 2026-07-22 (actual 3,738 across 13 repos)
     const hero = document.getElementById('build-count');
-    const stat = document.getElementById('stat-builds');
     if (hero) {
-      let current = 0;
       const dur = 1400;
       const start = performance.now();
       function tick(now) {
         const p = Math.min((now - start) / dur, 1);
         const e = 1 - Math.pow(1 - p, 3);
-        hero.textContent = Math.round(BUILD_COUNT * e) + '+';
+        hero.textContent = Math.round(COMMIT_COUNT * e).toLocaleString() + '+';
         if (p < 1) requestAnimationFrame(tick);
       }
       requestAnimationFrame(tick);
     }
-    if (stat) stat.textContent = BUILD_COUNT + '+';
   })();
   // ── PILL POPOVERS ──────────────────────────────────────────
   (function() {
