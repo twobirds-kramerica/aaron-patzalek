@@ -80,18 +80,18 @@
       color: var(--muted);
       margin-bottom: 52px;
       font-family: var(--mono);
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      display: block;
     }
 
-    .wordmark::before {
-      content: '';
+    .leaf-pulse {
       display: inline-block;
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      animation: pulse 2.4s ease-in-out infinite;
+      transform-origin: center;
+      animation: leafbeat 2.4s ease-in-out infinite;
+    }
+
+    @keyframes leafbeat {
+      0%,100% { opacity: .6; transform: scale(1); }
+      50%     { opacity: 1;  transform: scale(1.22); }
     }
 
     @keyframes pulse {
@@ -496,7 +496,7 @@
       .reveal, .stagger > *, .step, .product, .gate, .loop-row, .chip, .stat {
         transition: none !important;
       }
-      .wordmark::before, .arch-row.ai-layer,
+      .leaf-pulse, .arch-row.ai-layer,
       .lm-r, .lm-l { animation: none !important; }
       .reveal, .stagger > *, .lm-r, .lm-l { opacity: 1 !important; transform: none !important; }
       .bg-bird-r, .bg-bird-l { transition: none !important; }
@@ -564,7 +564,7 @@
     </a>
   </div>
 
-  <div class="wordmark">Two Birds Innovation · Ontario, Canada 🍁</div>
+  <div class="wordmark">Two Birds Innovation · Ontario, Canada <span class="leaf-pulse">🍁</span></div>
 
   <h1>Build the&nbsp;<em>shop floor</em>&nbsp;before the product.</h1>
 
