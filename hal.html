@@ -588,7 +588,7 @@
   <p class="hero-intro">
     The products aren't the hard part. The harness underneath them is: guardrails that keep it safe,
     governance that keeps it honest, and enough flexibility that one business person can build, test,
-    and adapt real software with no developer and near-zero cost. Aaron Patzalek, twenty years in category
+    and adapt real software with no developer and near-zero cost. Aaron Patzalek, 15+ years in category
     development, innovation, and customer experience, founded Two Birds Innovation in early 2026 and built
     that system first. This page shows what's running on it.
   </p>
@@ -1146,12 +1146,13 @@
     const from  = parseInt(el.dataset.from || '0', 10);
     const suffix = el.dataset.suffix || '';
     const dur   = 1200;
-    const start = performance.now();
+    let start = null;
 
     // For counting DOWN (from > target)
     const countDown = from > target;
 
     function step(now) {
+      if (start === null) start = now;   // time from first real frame — smooth on any device
       const elapsed = Math.min((now - start) / dur, 1);
       const ease = 1 - Math.pow(1 - elapsed, 3); // ease-out cubic
       const current = countDown
@@ -1186,16 +1187,21 @@
   (function() {
     const COMMIT_COUNT = 3700; // snapshot: 2026-07-22 (actual 3,738 across 13 repos)
     const hero = document.getElementById('build-count');
-    if (hero) {
-      const dur = 1400;
-      const start = performance.now();
+    if (hero && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const dur = 1600;
+      let start = null;
       function tick(now) {
+        if (start === null) start = now;         // time from the first real frame — no load-jump
         const p = Math.min((now - start) / dur, 1);
-        const e = 1 - Math.pow(1 - p, 3);
+        const e = 1 - Math.pow(1 - p, 2);         // easeOutQuad — smoother tail
         hero.textContent = Math.round(COMMIT_COUNT * e).toLocaleString() + '+';
         if (p < 1) requestAnimationFrame(tick);
       }
-      requestAnimationFrame(tick);
+      // start only once the page has settled, so the count isn't starved during load
+      if (document.readyState === 'complete') requestAnimationFrame(tick);
+      else window.addEventListener('load', function() { requestAnimationFrame(tick); }, { once: true });
+    } else if (hero) {
+      hero.textContent = COMMIT_COUNT.toLocaleString() + '+';
     }
   })();
   // ── PILL POPOVERS ──────────────────────────────────────────
