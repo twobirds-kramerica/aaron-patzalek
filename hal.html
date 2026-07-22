@@ -255,7 +255,7 @@
       margin-bottom: 16px;
     }
 
-    .callout-row { display: flex; flex-wrap: wrap; gap: 26px 36px; margin-bottom: 14px; }
+    .callout-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px 24px; margin-bottom: 14px; }
     .callout-n { font-size: 2rem; font-weight: 700; color: var(--teal); font-family: var(--mono); line-height: 1; }
     .callout-l { font-size: .74rem; color: var(--muted); margin-top: 4px; }
     .callout-note { font-size: .82rem; color: var(--muted); line-height: 1.65; border-top: 1px solid var(--teal-b); padding-top: 12px; }
@@ -486,10 +486,15 @@
         min-width: unset;
         display: block;
         margin-bottom: 12px;
+        text-align: center;
       }
       .build-label {
         font-size: .86rem;
       }
+
+      /* tighter section rhythm + balanced snapshot grid on mobile */
+      section { padding-top: 40px; padding-bottom: 40px; }
+      .callout-row { grid-template-columns: repeat(2, 1fr); gap: 20px 18px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -581,10 +586,10 @@
   </div>
 
   <p class="hero-intro">
-    The hard part was never shipping one product — it's building the tools, the place, and the processes
+    The hard part was never shipping one product. It's building the tools, the place, and the processes
     so one person can ship many, adapt fast, and stay near-zero-cost. That foundation came first:
-    a sovereign AI operating system, built with no developer and no team. Aaron Patzalek — twenty years
-    in category development, innovation, and customer experience — founded Two Birds Innovation in early 2026
+    a sovereign AI operating system, built with no developer and no team. Aaron Patzalek, twenty years
+    in category development, innovation, and customer experience, founded Two Birds Innovation in early 2026
     and built the shop floor before anything that runs on it. This page shows what's running on it.
   </p>
 
@@ -622,7 +627,7 @@
   <h2>A software studio that runs itself overnight</h2>
   <p>Most people using AI are using it like an assistant. This is using it as the engineer. Six months went into building the <strong>infrastructure</strong> — the shop floor — before worrying about the products that sit on top of it.</p>
   <p>An idea can land in a backlog at midnight and have committed code, passing smoke tests, and a health report waiting by morning. One person running a studio that ships like a five-person team.</p>
-  <p>The cost structure: <strong>$0 hosting, $0 npm packages in any product repo.</strong> Sovereignty-first, and as close to free as possible: the stack runs on one LLM subscription by default, with a small number of named, bounded exceptions — currently a low-cost AI video tool — chosen because the output stays owned and portable, not because sovereignty stopped mattering. No vendor can price you out of the system you built.</p>
+  <p>The cost structure: <strong>$0 hosting, $0 npm packages in any product repo.</strong> Sovereignty-first, and as close to free as possible: the stack runs on one LLM subscription by default, with a small number of named, bounded exceptions (currently a low-cost AI video tool), chosen because the output stays owned and portable, not because sovereignty stopped mattering. No vendor can price you out of the system you built.</p>
 </section>
 
 <!-- ═══ CONNECTED ══════════════════════════════════════════════════════ -->
@@ -632,7 +637,7 @@
   <p>Numbers from the most recent capability snapshot.</p>
 
   <div class="callout">
-    <div class="callout-eye">📊 Capability snapshot — July 2026</div>
+    <div class="callout-eye">📊 Capability snapshot · July 2026</div>
     <div class="callout-row">
       <div>
         <div class="callout-n">6</div>
@@ -653,7 +658,7 @@
     </div>
     <div class="callout-note">
       Always-on in Claude Code: Notion, Playwright, GitHub, Context7, NotebookLM, Sequential Thinking.
-      The 35 Claude.ai MCPs load on demand when the task calls for them — the harness selects without explicit commands.
+      The 35 Claude.ai MCPs load on demand when the task calls for them; the harness selects without explicit commands.
     </div>
   </div>
 
