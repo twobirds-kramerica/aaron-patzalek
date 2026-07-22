@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Two Birds Innovation">
+  <!-- TBI mark: navy rounded square (--space-900) + teal gradient "TB" monogram, matching the site's existing brand tokens (css/style.css --space-900 / --teal-500 / --teal-400) and the og-card.svg palette. -->
+  <defs>
+    <linearGradient id="tbi-teal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14b8a6"/>
+      <stop offset="100%" stop-color="#2dd4bf"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="7" fill="#0c0a1d"/>
+  <text x="16" y="22" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="700" fill="url(#tbi-teal)">TB</text>
+</svg>
