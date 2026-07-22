@@ -1,427 +1,371 @@
 {
-  "generated": "2026-07-22T15:13:20Z",
-  "generator": "hal-stack/automation/stack-directory/build-stack-data.py",
-  "license_note": "Tool summaries are Wikipedia extracts, CC BY-SA 4.0, attributed per entry. 'what_we_use_it_for' lines are Two Birds Innovation original copy.",
-  "tools": [
+ "generated": "2026-07-22T15:13:20Z",
+ "generator": "hal-stack/automation/stack-directory/build-stack-data.py",
+ "license_note": "Tool summaries are Wikipedia extracts, CC BY-SA 4.0, attributed per entry. 'what_we_use_it_for' lines are Two Birds Innovation original copy.",
+ "tools": [
+  {
+   "name": "Figma",
+   "category": "Design",
+   "summary": "Figma is an American software company that provides a platform for collaborative web application for interface design, with additional offline features enabled by desktop applications for macOS and Windows. The feature set of Figma focuses on user interface and user experience design, with an emphasis on real-time collaboration, utilizing a variety of vector graphics editor and prototyping tools. The Figma mobile app for Android and iOS allows viewing and interacting with Figma prototypes in real-time on mobile and tablet devices.",
+   "short_description": "Online collaborative vector graphics editor",
+   "official_url": "https://www.figma.com/",
+   "competitors": [
     {
-      "name": "Figma",
-      "category": "Design",
-      "summary": "Figma is an American software company that provides a platform for collaborative web application for interface design, with additional offline features enabled by desktop applications for macOS and Windows. The feature set of Figma focuses on user interface and user experience design, with an emphasis on real-time collaboration, utilizing a variety of vector graphics editor and prototyping tools. The Figma mobile app for Android and iOS allows viewing and interacting with Figma prototypes in real-time on mobile and tablet devices.",
-      "short_description": "Online collaborative vector graphics editor",
-      "official_url": "https://www.figma.com/",
-      "competitors": [
-        {
-          "name": "Sketch",
-          "url": "https://www.sketch.com/"
-        },
-        {
-          "name": "Penpot",
-          "url": "https://penpot.app/"
-        }
-      ],
-      "what_we_use_it_for": "Design handoff and mockup review via the Figma MCP — the agent reads design context straight from files.",
-      "type": "Freemium",
-      "country": "USA",
-      "sovereignty": "Hosted SaaS only — no self-host option. Penpot (listed above) is the open-source, self-hostable alternative.",
-      "logo": "assets/logos/figma.png",
-      "attribution": {
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-        "source": "Wikipedia",
-        "source_url": "https://en.wikipedia.org/wiki/Figma"
-      }
+     "name": "Sketch",
+     "url": "https://www.sketch.com/"
     },
     {
-      "name": "Canva",
-      "category": "Design",
-      "summary": "Canva, Inc. is a multinational software company launched in 2013. The platform provides a graphic design platform to create visual content for presentations, websites, and other digital products. Its uses include templates for presentations, posters, and social media content, as well as photo and video editing functionality.",
-      "short_description": "Australian multinational proprietary software company",
-      "official_url": "https://www.canva.com/",
-      "competitors": [
-        {
-          "name": "Adobe Express",
-          "url": "https://www.adobe.com/express/"
-        },
-        {
-          "name": "Piktochart",
-          "url": "https://piktochart.com/"
-        }
-      ],
-      "what_we_use_it_for": "Quick branded graphics and one-pagers generated agent-side through the Canva MCP.",
-      "type": "Freemium",
-      "country": "Australia",
-      "sovereignty": "Hosted SaaS only.",
-      "logo": null,
-      "attribution": {
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-        "source": "Wikipedia",
-        "source_url": "https://en.wikipedia.org/wiki/Canva"
-      }
-    },
-    {
-      "name": "Miro",
-      "category": "Collaboration",
-      "summary": "Miro is a collaborative online platform designed to support teams in planning and execution across different locations and time zones. It is used for a variety of purposes, including brainstorming, agile planning, customer journey mapping, product design, and remote workshops. As of 2025, the platform is utilized by over 90 million users and more than 250,000 organizations worldwide.",
-      "short_description": "Visual collaboration website",
-      "official_url": "https://miro.com/",
-      "competitors": [
-        {
-          "name": "Mural",
-          "url": "https://www.mural.co/"
-        },
-        {
-          "name": "FigJam",
-          "url": "https://www.figma.com/figjam/"
-        }
-      ],
-      "what_we_use_it_for": "Whiteboard diagrams and planning boards the agent can create and read via MCP.",
-      "type": "Freemium",
-      "country": "Russia (founded Perm 2011 as RealtimeBoard; now co-HQ San Francisco/Amsterdam)",
-      "sovereignty": "Hosted SaaS only.",
-      "logo": "assets/logos/miro.png",
-      "attribution": {
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-        "source": "Wikipedia",
-        "source_url": "https://en.wikipedia.org/wiki/Miro_(collaboration_platform)"
-      }
-    },
-    {
-      "name": "Notion",
-      "category": "Productivity",
-      "summary": "Notion is a productivity and note-taking application developed by Notion Labs, Inc. It serves as a workspace for notetaking, knowledge management, data organization, and project and task tracking. It was first released in 2016 and is available on the web and as desktop and mobile apps. It is headquartered in San Francisco.",
-      "short_description": "Productivity web application",
-      "official_url": "https://www.notion.com/",
-      "competitors": [
-        {
-          "name": "Coda",
-          "url": "https://coda.io/"
-        },
-        {
-          "name": "Obsidian",
-          "url": "https://obsidian.md/"
-        }
-      ],
-      "what_we_use_it_for": "The operational backbone — sprint queue, human backlog, and job pipeline all live in Notion, read and written by the agent.",
-      "type": "Freemium",
-      "country": "USA",
-      "sovereignty": "Hosted SaaS only — data is exportable but there is no self-host option.",
-      "logo": "assets/logos/notion.ico",
-      "attribution": {
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-        "source": "Wikipedia",
-        "source_url": "https://en.wikipedia.org/wiki/Notion_(productivity_software)"
-      }
-    },
-    {
-      "name": "Slack",
-      "category": "Communication",
-      "summary": "Slack is a cloud-based team communication platform developed by Slack Technologies, which has been owned by Salesforce since 2021. Slack uses a freemium model. Slack is primarily offered as a business-to-business service, with its user base being predominantly team-based businesses while its features are focused on business administration and communication.",
-      "short_description": "Messaging software application",
-      "official_url": "https://slack.com/",
-      "competitors": [
-        {
-          "name": "Microsoft Teams",
-          "url": "https://www.microsoft.com/en-ca/microsoft-teams/group-chat-software"
-        },
-        {
-          "name": "Discord",
-          "url": "https://discord.com/"
-        }
-      ],
-      "what_we_use_it_for": "Webhook alerts from overnight builds land in Slack so failures are visible by morning.",
-      "type": "Freemium",
-      "country": "Canada (founded Vancouver 2009 as Tiny Speck; now HQ San Francisco, USA)",
-      "sovereignty": "Hosted SaaS only — self-hostable alternatives exist (e.g. Mattermost) but are not in use here.",
-      "logo": "assets/logos/slack.png",
-      "attribution": {
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-        "source": "Wikipedia",
-        "source_url": "https://en.wikipedia.org/wiki/Slack_(software)"
-      }
-    },
-    {
-      "name": "GitHub",
-      "category": "Development",
-      "summary": "GitHub is a proprietary developer platform that allows developers to create, store, manage, and share their code. It uses Git to provide distributed version control, and GitHub itself provides access control, bug tracking, software feature requests, task management, continuous integration, and wikis for every project. GitHub, headquartered in San Francisco, is operated by Github, Inc., a subsidiary of Microsoft since 2018.",
-      "short_description": "Software development collaboration platform",
-      "official_url": "https://github.com/",
-      "competitors": [
-        {
-          "name": "GitLab",
-          "url": "https://about.gitlab.com/"
-        },
-        {
-          "name": "Codeberg",
-          "url": "https://codeberg.org/"
-        }
-      ],
-      "what_we_use_it_for": "Every product ships from GitHub — repos, Actions CI, and free static hosting on GitHub Pages.",
-      "type": "Freemium",
-      "country": "USA",
-      "sovereignty": "Hosted SaaS, with a self-hosted git mirror on Codeberg kept as a sovereign fallback (git itself is fully portable).",
-      "logo": "assets/logos/github.svg",
-      "attribution": {
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-        "source": "Wikipedia",
-        "source_url": "https://en.wikipedia.org/wiki/GitHub"
-      }
-    },
-    {
-      "name": "Playwright",
-      "category": "Testing",
-      "summary": "Playwright is an open-source automation library for browser testing and web scraping developed by Microsoft and launched on 31 January 2020, which has since become popular among programmers and web developers.",
-      "short_description": "End-to-end testing framework",
-      "official_url": "https://playwright.dev/",
-      "competitors": [
-        {
-          "name": "Cypress",
-          "url": "https://www.cypress.io/"
-        },
-        {
-          "name": "Selenium",
-          "url": "https://www.selenium.dev/"
-        }
-      ],
-      "what_we_use_it_for": "Nightly headless-browser smoke tests against every live product — no sprint is Done until its Playwright spec passes.",
-      "type": "Open-source",
-      "country": "USA (Microsoft)",
-      "sovereignty": "Self-hostable / sovereign — runs entirely locally, no cloud dependency.",
-      "logo": null,
-      "attribution": {
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-        "source": "Wikipedia",
-        "source_url": "https://en.wikipedia.org/wiki/Playwright_(software)"
-      }
-    },
-    {
-      "name": "Datadog",
-      "category": "Monitoring",
-      "summary": "Datadog, Inc. is an American company that provides an observability service for cloud-scale applications, providing monitoring of servers, databases, tools, and services, through a SaaS-based data analytics platform. Founded and headquartered in New York City, the company is a publicly traded entity on the Nasdaq stock exchange.",
-      "short_description": "American technology company",
-      "official_url": "https://www.datadoghq.com/",
-      "competitors": [
-        {
-          "name": "New Relic",
-          "url": "https://newrelic.com/"
-        },
-        {
-          "name": "Grafana",
-          "url": "https://grafana.com/"
-        }
-      ],
-      "what_we_use_it_for": "Reference point for observability patterns; the stack's own monitoring is a sovereign Python uptime script.",
-      "type": "Paid service",
-      "country": "USA",
-      "sovereignty": "Hosted SaaS only. Not adopted — the stack uses a self-hosted uptime script instead (see internal rejected-tools note).",
-      "logo": "assets/logos/datadog.ico",
-      "attribution": {
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-        "source": "Wikipedia",
-        "source_url": "https://en.wikipedia.org/wiki/Datadog"
-      }
-    },
-    {
-      "name": "PagerDuty",
-      "category": "Incident response",
-      "summary": "PagerDuty, Inc. is an American cloud computing company specializing in a SaaS incident management platform for IT operations departments.",
-      "short_description": "American technology company",
-      "official_url": "https://www.pagerduty.com/",
-      "competitors": [
-        {
-          "name": "incident.io",
-          "url": "https://incident.io/"
-        },
-        {
-          "name": "Grafana OnCall",
-          "url": "https://grafana.com/products/cloud/oncall/"
-        }
-      ],
-      "what_we_use_it_for": "Reference point for on-call alerting; overnight failures here route to Slack and the morning briefing instead.",
-      "type": "Freemium",
-      "country": "USA",
-      "sovereignty": "Hosted SaaS only. Not adopted — see internal rejected-tools note.",
-      "logo": "assets/logos/pagerduty.ico",
-      "attribution": {
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-        "source": "Wikipedia",
-        "source_url": "https://en.wikipedia.org/wiki/PagerDuty"
-      }
-    },
-    {
-      "name": "Windows Task Scheduler",
-      "category": "Automation",
-      "summary": "Task Scheduler is a job scheduler in Microsoft Windows that launches computer programs or scripts at pre-defined times or after specified time intervals. Microsoft introduced this component in the Microsoft Plus! for Windows 95 as System Agent. Its core component is an eponymous Windows service. The Windows Task Scheduler infrastructure is the basis for the Windows PowerShell scheduled jobs feature introduced with PowerShell v3.",
-      "short_description": "Computer application of Microsoft Windows",
-      "official_url": "https://learn.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page",
-      "competitors": [
-        {
-          "name": "cron",
-          "url": "https://en.wikipedia.org/wiki/Cron"
-        },
-        {
-          "name": "Jenkins",
-          "url": "https://www.jenkins.io/"
-        }
-      ],
-      "what_we_use_it_for": "Fires the 2am overnight build locally — no cloud cron service, no subscription, no external dependency.",
-      "type": "Free (bundled with Windows)",
-      "country": "USA (Microsoft)",
-      "sovereignty": "Self-hostable / sovereign — runs entirely locally, no cloud dependency.",
-      "logo": "assets/logos/windows-task-scheduler.ico",
-      "attribution": {
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-        "source": "Wikipedia",
-        "source_url": "https://en.wikipedia.org/wiki/Windows_Task_Scheduler"
-      }
-    },
-    {
-      "name": "Cloudflare",
-      "category": "Infrastructure",
-      "summary": "Cloudflare, Inc., is an American technology company headquartered in San Francisco, California, that provides a range of internet services, including content delivery network (CDN) services, cloud cybersecurity, DDoS mitigation, and ICANN-accredited domain registration. The company's services act primarily as a reverse proxy between website visitors and a customer's hosting provider, improving performance and protecting against malicious traffic.",
-      "short_description": "American technology company",
-      "official_url": "https://www.cloudflare.com/",
-      "competitors": [
-        {
-          "name": "Fastly",
-          "url": "https://www.fastly.com/"
-        },
-        {
-          "name": "Amazon CloudFront",
-          "url": "https://aws.amazon.com/cloudfront/"
-        }
-      ],
-      "what_we_use_it_for": "Workers and KV power the small server-side pieces (LLM proxy, email capture) the static sites can't do alone.",
-      "type": "Freemium",
-      "country": "USA",
-      "sovereignty": "Hosted SaaS only — DNS/CDN/edge-compute at this scale has no practical self-hosted equivalent.",
-      "logo": "assets/logos/cloudflare.ico",
-      "attribution": {
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-        "source": "Wikipedia",
-        "source_url": "https://en.wikipedia.org/wiki/Cloudflare"
-      }
-    },
-    {
-      "name": "Vercel",
-      "category": "Hosting",
-      "summary": "Vercel Inc. is an American cloud application company. The company created and maintains the Next.js web development framework.",
-      "short_description": "American cloud application company",
-      "official_url": "https://vercel.com/",
-      "competitors": [
-        {
-          "name": "Netlify",
-          "url": "https://www.netlify.com/"
-        },
-        {
-          "name": "Cloudflare Pages",
-          "url": "https://pages.cloudflare.com/"
-        }
-      ],
-      "what_we_use_it_for": "Connected via MCP for deploy tooling; production hosting stays on GitHub Pages at $0.",
-      "type": "Freemium",
-      "country": "USA",
-      "sovereignty": "Hosted SaaS only — not the production host; GitHub Pages is.",
-      "logo": "assets/logos/vercel.png",
-      "attribution": {
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-        "source": "Wikipedia",
-        "source_url": "https://en.wikipedia.org/wiki/Vercel"
-      }
-    },
-    {
-      "name": "Stripe",
-      "category": "Payments",
-      "summary": "Stripe, Inc. is an Irish and American multinational financial services and software as a service (SaaS) company dual-headquartered in South San Francisco, California, United States, and Dublin, Ireland. The company primarily offers payment-processing software and application programming interfaces for e-commerce websites and mobile applications.",
-      "short_description": "Irish-American multinational financial services and SaaS company",
-      "official_url": "https://stripe.com/",
-      "competitors": [
-        {
-          "name": "Square",
-          "url": "https://squareup.com/"
-        },
-        {
-          "name": "PayPal",
-          "url": "https://www.paypal.com/"
-        }
-      ],
-      "what_we_use_it_for": "Payments rail on standby for product commercialization — wired via MCP before a single invoice exists.",
-      "type": "Paid service (pay-per-transaction, no monthly fee)",
-      "country": "Ireland / USA (dual-headquartered)",
-      "sovereignty": "Hosted SaaS only — payment processing requires a licensed processor; no sovereign fallback exists.",
-      "logo": "assets/logos/stripe.svg",
-      "attribution": {
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-        "source": "Wikipedia",
-        "source_url": "https://en.wikipedia.org/wiki/Stripe%2C_Inc."
-      }
-    },
-    {
-      "name": "Zapier",
-      "category": "Automation",
-      "summary": "Zapier is an American software company that provides a platform for business process automation and application integration services. Its platform allows users to move data across web-based applications, automate tasks, and incorporate artificial intelligence (AI) into workflows and systems. The company was founded in 2011, and officially launched in 2012 as part of the Y Combinator startup accelerator program. As a low-code/no-code platform, Zapier is intended for users with minimal to moderate technical knowledge.\nAs of 2026, the platform has expanded its ecosystem to support integrations across more than 9,000 distinct web applications, facilitating over 66,000 individual automated triggers and actions.",
-      "short_description": "Software company",
-      "official_url": "https://zapier.com/",
-      "competitors": [
-        {
-          "name": "Make",
-          "url": "https://www.make.com/"
-        },
-        {
-          "name": "n8n",
-          "url": "https://n8n.io/"
-        }
-      ],
-      "what_we_use_it_for": "Bridge to 9,000+ apps for the rare integration that has no direct MCP; self-hosted n8n is the sovereign fallback.",
-      "type": "Freemium",
-      "country": "USA",
-      "sovereignty": "Hosted SaaS only — self-hosted n8n (listed above) is the sovereign fallback already in active use.",
-      "logo": "assets/logos/zapier.ico",
-      "attribution": {
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-        "source": "Wikipedia",
-        "source_url": "https://en.wikipedia.org/wiki/Zapier"
-      }
-    },
-    {
-      "name": "Gmail",
-      "category": "Communication",
-      "summary": "Gmail is a mailbox provider by Google. It is the largest email service worldwide, with 1.8 billion users. It is accessible via a web browser (webmail), mobile app, or through third-party email clients via the POP and IMAP protocols. Users can also connect non-Gmail e-mail accounts to their Gmail inbox. The service was launched as a beta version in 2004. It came out of beta in 2009.",
-      "short_description": "Email service provided by Google",
-      "official_url": "https://www.google.com/gmail/about/",
-      "competitors": [
-        {
-          "name": "Outlook",
-          "url": "https://www.microsoft.com/en-ca/microsoft-365/outlook/"
-        },
-        {
-          "name": "Proton Mail",
-          "url": "https://proton.me/mail"
-        }
-      ],
-      "what_we_use_it_for": "The agent reads and drafts email via the Gmail MCP; outbound automation sends through plain smtplib.",
-      "type": "Freemium",
-      "country": "USA",
-      "sovereignty": "Hosted SaaS only.",
-      "logo": "assets/logos/gmail.png",
-      "attribution": {
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-        "source": "Wikipedia",
-        "source_url": "https://en.wikipedia.org/wiki/Gmail"
-      }
+     "name": "Penpot",
+     "url": "https://penpot.app/"
     }
-  ]
+   ],
+   "what_we_use_it_for": "Design handoff and mockup review via the Figma MCP — the agent reads design context straight from files.",
+   "type": "Freemium",
+   "country": "USA",
+   "sovereignty": "Hosted SaaS only — no self-host option. Penpot (listed above) is the open-source, self-hostable alternative.",
+   "logo": "assets/logos/figma.png",
+   "attribution": {
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Figma"
+   }
+  },
+  {
+   "name": "Canva",
+   "category": "Design",
+   "summary": "Canva, Inc. is a multinational software company launched in 2013. The platform provides a graphic design platform to create visual content for presentations, websites, and other digital products. Its uses include templates for presentations, posters, and social media content, as well as photo and video editing functionality.",
+   "short_description": "Australian multinational proprietary software company",
+   "official_url": "https://www.canva.com/",
+   "competitors": [
+    {
+     "name": "Adobe Express",
+     "url": "https://www.adobe.com/express/"
+    },
+    {
+     "name": "Piktochart",
+     "url": "https://piktochart.com/"
+    }
+   ],
+   "what_we_use_it_for": "Quick branded graphics and one-pagers generated agent-side through the Canva MCP.",
+   "type": "Freemium",
+   "country": "Australia",
+   "sovereignty": "Hosted SaaS only.",
+   "logo": "assets/logos/canva.png",
+   "attribution": {
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Canva"
+   }
+  },
+  {
+   "name": "Miro",
+   "category": "Collaboration",
+   "summary": "Miro is a collaborative online platform designed to support teams in planning and execution across different locations and time zones. It is used for a variety of purposes, including brainstorming, agile planning, customer journey mapping, product design, and remote workshops. As of 2025, the platform is utilized by over 90 million users and more than 250,000 organizations worldwide.",
+   "short_description": "Visual collaboration website",
+   "official_url": "https://miro.com/",
+   "competitors": [
+    {
+     "name": "Mural",
+     "url": "https://www.mural.co/"
+    },
+    {
+     "name": "FigJam",
+     "url": "https://www.figma.com/figjam/"
+    }
+   ],
+   "what_we_use_it_for": "Whiteboard diagrams and planning boards the agent can create and read via MCP.",
+   "type": "Freemium",
+   "country": "Russia (founded Perm 2011 as RealtimeBoard; now co-HQ San Francisco/Amsterdam)",
+   "sovereignty": "Hosted SaaS only.",
+   "logo": "assets/logos/miro.png",
+   "attribution": {
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Miro_(collaboration_platform)"
+   }
+  },
+  {
+   "name": "Notion",
+   "category": "Productivity",
+   "summary": "Notion is a productivity and note-taking application developed by Notion Labs, Inc. It serves as a workspace for notetaking, knowledge management, data organization, and project and task tracking. It was first released in 2016 and is available on the web and as desktop and mobile apps. It is headquartered in San Francisco.",
+   "short_description": "Productivity web application",
+   "official_url": "https://www.notion.com/",
+   "competitors": [
+    {
+     "name": "Coda",
+     "url": "https://coda.io/"
+    },
+    {
+     "name": "Obsidian",
+     "url": "https://obsidian.md/"
+    }
+   ],
+   "what_we_use_it_for": "The operational backbone — sprint queue, human backlog, and job pipeline all live in Notion, read and written by the agent.",
+   "type": "Freemium",
+   "country": "USA",
+   "sovereignty": "Hosted SaaS only — data is exportable but there is no self-host option.",
+   "logo": "assets/logos/notion.ico",
+   "attribution": {
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Notion_(productivity_software)"
+   }
+  },
+  {
+   "name": "Slack",
+   "category": "Communication",
+   "summary": "Slack is a cloud-based team communication platform developed by Slack Technologies, which has been owned by Salesforce since 2021. Slack uses a freemium model. Slack is primarily offered as a business-to-business service, with its user base being predominantly team-based businesses while its features are focused on business administration and communication.",
+   "short_description": "Messaging software application",
+   "official_url": "https://slack.com/",
+   "competitors": [
+    {
+     "name": "Microsoft Teams",
+     "url": "https://www.microsoft.com/en-ca/microsoft-teams/group-chat-software"
+    },
+    {
+     "name": "Discord",
+     "url": "https://discord.com/"
+    }
+   ],
+   "what_we_use_it_for": "Webhook alerts from overnight builds land in Slack so failures are visible by morning.",
+   "type": "Freemium",
+   "country": "Canada (founded Vancouver 2009 as Tiny Speck; now HQ San Francisco, USA)",
+   "sovereignty": "Hosted SaaS only — self-hostable alternatives exist (e.g. Mattermost) but are not in use here.",
+   "logo": "assets/logos/slack.png",
+   "attribution": {
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Slack_(software)"
+   }
+  },
+  {
+   "name": "GitHub",
+   "category": "Development",
+   "summary": "GitHub is a proprietary developer platform that allows developers to create, store, manage, and share their code. It uses Git to provide distributed version control, and GitHub itself provides access control, bug tracking, software feature requests, task management, continuous integration, and wikis for every project. GitHub, headquartered in San Francisco, is operated by Github, Inc., a subsidiary of Microsoft since 2018.",
+   "short_description": "Software development collaboration platform",
+   "official_url": "https://github.com/",
+   "competitors": [
+    {
+     "name": "GitLab",
+     "url": "https://about.gitlab.com/"
+    },
+    {
+     "name": "Codeberg",
+     "url": "https://codeberg.org/"
+    }
+   ],
+   "what_we_use_it_for": "Every product ships from GitHub — repos, Actions CI, and free static hosting on GitHub Pages.",
+   "type": "Freemium",
+   "country": "USA",
+   "sovereignty": "Hosted SaaS, with a self-hosted git mirror on Codeberg kept as a sovereign fallback (git itself is fully portable).",
+   "logo": "assets/logos/github.svg",
+   "attribution": {
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/GitHub"
+   }
+  },
+  {
+   "name": "Playwright",
+   "category": "Testing",
+   "summary": "Playwright is an open-source automation library for browser testing and web scraping developed by Microsoft and launched on 31 January 2020, which has since become popular among programmers and web developers.",
+   "short_description": "End-to-end testing framework",
+   "official_url": "https://playwright.dev/",
+   "competitors": [
+    {
+     "name": "Cypress",
+     "url": "https://www.cypress.io/"
+    },
+    {
+     "name": "Selenium",
+     "url": "https://www.selenium.dev/"
+    }
+   ],
+   "what_we_use_it_for": "Nightly headless-browser smoke tests against every live product — no sprint is Done until its Playwright spec passes.",
+   "type": "Open-source",
+   "country": "USA (Microsoft)",
+   "sovereignty": "Self-hostable / sovereign — runs entirely locally, no cloud dependency.",
+   "logo": "assets/logos/playwright.png",
+   "attribution": {
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Playwright_(software)"
+   }
+  },
+  {
+   "name": "Windows Task Scheduler",
+   "category": "Automation",
+   "summary": "Task Scheduler is a job scheduler in Microsoft Windows that launches computer programs or scripts at pre-defined times or after specified time intervals. Microsoft introduced this component in the Microsoft Plus! for Windows 95 as System Agent. Its core component is an eponymous Windows service. The Windows Task Scheduler infrastructure is the basis for the Windows PowerShell scheduled jobs feature introduced with PowerShell v3.",
+   "short_description": "Computer application of Microsoft Windows",
+   "official_url": "https://learn.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page",
+   "competitors": [
+    {
+     "name": "cron",
+     "url": "https://en.wikipedia.org/wiki/Cron"
+    },
+    {
+     "name": "Jenkins",
+     "url": "https://www.jenkins.io/"
+    }
+   ],
+   "what_we_use_it_for": "Fires the 2am overnight build locally — no cloud cron service, no subscription, no external dependency.",
+   "type": "Free (bundled with Windows)",
+   "country": "USA (Microsoft)",
+   "sovereignty": "Self-hostable / sovereign — runs entirely locally, no cloud dependency.",
+   "logo": "assets/logos/windows-task-scheduler.ico",
+   "attribution": {
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Windows_Task_Scheduler"
+   }
+  },
+  {
+   "name": "Cloudflare",
+   "category": "Infrastructure",
+   "summary": "Cloudflare, Inc., is an American technology company headquartered in San Francisco, California, that provides a range of internet services, including content delivery network (CDN) services, cloud cybersecurity, DDoS mitigation, and ICANN-accredited domain registration. The company's services act primarily as a reverse proxy between website visitors and a customer's hosting provider, improving performance and protecting against malicious traffic.",
+   "short_description": "American technology company",
+   "official_url": "https://www.cloudflare.com/",
+   "competitors": [
+    {
+     "name": "Fastly",
+     "url": "https://www.fastly.com/"
+    },
+    {
+     "name": "Amazon CloudFront",
+     "url": "https://aws.amazon.com/cloudfront/"
+    }
+   ],
+   "what_we_use_it_for": "Workers and KV power the small server-side pieces (LLM proxy, email capture) the static sites can't do alone.",
+   "type": "Freemium",
+   "country": "USA",
+   "sovereignty": "Hosted SaaS only — DNS/CDN/edge-compute at this scale has no practical self-hosted equivalent.",
+   "logo": "assets/logos/cloudflare.ico",
+   "attribution": {
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Cloudflare"
+   }
+  },
+  {
+   "name": "Vercel",
+   "category": "Hosting",
+   "summary": "Vercel Inc. is an American cloud application company. The company created and maintains the Next.js web development framework.",
+   "short_description": "American cloud application company",
+   "official_url": "https://vercel.com/",
+   "competitors": [
+    {
+     "name": "Netlify",
+     "url": "https://www.netlify.com/"
+    },
+    {
+     "name": "Cloudflare Pages",
+     "url": "https://pages.cloudflare.com/"
+    }
+   ],
+   "what_we_use_it_for": "Connected via MCP for deploy tooling; production hosting stays on GitHub Pages at $0.",
+   "type": "Freemium",
+   "country": "USA",
+   "sovereignty": "Hosted SaaS only — not the production host; GitHub Pages is.",
+   "logo": "assets/logos/vercel.png",
+   "attribution": {
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Vercel"
+   }
+  },
+  {
+   "name": "Stripe",
+   "category": "Payments",
+   "summary": "Stripe, Inc. is an Irish and American multinational financial services and software as a service (SaaS) company dual-headquartered in South San Francisco, California, United States, and Dublin, Ireland. The company primarily offers payment-processing software and application programming interfaces for e-commerce websites and mobile applications.",
+   "short_description": "Irish-American multinational financial services and SaaS company",
+   "official_url": "https://stripe.com/",
+   "competitors": [
+    {
+     "name": "Square",
+     "url": "https://squareup.com/"
+    },
+    {
+     "name": "PayPal",
+     "url": "https://www.paypal.com/"
+    }
+   ],
+   "what_we_use_it_for": "Payments rail on standby for product commercialization — wired via MCP before a single invoice exists.",
+   "type": "Paid service (pay-per-transaction, no monthly fee)",
+   "country": "Ireland / USA (dual-headquartered)",
+   "sovereignty": "Hosted SaaS only — payment processing requires a licensed processor; no sovereign fallback exists.",
+   "logo": "assets/logos/stripe.svg",
+   "attribution": {
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Stripe%2C_Inc."
+   }
+  },
+  {
+   "name": "Zapier",
+   "category": "Automation",
+   "summary": "Zapier is an American software company that provides a platform for business process automation and application integration services. Its platform allows users to move data across web-based applications, automate tasks, and incorporate artificial intelligence (AI) into workflows and systems. The company was founded in 2011, and officially launched in 2012 as part of the Y Combinator startup accelerator program. As a low-code/no-code platform, Zapier is intended for users with minimal to moderate technical knowledge.\nAs of 2026, the platform has expanded its ecosystem to support integrations across more than 9,000 distinct web applications, facilitating over 66,000 individual automated triggers and actions.",
+   "short_description": "Software company",
+   "official_url": "https://zapier.com/",
+   "competitors": [
+    {
+     "name": "Make",
+     "url": "https://www.make.com/"
+    },
+    {
+     "name": "n8n",
+     "url": "https://n8n.io/"
+    }
+   ],
+   "what_we_use_it_for": "Bridge to 9,000+ apps for the rare integration that has no direct MCP; self-hosted n8n is the sovereign fallback.",
+   "type": "Freemium",
+   "country": "USA",
+   "sovereignty": "Hosted SaaS only — self-hosted n8n (listed above) is the sovereign fallback already in active use.",
+   "logo": "assets/logos/zapier.ico",
+   "attribution": {
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Zapier"
+   }
+  },
+  {
+   "name": "Gmail",
+   "category": "Communication",
+   "summary": "Gmail is a mailbox provider by Google. It is the largest email service worldwide, with 1.8 billion users. It is accessible via a web browser (webmail), mobile app, or through third-party email clients via the POP and IMAP protocols. Users can also connect non-Gmail e-mail accounts to their Gmail inbox. The service was launched as a beta version in 2004. It came out of beta in 2009.",
+   "short_description": "Email service provided by Google",
+   "official_url": "https://www.google.com/gmail/about/",
+   "competitors": [
+    {
+     "name": "Outlook",
+     "url": "https://www.microsoft.com/en-ca/microsoft-365/outlook/"
+    },
+    {
+     "name": "Proton Mail",
+     "url": "https://proton.me/mail"
+    }
+   ],
+   "what_we_use_it_for": "The agent reads and drafts email via the Gmail MCP; outbound automation sends through plain smtplib.",
+   "type": "Freemium",
+   "country": "USA",
+   "sovereignty": "Hosted SaaS only.",
+   "logo": "assets/logos/gmail.png",
+   "attribution": {
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/Gmail"
+   }
+  }
+ ]
 }
