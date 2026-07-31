@@ -250,7 +250,7 @@ The counter animation increments linearly (`elapsed / duration * target`). At hi
 | 6 | Swap Inter for non-reflex-reject body font | P1 | 1 hr |
 | 7 | Restrict mono usage to chip/tag + code elements only | P1 | 1 hr |
 | 8 | Add skip navigation link | P1 | 10 min |
-| 9 | Fix `#1d2130` → `var(--bg-lift)` in `.pill-popover` | P2 | 2 min |
+| 9 | ~~Fix `#1d2130` → `var(--bg-lift)` in `.pill-popover`~~ — **DONE 2026-07-31**, `hal.html` line 430 | P2 | 2 min |
 | 10 | Convert `.pill` spans to `<button>` elements | P2 | 45 min |
 | 11 | Add tablet breakpoint at 860px | P2 | 30 min |
 | 12 | Add `will-change` to two infinite animations | P2 | 5 min |
