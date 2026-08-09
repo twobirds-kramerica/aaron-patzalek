@@ -69,12 +69,34 @@
     /* Nightly loop timeline */
     .loop { display: grid; gap: var(--space-3); margin: 0; padding: 0; list-style: none; }
     .loop-row {
-      display: grid; grid-template-columns: 110px 1fr; gap: var(--space-5);
       background: var(--color-surface);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
       padding: var(--space-4) var(--space-5);
+      overflow: hidden;
+    }
+    /* Separate element from .loop-row (which owns the scroll-reveal transform):
+       an animation's transform always wins over a transition's, so putting the
+       tug motion on the same element would silently cancel the reveal slide-up. */
+    .loop-row-inner {
+      display: grid; grid-template-columns: 110px 1fr; gap: var(--space-5);
       align-items: baseline;
+      animation: loop-tug 8s ease-in-out infinite;
+      animation-delay: calc(var(--loop-i, 0) * 0.35s);
+    }
+    /* Assembly-line feel: each row nudges toward the next, settles, nudges back. */
+    @keyframes loop-tug {
+      0%, 100% { transform: translateX(0); }
+      4%       { transform: translateX(5px); }
+      8%       { transform: translateX(-1px); }
+      11%      { transform: translateX(0); }
+      50%      { transform: translateX(0); }
+      54%      { transform: translateX(-5px); }
+      58%      { transform: translateX(1px); }
+      61%      { transform: translateX(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .loop-row-inner { animation: none; }
     }
     .loop-time {
       font-family: var(--font-mono); font-size: 0.8rem;
@@ -84,7 +106,7 @@
     .loop-title { font-weight: 600; font-size: 0.98rem; margin: 0 0 2px; max-width: none; }
     .loop-detail { font-size: var(--font-size-sm); color: var(--color-text-light); margin: 0; max-width: none; }
     @media (max-width: 560px) {
-      .loop-row { grid-template-columns: 1fr; gap: var(--space-1); }
+      .loop-row-inner { grid-template-columns: 1fr; gap: var(--space-1); }
     }
 
     /* Run log: the concrete evening */
@@ -241,28 +263,40 @@
       </div>
       <ul class="loop">
         <li class="loop-row reveal">
-          <span class="loop-time">repos</span>
-          <div><p class="loop-title">All 10 repositories synced and mirrored</p><p class="loop-detail">Pulled, pushed, and backed up to an independent second host. If the primary host disappeared tomorrow, nothing is lost.</p></div>
+          <div class="loop-row-inner" style="--loop-i: 0;">
+            <span class="loop-time">repos</span>
+            <div><p class="loop-title">All 10 repositories synced and mirrored</p><p class="loop-detail">Pulled, pushed, and backed up to an independent second host. If the primary host disappeared tomorrow, nothing is lost.</p></div>
+          </div>
         </li>
         <li class="loop-row reveal">
-          <span class="loop-time">quality</span>
-          <div><p class="loop-title">Performance and accessibility audits</p><p class="loop-detail">Lighthouse scores for every product, logged over time. Accessibility checks also run automatically on every code push.</p></div>
+          <div class="loop-row-inner" style="--loop-i: 1;">
+            <span class="loop-time">quality</span>
+            <div><p class="loop-title">Performance and accessibility audits</p><p class="loop-detail">Lighthouse scores for every product, logged over time. Accessibility checks also run automatically on every code push.</p></div>
+          </div>
         </li>
         <li class="loop-row reveal">
-          <span class="loop-time">smoke tests</span>
-          <div><p class="loop-title">Automated browser tests against every live product</p><p class="loop-detail">A headless browser opens each site, checks key elements and flows, and saves a screenshot when something fails.</p></div>
+          <div class="loop-row-inner" style="--loop-i: 2;">
+            <span class="loop-time">smoke tests</span>
+            <div><p class="loop-title">Automated browser tests against every live product</p><p class="loop-detail">A headless browser opens each site, checks key elements and flows, and saves a screenshot when something fails.</p></div>
+          </div>
         </li>
         <li class="loop-row reveal">
-          <span class="loop-time">triage</span>
-          <div><p class="loop-title">Autonomy audit of the whole backlog</p><p class="loop-detail">Every open task is checked: can the system do this without me? If yes, it's flagged for execution and never hits my queue.</p></div>
+          <div class="loop-row-inner" style="--loop-i: 3;">
+            <span class="loop-time">triage</span>
+            <div><p class="loop-title">Autonomy audit of the whole backlog</p><p class="loop-detail">Every open task is checked: can the system do this without me? If yes, it's flagged for execution and never hits my queue.</p></div>
+          </div>
         </li>
         <li class="loop-row reveal">
-          <span class="loop-time">dashboard</span>
-          <div><p class="loop-title">The command dashboard rebuilds itself</p><p class="loop-detail">A private dashboard aggregates the job pipeline, backlog, deadlines, and recent builds from the source files, then redeploys. It cannot go stale because no one has to remember to update it.</p></div>
+          <div class="loop-row-inner" style="--loop-i: 4;">
+            <span class="loop-time">dashboard</span>
+            <div><p class="loop-title">The command dashboard rebuilds itself</p><p class="loop-detail">A private dashboard aggregates the job pipeline, backlog, deadlines, and recent builds from the source files, then redeploys. It cannot go stale because no one has to remember to update it.</p></div>
+          </div>
         </li>
         <li class="loop-row reveal">
-          <span class="loop-time">briefing</span>
-          <div><p class="loop-title">Morning briefing written</p><p class="loop-detail">A plain-English summary of what happened overnight and what genuinely needs a human, waiting when I open the laptop.</p></div>
+          <div class="loop-row-inner" style="--loop-i: 5;">
+            <span class="loop-time">briefing</span>
+            <div><p class="loop-title">Morning briefing written</p><p class="loop-detail">A plain-English summary of what happened overnight and what genuinely needs a human, waiting when I open the laptop.</p></div>
+          </div>
         </li>
       </ul>
     </div>
