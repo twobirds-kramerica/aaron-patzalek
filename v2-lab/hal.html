@@ -164,7 +164,7 @@
     .plate-beam rect {
       fill: none; stroke: url(#beamGrad); stroke-width: 2.5;
       stroke-dasharray: 150 850; stroke-dashoffset: 1000; opacity: 0;
-      animation: plate-lap 20s linear 1.6s infinite;
+      animation: plate-lap 7s linear 1.6s infinite;
     }
     /* Boxed, and bigger. A small-caps label with nothing around it read as
        weak; a plate gives the wordmark the weight of a company. */
@@ -215,31 +215,31 @@
     @keyframes plate-up   { from { opacity:0; transform:translateY(10px); }  to { opacity:1; transform:none; } }
     @keyframes plate-draw { to { stroke-dashoffset: 0; } }
     @keyframes plate-fade { to { opacity: 1; } }
-    /* A slow lap every 20s: the pass itself takes 5s (25% of the cycle), then
-       15s of nothing. Slow enough to be pleasant rather than a distraction.
+    /* 7s cycle: a ~4.2s pass then ~2.8s of quiet. The 15s gap read as dead
+       air — Aaron timed it and wanted roughly three seconds between passes.
        NB this is a deliberate, Aaron-approved departure from bible section 8
        ("Nothing loops in the interface") — logged in S-BRAND-SYSTEM-
        CONSOLIDATION-001 for ratification, not a silent drift. */
     @keyframes plate-lap {
       0%   { stroke-dashoffset: 1000; opacity: 0; }
-      2%   { opacity: .75; }
-      23%  { stroke-dashoffset: 0; opacity: .75; }
-      25%  { stroke-dashoffset: 0; opacity: 0; }
+      4%   { opacity: .75; }
+      56%  { stroke-dashoffset: 0; opacity: .75; }
+      60%  { stroke-dashoffset: 0; opacity: 0; }
       100% { stroke-dashoffset: 0; opacity: 0; }
     }
 
-    /* Corner glints. Each flares as the beam reaches it: the pass covers the
-       perimeter over 25% of the cycle, and on a 297x257 rect the corners fall
-       at roughly 27%, 50%, 77% and 100% of that path. */
+    /* Corner glints, re-timed to the 7s cycle. The pass runs 1.6s to 5.8s and
+       on a 297x257 rect the corners fall at roughly 27%, 50%, 77% and 100% of
+       the path, so they flare at 2.7s, 3.7s, 4.8s and 5.8s. */
     .glint { fill: #7FB3E8; opacity: 0; transform-box: fill-box; transform-origin: center; }
-    .g1 { animation: glint 20s ease-out 1.6s infinite; animation-delay: 2.9s; }
-    .g2 { animation: glint 20s ease-out 1.6s infinite; animation-delay: 4.1s; }
-    .g3 { animation: glint 20s ease-out 1.6s infinite; animation-delay: 5.4s; }
-    .g4 { animation: glint 20s ease-out 1.6s infinite; animation-delay: 6.6s; }
+    .g1 { animation: glint 7s ease-out infinite; animation-delay: 2.7s; }
+    .g2 { animation: glint 7s ease-out infinite; animation-delay: 3.7s; }
+    .g3 { animation: glint 7s ease-out infinite; animation-delay: 4.8s; }
+    .g4 { animation: glint 7s ease-out infinite; animation-delay: 5.8s; }
     @keyframes glint {
       0%  { opacity: 0; transform: scale(.5); }
-      2%  { opacity: .9; transform: scale(1.6); }
-      6%  { opacity: 0; transform: scale(.5); }
+      3%  { opacity: .9; transform: scale(1.6); }
+      9%  { opacity: 0; transform: scale(.5); }
       100%{ opacity: 0; transform: scale(.5); }
     }
 
