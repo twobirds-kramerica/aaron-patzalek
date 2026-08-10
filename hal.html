@@ -1260,7 +1260,7 @@
 <section class="reveal">
   <div class="eyebrow">Architecture — Executive View</div>
   <h2>The same five layers, read as a business would read them</h2>
-  <p style="margin-bottom:26px;">Same stack as the current page's Architecture section, reframed around what each layer is <em>for</em> rather than what tools sit in it.</p>
+  <p style="margin-bottom:26px;">Same stack as the current page's Architecture section, reframed around what each layer is <em>for</em> rather than what tools sit in it. (The name's a nod to 2001: A Space Odyssey. Make of that what you will.)</p>
 
   <div class="arch">
     <div class="arch-header">HAL Stack · What Each Layer Is For</div>
@@ -1494,8 +1494,11 @@
   // ── VERSION TABS ────────────────────────────────────────────
   function showTab(which) {
     const isV2 = which === 'v2';
-    document.getElementById('tab-current').style.display = isV2 ? 'none' : '';
-    document.getElementById('tab-v2').style.display = isV2 ? '' : 'none';
+    // Explicit 'block', not '': #tab-v2 is display:none in the stylesheet, so
+    // clearing the inline style would fall back to that rule and the v2 tab
+    // would render blank.
+    document.getElementById('tab-current').style.display = isV2 ? 'none' : 'block';
+    document.getElementById('tab-v2').style.display = isV2 ? 'block' : 'none';
     document.getElementById('tab-btn-current').classList.toggle('active', !isV2);
     document.getElementById('tab-btn-v2').classList.toggle('active', isV2);
     document.getElementById('tab-btn-current').setAttribute('aria-selected', String(!isV2));
