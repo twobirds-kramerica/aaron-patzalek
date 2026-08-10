@@ -85,8 +85,8 @@ h1{font-family:var(--font-heading);font-size:1.8rem;margin:0 0 6px}
 }
 .a-beam{position:absolute;inset:-3px;border-radius:31px;pointer-events:none}
 .a-beam rect{fill:none;stroke:url(#beamA);stroke-width:4;
-  stroke-dasharray:120 480;stroke-dashoffset:600;
-  animation:beam 2.6s linear 1.25s 1 forwards, beam 2.6s linear 40s infinite}
+  stroke-dasharray:150 850;stroke-dashoffset:1000;opacity:0;
+  animation:beam 40s linear 1.25s infinite}
 .a-tag{
   font-family:var(--font-heading);font-weight:600;font-size:.94rem;color:var(--tb-blue);
   opacity:0;animation:slide-up .7s cubic-bezier(.2,.8,.25,1) .95s forwards;
@@ -120,9 +120,12 @@ h1{font-family:var(--font-heading);font-size:1.8rem;margin:0 0 6px}
 .c-lock{position:relative;width:100%;max-width:300px;padding:30px 26px;text-align:center;
   border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10)}
 .c-beam{position:absolute;inset:-1px;border-radius:18px;pointer-events:none}
+/* pathLength=1000 normalises the perimeter so a lap always completes; the
+   previous hand-guessed dasharray fell ~9 units short, which is why the beam
+   never finished. One lap, then quiet for the rest of the 40s. */
 .c-beam rect{fill:none;stroke:url(#beamC);stroke-width:3;
-  stroke-dasharray:150 900;stroke-dashoffset:1050;
-  animation:beamC 3s linear 1.9s 1 forwards, beamC 3s linear 40s infinite}
+  stroke-dasharray:150 850;stroke-dashoffset:1000;opacity:0;
+  animation:beamC 40s linear 1.9s infinite}
 .c-word{
   font-family:var(--font-heading);font-weight:700;font-size:1.1rem;color:#fff;letter-spacing:.01em;
   opacity:0;animation:slide-down .7s ease .1s forwards;margin-bottom:18px;
@@ -147,8 +150,18 @@ h1{font-family:var(--font-heading);font-size:1.8rem;margin:0 0 6px}
 @keyframes grow{to{width:52px}}
 @keyframes fade{to{opacity:1}}
 @keyframes draw{to{stroke-dashoffset:0}}
-@keyframes beam{from{stroke-dashoffset:600}to{stroke-dashoffset:0}}
-@keyframes beamC{from{stroke-dashoffset:1050}to{stroke-dashoffset:0}}
+@keyframes beam{
+  0%{stroke-dashoffset:1000;opacity:0}
+  1%{opacity:.95}
+  9%{stroke-dashoffset:0;opacity:.95}
+  11%,100%{stroke-dashoffset:0;opacity:0}
+}
+@keyframes beamC{
+  0%{stroke-dashoffset:1000;opacity:0}
+  1%{opacity:.95}
+  9%{stroke-dashoffset:0;opacity:.95}
+  11%,100%{stroke-dashoffset:0;opacity:0}
+}
 
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;opacity:1!important;transform:none!important;
@@ -195,7 +208,7 @@ h1{font-family:var(--font-heading);font-size:1.8rem;margin:0 0 6px}
             </svg>
           </div>
           <svg class="a-beam" viewBox="0 0 138 138" preserveAspectRatio="none" aria-hidden="true">
-            <rect x="2" y="2" width="134" height="134" rx="30"/>
+            <rect x="2" y="2" width="134" height="134" rx="30" pathLength="1000"/>
           </svg>
         </div>
         <div class="a-tag">Service. Innovation. Simplified.</div>
@@ -233,7 +246,7 @@ h1{font-family:var(--font-heading);font-size:1.8rem;margin:0 0 6px}
       <div class="slot-head"><b>C — The plate</b><span>Dark card, chevrons drawing themselves stroke-first, beam around the whole plate. Closest in feel to the architecture masthead.</span></div>
       <div class="stage dark"><div class="c-lock" id="lockC">
         <svg class="c-beam" viewBox="0 0 300 250" preserveAspectRatio="none" aria-hidden="true">
-          <rect x="1.5" y="1.5" width="297" height="247" rx="17"/>
+          <rect x="1.5" y="1.5" width="297" height="247" rx="17" pathLength="1000"/>
         </svg>
         <div class="c-word">Two Birds Innovation</div>
         <svg class="c-mark" viewBox="150 140 730 750" aria-hidden="true">

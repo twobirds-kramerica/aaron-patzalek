@@ -144,10 +144,11 @@
     .runlog h3 { font-size: 1.02rem; margin-bottom: 2px; }
     .runlog p { font-size: var(--font-size-sm); color: var(--color-text-light); margin: 0; max-width: none; }
 
-    /* Rules strip */
-    /* Live-stack card: the one deliberate signature moment on this page.
-       A quiet pulsing dot is the only motion here besides the loop wiggle,
-       so it reads as "this is alive" without competing for attention. */
+    /* Hero: copy left, brand plate right. */
+    .hero-grid {
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.58fr);
+      gap: var(--space-10); align-items: center;
+    }
     /* ---- Hero brand build -------------------------------------------------
        Two chevrons fly in and converge, lock with a small settle, the frame
        draws itself, then a light traces the border. One ~11s loop, deliberately
@@ -158,86 +159,69 @@
       display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.62fr);
       gap: var(--space-10); align-items: center;
     }
-    /* Separated from the copy by a quiet dotted rule, not a hard border. */
-    .hero-mark {
-      display: flex; flex-direction: column; align-items: center; gap: var(--space-5);
-      padding-left: var(--space-9);
-      border-left: 1px dotted var(--color-border-strong);
+    /* Option C, the plate. Transparent: it inherits the page background in
+       both themes instead of laying a coloured slab over it. No vertical rule
+       (Aaron: "the big line looks yucky"). */
+    .hero-mark { display: flex; justify-content: center; }
+    .plate {
+      position: relative; width: 100%; max-width: 300px;
+      padding: 26px 24px 24px; text-align: center;
+      border: 1px solid var(--color-border); border-radius: 18px;
+      background: transparent;
     }
-    .hero-mark svg {
-      width: 100%; max-width: 250px; height: auto; overflow: visible;
-      /* Watermark, not a feature. It should register on second look. */
-      opacity: .16;
+    .plate-beam { position: absolute; inset: -1px; width: calc(100% + 2px); height: calc(100% + 2px); }
+    .plate-beam rect {
+      fill: none; stroke: url(#beamGrad); stroke-width: 3;
+      /* dasharray sums to exactly pathLength, so a lap always completes */
+      stroke-dasharray: 150 850; stroke-dashoffset: 1000; opacity: 0;
+      animation: plate-lap 40s linear 1.9s infinite;
     }
-    .hero-mark-tag {
-      margin: 0; text-align: center;
-      font-family: var(--font-heading);
-      font-size: .92rem; font-weight: 600; letter-spacing: .01em;
-      color: #0066CC;
+    .plate-word {
+      margin: 0 0 18px; font-family: var(--font-heading); font-weight: 700;
+      font-size: 1.06rem; letter-spacing: .005em; color: var(--color-text);
+      opacity: 0; animation: plate-down .7s cubic-bezier(.2,.8,.25,1) .15s forwards;
     }
-    @media (prefers-color-scheme: dark) { .hero-mark-tag { color: #7FB3E8; } .hero-mark svg { opacity: .22; } }
+    .plate-mark { display: block; width: 104px; height: 104px; margin: 0 auto 18px; }
+    .pm-line {
+      fill: none; stroke: #0066CC; stroke-width: 52;
+      stroke-linecap: round; stroke-linejoin: round;
+      stroke-dasharray: 100; stroke-dashoffset: 100;
+      animation: plate-draw 1.5s cubic-bezier(.5,0,.2,1) .55s forwards;
+    }
+    .pm-line-2 { animation-delay: .75s; }
+    .pm-dot { fill: #0066CC; opacity: 0; animation: plate-fade .5s ease 2s forwards; }
+    .plate-tag {
+      margin: 0; font-family: var(--font-heading); font-weight: 600;
+      font-size: .92rem; letter-spacing: .012em; color: #0066CC;
+      opacity: 0; animation: plate-up .7s ease 2.25s forwards;
+    }
+    @media (prefers-color-scheme: dark) {
+      .pm-line { stroke: #5FA8F5; } .pm-dot { fill: #5FA8F5; }
+      .plate-tag { color: #8FC4FA; }
+    }
 
-    /* Two Birds Blue, per the brand bible: the chevrons and their field are
-       never repainted. Frame and trace share the same blue. */
-    .hm-frame, .hm-trace { fill: none; stroke-linecap: round; }
-    .hm-frame {
-      stroke: #0066CC; stroke-opacity: .45; stroke-width: 6;
-      stroke-dasharray: 3000; stroke-dashoffset: 3000;
-      animation: hm-draw 4.2s cubic-bezier(.6,0,.25,1) 1.5s 1 forwards;
-    }
-    .hm-trace {
-      stroke: url(#traceGrad); stroke-width: 9;
-      stroke-dasharray: 210 2790; stroke-dashoffset: 3000; opacity: 0;
-      /* One pass on arrival, then a quiet lap every 45s. Never continuous. */
-      animation:
-        hm-chase 3.4s linear 5.4s 1 forwards,
-        hm-chase-idle 45s linear 12s infinite;
-    }
-    .hm-bird polyline { fill: none; stroke: #0066CC; stroke-width: 52; stroke-linecap: round; stroke-linejoin: round; }
-    .hm-bird circle { fill: #0066CC; }
-    /* Top chevron arrives from the west, bottom from the east: they oppose,
-       which is the whole point of the mark. */
-    .hm-bird-a { animation: hm-in-west 2.4s cubic-bezier(.22,1,.36,1) .25s 1 both; }
-    .hm-bird-b { animation: hm-in-east 2.4s cubic-bezier(.22,1,.36,1) .45s 1 both; }
-    .hm-birds  { animation: hm-settle 1s ease-in-out 2.5s 1 both; transform-origin: 50% 50%; }
-
-    @keyframes hm-in-west {
-      from { transform: translate(-230px, -60px); opacity: 0; }
-      to   { transform: translate(0,0);           opacity: 1; }
-    }
-    @keyframes hm-in-east {
-      from { transform: translate(230px, 60px);   opacity: 0; }
-      to   { transform: translate(0,0);           opacity: 1; }
-    }
-    @keyframes hm-settle {
-      0%   { transform: scale(1); }
-      35%  { transform: scale(1.035); }
-      100% { transform: scale(1); }
-    }
-    @keyframes hm-draw { to { stroke-dashoffset: 0; } }
-    @keyframes hm-chase {
-      0%   { stroke-dashoffset: 3000; opacity: 0; }
-      8%   { opacity: .9; }
-      88%  { opacity: .9; }
+    @keyframes plate-down { from { opacity:0; transform:translateY(-12px); } to { opacity:1; transform:none; } }
+    @keyframes plate-up   { from { opacity:0; transform:translateY(10px); }  to { opacity:1; transform:none; } }
+    @keyframes plate-draw { to { stroke-dashoffset: 0; } }
+    @keyframes plate-fade { to { opacity: 1; } }
+    /* One complete lap, then quiet for the rest of the 40s. Not continuous. */
+    @keyframes plate-lap {
+      0%   { stroke-dashoffset: 1000; opacity: 0; }
+      1%   { opacity: .95; }
+      9%   { stroke-dashoffset: 0; opacity: .95; }
+      11%  { stroke-dashoffset: 0; opacity: 0; }
       100% { stroke-dashoffset: 0; opacity: 0; }
-    }
-    /* the occasional lap: mostly idle, one slow pass, back to nothing */
-    @keyframes hm-chase-idle {
-      0%, 82%  { stroke-dashoffset: 3000; opacity: 0; }
-      84%      { opacity: .8; }
-      98%      { stroke-dashoffset: 0; opacity: .8; }
-      100%     { stroke-dashoffset: 0; opacity: 0; }
     }
 
     @media (max-width: 860px) {
       .hero-grid { grid-template-columns: 1fr; }
       .hero-mark { order: -1; }
-      .hero-mark svg { max-width: 180px; }
+      .plate { max-width: 250px; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .hm-frame { stroke-dashoffset: 0; animation: none; }
-      .hm-trace { display: none; }
-      .hm-bird-a, .hm-bird-b, .hm-birds { animation: none; transform: none; opacity: 1; }
+      .plate-word, .plate-tag, .pm-dot { opacity: 1; animation: none; transform: none; }
+      .pm-line { stroke-dashoffset: 0; animation: none; }
+      .plate-beam { display: none; }
     }
 
     /* ---- Deep-dive cards -------------------------------------------------
@@ -477,40 +461,39 @@
      <!-- Ambient brand build: two chevrons converge, lock, the frame draws
           itself, then a light traces the border. Decorative only, hidden from
           assistive tech, and it stops entirely under reduced-motion. -->
+     <!-- Option C, "the plate". Transparent so it sits on whatever the page
+          background is in either theme, rather than introducing a slab of its
+          own colour. Wordmark on top, mark drawing itself, tagline under. -->
      <div class="hero-mark" aria-hidden="true">
-       <svg viewBox="0 0 1024 1024" role="presentation">
-         <defs>
-           <linearGradient id="traceGrad" x1="0" y1="0" x2="1" y2="1">
-             <stop offset="0%"   stop-color="#0066CC" stop-opacity="0"/>
-             <stop offset="50%"  stop-color="#0066CC" stop-opacity="1"/>
-             <stop offset="100%" stop-color="#0066CC" stop-opacity="0"/>
-           </linearGradient>
-         </defs>
+       <div class="plate">
+         <svg class="plate-beam" viewBox="0 0 300 260" preserveAspectRatio="none">
+           <defs>
+             <linearGradient id="beamGrad" x1="0" y1="0" x2="1" y2="1">
+               <stop offset="0%"   stop-color="#0066CC" stop-opacity="0"/>
+               <stop offset="45%"  stop-color="#0066CC" stop-opacity=".95"/>
+               <stop offset="100%" stop-color="#0066CC" stop-opacity="0"/>
+             </linearGradient>
+           </defs>
+           <!-- pathLength normalises the perimeter to 1000 so the dash maths
+                cannot fall short of a full lap. The previous version used a
+                hand-guessed dasharray that was ~9 units under the real
+                perimeter, which is why the beam never finished. -->
+           <rect x="1.5" y="1.5" width="297" height="257" rx="17" pathLength="1000"/>
+         </svg>
 
-         <!-- Frame sits well clear of the artwork: chevrons span x 184-848,
-              y 161-863, the frame runs x 136-888, y 116-908. Nothing touches. -->
-         <rect class="hm-frame" x="136" y="116" width="752" height="792" rx="56"/>
-         <rect class="hm-trace" x="136" y="116" width="752" height="792" rx="56"/>
+         <p class="plate-word">Two Birds Innovation</p>
 
-         <!-- Master mark geometry, taken from
-              assets/logos/two-birds/two-birds-white-on-transparent.svg.
-              Fraternal, not identical: top points EAST (forward), bottom points
-              WEST (looking back). Four identity circles — both tips plus the
-              upper open arm on top and the lower open arm on the bottom. -->
-         <g class="hm-birds">
-           <g class="hm-bird hm-bird-a">
-             <polyline points="210,195 550,335 210,475"/>
-             <circle cx="550" cy="335" r="34"/>
-             <circle cx="210" cy="195" r="34"/>
-           </g>
-           <g class="hm-bird hm-bird-b">
-             <polyline points="814,549 474,689 814,829"/>
-             <circle cx="474" cy="689" r="34"/>
-             <circle cx="814" cy="829" r="34"/>
-           </g>
-         </g>
-       </svg>
-       <p class="hero-mark-tag">Service. Innovation. Simplified.</p>
+         <svg class="plate-mark" viewBox="150 140 730 750">
+           <polyline class="pm-line" points="210,195 550,335 210,475" pathLength="100"/>
+           <polyline class="pm-line pm-line-2" points="814,549 474,689 814,829" pathLength="100"/>
+           <circle class="pm-dot" cx="550" cy="335" r="34"/>
+           <circle class="pm-dot" cx="210" cy="195" r="34"/>
+           <circle class="pm-dot" cx="474" cy="689" r="34"/>
+           <circle class="pm-dot" cx="814" cy="829" r="34"/>
+         </svg>
+
+         <p class="plate-tag">Service. Innovation. Simplified.</p>
+       </div>
      </div>
     </div>
   </section>
