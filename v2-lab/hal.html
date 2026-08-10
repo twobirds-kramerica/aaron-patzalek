@@ -145,6 +145,54 @@
     .runlog p { font-size: var(--font-size-sm); color: var(--color-text-light); margin: 0; max-width: none; }
 
     /* Rules strip */
+    /* Live-stack card: the one deliberate signature moment on this page.
+       A quiet pulsing dot is the only motion here besides the loop wiggle,
+       so it reads as "this is alive" without competing for attention. */
+    .stack-live-card {
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-6);
+      margin-top: var(--space-8);
+      padding: var(--space-6) var(--space-7);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color var(--motion-2, 0.2s) var(--motion-ease, ease), transform var(--motion-2, 0.2s) var(--motion-ease, ease);
+    }
+    .stack-live-card:hover, .stack-live-card:focus-visible {
+      border-color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+    .stack-live-card-copy { display: flex; align-items: flex-start; gap: var(--space-4); min-width: 0; }
+    .stack-live-eyebrow {
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--color-text-light); margin: 0 0 var(--space-1);
+    }
+    .stack-live-card h3 { margin: 0 0 var(--space-1); font-size: 1.15rem; }
+    .stack-live-detail { font-size: var(--font-size-sm); color: var(--color-text-light); margin: 0; max-width: 46ch; }
+    .stack-live-arrow { font-size: 1.3rem; color: var(--color-accent); flex-shrink: 0; }
+    .stack-live-pulse {
+      flex-shrink: 0; margin-top: 6px;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--color-accent); position: relative;
+    }
+    .stack-live-pulse span {
+      position: absolute; inset: 0; border-radius: 50%;
+      background: var(--color-accent);
+      animation: stack-live-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    @keyframes stack-live-ping {
+      0% { transform: scale(1); opacity: 0.6; }
+      100% { transform: scale(2.8); opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .stack-live-pulse span { animation: none; display: none; }
+    }
+    @media (max-width: 640px) {
+      .stack-live-card { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+    }
+
     .rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-5); }
     .rule {
       border-top: 3px solid var(--color-border-strong);
@@ -353,6 +401,18 @@
       <div class="proof-note reveal" style="margin-top: var(--space-8); margin-bottom: 0;">
         <p><strong>Why item four matters most:</strong> anyone can make an AI produce volume. The hard part, and the part I actually built, is a system with enough judgement encoded in it to stop, flag the risk, and wait for a human. That's not a demo trick. That's operations.</p>
       </div>
+
+      <a class="stack-live-card reveal" href="https://twobirds-kramerica.github.io/aaron-patzalek/hal.html" target="_blank" rel="noopener">
+        <div class="stack-live-card-copy">
+          <span class="stack-live-pulse" aria-hidden="true"><span></span></span>
+          <div>
+            <p class="stack-live-eyebrow">Not a snapshot &mdash; the system as it stands today</p>
+            <h3>See the full stack</h3>
+            <p class="stack-live-detail">Every layer, every connected tool, every rule, laid out the way I actually think about it. Updates as the system changes.</p>
+          </div>
+        </div>
+        <span class="stack-live-arrow" aria-hidden="true">&rarr;</span>
+      </a>
     </div>
   </section>
 
