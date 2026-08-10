@@ -69,12 +69,34 @@
     /* Nightly loop timeline */
     .loop { display: grid; gap: var(--space-3); margin: 0; padding: 0; list-style: none; }
     .loop-row {
-      display: grid; grid-template-columns: 110px 1fr; gap: var(--space-5);
       background: var(--color-surface);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
       padding: var(--space-4) var(--space-5);
+      overflow: hidden;
+    }
+    /* Separate element from .loop-row (which owns the scroll-reveal transform):
+       an animation's transform always wins over a transition's, so putting the
+       tug motion on the same element would silently cancel the reveal slide-up. */
+    .loop-row-inner {
+      display: grid; grid-template-columns: 110px 1fr; gap: var(--space-5);
       align-items: baseline;
+      animation: loop-tug 8s ease-in-out infinite;
+      animation-delay: calc(var(--loop-i, 0) * 0.35s);
+    }
+    /* Assembly-line feel: each row nudges toward the next, settles, nudges back. */
+    @keyframes loop-tug {
+      0%, 100% { transform: translateX(0); }
+      4%       { transform: translateX(5px); }
+      8%       { transform: translateX(-1px); }
+      11%      { transform: translateX(0); }
+      50%      { transform: translateX(0); }
+      54%      { transform: translateX(-5px); }
+      58%      { transform: translateX(1px); }
+      61%      { transform: translateX(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .loop-row-inner { animation: none; }
     }
     .loop-time {
       font-family: var(--font-mono); font-size: 0.8rem;
@@ -84,7 +106,7 @@
     .loop-title { font-weight: 600; font-size: 0.98rem; margin: 0 0 2px; max-width: none; }
     .loop-detail { font-size: var(--font-size-sm); color: var(--color-text-light); margin: 0; max-width: none; }
     @media (max-width: 560px) {
-      .loop-row { grid-template-columns: 1fr; gap: var(--space-1); }
+      .loop-row-inner { grid-template-columns: 1fr; gap: var(--space-1); }
     }
 
     /* Run log: the concrete evening */
@@ -123,6 +145,54 @@
     .runlog p { font-size: var(--font-size-sm); color: var(--color-text-light); margin: 0; max-width: none; }
 
     /* Rules strip */
+    /* Live-stack card: the one deliberate signature moment on this page.
+       A quiet pulsing dot is the only motion here besides the loop wiggle,
+       so it reads as "this is alive" without competing for attention. */
+    .stack-live-card {
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-6);
+      margin-top: var(--space-8);
+      padding: var(--space-6) var(--space-7);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color var(--motion-2, 0.2s) var(--motion-ease, ease), transform var(--motion-2, 0.2s) var(--motion-ease, ease);
+    }
+    .stack-live-card:hover, .stack-live-card:focus-visible {
+      border-color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+    .stack-live-card-copy { display: flex; align-items: flex-start; gap: var(--space-4); min-width: 0; }
+    .stack-live-eyebrow {
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--color-text-light); margin: 0 0 var(--space-1);
+    }
+    .stack-live-card h3 { margin: 0 0 var(--space-1); font-size: 1.15rem; }
+    .stack-live-detail { font-size: var(--font-size-sm); color: var(--color-text-light); margin: 0; max-width: 46ch; }
+    .stack-live-arrow { font-size: 1.3rem; color: var(--color-accent); flex-shrink: 0; }
+    .stack-live-pulse {
+      flex-shrink: 0; margin-top: 6px;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--color-accent); position: relative;
+    }
+    .stack-live-pulse span {
+      position: absolute; inset: 0; border-radius: 50%;
+      background: var(--color-accent);
+      animation: stack-live-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    @keyframes stack-live-ping {
+      0% { transform: scale(1); opacity: 0.6; }
+      100% { transform: scale(2.8); opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .stack-live-pulse span { animation: none; display: none; }
+    }
+    @media (max-width: 640px) {
+      .stack-live-card { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+    }
+
     .rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-5); }
     .rule {
       border-top: 3px solid var(--color-border-strong);
@@ -171,7 +241,7 @@
     <div class="wrap">
       <p class="eyebrow">The HAL Stack &middot; A working case study</p>
       <h1 id="hero-heading">An operator's AI stack <span class="accent">that ships.</span></h1>
-      <p class="hal-hero-note">Designed and orchestrated by a non-programmer. Every line of code written by AI agents.</p>
+      <p class="hal-hero-note">Designed and orchestrated by a non-programmer. Every line of code written by AI agents. (The name's a nod to 2001: A Space Odyssey. Make of that what you will.)</p>
       <p class="lead">I'm not a developer. I'm an operator who spent 15 years turning "leadership wants this" into "the team shipped it." In early 2026 I pointed that skill at AI: instead of writing code, I designed the system, wrote the rules, and built the review gates. The system does the building. This page shows what that looks like when it's real.</p>
       <div class="hero-ctas">
         <a href="#one-evening" class="btn">See one evening's output <span class="arrow" aria-hidden="true">&rarr;</span></a>
@@ -241,28 +311,40 @@
       </div>
       <ul class="loop">
         <li class="loop-row reveal">
-          <span class="loop-time">repos</span>
-          <div><p class="loop-title">All 10 repositories synced and mirrored</p><p class="loop-detail">Pulled, pushed, and backed up to an independent second host. If the primary host disappeared tomorrow, nothing is lost.</p></div>
+          <div class="loop-row-inner" style="--loop-i: 0;">
+            <span class="loop-time">repos</span>
+            <div><p class="loop-title">All 10 repositories synced and mirrored</p><p class="loop-detail">Pulled, pushed, and backed up to an independent second host. If the primary host disappeared tomorrow, nothing is lost.</p></div>
+          </div>
         </li>
         <li class="loop-row reveal">
-          <span class="loop-time">quality</span>
-          <div><p class="loop-title">Performance and accessibility audits</p><p class="loop-detail">Lighthouse scores for every product, logged over time. Accessibility checks also run automatically on every code push.</p></div>
+          <div class="loop-row-inner" style="--loop-i: 1;">
+            <span class="loop-time">quality</span>
+            <div><p class="loop-title">Performance and accessibility audits</p><p class="loop-detail">Lighthouse scores for every product, logged over time. Accessibility checks also run automatically on every code push.</p></div>
+          </div>
         </li>
         <li class="loop-row reveal">
-          <span class="loop-time">smoke tests</span>
-          <div><p class="loop-title">Automated browser tests against every live product</p><p class="loop-detail">A headless browser opens each site, checks key elements and flows, and saves a screenshot when something fails.</p></div>
+          <div class="loop-row-inner" style="--loop-i: 2;">
+            <span class="loop-time">smoke tests</span>
+            <div><p class="loop-title">Automated browser tests against every live product</p><p class="loop-detail">A headless browser opens each site, checks key elements and flows, and saves a screenshot when something fails.</p></div>
+          </div>
         </li>
         <li class="loop-row reveal">
-          <span class="loop-time">triage</span>
-          <div><p class="loop-title">Autonomy audit of the whole backlog</p><p class="loop-detail">Every open task is checked: can the system do this without me? If yes, it's flagged for execution and never hits my queue.</p></div>
+          <div class="loop-row-inner" style="--loop-i: 3;">
+            <span class="loop-time">triage</span>
+            <div><p class="loop-title">Autonomy audit of the whole backlog</p><p class="loop-detail">Every open task is checked: can the system do this without me? If yes, it's flagged for execution and never hits my queue.</p></div>
+          </div>
         </li>
         <li class="loop-row reveal">
-          <span class="loop-time">dashboard</span>
-          <div><p class="loop-title">The command dashboard rebuilds itself</p><p class="loop-detail">A private dashboard aggregates the job pipeline, backlog, deadlines, and recent builds from the source files, then redeploys. It cannot go stale because no one has to remember to update it.</p></div>
+          <div class="loop-row-inner" style="--loop-i: 4;">
+            <span class="loop-time">dashboard</span>
+            <div><p class="loop-title">The command dashboard rebuilds itself</p><p class="loop-detail">A private dashboard aggregates the job pipeline, backlog, deadlines, and recent builds from the source files, then redeploys. It cannot go stale because no one has to remember to update it.</p></div>
+          </div>
         </li>
         <li class="loop-row reveal">
-          <span class="loop-time">briefing</span>
-          <div><p class="loop-title">Morning briefing written</p><p class="loop-detail">A plain-English summary of what happened overnight and what genuinely needs a human, waiting when I open the laptop.</p></div>
+          <div class="loop-row-inner" style="--loop-i: 5;">
+            <span class="loop-time">briefing</span>
+            <div><p class="loop-title">Morning briefing written</p><p class="loop-detail">A plain-English summary of what happened overnight and what genuinely needs a human, waiting when I open the laptop.</p></div>
+          </div>
         </li>
       </ul>
     </div>
@@ -319,6 +401,18 @@
       <div class="proof-note reveal" style="margin-top: var(--space-8); margin-bottom: 0;">
         <p><strong>Why item four matters most:</strong> anyone can make an AI produce volume. The hard part, and the part I actually built, is a system with enough judgement encoded in it to stop, flag the risk, and wait for a human. That's not a demo trick. That's operations.</p>
       </div>
+
+      <a class="stack-live-card reveal" href="https://twobirds-kramerica.github.io/aaron-patzalek/hal.html" target="_blank" rel="noopener">
+        <div class="stack-live-card-copy">
+          <span class="stack-live-pulse" aria-hidden="true"><span></span></span>
+          <div>
+            <p class="stack-live-eyebrow">Not a snapshot &mdash; the system as it stands today</p>
+            <h3>See the full stack</h3>
+            <p class="stack-live-detail">Every layer, every connected tool, every rule, laid out the way I actually think about it. Updates as the system changes.</p>
+          </div>
+        </div>
+        <span class="stack-live-arrow" aria-hidden="true">&rarr;</span>
+      </a>
     </div>
   </section>
 
@@ -364,7 +458,7 @@
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">The products</p>
-        <h2 id="portfolio-heading">Eight products. First client: ourselves.</h2>
+        <h2 id="portfolio-heading">Six products. First client: ourselves.</h2>
         <p>Everything below was built on the system described above, by one person. Each product has a written strategy brief covering its market, its differentiation, and honestly, its open problems. The statuses below are real, including the unflattering ones.</p>
       </div>
       <div class="products-grid">

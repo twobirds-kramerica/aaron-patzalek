@@ -468,6 +468,47 @@
       line-height: 1;
     }
 
+    /* ── VERSION TABS ── */
+    .ver-tabs {
+      display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap;
+    }
+    .ver-tab {
+      font-family: var(--mono); font-size: 12px; letter-spacing: .04em;
+      background: var(--bg-card); border: 1px solid var(--border); color: var(--muted);
+      padding: 8px 16px; border-radius: 999px; cursor: pointer;
+      transition: border-color .15s, background .15s, color .15s;
+    }
+    .ver-tab:hover { border-color: rgba(255,255,255,.18); color: var(--text); }
+    .ver-tab.active {
+      background: var(--accent-soft); border-color: var(--accent-b); color: var(--accent); font-weight: 600;
+    }
+    .ver-tab.active.v2 { background: var(--teal-soft); border-color: var(--teal-b); color: var(--teal); }
+
+    .wip-banner {
+      background: var(--warn-soft);
+      border: 1px solid rgba(245,158,11,.3);
+      border-radius: var(--r);
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      font-size: .87rem;
+      color: var(--text);
+      display: flex; align-items: flex-start; gap: 12px;
+    }
+    .wip-banner strong { color: var(--warn); }
+
+    /* ── ORG GRID (v2) ── */
+    .org-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 12px; }
+    .org-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 20px;
+      transition: border-color .2s, background .2s;
+    }
+    .org-card:hover { border-color: rgba(255,255,255,.14); background: var(--bg-lift); }
+    .org-role { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--teal); margin-bottom: 6px; }
+    .org-name { font-weight: 600; margin-bottom: 8px; }
+    .org-body { font-size: .84rem; color: var(--muted); line-height: 1.6; }
+
+    #tab-v2 { display: none; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 620px) {
       .zero-block { flex-direction: column; gap: 12px; }
@@ -576,9 +617,9 @@
   <div class="no-code-line">Built without writing a single line of code.</div>
 
   <div class="build-block" style="margin:6px 0 30px;">
-    <div class="build-num" id="build-count">3,700+</div>
+    <div class="build-num" id="build-count">4,500+</div>
     <div class="build-label">
-      <strong>Commits across 13 repositories since early 2026.</strong>
+      <strong>Commits across 14 repositories since early 2026.</strong>
       Every one written through an AI agent that reads the codebase, edits files,
       runs the tests, and commits to Git. One business person,
       no engineering team, zero lines of code written by hand.
@@ -595,8 +636,8 @@
 
   <div class="stats-bar stagger">
     <div class="stat">
-      <span class="stat-num" data-counter="8" data-suffix="">8</span>
-      <span class="stat-label">products<br>in development</span>
+      <span class="stat-num" data-counter="6" data-suffix="">6</span>
+      <span class="stat-label">software products<br>in development</span>
     </div>
     <div class="stat">
       <span class="stat-num" data-counter="41" data-suffix="">41</span>
@@ -607,7 +648,7 @@
       <span class="stat-label">skills<br>available</span>
     </div>
     <div class="stat">
-      <span class="stat-num">13</span>
+      <span class="stat-num">14</span>
       <span class="stat-label">repositories<br>built</span>
     </div>
     <div class="stat">
@@ -620,6 +661,16 @@
     </div>
   </div>
 </div>
+
+<!-- ═══ VERSION TABS ═══════════════════════════════════════════════════ -->
+<div style="max-width:920px;margin:0 auto;padding:0 24px;">
+  <div class="ver-tabs" role="tablist" aria-label="Page version">
+    <button class="ver-tab active" id="tab-btn-current" role="tab" aria-selected="true" aria-controls="tab-current" onclick="showTab('current')">This site</button>
+    <button class="ver-tab v2" id="tab-btn-v2" role="tab" aria-selected="false" aria-controls="tab-v2" onclick="showTab('v2')">🚧 v2 — work in progress</button>
+  </div>
+</div>
+
+<div id="tab-current">
 
 <!-- ═══ MODEL ══════════════════════════════════════════════════════════ -->
 <section class="reveal">
@@ -740,7 +791,7 @@
       <div class="step-n">5</div>
       <div>
         <div class="step-title">Overnight build at 2am</div>
-        <p class="step-body">Playwright smoke tests, Lighthouse audits, backlog health, live data refresh, 10-repo sync, uptime monitor. Windows Task Scheduler — no external cron service.</p>
+        <p class="step-body">Playwright smoke tests, Lighthouse audits, backlog health, live data refresh, 11-repo sync, uptime monitor. Windows Task Scheduler — no external cron service.</p>
         <div class="tags"><span class="tag">Playwright</span><span class="tag">Python</span><span class="tag">Task Scheduler</span></div>
       </div>
     </div>
@@ -803,10 +854,10 @@
         <div class="arch-label">AI + Governance — the engineer · 51 personas · hard rules</div>
         <div class="arch-pills">
           <span class="pill" data-tip-title="Claude Code CLI" data-tip="The AI agent that executes sprints. Reads the codebase, writes and edits files, runs PowerShell and Python, commits to Git — all from the terminal. No human typing code.">Claude Code CLI</span>
-          <span class="pill hi" data-tip-title="41 MCPs connected" data-tip="MCP (Model Context Protocol) connections let Claude Code talk to external tools directly — Notion, GitHub, Gmail, Google Drive, Slack, and 36 more. Applied automatically when the task calls for them.">41 MCPs connected</span>
+          <span class="pill hi" data-tip-title="41 MCPs connected" data-tip="MCP (Model Context Protocol) connections let the AI talk to external tools directly — 6 always-on in Claude Code (Notion, Playwright, GitHub and more) plus 35 loaded on demand in Claude.ai. Applied automatically when the task calls for them.">41 MCPs connected</span>
           <span class="pill hi" data-tip-title="200+ skills" data-tip="Skills are reusable instruction sets that Claude loads on demand — like a reference book the agent reads before executing a specialised task. Applied automatically; no explicit command needed. Examples: WCAG audit skill, learning design skill, sprint formatting skill.">200+ skills</span>
           <span class="pill hi" data-tip-title="10 custom agents" data-tip="Purpose-built agents for specific sprint types: overnight build agent, autonomy audit agent, CoS briefing agent, and others. Each has its own instruction set and runs without human prompting.">10 custom agents</span>
-          <span class="pill" data-tip-title="Scrappy Pack (5)" data-tip="Five advisory sub-personas that review every substantive output: The Researcher, Why Not, The Fifth Why, The Ripper, and The Sovereignty Check. They catch blind spots before anything ships.">Scrappy Pack (5)</span>
+          <span class="pill" data-tip-title="Scrappy Pack (6)" data-tip="Six advisory sub-personas that gut-check every substantive output: Mack (cash), Tess (visibility), Grit (time), Patch (simplicity), Sage (long game), and Sov (sovereignty). They catch blind spots before anything ships.">Scrappy Pack (6)</span>
           <span class="pill" data-tip-title="Founding Board (22)" data-tip="22 synthetic personas across six departments — strategy, legal, engineering, marketing, operations, product. They review Stage 3+ sprint outputs before commit. A REWORK verdict blocks the push.">Founding Board (22)</span>
           <span class="pill" data-tip-title="Inner Circle" data-tip="Two seats that report directly: The Hand (Chief of Staff equivalent — synthesises all team output) and the Love Balance Advisor (tracks workload and wellbeing, can override other agents).">Inner Circle</span>
           <span class="pill" data-tip-title="Design gate" data-tip="Four conditions must be met before any UI sprint starts: PRODUCT.md exists, an accessibility audit has run this quarter, Aaron approved the shape brief, dark mode tested on Android Chrome. One missing — sprint stops.">Design gate</span>
@@ -823,7 +874,7 @@
         <div class="arch-pills">
           <span class="pill" data-tip-title="GitHub Pages" data-tip="All products are hosted on GitHub Pages. Static HTML files, deployed on git push. $0 cost. No server to maintain or secure.">GitHub Pages</span>
           <span class="pill" data-tip-title="GitHub Actions (15+ workflows)" data-tip="Automated workflows that fire on every code push. Run WCAG accessibility checks, deploy to GitHub Pages, validate HTML, and more. No manual QA step.">GitHub Actions (15+ workflows)</span>
-          <span class="pill" data-tip-title="Git · 10 repos" data-tip="10 GitHub repositories: one per product plus portfolio and infrastructure repos. Examples: digital-confidence (DCC Adults), career-coach, aaron-patzalek (this site), two-birds-portfolio (HAL Stack command centre).">Git · 10 repos</span>
+          <span class="pill" data-tip-title="Git · 14 repos" data-tip="14 GitHub repositories: one per product plus portfolio and infrastructure repos. Examples: digital-confidence (DCC Adults), career-coach, aaron-patzalek (this site), two-birds-portfolio (HAL Stack command centre).">Git · 14 repos</span>
           <span class="pill" data-tip-title="Codeberg mirror" data-tip="Every repo is mirrored nightly to Codeberg.org — an independent, non-commercial git host. If GitHub disappeared tomorrow, the entire codebase is safe and deployable elsewhere.">Codeberg mirror</span>
           <span class="pill" data-tip-title="Windows Task Scheduler" data-tip="The overnight build runs via Windows Task Scheduler at 2am — no cloud cron service, no subscription, no external dependency. The laptop runs it locally.">Windows Task Scheduler</span>
           <span class="pill" data-tip-title="Python stdlib" data-tip="All automation scripts use Python's built-in standard library only. No third-party packages to install, update, or break. Runs on any Python 3.x install.">Python stdlib</span>
@@ -906,7 +957,7 @@
       <div class="loop-icon">🔄</div>
       <div class="loop-time">2:00 am</div>
       <div>
-        <div class="loop-title">10 repos pulled and pushed</div>
+        <div class="loop-title">11 repos pulled and pushed</div>
         <p class="loop-detail">All product and portfolio repos synced from remote, pushed to GitHub and Codeberg mirror.</p>
       </div>
     </div>
@@ -1115,6 +1166,128 @@
   </div>
 </section>
 
+</div><!-- /#tab-current -->
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     V2 — WORK IN PROGRESS
+     ═══════════════════════════════════════════════════════════════════ -->
+<div id="tab-v2">
+
+<div style="max-width:920px;margin:0 auto;padding:0 24px;">
+  <div class="wip-banner">
+    <span style="font-size:1.2rem;">🚧</span>
+    <span><strong>Work in progress.</strong> This is the next version of this page — an executive-level
+    read of the same system, showing who (and what) does which job. Content and layout are still
+    being refined. Nothing below is final.</span>
+  </div>
+</div>
+
+<!-- ═══ THE ORG ═══════════════════════════════════════════════════════════ -->
+<section class="reveal">
+  <div class="eyebrow">The Org</div>
+  <h2>Who does what, in plain terms</h2>
+  <p style="margin-bottom:26px;">Not a metaphor — a real division of labour. Every "employee" below is an AI role with a defined job, running inside the same governed system. Aaron is still the only human, and still the only one who decides what ships.</p>
+
+  <div class="org-grid stagger">
+    <div class="org-card">
+      <div class="org-role">Human · Final call</div>
+      <div class="org-name">Aaron — The Architect</div>
+      <div class="org-body">Sets strategy, taste, and priorities. Approves anything customer-facing or irreversible. The one person accountable for what the business ships.</div>
+    </div>
+    <div class="org-card">
+      <div class="org-role">Opus</div>
+      <div class="org-name">The Orchestrator</div>
+      <div class="org-body">Sequences the work. Decides what gets built next, locks each sprint, and makes the judgment calls that are expensive to get wrong — the layer closest to a technical lead.</div>
+    </div>
+    <div class="org-card">
+      <div class="org-role">Sonnet</div>
+      <div class="org-name">The Builder</div>
+      <div class="org-body">Executes. Writes and edits the actual code, runs tests, commits to Git. The hands-on-keyboard layer — fast, mechanical, closely supervised.</div>
+    </div>
+    <div class="org-card">
+      <div class="org-role">Fable</div>
+      <div class="org-name">The Researcher</div>
+      <div class="org-body">Deep research and planning — competitive analysis, market sizing, multi-week strategy. Used sparingly, reserved for decisions worth the extra judgment.</div>
+    </div>
+    <div class="org-card">
+      <div class="org-role">51 personas</div>
+      <div class="org-name">Governance Board</div>
+      <div class="org-body">Reviews substantial work before it ships — a standing panel (strategy, legal, engineering, marketing, ops) that catches blind spots a solo operator would miss heads-down.</div>
+    </div>
+    <div class="org-card">
+      <div class="org-role">Rules, not people</div>
+      <div class="org-name">The Gates</div>
+      <div class="org-body">Design gate, voice check, sovereignty check, token guard — hard stops that fire automatically. No one, human or AI, ships around them.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ARCHITECTURE — EXECUTIVE VIEW ═════════════════════════════════════ -->
+<section class="reveal">
+  <div class="eyebrow">Architecture — Executive View</div>
+  <h2>The same five layers, read as a business would read them</h2>
+  <p style="margin-bottom:26px;">Same stack as the current page's Architecture section, reframed around what each layer is <em>for</em> rather than what tools sit in it.</p>
+
+  <div class="arch">
+    <div class="arch-header">HAL Stack · What Each Layer Is For</div>
+
+    <div class="arch-row">
+      <div class="arch-num">L1</div>
+      <div class="arch-content">
+        <div class="arch-label">Revenue — what customers actually pay for</div>
+        <div class="arch-pills">
+          <span class="pill">6 products in market or building</span>
+          <span class="pill">Licensing, B2B, and direct consulting models</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="arch-row">
+      <div class="arch-num">L2</div>
+      <div class="arch-content">
+        <div class="arch-label">Operations — how work gets scheduled and tracked without a project manager</div>
+        <div class="arch-pills">
+          <span class="pill">Backlog, sprint queue, nightly build</span>
+          <span class="pill">Zero manual status meetings</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="arch-row ai-layer">
+      <div class="arch-num">L3</div>
+      <div class="arch-content">
+        <div class="arch-label">Labour — the org chart above, running in the terminal</div>
+        <div class="arch-pills">
+          <span class="pill hi">Orchestrator + Builder + Researcher</span>
+          <span class="pill hi">51-persona governance review</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="arch-row">
+      <div class="arch-num">L4</div>
+      <div class="arch-content">
+        <div class="arch-label">Capital expenditure — what it costs to run this</div>
+        <div class="arch-pills">
+          <span class="pill">$0 hosting, $0 build tooling</span>
+          <span class="pill">One LLM subscription, named bounded exceptions</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="arch-row sov-row">
+      <div class="arch-num">L5</div>
+      <div class="arch-content">
+        <div class="arch-label">Risk posture — what happens if any one vendor disappears tomorrow</div>
+        <div class="arch-pills">
+          <span class="pill tl">Nothing breaks — portable by design</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /#tab-v2 -->
 
 <!-- ═══ FOOTER ════════════════════════════════════════════════════════════ -->
 <footer>
@@ -1186,10 +1359,11 @@
   document.querySelectorAll('.stats-bar').forEach(el => counterObserver.observe(el));
 
   // ── COMMIT COUNT ─────────────────────────────────────────────
-  // Verifiable snapshot: total commits across 13 local repos
-  // (git rev-list --count --all, summed). Update by hand when it materially changes.
+  // Verifiable snapshot: default-branch commits since 2026-01-01 across the
+  // 14 GitHub repos created in 2026 (GitHub GraphQL history totalCount, summed).
+  // Update by hand when it materially changes.
   (function() {
-    const COMMIT_COUNT = 3700; // snapshot: 2026-07-22 (actual 3,738 across 13 repos)
+    const COMMIT_COUNT = 4500; // snapshot: 2026-08-09 (actual 4,556 across 14 repos)
     const hero = document.getElementById('build-count');
     if (hero && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const dur = 1600;
@@ -1282,6 +1456,20 @@
       if (e.key === 'Escape') hidePopover();
     });
   })();
+
+  // ── VERSION TABS ────────────────────────────────────────────
+  function showTab(which) {
+    const isV2 = which === 'v2';
+    document.getElementById('tab-current').style.display = isV2 ? 'none' : '';
+    document.getElementById('tab-v2').style.display = isV2 ? '' : 'none';
+    document.getElementById('tab-btn-current').classList.toggle('active', !isV2);
+    document.getElementById('tab-btn-v2').classList.toggle('active', isV2);
+    document.getElementById('tab-btn-current').setAttribute('aria-selected', String(!isV2));
+    document.getElementById('tab-btn-v2').setAttribute('aria-selected', String(isV2));
+    history.replaceState(null, '', isV2 ? '#v2' : location.pathname);
+    window.scrollTo(0, 0);
+  }
+  if (location.hash === '#v2') showTab('v2');
 
   // ── AMBIENT TWO-BIRDS SCROLL MOTION ────────────────────────
   // The two marks sit slightly apart at the top and drift together as you
