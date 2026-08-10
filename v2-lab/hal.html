@@ -781,6 +781,10 @@
           <h3>Own the exit</h3>
           <p>Before any external tool or service joins the stack, one question: if this vendor disappeared tomorrow, what breaks? Static hosting, standard-library scripts, and a mirrored second host mean the answer stays "nothing important."</p>
         </div>
+        <div class="rule reveal">
+          <h3>Fire drills, not fantasy</h3>
+          <p>Every fallback above gets tested, not just claimed. A scheduled drill pretends a core service is gone and proves the documented exit path actually works. The first one found two silent failures: a restore path broken on Windows, and a "weekly" backup that had run exactly once. Both were fixed the same hour.</p>
+        </div>
       </div>
     </div>
   </section>
