@@ -164,7 +164,7 @@
     .plate-beam rect {
       fill: none; stroke: url(#beamGrad); stroke-width: 2.5;
       stroke-dasharray: 150 850; stroke-dashoffset: 1000; opacity: 0;
-      animation: plate-lap 40s linear 1.9s infinite;
+      animation: plate-lap 3.4s linear 1.9s 1 forwards;
     }
     /* Boxed, and bigger. A small-caps label with nothing around it read as
        weak; a plate gives the wordmark the weight of a company. */
@@ -215,11 +215,12 @@
     @keyframes plate-up   { from { opacity:0; transform:translateY(10px); }  to { opacity:1; transform:none; } }
     @keyframes plate-draw { to { stroke-dashoffset: 0; } }
     @keyframes plate-fade { to { opacity: 1; } }
+    /* Single pass, then still. Bible section 8: "Nothing loops in the
+       interface." The 40s repeating lap was a violation of that rule. */
     @keyframes plate-lap {
       0%   { stroke-dashoffset: 1000; opacity: 0; }
-      1%   { opacity: .8; }
-      9%   { stroke-dashoffset: 0; opacity: .8; }
-      11%  { stroke-dashoffset: 0; opacity: 0; }
+      6%   { opacity: .8; }
+      88%  { stroke-dashoffset: 0; opacity: .8; }
       100% { stroke-dashoffset: 0; opacity: 0; }
     }
 
