@@ -185,16 +185,25 @@
       transform: translateY(-3px);
       box-shadow: var(--shadow-md, 0 8px 24px rgba(0,0,0,.10));
     }
-    .dd-art {
-      background: linear-gradient(135deg, var(--color-surface-alt, #EEF2F7), var(--color-surface));
+    /* Real screenshots of the destinations, not illustrations. Cropped to the
+       top band so the shape of the page reads at card size. Slight desaturation
+       at rest, full colour on hover, so the cards feel responsive without
+       animating anything. */
+    .dd-shot {
       border-bottom: 1px solid var(--color-border);
-      padding: var(--space-4) var(--space-5);
+      background: var(--color-surface-alt, #EEF2F7);
+      overflow: hidden;
+      aspect-ratio: 880 / 380;
     }
-    .dd-art svg { display: block; width: 100%; height: auto; max-height: 116px; }
-    .a-fill  { fill: var(--color-accent); }
-    .a-dot   { fill: var(--color-accent); opacity: .55; }
-    .a-line  { stroke: var(--color-accent); stroke-width: 2; opacity: .5; }
-    .a-ghost { fill: none; stroke: var(--color-accent); stroke-width: 2; stroke-dasharray: 5 5; opacity: .65; }
+    .dd-shot img {
+      display: block; width: 100%; height: 100%;
+      object-fit: cover; object-position: top center;
+      filter: saturate(.88) contrast(.98);
+      transition: filter .25s ease, transform .35s ease;
+    }
+    .dd-card:hover .dd-shot img,
+    .dd-card:focus-visible .dd-shot img { filter: none; transform: scale(1.02); }
+    @supports not (aspect-ratio: 1) { .dd-shot { height: 190px; } }
 
     .dd-body { padding: var(--space-5); display: flex; flex-direction: column; flex: 1; }
     .dd-eyebrow {
@@ -514,17 +523,9 @@
 
           <!-- LIVE STACK -->
           <a class="dd-card" href="https://twobirds-kramerica.github.io/aaron-patzalek/hal.html" target="_blank" rel="noopener">
-            <div class="dd-art" aria-hidden="true">
-              <svg viewBox="0 0 260 120" preserveAspectRatio="xMidYMid meet">
-                <rect x="26" y="16"  width="208" height="20" rx="5" class="a-fill"/>
-                <rect x="26" y="42"  width="208" height="20" rx="5" class="a-fill" opacity=".78"/>
-                <rect x="26" y="68"  width="208" height="20" rx="5" class="a-fill" opacity=".56"/>
-                <rect x="26" y="94"  width="208" height="20" rx="5" class="a-fill" opacity=".34"/>
-                <circle cx="14" cy="26" r="5" class="a-dot"/>
-                <circle cx="14" cy="52" r="5" class="a-dot"/>
-                <circle cx="14" cy="78" r="5" class="a-dot"/>
-                <circle cx="14" cy="104" r="5" class="a-dot"/>
-              </svg>
+            <div class="dd-shot">
+              <img src="../images/stack-preview.png" alt="Preview of the full stack page: layered view of every tool and rule in the system"
+                   width="880" height="458" loading="lazy" decoding="async">
             </div>
             <div class="dd-body">
               <p class="dd-eyebrow"><span class="dd-pulse" aria-hidden="true"><i></i></span>Live &mdash; not a snapshot</p>
@@ -536,19 +537,9 @@
 
           <!-- ARCHITECTURE -->
           <a class="dd-card" href="https://twobirds-kramerica.github.io/aaron-patzalek/architecture.html" target="_blank" rel="noopener">
-            <div class="dd-art" aria-hidden="true">
-              <svg viewBox="0 0 260 120" preserveAspectRatio="xMidYMid meet">
-                <line x1="62" y1="34" x2="130" y2="34" class="a-line"/>
-                <line x1="62" y1="34" x2="130" y2="86" class="a-line"/>
-                <line x1="130" y1="34" x2="198" y2="34" class="a-line"/>
-                <line x1="130" y1="86" x2="198" y2="86" class="a-line" stroke-dasharray="5 5"/>
-                <line x1="198" y1="34" x2="198" y2="86" class="a-line" stroke-dasharray="5 5"/>
-                <rect x="26" y="20" width="36" height="28" rx="6" class="a-fill"/>
-                <rect x="112" y="20" width="36" height="28" rx="6" class="a-fill" opacity=".8"/>
-                <rect x="198" y="20" width="36" height="28" rx="6" class="a-fill" opacity=".8"/>
-                <rect x="112" y="72" width="36" height="28" rx="6" class="a-ghost"/>
-                <rect x="198" y="72" width="36" height="28" rx="6" class="a-ghost"/>
-              </svg>
+            <div class="dd-shot">
+              <img src="../images/architecture-preview.png" alt="Preview of the architecture map: components grouped by zone with running and planned status"
+                   width="880" height="458" loading="lazy" decoding="async">
             </div>
             <div class="dd-body">
               <p class="dd-eyebrow"><span class="dd-tag">Current &amp; planned</span></p>
