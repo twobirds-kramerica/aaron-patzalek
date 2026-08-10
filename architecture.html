@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two Birds — system architecture</title>
+<meta name="description" content="What runs, what it runs on, what talks to what. A working map of the Two Birds automation stack.">
+<meta name="robots" content="noindex">
+<style>
+:root{
+  --bg:#0E1116; --panel:#161B22; --panel2:#1C2230; --line:#2A3240;
+  --text:#E6EDF3; --dim:#8B98A5; --faint:#5C6773;
+  --run:#3FB950; --warn:#D29922; --dead:#F85149; --plan:#6E7681; --link:#58A6FF;
+  --mono:ui-monospace,SFMono-Regular,'Cascadia Mono',Consolas,monospace;
+}
+@media (prefers-color-scheme:light){
+  :root{
+    --bg:#FFFFFF; --panel:#F6F8FA; --panel2:#EEF2F6; --line:#D0D7DE;
+    --text:#1F2328; --dim:#57606A; --faint:#8C959F;
+    --run:#1A7F37; --warn:#9A6700; --dead:#CF222E; --plan:#6E7781; --link:#0969DA;
+  }
+}
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font:15px/1.55 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+h1{font-size:1.5rem;margin:0 0 4px;letter-spacing:-.01em}
+h2{font-size:.82rem;text-transform:uppercase;letter-spacing:.11em;color:var(--dim);
+   margin:0 0 12px;font-weight:600}
+h3{font-size:.95rem;margin:0 0 2px}
+p{margin:0 0 10px}
+code,.mono{font-family:var(--mono);font-size:.84em}
+a{color:var(--link)}
+
+header{border-bottom:1px solid var(--line);padding:22px 0 18px;background:var(--panel)}
+.sub{color:var(--dim);font-size:.92rem;margin:0}
+.stamp{font-family:var(--mono);font-size:.78rem;color:var(--faint);margin-top:8px}
+
+/* ---------- legend ---------- */
+.legend{display:flex;gap:18px;flex-wrap:wrap;padding:14px 0;font-size:.82rem;color:var(--dim)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.dot{width:9px;height:9px;border-radius:50%;flex:0 0 9px}
+.d-run{background:var(--run)} .d-warn{background:var(--warn)}
+.d-dead{background:var(--dead)} .d-plan{background:var(--plan)}
+
+/* ---------- flow strip ---------- */
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:6px 0 30px}
+.flow div{
+  background:var(--panel);border:1px solid var(--line);border-radius:8px;
+  padding:12px 14px;position:relative
+}
+.flow div b{display:block;font-size:.9rem;margin-bottom:2px}
+.flow div span{font-size:.79rem;color:var(--dim);line-height:1.4;display:block}
+.flow div::after{
+  content:'→';position:absolute;right:-11px;top:50%;transform:translateY(-50%);
+  color:var(--faint);font-size:14px;z-index:1
+}
+.flow div:last-child::after{content:''}
+@media(max-width:700px){ .flow div::after{content:'↓';right:50%;top:auto;bottom:-13px;transform:translateX(50%)} }
+
+/* ---------- zones ---------- */
+.zones{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:16px;margin-bottom:16px}
+.zone{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px 6px}
+.zone.wide{grid-column:1/-1}
+
+.node{
+  display:grid;grid-template-columns:12px 1fr;gap:10px;
+  padding:9px 0;border-top:1px solid var(--line)
+}
+.zone .node:first-of-type{border-top:none}
+.node .dot{margin-top:6px}
+.node .meta{font-size:.8rem;color:var(--dim);line-height:1.45}
+.node .tag{
+  font-family:var(--mono);font-size:.72rem;color:var(--faint);
+  background:var(--panel2);border:1px solid var(--line);border-radius:4px;
+  padding:1px 6px;margin-left:6px;white-space:nowrap;display:inline-block
+}
+.node.bad h3{color:var(--dead)}
+.node.warn h3{color:var(--warn)}
+
+/* ---------- interfaces table ---------- */
+.io{width:100%;border-collapse:collapse;font-size:.85rem}
+.io th{
+  text-align:left;font-weight:600;color:var(--dim);font-size:.75rem;
+  text-transform:uppercase;letter-spacing:.08em;padding:0 12px 8px 0;border-bottom:1px solid var(--line)
+}
+.io td{padding:9px 12px 9px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.io td:first-child,.io td:nth-child(2){font-family:var(--mono);font-size:.8rem;white-space:nowrap}
+.io tr:last-child td{border-bottom:none}
+.arrow{color:var(--faint);padding:0 4px}
+.wrapscroll{overflow-x:auto}
+
+.note{
+  border-left:3px solid var(--warn);background:var(--panel);
+  padding:12px 16px;margin:0 0 16px;font-size:.87rem;border-radius:0 8px 8px 0
+}
+.note b{color:var(--warn)}
+footer{border-top:1px solid var(--line);margin-top:28px;padding:18px 0 44px;
+  font-size:.8rem;color:var(--faint)}
+section{margin-bottom:30px}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <h1>Two Birds — system architecture</h1>
+  <p class="sub">What runs, where it runs, and what talks to what. One operator, four machines, no team.</p>
+  <p class="stamp">State verified 2026-08-09 against the live task scheduler and repo, not from documentation.</p>
+</div></header>
+
+<div class="wrap">
+
+  <div class="legend">
+    <span><i class="dot d-run"></i> running, verified</span>
+    <span><i class="dot d-warn"></i> running, degraded</span>
+    <span><i class="dot d-dead"></i> not running</span>
+    <span><i class="dot d-plan"></i> planned / not built</span>
+  </div>
+
+  <!-- ============ SIGNAL FLOW ============ -->
+  <section>
+    <h2>Signal flow</h2>
+    <div class="flow">
+      <div><b>Capture</b><span>Voice, phone, inbox, browser. Input arrives asynchronously and is never trusted to be complete.</span></div>
+      <div><b>Queue</b><span>Everything lands as a durable row or file first. Nothing is processed in the same breath it is received.</span></div>
+      <div><b>Orchestrate</b><span>Claude Code reads the queue, routes work by model tier, and executes against the repo.</span></div>
+      <div><b>Verify</b><span>Gates run before anything is called done. A failed gate blocks the claim, not just the log.</span></div>
+      <div><b>Publish</b><span>Static output to Pages. Git is the transport; there is no deploy server.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ ZONES ============ -->
+  <section>
+    <h2>Components</h2>
+    <div class="zones">
+
+      <!-- CAPTURE -->
+      <div class="zone">
+        <h2 style="margin-bottom:8px">Capture</h2>
+
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>Voice input <span class="tag">local</span></h3>
+          <div class="meta">Dictation into the CLI. Primary interface — most work starts spoken, not typed.</div>
+        </div></div>
+
+        <div class="node warn"><i class="dot d-warn"></i><div>
+          <h3>Kokoro TTS <span class="tag">:8880</span></h3>
+          <div class="meta">Local speech synthesis. Contends with Claude Code for CPU on the same box; migration to the always-on host is the fix.</div>
+        </div></div>
+
+        <div class="node bad"><i class="dot d-dead"></i><div>
+          <h3>Magpie <span class="tag">telegram</span></h3>
+          <div class="meta">Idea intake from phone. <b>Scheduled task absent as of 2026-08-09</b> — registered and acceptance-tested one day earlier, gone since.</div>
+        </div></div>
+
+        <div class="node bad"><i class="dot d-dead"></i><div>
+          <h3>Perch <span class="tag">capture</span></h3>
+          <div class="meta">Raw video capture with local transcription. Built and hardened; its scheduled transcribe job is not registered.</div>
+        </div></div>
+      </div>
+
+      <!-- ORCHESTRATION -->
+      <div class="zone">
+        <h2 style="margin-bottom:8px">Orchestration</h2>
+
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>Claude Code <span class="tag">4 hosts</span></h3>
+          <div class="meta">The execution layer. Same repo, same rules file, different machines. Sessions are stateless; the repo is the memory.</div>
+        </div></div>
+
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>Model routing</h3>
+          <div class="meta">Opus orchestrates and decides. Sonnet executes determined work. Fable takes judgment passes. Tier is chosen per unit of work, not per session.</div>
+        </div></div>
+
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>Sprint queue <span class="tag">markdown</span></h3>
+          <div class="meta">A flat file is the work queue. An instruction that is not a queue entry does not execute, which is a failure mode this stack has hit repeatedly.</div>
+        </div></div>
+
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>Subagents</h3>
+          <div class="meta">Scoped roles for review, briefing, and job tailoring. Dispatched with a durability clause so partial work survives a session cap.</div>
+        </div></div>
+      </div>
+
+      <!-- SCHEDULED WORK -->
+      <div class="zone">
+        <h2 style="margin-bottom:8px">Scheduled work</h2>
+
+        <div class="node warn"><i class="dot d-warn"></i><div>
+          <h3>Overnight build <span class="tag">daily 02:00</span></h3>
+          <div class="meta">Lighthouse, health checks, freshness. <b>Returned task-terminated two nights running</b> (0x41306). Fires, does not finish.</div>
+        </div></div>
+
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>Talon <span class="tag">daily 06:00</span></h3>
+          <div class="meta">Job scan, scoring, and archive of full postings. Exit 0 this morning. Writes a tracked health record every run.</div>
+        </div></div>
+
+        <div class="node bad"><i class="dot d-dead"></i><div>
+          <h3>Cloud agents <span class="tag">gh actions</span></h3>
+          <div class="meta">Failed every scheduled run over five days on an unresolved API credential, while the health check reported OK.</div>
+        </div></div>
+
+        <div class="node"><i class="dot d-plan"></i><div>
+          <h3>Heartbeat registry</h3>
+          <div class="meta">One generic liveness check to replace ~29 hand-written ones. Designed, not built. Absence of a heartbeat should alarm; today it does not.</div>
+        </div></div>
+      </div>
+
+      <!-- DATA SPINE -->
+      <div class="zone">
+        <h2 style="margin-bottom:8px">Data spine</h2>
+
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>Git markdown <span class="tag">source of truth</span></h3>
+          <div class="meta">Session state, sprint queue, job pipeline, incident ledger, decision records. Plain files, versioned, greppable, no database to lose.</div>
+        </div></div>
+
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>Notion <span class="tag">mirrored</span></h3>
+          <div class="meta">Human-facing backlog and idea vault. Read through nightly markdown mirrors so a plan downgrade cannot break reads.</div>
+        </div></div>
+
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>Decision records</h3>
+          <div class="meta">53 ADRs. A filed decision outranks a sprint note, which is what stops the same architecture argument recurring.</div>
+        </div></div>
+
+        <div class="node"><i class="dot d-plan"></i><div>
+          <h3>Cloudflare D1</h3>
+          <div class="meta">First relational store in the stack, for a product that cannot be static. Schema written, not deployed.</div>
+        </div></div>
+      </div>
+
+      <!-- VERIFICATION -->
+      <div class="zone">
+        <h2 style="margin-bottom:8px">Verification</h2>
+
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>Session health check</h3>
+          <div class="meta">~30 checks at session start. Its own blind spot is documented: it folded non-critical workflow failures into an OK line.</div>
+        </div></div>
+
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>Live-outcome gate</h3>
+          <div class="meta">Playwright against the live URL. A product sprint cannot be marked done on a green build alone; it needs proof from production.</div>
+        </div></div>
+
+        <div class="node warn"><i class="dot d-warn"></i><div>
+          <h3>Wiring audit</h3>
+          <div class="meta">Checks that credentialed capabilities are actually invoked. Its definition of "wired" is a substring match against prose docs, so it reports green on dead jobs. Report is stale.</div>
+        </div></div>
+
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>Incident ledger</h3>
+          <div class="meta">14 numbered reliability issues with root causes. Write path is strong; nothing reads it automatically, which is the next gap.</div>
+        </div></div>
+      </div>
+
+      <!-- SURFACES -->
+      <div class="zone">
+        <h2 style="margin-bottom:8px">Surfaces</h2>
+
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>Command Deck <span class="tag">cf pages</span></h3>
+          <div class="meta">One permanent URL for current state. Regenerated from source each deploy and discards what is stale — a view, never a log.</div>
+        </div></div>
+
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>Products <span class="tag">static</span></h3>
+          <div class="meta">Accessibility-first training platform, business diagnostic, job-search tooling, civic rental tool. All flat files on Pages.</div>
+        </div></div>
+
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>Nudge <span class="tag">poc</span></h3>
+          <div class="meta">Single-file client-only app. Reminders written as calendar events because a static host cannot run a schedule.</div>
+        </div></div>
+
+        <div class="node"><i class="dot d-plan"></i><div>
+          <h3>Always-on host</h3>
+          <div class="meta">Small Linux box taking the voice server and the scheduled jobs off the laptop, so automation stops depending on one lid being open.</div>
+        </div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ INTERFACES ============ -->
+  <section>
+    <h2>How they talk</h2>
+    <div class="note">
+      <b>One rule holds the whole thing together:</b> every hand-off is a file or a row, never a live call between components.
+      A producer writes and exits. A consumer reads on its own schedule. Nothing waits on anything, so a dead component
+      leaves visible evidence instead of a hung process.
+    </div>
+    <div class="zone wide wrapscroll" style="padding-bottom:16px">
+      <table class="io">
+        <thead><tr><th>From</th><th>To</th><th>Interface</th><th>Why this way</th></tr></thead>
+        <tbody>
+          <tr><td>Telegram</td><td>Idea vault</td><td>poll → JSONL → API</td>
+              <td>Poll-and-exit, not a long-lived listener. A listener has no home in a run-and-exit scheduler, which is exactly how this one died.</td></tr>
+          <tr><td>Job boards</td><td>Pipeline</td><td>ATS JSON → markdown row</td>
+              <td>Public ATS endpoints read directly, bypassing JS-walled listings. The flat file is authoritative; the dashboard is a render of it.</td></tr>
+          <tr><td>Any job</td><td>Health check</td><td>tracked JSON record</td>
+              <td>Liveness is proven by a timestamp that stops advancing, never inferred from inside the pipeline being checked.</td></tr>
+          <tr><td>Repo</td><td>Command Deck</td><td>build script → static HTML</td>
+              <td>Regenerated per deploy so the page cannot drift from source. A stale render is impossible by construction.</td></tr>
+          <tr><td>Notion</td><td>Agents</td><td>nightly markdown mirror</td>
+              <td>Reads go to the mirror, writes go to the API. Survives plan changes that would otherwise remove bulk-query access.</td></tr>
+          <tr><td>Session</td><td>Next session</td><td>state file + git log</td>
+              <td>No shared memory between sessions or machines. Continuity is a file that every model, on every host, can read cold.</td></tr>
+          <tr><td>Browser</td><td>Form endpoint</td><td>third-party POST</td>
+              <td>Static hosting means no server to receive a form. CORS-safe third parties fill the gap rather than adding a backend.</td></tr>
+          <tr><td>App</td><td>Phone</td><td>calendar file</td>
+              <td>A static host cannot run a schedule or send mail, so the reminder is handed to the device's own calendar to fire.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ CONSTRAINTS ============ -->
+  <section>
+    <h2>Constraints the design answers to</h2>
+    <div class="zones">
+      <div class="zone">
+        <div class="node"><i class="dot d-run"></i><div><h3>Static by default</h3>
+          <div class="meta">No servers in the critical path. A backend is introduced only with a filed decision record saying why, and scoped to one product.</div></div></div>
+        <div class="node"><i class="dot d-run"></i><div><h3>Sovereign by default</h3>
+          <div class="meta">Local or open-source first. Every paid dependency is named individually rather than assumed, so the exit path stays known.</div></div></div>
+      </div>
+      <div class="zone">
+        <div class="node"><i class="dot d-run"></i><div><h3>One operator</h3>
+          <div class="meta">Anything requiring a human is a bottleneck of one. Work that a script or an agent can do is never queued for a person.</div></div></div>
+        <div class="node"><i class="dot d-run"></i><div><h3>Evidence over assertion</h3>
+          <div class="meta">"It runs automatically" is proven by the scheduler, not the repo. This map was built that way, which is why three components are red.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Status reflects a live check of the task scheduler and repository on 2026-08-09.
+    Components are marked red where evidence of a run could not be found, not where a problem was assumed.
+  </footer>
+
+</div>
+</body>
+</html>
