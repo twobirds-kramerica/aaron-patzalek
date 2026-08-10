@@ -191,14 +191,24 @@
     .pm-line-2 { animation-delay: .75s; }
     .pm-dot { fill: #0066CC; opacity: 0; animation: plate-fade .5s ease 2s forwards; }
     .plate-tag {
-      margin: 0; font-family: var(--font-heading); font-weight: 600;
-      font-size: .92rem; letter-spacing: .012em; color: #0066CC;
+      margin: 0; font-family: var(--font-heading); font-weight: 500;
+      font-size: .92rem; letter-spacing: .014em; color: var(--color-text-light);
       opacity: 0; animation: plate-up .7s ease 2.25s forwards;
     }
+    .plate-tag b { font-weight: 800; color: #0066CC; }
+    /* This page sets data-theme on <html> from a saved preference, so a bare
+       prefers-color-scheme query misses the manual toggle. Both are covered. */
     @media (prefers-color-scheme: dark) {
       .pm-line { stroke: #5FA8F5; } .pm-dot { fill: #5FA8F5; }
-      .plate-tag { color: #8FC4FA; }
+      .plate-tag b { color: #8FC4FA; }
     }
+    [data-theme="dark"] .pm-line { stroke: #5FA8F5; }
+    [data-theme="dark"] .pm-dot  { fill: #5FA8F5; }
+    [data-theme="dark"] .plate-tag b { color: #8FC4FA; }
+    /* and the inverse: an explicit light choice on a dark-preference OS */
+    [data-theme="light"] .pm-line { stroke: #0066CC; }
+    [data-theme="light"] .pm-dot  { fill: #0066CC; }
+    [data-theme="light"] .plate-tag b { color: #0066CC; }
 
     @keyframes plate-down { from { opacity:0; transform:translateY(-12px); } to { opacity:1; transform:none; } }
     @keyframes plate-up   { from { opacity:0; transform:translateY(10px); }  to { opacity:1; transform:none; } }
@@ -492,7 +502,11 @@
            <circle class="pm-dot" cx="814" cy="829" r="34"/>
          </svg>
 
-         <p class="plate-tag">Service. Innovation. Simplified.</p>
+         <!-- Payoff weight, not emphasised initials. Highlighting first letters
+              here would spell S.I.S., which readers assemble whether or not it
+              was intended. The last word is the promise, so it carries the
+              weight; the periods stay, per the locked guideline. -->
+         <p class="plate-tag">Service. Innovation. <b>Simplified.</b></p>
        </div>
      </div>
     </div>

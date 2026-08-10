@@ -36,6 +36,25 @@ h1{font-family:var(--font-heading);font-size:1.8rem;margin:0 0 6px}
 .sub{color:var(--color-text-light);margin:0 0 8px;max-width:62ch}
 .note{color:var(--color-text-light);font-size:.9rem;margin:0 0 36px;max-width:62ch}
 
+/* ---- tagline treatment comparison ---- */
+.tag-rack{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-bottom:6px}
+.tag-card{
+  background:var(--color-surface);border:1px solid var(--color-border);
+  border-radius:12px;padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;
+}
+.tag-lbl{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--color-text-light)}
+.tag-lbl b{color:var(--tb-blue)}
+.tag-why{font-size:.8rem;color:var(--color-text-light);line-height:1.5;margin-top:auto}
+.tag-card p{
+  margin:6px 0;font-family:var(--font-heading);font-size:1.06rem;
+  font-weight:500;color:var(--color-text);letter-spacing:.01em;
+}
+.t1 b{font-weight:800;color:var(--tb-blue)}
+.t2 i{font-style:normal;color:var(--tb-blue);font-weight:800}
+.t3{color:var(--color-text);letter-spacing:.03em}
+.t4{line-height:1.45;font-weight:600}
+
 .rack{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px}
 .slot{
   background:var(--color-surface);border:1px solid var(--color-border);
@@ -191,6 +210,39 @@ h1{font-family:var(--font-heading);font-size:1.8rem;margin:0 0 6px}
     </linearGradient>
   </defs></svg>
 
+  <!-- ================= TAGLINE TREATMENTS ================= -->
+  <h2 style="font-family:var(--font-heading);font-size:1.25rem;margin:0 0 6px">Tagline treatments</h2>
+  <p class="note" style="margin-bottom:22px">
+    <b>Why not emphasised initials:</b> Service, Innovation, Simplified starts S, I, S. Any treatment that
+    highlights first letters builds an implied acronym, and people assemble it whether you meant them to or not.
+    <b>SIS</b> reads as "sis", or as MI6. Three good words end up carrying a fourth meaning you did not choose.
+    The treatments below add rhythm without spelling anything.
+  </p>
+
+  <div class="tag-rack">
+    <div class="tag-card">
+      <span class="tag-lbl">1 — Payoff weight <b>(recommended)</b></span>
+      <p class="t1">Service. Innovation. <b>Simplified.</b></p>
+      <span class="tag-why">The last word is the promise; the first two are the setup. Standard practice for a three-beat line is to let the payoff carry the weight. Nothing spells out.</span>
+    </div>
+    <div class="tag-card">
+      <span class="tag-lbl">2 — Blue periods</span>
+      <p class="t2">Service<i>.</i> Innovation<i>.</i> Simplified<i>.</i></p>
+      <span class="tag-why">Words stay uniform; the punctuation does the brand work. Quiet and confident. Reads well small, which matters at favicon and footer sizes.</span>
+    </div>
+    <div class="tag-card">
+      <span class="tag-lbl">3 — Interpuncts, no periods</span>
+      <p class="t3">Service &middot; Innovation &middot; Simplified</p>
+      <span class="tag-why">Lighter and more modern, but it drops the full stops. That means amending the locked guideline and your live LinkedIn page, not just this site.</span>
+    </div>
+    <div class="tag-card">
+      <span class="tag-lbl">4 — Stacked</span>
+      <p class="t4">Service.<br>Innovation.<br>Simplified.</p>
+      <span class="tag-why">Strong in a tall lockup and gives each word its own beat. Competes with the wordmark above it in the plate, so better on a banner than in the hero.</span>
+    </div>
+  </div>
+
+  <h2 style="font-family:var(--font-heading);font-size:1.25rem;margin:34px 0 18px">Lockups</h2>
   <div class="rack">
 
     <!-- ============ A ============ -->
