@@ -162,7 +162,8 @@
       display: flex; align-items: center; gap: var(--space-4);
       margin-bottom: var(--space-5);
     }
-    .dd-chevrons { width: 34px; height: 34px; flex-shrink: 0; color: var(--color-accent); }
+    /* Aspect follows the artwork (roughly 428:723), not a forced square. */
+    .dd-chevrons { width: 24px; height: 40px; flex-shrink: 0; color: var(--color-accent); }
     .dd-kicker {
       font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em;
       text-transform: uppercase; color: var(--color-text-light); margin: 0 0 2px;
@@ -507,7 +508,10 @@
 
       <div class="deep-dive reveal">
         <div class="deep-dive-head">
-          <svg class="dd-chevrons" viewBox="0 0 1024 1024" aria-hidden="true">
+          <!-- viewBox tightened to the actual artwork bounds (x 184-584, y 169-863,
+               allowing for the 52 stroke width). The full 1024 square left the mark
+               floating and clipped once forced into a square box. -->
+          <svg class="dd-chevrons" viewBox="170 155 428 723" aria-hidden="true">
             <polyline points="210,195 550,335 210,475" fill="none" stroke="currentColor" stroke-width="52" stroke-linecap="round" stroke-linejoin="round"/>
             <circle cx="550" cy="335" r="34" fill="currentColor"/>
             <polyline points="210,549 550,689 210,829" fill="none" stroke="currentColor" stroke-width="52" stroke-linecap="round" stroke-linejoin="round"/>
