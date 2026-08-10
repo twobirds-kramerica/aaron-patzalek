@@ -261,7 +261,7 @@ section{margin-bottom:30px}
 
         <div class="node warn"><i class="dot d-warn"></i><div>
           <h3>Overnight build <span class="tag">daily 02:00</span></h3>
-          <div class="meta">Lighthouse, health checks, freshness. <b>Returned task-terminated two nights running</b> (0x41306). Fires, does not finish.</div>
+          <div class="meta">Lighthouse, health checks, freshness. <b>Returned task-terminated two nights running</b> (0x41306). Fires, does not finish. Separately, the 10 Aug run was cut at 03:25 by an account spend limit — a second, unrelated cause.</div>
         </div></div>
 
         <div class="node"><i class="dot d-run"></i><div>
@@ -269,9 +269,9 @@ section{margin-bottom:30px}
           <div class="meta">Job scan, scoring, and archive of full postings. Exit 0 this morning. Writes a tracked health record every run.</div>
         </div></div>
 
-        <div class="node bad"><i class="dot d-dead"></i><div>
+        <div class="node warn"><i class="dot d-warn"></i><div>
           <h3>Cloud agents <span class="tag">gh actions</span></h3>
-          <div class="meta">Failed every scheduled run over five days on an unresolved API credential, while the health check reported OK.</div>
+          <div class="meta">Failed ten consecutive scheduled runs over five days on a missing API credential, while the health check reported OK. Credential set 10 Aug; a manual run passed. <b>No scheduled run has passed yet</b> — amber until one does.</div>
         </div></div>
 
         <div class="node"><i class="dot d-plan"></i><div>
