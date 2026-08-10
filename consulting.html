@@ -56,6 +56,36 @@
       padding: var(--space-20) var(--space-6) var(--space-16);
       text-align: center;
     }
+    /* Brand lockup: chevron mark + wordmark + approved tagline.
+       Wordmark is nowrap so "Two Birds Innovation" can never break mid-name;
+       the whole lockup stacks instead on narrow screens. */
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+      text-align: left;
+    }
+    .brand-chevron { width: 52px; height: 52px; flex-shrink: 0; }
+    .brand-words { display: flex; flex-direction: column; line-height: 1.2; }
+    .brand-name {
+      font-weight: var(--font-bold);
+      font-size: 1.15rem;
+      letter-spacing: 0.01em;
+      color: var(--tbi-white);
+      white-space: nowrap;
+    }
+    .brand-tagline {
+      font-size: 0.9rem;
+      color: #5DADE2;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    @media (max-width: 420px) {
+      .brand-chevron { width: 44px; height: 44px; }
+      .brand-name { font-size: 1.02rem; }
+      .brand-tagline { font-size: 0.84rem; }
+    }
     .consult-hero .eyebrow {
       display: inline-block;
       background: rgba(0,102,204,0.35);
@@ -217,8 +247,8 @@
       margin-bottom: var(--space-12);
     }
     .cred-photo {
-      width: 80px;
-      height: 80px;
+      width: 132px;
+      height: 132px;
       border-radius: 50%;
       object-fit: cover;
       object-position: center 15%;
@@ -502,6 +532,13 @@
 </nav>
 
 <header class="consult-hero" role="banner" id="main">
+  <div class="brand-lockup">
+    <img src="img/two-birds-chevron-white.svg" alt="" class="brand-chevron" width="52" height="52" aria-hidden="true">
+    <div class="brand-words">
+      <span class="brand-name">Two Birds Innovation</span>
+      <span class="brand-tagline">AI-curious. Ops-obsessed.</span>
+    </div>
+  </div>
   <div class="eyebrow">AI Workflow Audit &middot; $2,500 Flat Fee &middot; 5 Business Days</div>
   <h1>Find out exactly which AI tools<br><span>fit your business.</span></h1>
   <p class="hero-sub">
@@ -546,7 +583,7 @@
 
     <!-- Credentials -->
     <div class="cred-strip" role="list" aria-label="Background">
-      <img src="images/aaron-headshot.jpg" alt="Aaron Patzalek" class="cred-photo" width="80" height="80" role="presentation">
+      <img src="images/aaron-headshot.jpg" alt="Aaron Patzalek" class="cred-photo" width="132" height="132">
       <div class="cred-item" role="listitem">
         <span class="cred-num">10</span>
         <span class="cred-label">products built solo with AI</span>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- Two Birds Innovation — white chevrons on transparent background -->
+  <polyline points="210,195 550,335 210,475" fill="none" stroke="#FFFFFF" stroke-width="52" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="550" cy="335" r="34" fill="#FFFFFF"/>
+  <circle cx="210" cy="195" r="34" fill="#FFFFFF"/>
+  <polyline points="814,549 474,689 814,829" fill="none" stroke="#FFFFFF" stroke-width="52" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="474" cy="689" r="34" fill="#FFFFFF"/>
+  <circle cx="814" cy="829" r="34" fill="#FFFFFF"/>
+</svg>
