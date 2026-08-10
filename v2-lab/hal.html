@@ -149,39 +149,30 @@
       display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.58fr);
       gap: var(--space-10); align-items: center;
     }
-    /* ---- Hero brand build -------------------------------------------------
-       Two chevrons fly in and converge, lock with a small settle, the frame
-       draws itself, then a light traces the border. One ~11s loop, deliberately
-       slow so it is something to glance at, never something competing with the
-       copy. Purely decorative: aria-hidden, and fully static under
-       prefers-reduced-motion. */
-    .hero-grid {
-      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.62fr);
-      gap: var(--space-10); align-items: center;
-    }
-    /* Option C, the plate. Transparent: it inherits the page background in
-       both themes instead of laying a coloured slab over it. No vertical rule
-       (Aaron: "the big line looks yucky"). */
+    /* Hero lockup. No container: Aaron's read was that the sitting box was the
+       problem, and he is right — a grey rectangle around a logo reads as a
+       placeholder. The beam still runs, tracing an invisible path where the
+       border used to be, so the motion survives without the frame.
+       Mark enlarged; it was too small to carry the space. */
     .hero-mark { display: flex; justify-content: center; }
     .plate {
-      position: relative; width: 100%; max-width: 300px;
-      padding: 26px 24px 24px; text-align: center;
-      border: 1px solid var(--color-border); border-radius: 18px;
-      background: transparent;
+      position: relative; width: 100%; max-width: 290px;
+      padding: 20px 18px; text-align: center;
+      border: 0; background: transparent;
     }
-    .plate-beam { position: absolute; inset: -1px; width: calc(100% + 2px); height: calc(100% + 2px); }
+    .plate-beam { position: absolute; inset: 0; width: 100%; height: 100%; }
     .plate-beam rect {
-      fill: none; stroke: url(#beamGrad); stroke-width: 3;
-      /* dasharray sums to exactly pathLength, so a lap always completes */
+      fill: none; stroke: url(#beamGrad); stroke-width: 2.5;
       stroke-dasharray: 150 850; stroke-dashoffset: 1000; opacity: 0;
       animation: plate-lap 40s linear 1.9s infinite;
     }
     .plate-word {
-      margin: 0 0 18px; font-family: var(--font-heading); font-weight: 700;
-      font-size: 1.06rem; letter-spacing: .005em; color: var(--color-text);
+      margin: 0 0 16px; font-family: var(--font-heading); font-weight: 700;
+      font-size: .82rem; letter-spacing: .13em; text-transform: uppercase;
+      color: var(--color-text-light);
       opacity: 0; animation: plate-down .7s cubic-bezier(.2,.8,.25,1) .15s forwards;
     }
-    .plate-mark { display: block; width: 104px; height: 104px; margin: 0 auto 18px; }
+    .plate-mark { display: block; width: 158px; height: 158px; margin: 0 auto 18px; }
     .pm-line {
       fill: none; stroke: #0066CC; stroke-width: 52;
       stroke-linecap: round; stroke-linejoin: round;
@@ -190,8 +181,7 @@
     }
     .pm-line-2 { animation-delay: .75s; }
     .pm-dot { fill: #0066CC; opacity: 0; animation: plate-fade .5s ease 2s forwards; }
-    /* Descending steps, left-aligned inside a centred block so the staircase
-       reads as deliberate rather than as ragged centring. */
+
     .plate-tag {
       margin: 0; display: inline-block; text-align: left;
       font-family: var(--font-heading); font-weight: 500;
@@ -203,8 +193,7 @@
     .plate-tag span:nth-child(2) { padding-left: 1.4em; }
     .plate-tag span:nth-child(3) { padding-left: 2.8em; }
     .plate-tag b { font-weight: 800; color: #0066CC; }
-    /* This page sets data-theme on <html> from a saved preference, so a bare
-       prefers-color-scheme query misses the manual toggle. Both are covered. */
+
     @media (prefers-color-scheme: dark) {
       .pm-line { stroke: #5FA8F5; } .pm-dot { fill: #5FA8F5; }
       .plate-tag b { color: #8FC4FA; }
@@ -212,7 +201,6 @@
     [data-theme="dark"] .pm-line { stroke: #5FA8F5; }
     [data-theme="dark"] .pm-dot  { fill: #5FA8F5; }
     [data-theme="dark"] .plate-tag b { color: #8FC4FA; }
-    /* and the inverse: an explicit light choice on a dark-preference OS */
     [data-theme="light"] .pm-line { stroke: #0066CC; }
     [data-theme="light"] .pm-dot  { fill: #0066CC; }
     [data-theme="light"] .plate-tag b { color: #0066CC; }
@@ -221,11 +209,10 @@
     @keyframes plate-up   { from { opacity:0; transform:translateY(10px); }  to { opacity:1; transform:none; } }
     @keyframes plate-draw { to { stroke-dashoffset: 0; } }
     @keyframes plate-fade { to { opacity: 1; } }
-    /* One complete lap, then quiet for the rest of the 40s. Not continuous. */
     @keyframes plate-lap {
       0%   { stroke-dashoffset: 1000; opacity: 0; }
-      1%   { opacity: .95; }
-      9%   { stroke-dashoffset: 0; opacity: .95; }
+      1%   { opacity: .8; }
+      9%   { stroke-dashoffset: 0; opacity: .8; }
       11%  { stroke-dashoffset: 0; opacity: 0; }
       100% { stroke-dashoffset: 0; opacity: 0; }
     }
@@ -233,7 +220,8 @@
     @media (max-width: 860px) {
       .hero-grid { grid-template-columns: 1fr; }
       .hero-mark { order: -1; }
-      .plate { max-width: 250px; }
+      .plate { max-width: 240px; }
+      .plate-mark { width: 124px; height: 124px; }
     }
     @media (prefers-reduced-motion: reduce) {
       .plate-word, .plate-tag, .pm-dot { opacity: 1; animation: none; transform: none; }

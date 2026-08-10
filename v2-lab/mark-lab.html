@@ -97,6 +97,47 @@ h1{font-family:var(--font-heading);font-size:1.8rem;margin:0 0 6px}
 /* shared chevron drawing */
 .cv{fill:none;stroke-width:52;stroke-linecap:round;stroke-linejoin:round}
 
+/* ================= ROUND TWO: no container, bigger mark ================= */
+.d-lock,.f-lock{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:14px}
+.d-beam{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.d-beam rect{fill:none;stroke:url(#beamC);stroke-width:2.5;
+  stroke-dasharray:150 850;stroke-dashoffset:1000;opacity:0;
+  animation:beamC 40s linear 1.6s infinite}
+.d-word,.f-word{
+  font-family:var(--font-heading);font-weight:700;font-size:.78rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--color-text-light);
+  margin:0 0 16px;opacity:0;animation:slide-down .7s ease .1s forwards;
+}
+.f-word{margin:18px 0 0}
+.d-mark{width:150px;height:150px;margin:0 0 16px}
+.f-mark{width:190px;height:190px}
+.d-l,.e-l,.f-l{stroke:var(--tb-blue);stroke-dasharray:100;stroke-dashoffset:100;
+  animation:draw2 1.4s cubic-bezier(.5,0,.2,1) .5s forwards}
+.d-l2,.e-l2,.f-l2{animation-delay:.72s}
+.d-o,.e-o,.f-o{fill:var(--tb-blue);opacity:0;animation:fade .5s ease 1.9s forwards}
+.d-tag{
+  margin:0;display:inline-block;text-align:left;
+  font-family:var(--font-heading);font-weight:500;font-size:.92rem;line-height:1.6;
+  color:var(--color-text-light);opacity:0;animation:slide-up .7s ease 2.15s forwards;
+}
+.d-tag span{display:block;white-space:nowrap}
+.d-tag span:nth-child(2){padding-left:1.4em}
+.d-tag span:nth-child(3){padding-left:2.8em}
+.d-tag b,.e-tag b{font-weight:800;color:var(--tb-blue)}
+
+.e-lock{display:flex;align-items:center;gap:20px;text-align:left;padding:14px}
+.e-mark{width:104px;height:104px;flex-shrink:0}
+.e-word{
+  margin:0 0 7px;font-family:var(--font-heading);font-weight:700;font-size:1.28rem;
+  line-height:1.15;letter-spacing:-.02em;color:var(--color-text);
+  opacity:0;animation:slide-down .7s ease .9s forwards;
+}
+.e-tag{
+  margin:0;font-family:var(--font-heading);font-weight:500;font-size:.86rem;
+  color:var(--color-text-light);opacity:0;animation:slide-up .7s ease 1.3s forwards;
+}
+@keyframes draw2{to{stroke-dashoffset:0}}
+
 /* ---------------------------------------------------------------- A: TILE */
 /* The brand-bible default: white chevrons on the blue field. Wordmark above,
    tagline below, beam around the tile. Most correct, most confident. */
@@ -294,7 +335,70 @@ h1{font-family:var(--font-heading);font-size:1.8rem;margin:0 0 6px}
     </div>
   </div>
 
-  <h2 style="font-family:var(--font-heading);font-size:1.25rem;margin:34px 0 18px">Lockups</h2>
+  <h2 style="font-family:var(--font-heading);font-size:1.25rem;margin:34px 0 6px">Round two — no container</h2>
+  <p class="note" style="margin-bottom:22px">
+    Aaron's read: the sitting box was the problem, the mark was too small, and the whole thing looked like a
+    placeholder rather than a company. All three below drop the frame entirely. The beam still runs where it
+    makes sense, tracing an invisible path. Mark is much larger throughout. Blue is untouched.
+  </p>
+
+  <div class="rack">
+
+    <!-- D -->
+    <div class="slot">
+      <div class="slot-head"><b>D — Open mark</b><span>No frame at all. Mark carries the space, small caps label above, staggered tagline below. The beam traces where a border would have been.</span></div>
+      <div class="stage"><div class="d-lock" id="lockD">
+        <svg class="d-beam" viewBox="0 0 260 250" preserveAspectRatio="none" aria-hidden="true">
+          <rect x="1" y="1" width="258" height="248" rx="14" pathLength="1000"/>
+        </svg>
+        <p class="d-word">Two Birds Innovation</p>
+        <svg class="d-mark" viewBox="150 140 730 750" aria-hidden="true">
+          <polyline class="cv d-l" points="210,195 550,335 210,475" pathLength="100"/>
+          <polyline class="cv d-l d-l2" points="814,549 474,689 814,829" pathLength="100"/>
+          <circle class="d-o" cx="550" cy="335" r="34"/><circle class="d-o" cx="210" cy="195" r="34"/>
+          <circle class="d-o" cx="474" cy="689" r="34"/><circle class="d-o" cx="814" cy="829" r="34"/>
+        </svg>
+        <p class="d-tag"><span>Service.</span><span>Innovation.</span><span><b>Simplified.</b></span></p>
+      </div></div>
+      <button class="replay" data-target="lockD">Replay</button>
+    </div>
+
+    <!-- E -->
+    <div class="slot">
+      <div class="slot-head"><b>E — Horizontal</b><span>Different axis. Mark on the left, words to the right. Reads like a masthead and would sit comfortably above the fold or in a footer.</span></div>
+      <div class="stage"><div class="e-lock" id="lockE">
+        <svg class="e-mark" viewBox="150 140 730 750" aria-hidden="true">
+          <polyline class="cv e-l" points="210,195 550,335 210,475" pathLength="100"/>
+          <polyline class="cv e-l e-l2" points="814,549 474,689 814,829" pathLength="100"/>
+          <circle class="e-o" cx="550" cy="335" r="34"/><circle class="e-o" cx="210" cy="195" r="34"/>
+          <circle class="e-o" cx="474" cy="689" r="34"/><circle class="e-o" cx="814" cy="829" r="34"/>
+        </svg>
+        <div class="e-txt">
+          <p class="e-word">Two Birds<br>Innovation</p>
+          <p class="e-tag">Service. Innovation. <b>Simplified.</b></p>
+        </div>
+      </div></div>
+      <button class="replay" data-target="lockE">Replay</button>
+    </div>
+
+    <!-- F -->
+    <div class="slot">
+      <div class="slot-head"><b>F — Mark first</b><span>The mark is the whole thing, large and unapologetic. Wordmark tucked underneath at label size. Tagline lives elsewhere on the page, not here.</span></div>
+      <div class="stage"><div class="f-lock" id="lockF">
+        <svg class="f-mark" viewBox="150 140 730 750" aria-hidden="true">
+          <polyline class="cv f-l" points="210,195 550,335 210,475" pathLength="100"/>
+          <polyline class="cv f-l f-l2" points="814,549 474,689 814,829" pathLength="100"/>
+          <circle class="f-o" cx="550" cy="335" r="34"/><circle class="f-o" cx="210" cy="195" r="34"/>
+          <circle class="f-o" cx="474" cy="689" r="34"/><circle class="f-o" cx="814" cy="829" r="34"/>
+        </svg>
+        <p class="f-word">Two Birds Innovation</p>
+      </div></div>
+      <button class="replay" data-target="lockF">Replay</button>
+    </div>
+
+  </div>
+
+  <h2 style="font-family:var(--font-heading);font-size:1.25rem;margin:34px 0 18px">Round one — for reference</h2>
   <div class="rack">
 
     <!-- ============ A ============ -->
