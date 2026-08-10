@@ -8,36 +8,69 @@
 <meta name="robots" content="noindex">
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <style>
-:root{
-  --bg:#0E1116; --panel:#161B22; --panel2:#1C2230; --line:#2A3240;
-  --text:#E6EDF3; --dim:#8B98A5; --faint:#5C6773;
-  --run:#3FB950; --warn:#D29922; --dead:#F85149; --plan:#6E7681; --link:#58A6FF;
-  --mono:ui-monospace,SFMono-Regular,'Cascadia Mono',Consolas,monospace;
+/* Fonts and palette are the site's own, pulled from v2-lab/css/tokens.css so
+   this page reads as a sibling of the HAL case study rather than a stray
+   document. Body stays deliberately clinical; the header carries the brand. */
+@font-face{
+  font-family:'Bricolage Grotesque';
+  src:url('v2-lab/fonts/bricolage-grotesque/BricolageGrotesque-Variable-latin.woff2') format('woff2');
+  font-weight:200 800;font-style:normal;font-display:swap;
 }
-@media (prefers-color-scheme:light){
+@font-face{
+  font-family:'Inter';
+  src:url('fonts/inter/InterVariable.woff2') format('woff2');
+  font-weight:100 900;font-style:normal;font-display:swap;
+}
+
+:root{
+  /* warm paper + copper, matching the case study */
+  --bg:#FAF9F7; --panel:#FFFFFF; --panel2:#F2F0EC; --line:#E2DED7;
+  --text:#20262E; --dim:#4E5A66; --faint:#7B8590;
+  --accent:#9C4A0A; --accent-raw:#C86B1E; --accent-light:#F7ECE1;
+  --run:#1A7F37; --warn:#9A6700; --dead:#CF222E; --plan:#7B8590; --link:#9C4A0A;
+  --ink:#151A20;
+  --mono:ui-monospace,'Cascadia Code',SFMono-Regular,Consolas,monospace;
+  --head:'Bricolage Grotesque','Segoe UI','Helvetica Neue',sans-serif;
+  --body:'Inter',-apple-system,'Segoe UI','Helvetica Neue',sans-serif;
+}
+@media (prefers-color-scheme:dark){
   :root{
-    --bg:#FFFFFF; --panel:#F6F8FA; --panel2:#EEF2F6; --line:#D0D7DE;
-    --text:#1F2328; --dim:#57606A; --faint:#8C959F;
-    --run:#1A7F37; --warn:#9A6700; --dead:#CF222E; --plan:#6E7781; --link:#0969DA;
+    --bg:#14171C; --panel:#1B1F26; --panel2:#232830; --line:#333A44;
+    --text:#ECEDEF; --dim:#AEB6BF; --faint:#7E8792;
+    --accent:#EFA45E; --accent-raw:#EFA45E; --accent-light:#3A2A1A;
+    --run:#5CC97A; --warn:#E0B44A; --dead:#F1857D; --plan:#7E8792; --link:#EFA45E;
   }
 }
 *,*::before,*::after{box-sizing:border-box}
 body{
   margin:0;background:var(--bg);color:var(--text);
-  font:15px/1.55 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  font:15px/1.6 var(--body);
 }
 .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-h1{font-size:1.5rem;margin:0 0 4px;letter-spacing:-.01em}
-h2{font-size:.82rem;text-transform:uppercase;letter-spacing:.11em;color:var(--dim);
-   margin:0 0 12px;font-weight:600}
-h3{font-size:.95rem;margin:0 0 2px}
+h1{font-family:var(--head);font-weight:700;font-size:clamp(1.9rem,3.4vw,2.6rem);
+   margin:0 0 8px;letter-spacing:-.02em;line-height:1.1}
+h2{font-family:var(--head);font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;
+   color:var(--dim);margin:0 0 12px;font-weight:600}
+h3{font-family:var(--head);font-size:.97rem;margin:0 0 2px;font-weight:600}
 p{margin:0 0 10px}
 code,.mono{font-family:var(--mono);font-size:.84em}
 a{color:var(--link)}
 
-header{border-bottom:1px solid var(--line);padding:22px 0 18px;background:var(--panel)}
-.sub{color:var(--dim);font-size:.92rem;margin:0}
-.stamp{font-family:var(--mono);font-size:.78rem;color:var(--faint);margin-top:8px}
+/* ---- branded masthead: dark, like the case-study hero ---- */
+header{background:var(--ink);color:#F2F3F5;padding:26px 0 30px;border-bottom:3px solid var(--accent)}
+.brandbar{display:flex;align-items:center;gap:11px;margin-bottom:20px}
+.brandbar svg{width:22px;height:37px;color:var(--accent-raw);flex-shrink:0}
+.brandbar b{font-family:var(--head);font-size:1.02rem;font-weight:700;letter-spacing:.01em;white-space:nowrap}
+.brandbar span{font-size:.8rem;color:#9AA3AD;border-left:1px solid #39414B;padding-left:11px;margin-left:2px}
+header h1{color:#fff}
+.sub{color:#B9C0C8;font-size:1.02rem;margin:0;max-width:62ch}
+.stamp{font-family:var(--mono);font-size:.76rem;color:#88919B;margin-top:14px}
+.backlink{
+  display:inline-flex;align-items:center;gap:7px;margin-top:18px;
+  font-size:.85rem;color:#C9D0D7;text-decoration:none;
+  border:1px solid #39414B;border-radius:7px;padding:7px 13px;
+}
+.backlink:hover{background:#232930;color:#fff}
 
 /* ---------- legend ---------- */
 .legend{display:flex;gap:18px;flex-wrap:wrap;padding:14px 0;font-size:.82rem;color:var(--dim)}
@@ -106,9 +139,20 @@ section{margin-bottom:30px}
 <body>
 
 <header><div class="wrap">
-  <h1>Two Birds — system architecture</h1>
-  <p class="sub">What runs, where it runs, and what talks to what. One operator, four machines, no team.</p>
-  <p class="stamp">State verified 2026-08-09 against the live task scheduler and repo, not from documentation.</p>
+  <div class="brandbar">
+    <svg viewBox="170 155 428 723" aria-hidden="true">
+      <polyline points="210,195 550,335 210,475" fill="none" stroke="currentColor" stroke-width="52" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="550" cy="335" r="34" fill="currentColor"/>
+      <polyline points="210,549 550,689 210,829" fill="none" stroke="currentColor" stroke-width="52" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="210" cy="829" r="34" fill="currentColor"/>
+    </svg>
+    <b>Two Birds Innovation</b>
+    <span>System architecture</span>
+  </div>
+  <h1>What runs, and what talks to what.</h1>
+  <p class="sub">The working map of the stack behind the products. One operator, four machines, no team.</p>
+  <p class="stamp">State verified 2026-08-09 against the live task scheduler and repository, not from documentation.</p>
+  <a class="backlink" href="v2-lab/hal.html">&larr; Back to the case study</a>
 </div></header>
 
 <div class="wrap">
