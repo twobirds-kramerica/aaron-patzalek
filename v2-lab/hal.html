@@ -158,64 +158,75 @@
       display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.62fr);
       gap: var(--space-10); align-items: center;
     }
-    .hero-mark { display: flex; justify-content: center; }
-    .hero-mark svg {
-      width: 100%; max-width: 290px; height: auto;
-      color: var(--color-accent);
-      overflow: visible;
+    /* Separated from the copy by a quiet dotted rule, not a hard border. */
+    .hero-mark {
+      display: flex; flex-direction: column; align-items: center; gap: var(--space-5);
+      padding-left: var(--space-9);
+      border-left: 1px dotted var(--color-border-strong);
     }
+    .hero-mark svg {
+      width: 100%; max-width: 250px; height: auto; overflow: visible;
+      /* Watermark, not a feature. It should register on second look. */
+      opacity: .16;
+    }
+    .hero-mark-tag {
+      margin: 0; text-align: center;
+      font-family: var(--font-heading);
+      font-size: .92rem; font-weight: 600; letter-spacing: .01em;
+      color: #0066CC;
+    }
+    @media (prefers-color-scheme: dark) { .hero-mark-tag { color: #7FB3E8; } .hero-mark svg { opacity: .22; } }
 
+    /* Two Birds Blue, per the brand bible: the chevrons and their field are
+       never repainted. Frame and trace share the same blue. */
     .hm-frame, .hm-trace { fill: none; stroke-linecap: round; }
     .hm-frame {
-      stroke: var(--color-border);
-      stroke-width: 8;
-      stroke-dasharray: 2760;
-      stroke-dashoffset: 2760;
-      animation: hm-draw 11s cubic-bezier(.6,0,.25,1) infinite;
+      stroke: #0066CC; stroke-opacity: .45; stroke-width: 6;
+      stroke-dasharray: 3000; stroke-dashoffset: 3000;
+      animation: hm-draw 4.2s cubic-bezier(.6,0,.25,1) 1.5s 1 forwards;
     }
     .hm-trace {
-      stroke: url(#traceGrad);
-      stroke-width: 10;
-      stroke-dasharray: 190 2570;
-      stroke-dashoffset: 2760;
-      opacity: 0;
-      animation: hm-chase 11s linear infinite;
+      stroke: url(#traceGrad); stroke-width: 9;
+      stroke-dasharray: 210 2790; stroke-dashoffset: 3000; opacity: 0;
+      /* One pass on arrival, then a quiet lap every 45s. Never continuous. */
+      animation:
+        hm-chase 3.4s linear 5.4s 1 forwards,
+        hm-chase-idle 45s linear 12s infinite;
     }
-    .hm-bird polyline { fill: none; stroke: currentColor; stroke-width: 52; stroke-linecap: round; stroke-linejoin: round; }
-    .hm-bird circle { fill: currentColor; }
-    .hm-bird-a { animation: hm-in-left  11s cubic-bezier(.22,1,.36,1) infinite; }
-    .hm-bird-b { animation: hm-in-right 11s cubic-bezier(.22,1,.36,1) infinite; }
-    .hm-birds  { animation: hm-settle   11s ease-in-out infinite; transform-origin: 50% 50%; }
+    .hm-bird polyline { fill: none; stroke: #0066CC; stroke-width: 52; stroke-linecap: round; stroke-linejoin: round; }
+    .hm-bird circle { fill: #0066CC; }
+    /* Top chevron arrives from the west, bottom from the east: they oppose,
+       which is the whole point of the mark. */
+    .hm-bird-a { animation: hm-in-west 2.4s cubic-bezier(.22,1,.36,1) .25s 1 both; }
+    .hm-bird-b { animation: hm-in-east 2.4s cubic-bezier(.22,1,.36,1) .45s 1 both; }
+    .hm-birds  { animation: hm-settle 1s ease-in-out 2.5s 1 both; transform-origin: 50% 50%; }
 
-    @keyframes hm-in-left {
-      0%      { transform: translate(-190px, -70px); opacity: 0; }
-      16%     { transform: translate(0,0);           opacity: 1; }
-      92%     { transform: translate(0,0);           opacity: 1; }
-      100%    { transform: translate(-190px, -70px); opacity: 0; }
+    @keyframes hm-in-west {
+      from { transform: translate(-230px, -60px); opacity: 0; }
+      to   { transform: translate(0,0);           opacity: 1; }
     }
-    @keyframes hm-in-right {
-      0%      { transform: translate(190px, 70px);  opacity: 0; }
-      16%     { transform: translate(0,0);          opacity: 1; }
-      92%     { transform: translate(0,0);          opacity: 1; }
-      100%    { transform: translate(190px, 70px);  opacity: 0; }
+    @keyframes hm-in-east {
+      from { transform: translate(230px, 60px);   opacity: 0; }
+      to   { transform: translate(0,0);           opacity: 1; }
     }
-    /* the "lock into place" beat */
     @keyframes hm-settle {
-      0%, 15%   { transform: scale(1); }
-      19%       { transform: scale(1.045); }
-      24%, 100% { transform: scale(1); }
+      0%   { transform: scale(1); }
+      35%  { transform: scale(1.035); }
+      100% { transform: scale(1); }
     }
-    @keyframes hm-draw {
-      0%, 22%  { stroke-dashoffset: 2760; }
-      46%      { stroke-dashoffset: 0; }
-      92%      { stroke-dashoffset: 0; }
-      100%     { stroke-dashoffset: 2760; }
-    }
+    @keyframes hm-draw { to { stroke-dashoffset: 0; } }
     @keyframes hm-chase {
-      0%, 48%  { stroke-dashoffset: 2760; opacity: 0; }
-      52%      { opacity: 1; }
-      88%      { stroke-dashoffset: 0;    opacity: 1; }
-      94%, 100%{ stroke-dashoffset: 0;    opacity: 0; }
+      0%   { stroke-dashoffset: 3000; opacity: 0; }
+      8%   { opacity: .9; }
+      88%  { opacity: .9; }
+      100% { stroke-dashoffset: 0; opacity: 0; }
+    }
+    /* the occasional lap: mostly idle, one slow pass, back to nothing */
+    @keyframes hm-chase-idle {
+      0%, 82%  { stroke-dashoffset: 3000; opacity: 0; }
+      84%      { opacity: .8; }
+      98%      { stroke-dashoffset: 0; opacity: .8; }
+      100%     { stroke-dashoffset: 0; opacity: 0; }
     }
 
     @media (max-width: 860px) {
@@ -467,31 +478,39 @@
           itself, then a light traces the border. Decorative only, hidden from
           assistive tech, and it stops entirely under reduced-motion. -->
      <div class="hero-mark" aria-hidden="true">
-       <svg viewBox="0 0 780 1024" role="presentation">
+       <svg viewBox="0 0 1024 1024" role="presentation">
          <defs>
            <linearGradient id="traceGrad" x1="0" y1="0" x2="1" y2="1">
-             <stop offset="0%"  stop-color="currentColor" stop-opacity="0"/>
-             <stop offset="50%" stop-color="currentColor" stop-opacity="1"/>
-             <stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
+             <stop offset="0%"   stop-color="#0066CC" stop-opacity="0"/>
+             <stop offset="50%"  stop-color="#0066CC" stop-opacity="1"/>
+             <stop offset="100%" stop-color="#0066CC" stop-opacity="0"/>
            </linearGradient>
          </defs>
 
-         <!-- the frame that builds itself -->
-         <rect class="hm-frame" x="96" y="96" width="588" height="832" rx="52"/>
-         <!-- the light that chases around it -->
-         <rect class="hm-trace" x="96" y="96" width="588" height="832" rx="52"/>
+         <!-- Frame sits well clear of the artwork: chevrons span x 184-848,
+              y 161-863, the frame runs x 136-888, y 116-908. Nothing touches. -->
+         <rect class="hm-frame" x="136" y="116" width="752" height="792" rx="56"/>
+         <rect class="hm-trace" x="136" y="116" width="752" height="792" rx="56"/>
 
+         <!-- Master mark geometry, taken from
+              assets/logos/two-birds/two-birds-white-on-transparent.svg.
+              Fraternal, not identical: top points EAST (forward), bottom points
+              WEST (looking back). Four identity circles — both tips plus the
+              upper open arm on top and the lower open arm on the bottom. -->
          <g class="hm-birds">
            <g class="hm-bird hm-bird-a">
-             <polyline points="248,268 588,408 248,548"/>
-             <circle cx="588" cy="408" r="34"/>
+             <polyline points="210,195 550,335 210,475"/>
+             <circle cx="550" cy="335" r="34"/>
+             <circle cx="210" cy="195" r="34"/>
            </g>
            <g class="hm-bird hm-bird-b">
-             <polyline points="248,622 588,762 248,902"/>
-             <circle cx="248" cy="902" r="34"/>
+             <polyline points="814,549 474,689 814,829"/>
+             <circle cx="474" cy="689" r="34"/>
+             <circle cx="814" cy="829" r="34"/>
            </g>
          </g>
        </svg>
+       <p class="hero-mark-tag">Service. Innovation. Simplified.</p>
      </div>
     </div>
   </section>
