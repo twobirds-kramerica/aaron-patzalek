@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brand mark — three options</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="css/tokens.css">
+<style>
+/* ===========================================================================
+   Three treatments of the same lockup, so Aaron can look rather than imagine.
+
+   Shared rules across all three, taken from hal-stack/branding/brand-bible.md:
+   - Two Birds Blue #0066CC. The chevrons and their field are never repainted.
+   - Fraternal, not identical: top points EAST, bottom points WEST, four
+     identity circles (both tips, plus the UPPER open arm on top and the LOWER
+     open arm on the bottom).
+   - Tagline is the locked one: "Service. Innovation. Simplified."
+   - Wordmark sits ON TOP. Stacked. Everything slides in. No vertical rule.
+   - Each carries a border beam (the "chaser"): one pass on arrival, then a
+     quiet lap every 40s. Never continuous.
+   =========================================================================== */
+
+:root{
+  --tb-blue:#0066CC;
+  --tb-blue-deep:#0052A6;
+  --tb-ink:#101418;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0;background:var(--color-bg);color:var(--color-text);
+  font-family:var(--font-body);padding:40px 20px 90px;
+}
+.page{max-width:1180px;margin:0 auto}
+h1{font-family:var(--font-heading);font-size:1.8rem;margin:0 0 6px}
+.sub{color:var(--color-text-light);margin:0 0 8px;max-width:62ch}
+.note{color:var(--color-text-light);font-size:.9rem;margin:0 0 36px;max-width:62ch}
+
+.rack{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px}
+.slot{
+  background:var(--color-surface);border:1px solid var(--color-border);
+  border-radius:16px;overflow:hidden;display:flex;flex-direction:column;
+}
+.slot-head{padding:16px 20px;border-bottom:1px solid var(--color-border)}
+.slot-head b{font-family:var(--font-heading);font-size:1.02rem;display:block}
+.slot-head span{font-size:.84rem;color:var(--color-text-light);display:block;margin-top:3px}
+.stage{
+  flex:1;display:grid;place-items:center;min-height:330px;padding:34px 24px;
+  background:var(--color-surface-alt);
+}
+.stage.dark{background:var(--tb-ink)}
+.replay{
+  border:0;border-top:1px solid var(--color-border);background:none;
+  font:inherit;font-size:.85rem;color:var(--color-accent);
+  padding:12px;cursor:pointer;width:100%;
+}
+.replay:hover{background:var(--color-surface-alt)}
+
+/* shared chevron drawing */
+.cv{fill:none;stroke-width:52;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------------------------------------------------------------- A: TILE */
+/* The brand-bible default: white chevrons on the blue field. Wordmark above,
+   tagline below, beam around the tile. Most correct, most confident. */
+.a-lock{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center}
+.a-word{
+  font-family:var(--font-heading);font-weight:700;font-size:1.24rem;letter-spacing:-.01em;
+  color:var(--color-text);opacity:0;animation:slide-down .7s cubic-bezier(.2,.8,.25,1) .15s forwards;
+}
+.a-tileWrap{position:relative;width:132px;height:132px;opacity:0;
+  animation:pop-in .8s cubic-bezier(.2,.9,.3,1.15) .35s forwards}
+.a-tile{
+  position:absolute;inset:0;border-radius:28px;
+  background:linear-gradient(150deg,var(--tb-blue),var(--tb-blue-deep));
+  display:grid;place-items:center;overflow:hidden;
+}
+.a-tile svg{width:82px;height:82px}
+.a-tile .cv{stroke:#fff}
+.a-tile circle{fill:#fff}
+/* cosmos texture, the "notice it on second look" detail from the bible */
+.a-tile::after{
+  content:'';position:absolute;inset:0;opacity:.5;
+  background-image:radial-gradient(circle,rgba(255,255,255,.55) 1px,transparent 1.4px);
+  background-size:19px 19px;background-position:4px 7px;
+}
+.a-beam{position:absolute;inset:-3px;border-radius:31px;pointer-events:none}
+.a-beam rect{fill:none;stroke:url(#beamA);stroke-width:4;
+  stroke-dasharray:120 480;stroke-dashoffset:600;
+  animation:beam 2.6s linear 1.25s 1 forwards, beam 2.6s linear 40s infinite}
+.a-tag{
+  font-family:var(--font-heading);font-weight:600;font-size:.94rem;color:var(--tb-blue);
+  opacity:0;animation:slide-up .7s cubic-bezier(.2,.8,.25,1) .95s forwards;
+}
+
+/* ------------------------------------------------------------- B: EMBLEM */
+/* Chevrons oversized and ghosted BEHIND the wordmark, flying in from opposite
+   sides. Editorial. The mark is scenery; the words carry the message. */
+.b-lock{position:relative;display:grid;place-items:center;width:100%;max-width:330px;text-align:center}
+.b-ghost{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.b-ghost svg{width:250px;height:250px;opacity:.14}
+.b-ghost .cv{stroke:var(--tb-blue)}
+.b-ghost circle{fill:var(--tb-blue)}
+.b-top{animation:fly-west 1.5s cubic-bezier(.2,.9,.3,1) .1s both}
+.b-bot{animation:fly-east 1.5s cubic-bezier(.2,.9,.3,1) .3s both}
+.b-fore{position:relative;display:flex;flex-direction:column;align-items:center;gap:11px;padding:34px 8px}
+.b-word{
+  font-family:var(--font-heading);font-weight:700;font-size:1.5rem;line-height:1.15;
+  letter-spacing:-.02em;color:var(--color-text);
+  opacity:0;animation:slide-down .8s cubic-bezier(.2,.8,.25,1) 1s forwards;
+}
+.b-rule{width:0;height:2px;background:var(--tb-blue);animation:grow .7s ease 1.5s forwards}
+.b-tag{
+  font-family:var(--font-heading);font-weight:600;font-size:.92rem;color:var(--tb-blue);
+  opacity:0;animation:slide-up .7s ease 1.7s forwards;
+}
+
+/* --------------------------------------------------------------- C: PLATE */
+/* Dark plate, chevrons drawing themselves stroke-first, beam around the whole
+   card. Most "system", closest in feel to the architecture page masthead. */
+.c-lock{position:relative;width:100%;max-width:300px;padding:30px 26px;text-align:center;
+  border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10)}
+.c-beam{position:absolute;inset:-1px;border-radius:18px;pointer-events:none}
+.c-beam rect{fill:none;stroke:url(#beamC);stroke-width:3;
+  stroke-dasharray:150 900;stroke-dashoffset:1050;
+  animation:beamC 3s linear 1.9s 1 forwards, beamC 3s linear 40s infinite}
+.c-word{
+  font-family:var(--font-heading);font-weight:700;font-size:1.1rem;color:#fff;letter-spacing:.01em;
+  opacity:0;animation:slide-down .7s ease .1s forwards;margin-bottom:18px;
+}
+.c-mark{width:104px;height:104px;margin:0 auto 18px;display:block}
+.c-mark .cv{
+  stroke:#5FA8F5;stroke-dasharray:520;stroke-dashoffset:520;
+  animation:draw 1.5s cubic-bezier(.5,0,.2,1) .5s forwards;
+}
+.c-mark circle{fill:#5FA8F5;opacity:0;animation:fade .5s ease 1.75s forwards}
+.c-tag{
+  font-family:var(--font-heading);font-weight:600;font-size:.9rem;color:#8FC4FA;
+  opacity:0;animation:slide-up .7s ease 2.1s forwards;
+}
+
+/* ------------------------------------------------------------- keyframes */
+@keyframes slide-down{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+@keyframes slide-up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes pop-in{from{opacity:0;transform:scale(.82) translateY(10px)}to{opacity:1;transform:none}}
+@keyframes fly-west{from{opacity:0;transform:translate(-150px,-46px)}to{opacity:1;transform:none}}
+@keyframes fly-east{from{opacity:0;transform:translate(150px,46px)}to{opacity:1;transform:none}}
+@keyframes grow{to{width:52px}}
+@keyframes fade{to{opacity:1}}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes beam{from{stroke-dashoffset:600}to{stroke-dashoffset:0}}
+@keyframes beamC{from{stroke-dashoffset:1050}to{stroke-dashoffset:0}}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;opacity:1!important;transform:none!important;
+    stroke-dashoffset:0!important;width:auto}
+  .b-rule{width:52px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>Brand mark — three options</h1>
+  <p class="sub">Same rules in all three: Two Birds Blue, the correct fraternal chevrons, wordmark on top, stacked, everything slides in, and a border beam that runs once on arrival then takes a quiet lap every forty seconds. No vertical rule anywhere.</p>
+  <p class="note">Hit replay on any of them to watch the entrance again. Tell me a letter and I will wire it into the hero.</p>
+
+  <!-- gradients shared by the beams -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <linearGradient id="beamA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#fff" stop-opacity=".95"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="beamC" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5FA8F5" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#8FC4FA" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#5FA8F5" stop-opacity="0"/>
+    </linearGradient>
+  </defs></svg>
+
+  <div class="rack">
+
+    <!-- ============ A ============ -->
+    <div class="slot">
+      <div class="slot-head"><b>A — The tile</b><span>The bible's default: white chevrons on the blue field, cosmos texture, beam around the tile. The most literally on-brand of the three.</span></div>
+      <div class="stage"><div class="a-lock" id="lockA">
+        <div class="a-word">Two Birds Innovation</div>
+        <div class="a-tileWrap">
+          <div class="a-tile">
+            <svg viewBox="150 140 730 750" aria-hidden="true">
+              <polyline class="cv" points="210,195 550,335 210,475"/>
+              <circle cx="550" cy="335" r="34"/><circle cx="210" cy="195" r="34"/>
+              <polyline class="cv" points="814,549 474,689 814,829"/>
+              <circle cx="474" cy="689" r="34"/><circle cx="814" cy="829" r="34"/>
+            </svg>
+          </div>
+          <svg class="a-beam" viewBox="0 0 138 138" preserveAspectRatio="none" aria-hidden="true">
+            <rect x="2" y="2" width="134" height="134" rx="30"/>
+          </svg>
+        </div>
+        <div class="a-tag">Service. Innovation. Simplified.</div>
+      </div></div>
+      <button class="replay" data-target="lockA">Replay</button>
+    </div>
+
+    <!-- ============ B ============ -->
+    <div class="slot">
+      <div class="slot-head"><b>B — The emblem</b><span>Chevrons oversized and ghosted behind the words, flying in from opposite sides. The mark is scenery; the words carry it.</span></div>
+      <div class="stage"><div class="b-lock" id="lockB">
+        <div class="b-ghost">
+          <svg viewBox="150 140 730 750" aria-hidden="true">
+            <g class="b-top">
+              <polyline class="cv" points="210,195 550,335 210,475"/>
+              <circle cx="550" cy="335" r="34"/><circle cx="210" cy="195" r="34"/>
+            </g>
+            <g class="b-bot">
+              <polyline class="cv" points="814,549 474,689 814,829"/>
+              <circle cx="474" cy="689" r="34"/><circle cx="814" cy="829" r="34"/>
+            </g>
+          </svg>
+        </div>
+        <div class="b-fore">
+          <div class="b-word">Two&nbsp;Birds<br>Innovation</div>
+          <div class="b-rule"></div>
+          <div class="b-tag">Service. Innovation. Simplified.</div>
+        </div>
+      </div></div>
+      <button class="replay" data-target="lockB">Replay</button>
+    </div>
+
+    <!-- ============ C ============ -->
+    <div class="slot">
+      <div class="slot-head"><b>C — The plate</b><span>Dark card, chevrons drawing themselves stroke-first, beam around the whole plate. Closest in feel to the architecture masthead.</span></div>
+      <div class="stage dark"><div class="c-lock" id="lockC">
+        <svg class="c-beam" viewBox="0 0 300 250" preserveAspectRatio="none" aria-hidden="true">
+          <rect x="1.5" y="1.5" width="297" height="247" rx="17"/>
+        </svg>
+        <div class="c-word">Two Birds Innovation</div>
+        <svg class="c-mark" viewBox="150 140 730 750" aria-hidden="true">
+          <polyline class="cv" points="210,195 550,335 210,475"/>
+          <circle cx="550" cy="335" r="34"/><circle cx="210" cy="195" r="34"/>
+          <polyline class="cv" points="814,549 474,689 814,829"/>
+          <circle cx="474" cy="689" r="34"/><circle cx="814" cy="829" r="34"/>
+        </svg>
+        <div class="c-tag">Service. Innovation. Simplified.</div>
+      </div></div>
+      <button class="replay" data-target="lockC">Replay</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// Replay = clone the node, which restarts every animation inside it cleanly.
+document.querySelectorAll('.replay').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.target);
+    var fresh = el.cloneNode(true);
+    el.parentNode.replaceChild(fresh, el);
+  });
+});
+</script>
+</body>
+</html>
