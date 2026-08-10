@@ -148,6 +148,87 @@
     /* Live-stack card: the one deliberate signature moment on this page.
        A quiet pulsing dot is the only motion here besides the loop wiggle,
        so it reads as "this is alive" without competing for attention. */
+    /* ---- Hero brand build -------------------------------------------------
+       Two chevrons fly in and converge, lock with a small settle, the frame
+       draws itself, then a light traces the border. One ~11s loop, deliberately
+       slow so it is something to glance at, never something competing with the
+       copy. Purely decorative: aria-hidden, and fully static under
+       prefers-reduced-motion. */
+    .hero-grid {
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.62fr);
+      gap: var(--space-10); align-items: center;
+    }
+    .hero-mark { display: flex; justify-content: center; }
+    .hero-mark svg {
+      width: 100%; max-width: 290px; height: auto;
+      color: var(--color-accent);
+      overflow: visible;
+    }
+
+    .hm-frame, .hm-trace { fill: none; stroke-linecap: round; }
+    .hm-frame {
+      stroke: var(--color-border);
+      stroke-width: 8;
+      stroke-dasharray: 2760;
+      stroke-dashoffset: 2760;
+      animation: hm-draw 11s cubic-bezier(.6,0,.25,1) infinite;
+    }
+    .hm-trace {
+      stroke: url(#traceGrad);
+      stroke-width: 10;
+      stroke-dasharray: 190 2570;
+      stroke-dashoffset: 2760;
+      opacity: 0;
+      animation: hm-chase 11s linear infinite;
+    }
+    .hm-bird polyline { fill: none; stroke: currentColor; stroke-width: 52; stroke-linecap: round; stroke-linejoin: round; }
+    .hm-bird circle { fill: currentColor; }
+    .hm-bird-a { animation: hm-in-left  11s cubic-bezier(.22,1,.36,1) infinite; }
+    .hm-bird-b { animation: hm-in-right 11s cubic-bezier(.22,1,.36,1) infinite; }
+    .hm-birds  { animation: hm-settle   11s ease-in-out infinite; transform-origin: 50% 50%; }
+
+    @keyframes hm-in-left {
+      0%      { transform: translate(-190px, -70px); opacity: 0; }
+      16%     { transform: translate(0,0);           opacity: 1; }
+      92%     { transform: translate(0,0);           opacity: 1; }
+      100%    { transform: translate(-190px, -70px); opacity: 0; }
+    }
+    @keyframes hm-in-right {
+      0%      { transform: translate(190px, 70px);  opacity: 0; }
+      16%     { transform: translate(0,0);          opacity: 1; }
+      92%     { transform: translate(0,0);          opacity: 1; }
+      100%    { transform: translate(190px, 70px);  opacity: 0; }
+    }
+    /* the "lock into place" beat */
+    @keyframes hm-settle {
+      0%, 15%   { transform: scale(1); }
+      19%       { transform: scale(1.045); }
+      24%, 100% { transform: scale(1); }
+    }
+    @keyframes hm-draw {
+      0%, 22%  { stroke-dashoffset: 2760; }
+      46%      { stroke-dashoffset: 0; }
+      92%      { stroke-dashoffset: 0; }
+      100%     { stroke-dashoffset: 2760; }
+    }
+    @keyframes hm-chase {
+      0%, 48%  { stroke-dashoffset: 2760; opacity: 0; }
+      52%      { opacity: 1; }
+      88%      { stroke-dashoffset: 0;    opacity: 1; }
+      94%, 100%{ stroke-dashoffset: 0;    opacity: 0; }
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-mark { order: -1; }
+      .hero-mark svg { max-width: 180px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hm-frame { stroke-dashoffset: 0; animation: none; }
+      .hm-trace { display: none; }
+      .hm-bird-a, .hm-bird-b, .hm-birds { animation: none; transform: none; opacity: 1; }
+    }
+
     /* ---- Deep-dive cards -------------------------------------------------
        Replaces the old single stack-live-card. Three problems fixed:
        (1) the arrow was pushed to the far edge by space-between and sat in
@@ -162,13 +243,36 @@
       display: flex; align-items: center; gap: var(--space-4);
       margin-bottom: var(--space-5);
     }
-    /* Aspect follows the artwork (roughly 428:723), not a forced square. */
-    .dd-chevrons { width: 24px; height: 40px; flex-shrink: 0; color: var(--color-accent); }
-    .dd-kicker {
-      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--color-text-light); margin: 0 0 2px;
+    .dd-badge {
+      display: grid; place-items: center; flex-shrink: 0;
+      width: 46px; height: 46px; border-radius: 12px;
+      background: var(--color-accent); color: #fff;
     }
-    .dd-title { margin: 0; font-size: 1.15rem; }
+    .dd-badge svg { width: 24px; height: 24px; }
+    .dd-kicker {
+      font-family: var(--font-mono); font-size: 0.86rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--color-accent); margin: 0 0 4px; font-weight: 600;
+    }
+    .dd-title { margin: 0; font-size: clamp(1.35rem, 2.6vw, 1.75rem); letter-spacing: -0.01em; }
+
+    /* Small line icons. Deliberately stroked, single-weight, currentColor —
+       they read as diagram marks rather than clip art. */
+    .ico {
+      width: 1.05em; height: 1.05em; flex-shrink: 0;
+      vertical-align: -0.15em; stroke: currentColor; fill: none;
+      stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .shop-note {
+      display: flex; gap: var(--space-3); align-items: flex-start;
+      margin: var(--space-6) 0 0; padding: var(--space-4) var(--space-5);
+      background: var(--color-surface-alt, rgba(127,127,127,.06));
+      border-left: 3px solid var(--color-accent);
+      border-radius: 0 var(--radius-md, 8px) var(--radius-md, 8px) 0;
+      font-size: var(--font-size-sm); color: var(--color-text-light); max-width: 76ch;
+    }
+    .shop-note-ico {
+      width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px; color: var(--color-accent);
+    }
 
     .dd-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: var(--space-5); }
 
@@ -342,7 +446,8 @@
 
   <!-- ================= HERO ================= -->
   <section class="hero" aria-labelledby="hero-heading">
-    <div class="wrap">
+    <div class="wrap hero-grid">
+     <div class="hero-copy">
       <p class="eyebrow">The HAL Stack &middot; A working case study</p>
       <h1 id="hero-heading">An operator's AI stack <span class="accent">that ships.</span></h1>
       <p class="hal-hero-note">Designed and orchestrated by a non-programmer. Every line of code written by AI agents. (The name's a nod to 2001: A Space Odyssey. Make of that what you will.)</p>
@@ -356,6 +461,38 @@
         <li>Static products, $0 hosting</li>
         <li>Every claim on this page is verifiable in the repositories</li>
       </ul>
+     </div>
+
+     <!-- Ambient brand build: two chevrons converge, lock, the frame draws
+          itself, then a light traces the border. Decorative only, hidden from
+          assistive tech, and it stops entirely under reduced-motion. -->
+     <div class="hero-mark" aria-hidden="true">
+       <svg viewBox="0 0 780 1024" role="presentation">
+         <defs>
+           <linearGradient id="traceGrad" x1="0" y1="0" x2="1" y2="1">
+             <stop offset="0%"  stop-color="currentColor" stop-opacity="0"/>
+             <stop offset="50%" stop-color="currentColor" stop-opacity="1"/>
+             <stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
+           </linearGradient>
+         </defs>
+
+         <!-- the frame that builds itself -->
+         <rect class="hm-frame" x="96" y="96" width="588" height="832" rx="52"/>
+         <!-- the light that chases around it -->
+         <rect class="hm-trace" x="96" y="96" width="588" height="832" rx="52"/>
+
+         <g class="hm-birds">
+           <g class="hm-bird hm-bird-a">
+             <polyline points="248,268 588,408 248,548"/>
+             <circle cx="588" cy="408" r="34"/>
+           </g>
+           <g class="hm-bird hm-bird-b">
+             <polyline points="248,622 588,762 248,902"/>
+             <circle cx="248" cy="902" r="34"/>
+           </g>
+         </g>
+       </svg>
+     </div>
     </div>
   </section>
 
@@ -460,7 +597,7 @@
       <div class="section-head">
         <p class="eyebrow">Proof, not promise</p>
         <h2 id="evening-heading">One evening, start to finish</h2>
-        <p>On the evening of July 2, 2026, I left the system running with a mandate and went out with my kids. This is the actual output from that run, taken from the report it wrote for me. Nothing here is hypothetical.</p>
+        <p>On a summer evening in July 2026, I left the system running with a mandate and went out with my kids. This is the actual output from that run, taken from the report it wrote for me. Nothing here is hypothetical.</p>
       </div>
 
       <div class="runlog reveal">
@@ -508,15 +645,16 @@
 
       <div class="deep-dive reveal">
         <div class="deep-dive-head">
-          <!-- viewBox tightened to the actual artwork bounds (x 184-584, y 169-863,
-               allowing for the 52 stroke width). The full 1024 square left the mark
-               floating and clipped once forced into a square box. -->
-          <svg class="dd-chevrons" viewBox="170 155 428 723" aria-hidden="true">
-            <polyline points="210,195 550,335 210,475" fill="none" stroke="currentColor" stroke-width="52" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="550" cy="335" r="34" fill="currentColor"/>
-            <polyline points="210,549 550,689 210,829" fill="none" stroke="currentColor" stroke-width="52" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="210" cy="829" r="34" fill="currentColor"/>
-          </svg>
+          <!-- A magnifying glass reads "look under the hood" far better than the
+               brand chevrons did here, and it sits square in its own box instead
+               of being cropped by one. The chevrons stay the brand mark; they are
+               not a section icon. -->
+          <span class="dd-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4L21 21"/>
+              <path d="M8 10.5h5M10.5 8v5" opacity=".55"/>
+            </svg>
+          </span>
           <div>
             <p class="dd-kicker">Go deeper</p>
             <h3 class="dd-title">Two ways to look under the hood</h3>
@@ -641,19 +779,19 @@
           <p>A ranked apartment shortlist tool born from a real search for a real person. Its edge is verification: knowing which listings are genuine, current, and safe. Repositioning toward settlement workers who search on behalf of others.</p>
         </div>
         <div class="product-card reveal">
-          <div class="product-top"><h3>Norm</h3><span class="badge quiet">Pre-build</span></div>
+          <div class="product-top"><h3>NormeScore</h3><span class="badge quiet">Pre-build</span></div>
           <p class="product-for">For regulated Canadian professionals</p>
           <p>A technology-readiness diagnostic with sourced Canadian benchmarks, so an adviser can see where their own practice stands before advising clients on technology. Spec complete; deliberately held at the gate until one positioning decision is made.</p>
         </div>
-        <div class="product-card reveal">
-          <div class="product-top"><h3>This site</h3><span class="badge">Live</span></div>
-          <p class="product-for">The shop window, built in the same shop</p>
-          <p>This site, including the page you're reading, was designed, built, tested, and deployed through the same system: design tokens, accessibility verification in both themes, automated checks on every push.</p>
-          <div class="product-links">
-            <a class="card-link" href="index.html">Visit the main site <span class="arrow" aria-hidden="true">&rarr;</span></a>
-          </div>
-        </div>
       </div>
+
+      <p class="shop-note reveal">
+        <svg class="shop-note-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 9l1.5-4.5A1 1 0 0 1 5.45 4h13.1a1 1 0 0 1 .95.5L21 9"/>
+          <path d="M3 9h18v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9z"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/>
+        </svg>
+        <span>And the shop window was built on the shop floor. This site, including the page you're reading, went through the same system as everything above: the same design tokens, the same accessibility checks in both themes, the same automated gates on every push. It isn't a product, it's the proof.</span>
+      </p>
     </div>
   </section>
 
