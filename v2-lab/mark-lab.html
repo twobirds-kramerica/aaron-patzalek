@@ -55,6 +55,25 @@ h1{font-family:var(--font-heading);font-size:1.8rem;margin:0 0 6px}
 .t3{color:var(--color-text);letter-spacing:.03em}
 .t4{line-height:1.45;font-weight:600}
 
+/* ---- staggered variants ---- */
+.perch-wrap{position:relative;padding:4px 0}
+.stair{
+  margin:6px 0;font-family:var(--font-heading);font-size:1.14rem;font-weight:500;
+  line-height:1.62;color:var(--color-text);letter-spacing:.012em;
+}
+.stair .w{display:block;white-space:nowrap}
+.stair .blue b{font-weight:800;color:var(--tb-blue)}
+.stair .pin{font-style:normal}
+/* clean steps: a half-indent per line */
+.steps .w:nth-child(2){padding-left:1.5em}
+.steps .w:nth-child(3){padding-left:3em}
+/* the perch: a hairline through the aligned i's, positioned by script */
+.perch-line{
+  position:absolute;top:2px;bottom:2px;width:1px;
+  background:linear-gradient(to bottom,transparent,var(--tb-blue) 18%,var(--tb-blue) 82%,transparent);
+  opacity:.5;display:none;
+}
+
 .rack{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px}
 .slot{
   background:var(--color-surface);border:1px solid var(--color-border);
@@ -242,6 +261,39 @@ h1{font-family:var(--font-heading);font-size:1.8rem;margin:0 0 6px}
     </div>
   </div>
 
+  <h2 style="font-family:var(--font-heading);font-size:1.25rem;margin:34px 0 6px">Staggered — two ways</h2>
+  <p class="note" style="margin-bottom:22px">
+    <b>The catch:</b> aligning the i's and making clean descending steps are mutually exclusive, because of where the
+    i's fall. Service has one i, four characters in. Innovation's only options are the capital I at the very start or
+    the i seven characters in. Simplified's are at one, five and seven. Line the i's up and the horizontal offsets are
+    fixed for you, and they do not happen to descend. Pick which idea you want to keep.
+  </p>
+
+  <div class="tag-rack">
+    <div class="tag-card">
+      <span class="tag-lbl">5 — The perch (i's aligned)</span>
+      <div class="perch-wrap">
+        <p class="stair" id="perch">
+          <span class="w">Serv<i class="pin">i</i>ce.</span>
+          <span class="w">Innovat<i class="pin">i</i>on.</span>
+          <span class="w blue"><b>S<i class="pin">i</i>mplified.</b></span>
+        </p>
+        <span class="perch-line" id="perchLine" aria-hidden="true"></span>
+      </div>
+      <span class="tag-why">Your idea, measured in the browser rather than eyeballed, so the three i's sit on one exact vertical. The line is the perch. Stagger is irregular by consequence, not by choice.</span>
+    </div>
+
+    <div class="tag-card">
+      <span class="tag-lbl">6 — Clean steps</span>
+      <p class="stair steps">
+        <span class="w">Service.</span>
+        <span class="w">Innovation.</span>
+        <span class="w blue"><b>Simplified.</b></span>
+      </p>
+      <span class="tag-why">Each line tucks under and to the right of the one above, a half-indent at a time. Reads as descending steps. The i's land wherever they land.</span>
+    </div>
+  </div>
+
   <h2 style="font-family:var(--font-heading);font-size:1.25rem;margin:34px 0 18px">Lockups</h2>
   <div class="rack">
 
@@ -316,6 +368,36 @@ h1{font-family:var(--font-heading);font-size:1.8rem;margin:0 0 6px}
 </div>
 
 <script>
+/* Align the three i's on one vertical.
+   Measured at runtime rather than guessed in em units: Bricolage Grotesque is
+   proportional, so character offsets cannot be computed from CSS. Each word is
+   nudged right until its pinned i sits at the rightmost pin position. Re-runs
+   on font load and resize, because measuring before the webfont swaps gives
+   fallback-font offsets and the line drifts. */
+function alignPerch() {
+  var p = document.getElementById('perch');
+  var line = document.getElementById('perchLine');
+  if (!p || !line) return;
+  var words = [].slice.call(p.querySelectorAll('.w'));
+  words.forEach(function (w) { w.style.paddingLeft = '0px'; });
+
+  var offsets = words.map(function (w) {
+    var pin = w.querySelector('.pin');
+    return pin.getBoundingClientRect().left - w.getBoundingClientRect().left;
+  });
+  var max = Math.max.apply(null, offsets);
+  words.forEach(function (w, i) { w.style.paddingLeft = (max - offsets[i]) + 'px'; });
+
+  // put the perch through the now-aligned pins
+  var wrap = p.parentNode.getBoundingClientRect();
+  var pin0 = words[0].querySelector('.pin').getBoundingClientRect();
+  line.style.left = (pin0.left - wrap.left + pin0.width / 2) + 'px';
+  line.style.display = 'block';
+}
+if (document.fonts && document.fonts.ready) { document.fonts.ready.then(alignPerch); }
+window.addEventListener('load', alignPerch);
+window.addEventListener('resize', alignPerch);
+
 // Replay = clone the node, which restarts every animation inside it cleanly.
 document.querySelectorAll('.replay').forEach(function (btn) {
   btn.addEventListener('click', function () {
