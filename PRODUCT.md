@@ -25,7 +25,7 @@ Success looks like: a business owner books a 30-minute discovery call, or a hiri
 
 Senior colleague. Direct. No corporate filler.
 
-Tone: plain, confident, non-promotional. The language of someone who has done this for 20 years and doesn't need to oversell. "Here's what I've built" not "I'm passionate about disrupting paradigms."
+Tone: plain, confident, non-promotional. The language of someone who has done this for 15+ years and doesn't need to oversell. "Here's what I've built" not "I'm passionate about disrupting paradigms."
 Voice: warm but direct. Canadian. No em dashes. No buzzwords. "I build tools that work, for people who need them."
 
 ## Anti-references
@@ -40,7 +40,7 @@ Voice: warm but direct. Canadian. No em dashes. No buzzwords. "I build tools tha
 
 1. **Show, don't pitch.** Four live products with links beat any amount of copy about capabilities.
 2. **One entry point per audience.** The consulting CTA and the portfolio evidence should not fight for attention on the same screen.
-3. **Earn trust in order.** Problem → credentials → offer → action. Not: award-winning consultant with 20 years of experience (first paragraph).
+3. **Earn trust in order.** Problem → credentials → offer → action. Not: award-winning consultant with 15+ years of experience (first paragraph).
 4. **No stock photography.** The headshot is real, the context is real. Any other image must be a product screenshot or nothing.
 5. **The site is a senior PM's PM.** It should demonstrate the same quality bar Aaron applies to products he builds for clients.
 

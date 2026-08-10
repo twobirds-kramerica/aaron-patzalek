@@ -114,7 +114,7 @@ Reading the `index.html` source (not rendered — I didn't open this in a browse
 ### Strong
 - H1 tagline is specific and memorable: "Building tools that empower people to act for themselves"
 - Canadian English throughout (centre, colour, etc. — or at least no obvious US-isms)
-- Hero meta strip is concrete: St. Thomas / 20+ years / Canadian-built
+- Hero meta strip is concrete: St. Thomas / 15+ years / Canadian-built
 - Philosophy banner is on-brand and non-generic
 - "Sovereignty over autonomy" phrasing ties to Two Birds Innovation positioning
 - Career timeline is verified-factual (TELUS, Staples, Start.ca all named)

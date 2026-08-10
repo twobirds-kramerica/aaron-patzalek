@@ -6,7 +6,7 @@
 
 ## 1-Line (Headline)
 
-**20 years building products for millions. Now building tools that put people back in the driver's seat.**
+**15+ years building products for millions. Now building tools that put people back in the driver's seat.**
 
 ---
 
@@ -18,7 +18,7 @@ Aaron Patzalek spent two decades leading product teams at TELUS, Staples, Start.
 
 ## 1-Page (Full Bio)
 
-Aaron Patzalek is a product leader and solopreneur based in St. Thomas, Ontario. Over 20+ years, he led digital product delivery across telecom (TELUS, Start.ca), retail (Staples Canada), eCommerce (Goodwill, Peavey Industries), and non-profit — a career defined by being brought in to fix broken systems, build new ones, and ship.
+Aaron Patzalek is a product leader and solopreneur based in St. Thomas, Ontario. Over 15+ years, he led digital product delivery across telecom (TELUS, Start.ca), retail (Staples Canada), eCommerce (Goodwill, Peavey Industries), and non-profit — a career defined by being brought in to fix broken systems, build new ones, and ship.
 
 In early 2026, Aaron founded Two Birds Innovation. The name comes from his twin daughters — fraternal twins, both girls. Everything he builds is, at its core, for them and for people like them who deserve tools that respect their intelligence and their time.
 

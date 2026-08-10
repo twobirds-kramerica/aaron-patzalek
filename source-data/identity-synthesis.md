@@ -25,7 +25,7 @@ Source: IKIGAI doc (referenced in sprint prompt). The Architect — strategic, a
 
 ### Synthesis: How Aaron Thinks and Works
 
-Aaron is a systems-thinking generalist with 20+ years of cross-industry product leadership. He maps complex organisations into repeatable frameworks, then strips away noise until only the essential survives (Essentialism). His INTJ architecture means he builds the system before the product — the HAL Stack, sovereignty model, and 31-persona boardroom all existed before any revenue, because to Aaron the infrastructure IS the product. He moves industries every 3-5 years not from restlessness but from a pattern of being brought in to fix, systematise, and launch — then moving to the next system that needs building. He thinks in four layers (L1-L4), evaluates tools against a decapitation audit before adopting them, and would rather build something ugly that he owns than use something polished that owns him.
+Aaron is a systems-thinking generalist with 15+ years of cross-industry product leadership. He maps complex organisations into repeatable frameworks, then strips away noise until only the essential survives (Essentialism). His INTJ architecture means he builds the system before the product — the HAL Stack, sovereignty model, and 31-persona boardroom all existed before any revenue, because to Aaron the infrastructure IS the product. He moves industries every 3-5 years not from restlessness but from a pattern of being brought in to fix, systematise, and launch — then moving to the next system that needs building. He thinks in four layers (L1-L4), evaluates tools against a decapitation audit before adopting them, and would rather build something ugly that he owns than use something polished that owns him.
 
 ---
 
