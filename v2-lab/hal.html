@@ -190,11 +190,18 @@
     }
     .pm-line-2 { animation-delay: .75s; }
     .pm-dot { fill: #0066CC; opacity: 0; animation: plate-fade .5s ease 2s forwards; }
+    /* Descending steps, left-aligned inside a centred block so the staircase
+       reads as deliberate rather than as ragged centring. */
     .plate-tag {
-      margin: 0; font-family: var(--font-heading); font-weight: 500;
-      font-size: .92rem; letter-spacing: .014em; color: var(--color-text-light);
+      margin: 0; display: inline-block; text-align: left;
+      font-family: var(--font-heading); font-weight: 500;
+      font-size: .95rem; line-height: 1.6; letter-spacing: .014em;
+      color: var(--color-text-light);
       opacity: 0; animation: plate-up .7s ease 2.25s forwards;
     }
+    .plate-tag span { display: block; white-space: nowrap; }
+    .plate-tag span:nth-child(2) { padding-left: 1.4em; }
+    .plate-tag span:nth-child(3) { padding-left: 2.8em; }
     .plate-tag b { font-weight: 800; color: #0066CC; }
     /* This page sets data-theme on <html> from a saved preference, so a bare
        prefers-color-scheme query misses the manual toggle. Both are covered. */
@@ -502,11 +509,17 @@
            <circle class="pm-dot" cx="814" cy="829" r="34"/>
          </svg>
 
-         <!-- Payoff weight, not emphasised initials. Highlighting first letters
-              here would spell S.I.S., which readers assemble whether or not it
-              was intended. The last word is the promise, so it carries the
-              weight; the periods stay, per the locked guideline. -->
-         <p class="plate-tag">Service. Innovation. <b>Simplified.</b></p>
+         <!-- Payoff weight, not emphasised initials: highlighting first letters
+              would spell S.I.S., which readers assemble whether or not it was
+              intended. Staggered as descending steps. Aligning the three i's
+              was tried and measured (see mark-lab.html option 5) — it works to
+              0.24px, but the resulting offsets read as a zigzag rather than
+              steps, because of where the i's happen to fall. Steps won. -->
+         <p class="plate-tag">
+           <span>Service.</span>
+           <span>Innovation.</span>
+           <span><b>Simplified.</b></span>
+         </p>
        </div>
      </div>
     </div>
