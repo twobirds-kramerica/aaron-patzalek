@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Brand mark — three options</title>
+<title>Brand mark — options</title>
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="css/tokens.css">
 <style>
@@ -96,6 +96,45 @@ h1{font-family:var(--font-heading);font-size:1.8rem;margin:0 0 6px}
 
 /* shared chevron drawing */
 .cv{fill:none;stroke-width:52;stroke-linecap:round;stroke-linejoin:round}
+
+
+/* ============== ROUND THREE: boxed wordmark + softened mark ============== */
+.g-lock{display:flex;flex-direction:column;align-items:center;text-align:center;padding:10px}
+/* The wordmark now has weight and a container. It was a small-caps label with
+   nothing around it, which Aaron read as weak, and he was right. */
+.boxword{
+  margin:0 0 20px;padding:11px 20px;border-radius:9px;
+  font-family:var(--font-heading);font-weight:700;font-size:1.02rem;
+  letter-spacing:.02em;white-space:nowrap;color:#fff;
+  opacity:0;animation:slide-down .7s cubic-bezier(.2,.8,.25,1) .1s forwards;
+}
+.blue-plate{background:linear-gradient(140deg,#0A72DC,#0052A6);
+  box-shadow:0 2px 10px rgba(0,82,166,.28)}
+.ink-plate{background:linear-gradient(140deg,#2A323C,#161C24);
+  box-shadow:0 2px 10px rgba(0,0,0,.24)}
+.big-mark{display:block;width:158px;height:158px;margin:0 auto 18px}
+.gm-l{stroke-dasharray:100;stroke-dashoffset:100;
+  animation:draw2 1.4s cubic-bezier(.5,0,.2,1) .45s forwards}
+.gm-l2{animation-delay:.68s}
+.gm-o{opacity:0;animation:fade .5s ease 1.85s forwards}
+/* cosmos speckle, per the bible: noticed on second look, not a starfield */
+.speckle-wrap{position:relative;display:inline-block}
+.speckle{
+  position:absolute;inset:0;pointer-events:none;opacity:.55;
+  background-image:radial-gradient(circle,var(--color-text-light) .8px,transparent 1.1px);
+  background-size:13px 13px;
+  -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 58%,transparent 74%);
+  mask-image:radial-gradient(circle at 50% 50%,#000 58%,transparent 74%);
+}
+.stepstag{
+  margin:0;display:inline-block;text-align:left;
+  font-family:var(--font-heading);font-weight:500;font-size:.92rem;line-height:1.6;
+  color:var(--color-text-light);opacity:0;animation:slide-up .7s ease 2.1s forwards;
+}
+.stepstag span{display:block;white-space:nowrap}
+.stepstag span:nth-child(2){padding-left:1.4em}
+.stepstag span:nth-child(3){padding-left:2.8em}
+.stepstag b{font-weight:800;color:var(--tb-blue)}
 
 /* ================= ROUND TWO: no container, bigger mark ================= */
 .d-lock,.f-lock{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:14px}
@@ -252,7 +291,7 @@ h1{font-family:var(--font-heading);font-size:1.8rem;margin:0 0 6px}
 <body>
 <div class="page">
 
-  <h1>Brand mark — three options</h1>
+  <h1>Brand mark — options</h1>
   <p class="sub">Same rules in all three: Two Birds Blue, the correct fraternal chevrons, wordmark on top, stacked, everything slides in, and a border beam that runs once on arrival then takes a quiet lap every forty seconds. No vertical rule anywhere.</p>
   <p class="note">Hit replay on any of them to watch the entrance again. Tell me a letter and I will wire it into the hero.</p>
 
@@ -262,6 +301,12 @@ h1{font-family:var(--font-heading);font-size:1.8rem;margin:0 0 6px}
       <stop offset="0%" stop-color="#fff" stop-opacity="0"/>
       <stop offset="50%" stop-color="#fff" stop-opacity=".95"/>
       <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="copperGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#C86B1E"/><stop offset="100%" stop-color="#8A3F06"/>
+    </linearGradient>
+    <linearGradient id="softBlue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6FA3DA"/><stop offset="100%" stop-color="#3D6FA8"/>
     </linearGradient>
     <linearGradient id="beamC" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#5FA8F5" stop-opacity="0"/>
@@ -333,6 +378,69 @@ h1{font-family:var(--font-heading);font-size:1.8rem;margin:0 0 6px}
       </p>
       <span class="tag-why">Each line tucks under and to the right of the one above, a half-indent at a time. Reads as descending steps. The i's land wherever they land.</span>
     </div>
+  </div>
+
+  <h2 style="font-family:var(--font-heading);font-size:1.25rem;margin:34px 0 6px">Round three — softer mark, wordmark in a box</h2>
+  <p class="note" style="margin-bottom:22px">
+    Aaron: the chevrons pop too hard, and the wordmark is too small and has nothing around it, so it reads weak.
+    All three give the wordmark a real container and take the shout out of the mark.
+    <b>Note on G:</b> copper chevrons depart from the brand bible, which says the chevrons and their field are never
+    repainted. H and J stay compliant by softening the blue instead. Worth a deliberate decision either way.
+  </p>
+
+  <div class="rack">
+
+    <!-- G -->
+    <div class="slot">
+      <div class="slot-head"><b>G — Copper, blue plate</b><span>Chevrons in the page's own copper with a soft gradient. Wordmark on a solid blue plate. Departs from the bible on colour.</span></div>
+      <div class="stage"><div class="g-lock" id="lockG">
+        <p class="boxword blue-plate">Two Birds Innovation</p>
+        <svg class="big-mark" viewBox="150 140 730 750" aria-hidden="true">
+          <polyline class="cv gm-l" points="210,195 550,335 210,475" pathLength="100" stroke="url(#copperGrad)"/>
+          <polyline class="cv gm-l gm-l2" points="814,549 474,689 814,829" pathLength="100" stroke="url(#copperGrad)"/>
+          <circle class="gm-o" cx="550" cy="335" r="34" fill="#C86B1E"/><circle class="gm-o" cx="210" cy="195" r="34" fill="#C86B1E"/>
+          <circle class="gm-o" cx="474" cy="689" r="34" fill="#9C4A0A"/><circle class="gm-o" cx="814" cy="829" r="34" fill="#9C4A0A"/>
+        </svg>
+        <p class="stepstag"><span>Service.</span><span>Innovation.</span><span><b>Simplified.</b></span></p>
+      </div></div>
+      <button class="replay" data-target="lockG">Replay</button>
+    </div>
+
+    <!-- H -->
+    <div class="slot">
+      <div class="slot-head"><b>H — Muted blue, speckled</b><span>Blue kept but dialled right back, with the cosmos speckle from the bible sitting over it. Wordmark on a dark plate. Bible-compliant.</span></div>
+      <div class="stage"><div class="g-lock" id="lockH">
+        <p class="boxword ink-plate">Two Birds Innovation</p>
+        <div class="speckle-wrap">
+          <svg class="big-mark" viewBox="150 140 730 750" aria-hidden="true">
+            <polyline class="cv gm-l" points="210,195 550,335 210,475" pathLength="100" stroke="url(#softBlue)"/>
+            <polyline class="cv gm-l gm-l2" points="814,549 474,689 814,829" pathLength="100" stroke="url(#softBlue)"/>
+            <circle class="gm-o" cx="550" cy="335" r="34" fill="#5C93CE"/><circle class="gm-o" cx="210" cy="195" r="34" fill="#5C93CE"/>
+            <circle class="gm-o" cx="474" cy="689" r="34" fill="#5C93CE"/><circle class="gm-o" cx="814" cy="829" r="34" fill="#5C93CE"/>
+          </svg>
+          <span class="speckle" aria-hidden="true"></span>
+        </div>
+        <p class="stepstag"><span>Service.</span><span>Innovation.</span><span><b>Simplified.</b></span></p>
+      </div></div>
+      <button class="replay" data-target="lockH">Replay</button>
+    </div>
+
+    <!-- J -->
+    <div class="slot">
+      <div class="slot-head"><b>J — Tonal, two greys</b><span>Chevrons in two greys so the mark recedes and the wordmark leads. Blue kept only for the payoff word. Quietest of the three.</span></div>
+      <div class="stage"><div class="g-lock" id="lockJ">
+        <p class="boxword blue-plate">Two Birds Innovation</p>
+        <svg class="big-mark" viewBox="150 140 730 750" aria-hidden="true">
+          <polyline class="cv gm-l" points="210,195 550,335 210,475" pathLength="100" stroke="#8D97A2"/>
+          <polyline class="cv gm-l gm-l2" points="814,549 474,689 814,829" pathLength="100" stroke="#B4BCC5"/>
+          <circle class="gm-o" cx="550" cy="335" r="34" fill="#8D97A2"/><circle class="gm-o" cx="210" cy="195" r="34" fill="#8D97A2"/>
+          <circle class="gm-o" cx="474" cy="689" r="34" fill="#B4BCC5"/><circle class="gm-o" cx="814" cy="829" r="34" fill="#B4BCC5"/>
+        </svg>
+        <p class="stepstag"><span>Service.</span><span>Innovation.</span><span><b>Simplified.</b></span></p>
+      </div></div>
+      <button class="replay" data-target="lockJ">Replay</button>
+    </div>
+
   </div>
 
   <h2 style="font-family:var(--font-heading);font-size:1.25rem;margin:34px 0 6px">Round two — no container</h2>
