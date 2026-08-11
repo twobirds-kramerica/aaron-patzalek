@@ -549,7 +549,7 @@
     <a href="privacy.html">Privacy</a> ·
     <a href="disclaimer.html">Disclaimer</a>
   </p>
-  <p style="margin-top:var(--space-2)">© 2026 Two Birds Innovation · St. Thomas, Ontario · No data collected</p>
+  <p style="margin-top:var(--space-2)">© <span id="copyright-year">2026</span> Two Birds Innovation · St. Thomas, Ontario · No data collected</p>
 </footer>
 
 <script>
@@ -588,6 +588,7 @@
     set('tm-days',       opDays);
     set('tm-refreshes',  refreshes);
     set('tm-builds',     builds);
+    set('copyright-year', new Date().getFullYear());
   })();
 </script>
 

@@ -456,13 +456,14 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <span>&copy; 2026 Aaron Patzalek &middot; Two Birds Innovation &middot; St. Thomas, Ontario</span>
+    <span>&copy; <span id="copyright-year">2026</span> Aaron Patzalek &middot; Two Birds Innovation &middot; St. Thomas, Ontario</span>
     <nav aria-label="Footer navigation" style="display:flex; gap:1.25rem;">
       <a href="https://www.linkedin.com/in/aaronpatzalek/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://cal.com/twobirds-4n5ajg/30min" target="_blank" rel="noopener">Book a call</a>
     </nav>
   </div>
 </footer>
+<script>document.getElementById('copyright-year').textContent = new Date().getFullYear();</script>
 
 <script>
   // Theme toggle: persists choice, respects OS default otherwise.

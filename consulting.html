@@ -816,8 +816,9 @@
     <a href="disclaimer.html">Disclaimer</a> ·
     St. Thomas, Ontario · Canada
   </p>
-  <p style="margin-top: var(--space-2);">© 2026 Two Birds Innovation · No data collected</p>
+  <p style="margin-top: var(--space-2);">© <span id="copyright-year">2026</span> Two Birds Innovation · No data collected</p>
 </footer>
+<script>document.getElementById('copyright-year').textContent = new Date().getFullYear();</script>
 
 </body>
 </html>
