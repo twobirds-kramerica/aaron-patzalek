@@ -247,19 +247,19 @@
 </header>
 
 <!-- Live counters -->
-<div class="counter-bar" role="region" aria-label="Live operational metrics">
+<div class="counter-bar" role="region" aria-label="Operational metrics, counted 11 August 2026">
   <div class="counter-bar-inner">
     <div class="counter-item">
       <div class="counter-num" id="cnt-days">—</div>
       <div class="counter-label">days of continuous operation</div>
     </div>
     <div class="counter-item">
-      <div class="counter-num">6</div>
-      <div class="counter-label">products in production</div>
+      <div class="counter-num" data-claim="live-site-count" data-src="http:200 check of every public twobirds-kramerica Pages site" data-v="2" data-c="3" data-verified="2026-08-11">6</div>
+      <div class="counter-label">public sites live on the open web</div>
     </div>
     <div class="counter-item">
-      <div class="counter-num" id="cnt-commits">1,696+</div>
-      <div class="counter-label">commits across 6 repositories</div>
+      <div class="counter-num" id="cnt-commits" data-claim="commit-count" data-src="github:twobirds-kramerica default-branch commits since 2026-01-01" data-v="2" data-c="3" data-verified="2026-08-11">4,834</div>
+      <div class="counter-label">commits across 15 repositories</div>
     </div>
     <div class="counter-item">
       <div class="counter-num" id="cnt-refreshes">—</div>
@@ -292,7 +292,7 @@
           <span class="ev-icon" aria-hidden="true">⚙️</span>
           <h3>Overnight autonomous builds</h3>
           <p>A Windows Task Scheduler job runs nightly. It checks the sprint queue, pulls the next item, executes it end-to-end, files any required human actions to Notion, and logs the result — without waking anyone up.</p>
-          <div class="ev-receipt">logs/automated-run-log.md · 24+ entries</div>
+          <div class="ev-receipt">logs/automated-run-log.md · 162 entries, counted 11 Aug 2026</div>
         </div>
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">📋</span>
@@ -347,14 +347,14 @@
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">🔄</span>
           <h3>KevsCasa — daily automated listing refresh</h3>
-          <p>A GitHub Actions workflow runs every morning. It scrapes London ON rental listings, normalises the data, updates <code>data/listings.json</code>, and commits the result. No human trigger required. 70+ automated refreshes completed.</p>
-          <div class="ev-receipt">twobirds-kramerica/kevins-apartment-search · .github/workflows/ · 70+ runs</div>
+          <p>A GitHub Actions workflow runs every morning. It scrapes London ON rental listings, normalises the data, updates <code>data/listings.json</code>, and commits the result. No human trigger required. 140 automated refreshes completed.</p>
+          <div class="ev-receipt">twobirds-kramerica/kevins-apartment-search · .github/workflows/refresh.yml · 140 runs, counted 11 Aug 2026</div>
         </div>
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">♿</span>
           <h3>DCC — accessibility CI/CD on every push</h3>
           <p>Every push to the Digital Confidence Centre triggers an axe-core automated accessibility audit via GitHub Actions. Failures block the build. Zero manual test runs needed — WCAG 2.2 AA is enforced by the pipeline.</p>
-          <div class="ev-receipt">twobirds-kramerica/digital-confidence · .github/workflows/ · 555 commits tested</div>
+          <div class="ev-receipt">twobirds-kramerica/digital-confidence · .github/workflows/ · 959 commits tested, counted 11 Aug 2026</div>
         </div>
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">🤖</span>
@@ -384,11 +384,11 @@
 
       <div class="theme-metrics" role="list" aria-label="Theme 2 metrics">
         <div class="theme-metric" role="listitem">
-          <div class="tm-num" id="tm-refreshes">70+</div>
+          <div class="tm-num" id="tm-refreshes">140</div>
           <div class="tm-label">automated data refreshes</div>
         </div>
         <div class="theme-metric" role="listitem">
-          <div class="tm-num" id="tm-builds">24+</div>
+          <div class="tm-num" id="tm-builds">45</div>
           <div class="tm-label">overnight build runs</div>
         </div>
         <div class="theme-metric" role="listitem">
@@ -554,19 +554,28 @@
 
 <script>
   (function() {
+    // Days of operation is genuinely computed from a real start date, so it stays live.
     var START_DATE  = new Date('2026-02-25T00:00:00');
-    var BASE_DATE   = new Date('2026-06-10T00:00:00');
-    var BASE_REFRESHES = 70;
-    var BASE_BUILDS    = 24;
+
+    // Refreshes and builds are DATED SNAPSHOTS, counted from real sources on
+    // 2026-08-11. They used to be extrapolated by adding one per calendar day to
+    // a June baseline, which is a fabricated figure wearing a live counter's
+    // clothes: it had drifted to ~86 overnight builds when the true count was 45.
+    //   refreshes: runs of "Daily Listing Refresh Check"
+    //     gh api repos/twobirds-kramerica/kevins-apartment-search/actions/workflows/250369202/runs --jq .total_count
+    //   builds: ls two-birds-portfolio/logs/overnight-*.md | wc -l
+    //     (agrees with hal-stack/data/hal-stats.json "overnight_builds")
+    // Update both numbers and the "counted" date together, or not at all.
+    var REFRESHES_SNAPSHOT = 140;
+    var BUILDS_SNAPSHOT    = 45;
 
     function daysSince(d) {
       return Math.max(0, Math.floor((Date.now() - d.getTime()) / 86400000));
     }
 
     var opDays       = daysSince(START_DATE);
-    var extraDays    = daysSince(BASE_DATE);
-    var refreshes    = BASE_REFRESHES + extraDays;
-    var builds       = BASE_BUILDS    + extraDays;
+    var refreshes    = REFRESHES_SNAPSHOT;
+    var builds       = BUILDS_SNAPSHOT;
 
     function set(id, val) {
       var el = document.getElementById(id);
@@ -574,11 +583,11 @@
     }
 
     set('cnt-days',      opDays);
-    set('cnt-refreshes', refreshes + '+');
-    set('cnt-builds',    builds    + '+');
+    set('cnt-refreshes', refreshes);
+    set('cnt-builds',    builds);
     set('tm-days',       opDays);
-    set('tm-refreshes',  refreshes + '+');
-    set('tm-builds',     builds    + '+');
+    set('tm-refreshes',  refreshes);
+    set('tm-builds',     builds);
   })();
 </script>
 

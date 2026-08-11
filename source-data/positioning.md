@@ -12,7 +12,7 @@
 
 ## 1-Paragraph (About Section)
 
-Aaron Patzalek spent two decades leading product teams at TELUS, Staples, Start.ca, and Goodwill — shipping software that reached millions of Canadians. In early 2026, he founded Two Birds Innovation in St. Thomas, Ontario, and shipped 7 digital products in 90 days as a solo founder. His flagship, the Digital Confidence Centre, is a free bilingual digital literacy programme now serving seniors across Canada with 29 self-paced modules. Aaron builds tools that empower people to act for themselves — not tools that replace human judgment. Every product follows a sovereignty principle: your data, your logic, your decisions.
+Aaron Patzalek spent 15+ years leading product teams at TELUS, Staples, Start.ca, and Goodwill — shipping software that reached millions of Canadians. In early 2026, he founded Two Birds Innovation in St. Thomas, Ontario, and shipped 7 digital products in 90 days as a solo founder. His flagship, the Digital Confidence Centre, is a free bilingual digital literacy programme now serving seniors across Canada with 29 self-paced modules. Aaron builds tools that empower people to act for themselves — not tools that replace human judgment. Every product follows a sovereignty principle: your data, your logic, your decisions.
 
 ---
 

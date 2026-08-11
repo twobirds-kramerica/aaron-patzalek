@@ -763,9 +763,9 @@
   <div class="no-code-line">Built without writing a single line of code.</div>
 
   <div class="build-block" style="margin:6px 0 30px;">
-    <div class="build-num" id="build-count">4,500+</div>
+    <div class="build-num" id="build-count" data-claim="commit-count" data-src="github:twobirds-kramerica default-branch commits since 2026-01-01" data-v="2" data-c="3" data-verified="2026-08-11">4,834</div>
     <div class="build-label">
-      <strong>Commits across 14 repositories since early 2026.</strong>
+      <strong>Commits across 15 repositories, counted 11 August 2026.</strong>
       Every one written through an AI agent that reads the codebase, edits files,
       runs the tests, and commits to Git. One business person,
       no engineering team, zero lines of code written by hand.
@@ -794,7 +794,7 @@
       <span class="stat-label">skills<br>available</span>
     </div>
     <div class="stat">
-      <span class="stat-num">14</span>
+      <span class="stat-num" data-claim="repo-count" data-src="github:twobirds-kramerica repos created in 2026" data-v="2" data-c="3" data-verified="2026-08-11">15</span>
       <span class="stat-label">repositories<br>built</span>
     </div>
     <div class="stat">
@@ -1020,7 +1020,7 @@
         <div class="arch-pills">
           <span class="pill" data-tip-title="GitHub Pages" data-tip="All products are hosted on GitHub Pages. Static HTML files, deployed on git push. $0 cost. No server to maintain or secure.">GitHub Pages</span>
           <span class="pill" data-tip-title="GitHub Actions (15+ workflows)" data-tip="Automated workflows that fire on every code push. Run WCAG accessibility checks, deploy to GitHub Pages, validate HTML, and more. No manual QA step.">GitHub Actions (15+ workflows)</span>
-          <span class="pill" data-tip-title="Git · 14 repos" data-tip="14 GitHub repositories: one per product plus portfolio and infrastructure repos. Examples: digital-confidence (DCC Adults), career-coach, aaron-patzalek (this site), two-birds-portfolio (HAL Stack command centre).">Git · 14 repos</span>
+          <span class="pill" data-tip-title="Git · 15 repos" data-tip="15 GitHub repositories created in 2026: one per product plus portfolio and infrastructure repos. Examples: digital-confidence (DCC Adults), career-coach, aaron-patzalek (this site), two-birds-portfolio (HAL Stack command centre). Of these, 11 are in the nightly sync set, and the rest are archived or template repos that do not change. Counted 11 August 2026.">Git · 15 repos</span>
           <span class="pill" data-tip-title="Codeberg mirror" data-tip="Every repo is mirrored nightly to Codeberg.org — an independent, non-commercial git host. If GitHub disappeared tomorrow, the entire codebase is safe and deployable elsewhere.">Codeberg mirror</span>
           <span class="pill" data-tip-title="Windows Task Scheduler" data-tip="The overnight build runs via Windows Task Scheduler at 2am — no cloud cron service, no subscription, no external dependency. The laptop runs it locally.">Windows Task Scheduler</span>
           <span class="pill" data-tip-title="Python stdlib" data-tip="All automation scripts use Python's built-in standard library only. No third-party packages to install, update, or break. Runs on any Python 3.x install.">Python stdlib</span>
@@ -1105,7 +1105,7 @@
         <div class="loop-time">2:00 am</div>
         <div>
           <div class="loop-title">11 repos pulled and pushed</div>
-          <p class="loop-detail">All product and portfolio repos synced from remote, pushed to GitHub and Codeberg mirror.</p>
+          <p class="loop-detail">The 11 active product and portfolio repos synced from remote, pushed to GitHub and Codeberg mirror. Fewer than the 15 built, because archived and template repos are not in the nightly set.</p>
         </div>
       </div>
     </div>
@@ -1215,7 +1215,7 @@
       <div class="product-name">KevsCasa</div>
       <span class="badge badge-build">In development</span>
       <div class="product-for">→ Rental Seekers · Housing Navigators</div>
-      <p class="product-body">Apartment search and tracking dashboard. Started as a personal civic tool for a friend in London, ON. Live portfolio piece. Being positioned as a white-label housing navigator.</p>
+      <p class="product-body">Apartment search and tracking dashboard. Started as a personal civic tool for a friend in London, ON. The repository is private and there is no public site, but the daily listing-refresh automation runs against it and has for months. Being positioned as a white-label housing navigator.</p>
     </div>
 
     <div class="product">
@@ -1520,11 +1520,18 @@
   document.querySelectorAll('.stats-bar').forEach(el => counterObserver.observe(el));
 
   // ── COMMIT COUNT ─────────────────────────────────────────────
-  // Verifiable snapshot: default-branch commits since 2026-01-01 across the
-  // 14 GitHub repos created in 2026 (GitHub GraphQL history totalCount, summed).
-  // Update by hand when it materially changes.
+  // Dated snapshot, NOT a live figure. The displayed number must equal the
+  // real count on the stated date. A rounded-down "close enough" value is the
+  // defect this comment used to admit to (it read "4,500 // actual 4,556").
+  // Source of truth: GitHub REST commits, default branch of every
+  // twobirds-kramerica repo created in 2026, since 2026-01-01, summed.
+  // Recount command (gh CLI authenticated):
+  //   for r in $(gh repo list twobirds-kramerica --limit 100 --json name -q '.[].name'); do
+  //     gh api "repos/twobirds-kramerica/$r/commits?since=2026-01-01T00:00:00Z&per_page=1" -i \
+  //       | grep -i '^link:' | grep -oP 'page=\K[0-9]+(?=>; rel="last")'; done
+  // When you update the number, update the date in the label above it too.
   (function() {
-    const COMMIT_COUNT = 4500; // snapshot: 2026-08-09 (actual 4,556 across 14 repos)
+    const COMMIT_COUNT = 4834; // counted 2026-08-11 across 15 repos (verified, not estimated)
     const hero = document.getElementById('build-count');
     if (hero && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const dur = 1600;
@@ -1533,14 +1540,14 @@
         if (start === null) start = now;         // time from the first real frame — no load-jump
         const p = Math.min((now - start) / dur, 1);
         const e = 1 - Math.pow(1 - p, 2);         // easeOutQuad — smoother tail
-        hero.textContent = Math.round(COMMIT_COUNT * e).toLocaleString() + '+';
+        hero.textContent = Math.round(COMMIT_COUNT * e).toLocaleString();
         if (p < 1) requestAnimationFrame(tick);
       }
       // start only once the page has settled, so the count isn't starved during load
       if (document.readyState === 'complete') requestAnimationFrame(tick);
       else window.addEventListener('load', function() { requestAnimationFrame(tick); }, { once: true });
     } else if (hero) {
-      hero.textContent = COMMIT_COUNT.toLocaleString() + '+';
+      hero.textContent = COMMIT_COUNT.toLocaleString();
     }
   })();
   // ── PILL POPOVERS ──────────────────────────────────────────
