@@ -841,12 +841,12 @@
         <div class="arch-label">Products — what users see · GitHub Pages</div>
         <div class="arch-pills">
           <span class="pill" data-logo="dcc" data-tip-title="DCC Adults" data-tip="29-module bilingual digital literacy platform for seniors. WCAG AA compliant. Licensing model for libraries and municipalities.">DCC Adults</span>
-          <span class="pill" data-logo="generic" data-tip-title="DCC Kids" data-tip="Digital literacy curriculum for children ages 4–9. Online safety, AI literacy, technology judgment. Built on the same codebase as the adult platform.">DCC Kids</span>
-          <span class="pill" data-logo="generic" data-tip-title="Career Coach" data-tip="AI-assisted job search tool. Pulls live StatCan unemployment data monthly. Targets employment agencies and college career centres.">Career Coach</span>
-          <span class="pill" data-logo="generic" data-tip-title="Clarity" data-tip="Free 15-minute AI readiness diagnostic for SME owners. Produces a SWOT and action plan. Qualifies consulting leads before they book a call.">Clarity</span>
+          <span class="pill" data-logo="dcckids" data-tip-title="DCC Kids" data-tip="Digital literacy curriculum for children ages 4–9. Online safety, AI literacy, technology judgment. Built on the same codebase as the adult platform.">DCC Kids</span>
+          <span class="pill" data-logo="careercoach" data-tip-title="Career Coach" data-tip="AI-assisted job search tool. Pulls live StatCan unemployment data monthly. Targets employment agencies and college career centres.">Career Coach</span>
+          <span class="pill" data-tip-title="Clarity" data-tip="Free 15-minute AI readiness diagnostic for SME owners. Produces a SWOT and action plan. Qualifies consulting leads before they book a call.">Clarity</span>
           <span class="pill" data-logo="kevscasa" data-tip-title="KevsCasa" data-tip="Apartment search and tracking dashboard. Portfolio piece exploring white-label housing navigation.">KevsCasa</span>
-          <span class="pill" data-logo="generic" data-tip-title="Job Agent" data-tip="Automated job search. Daily scanner monitors job boards, scores each posting against a CV profile, and routes the highest-fit roles into a Notion pipeline.">Job Agent</span>
-          <span class="pill" data-logo="generic" data-tip-title="The Chronicler" data-tip="Structured memory layer. Captures every decision, sprint, and pivot in a searchable log any agent can query.">The Chronicler</span>
+          <span class="pill" data-tip-title="Job Agent" data-tip="Automated job search. Daily scanner monitors job boards, scores each posting against a CV profile, and routes the highest-fit roles into a Notion pipeline.">Job Agent</span>
+          <span class="pill" data-tip-title="The Chronicler" data-tip="Structured memory layer. Captures every decision, sprint, and pivot in a searchable log any agent can query.">The Chronicler</span>
           <span class="pill" data-logo="twobirds" data-tip-title="2 Birds Innovation" data-tip="Business strategy consulting. Strategy, operations, and technology roadmaps for founders and growing businesses. Direct engagement model.">2 Birds Innovation</span>
         </div>
       </div>
@@ -1424,12 +1424,15 @@
     const popClose = document.getElementById('pill-popover-close');
     const popLogo  = document.getElementById('pill-popover-logo');
 
-    // product brand marks — real logo where one exists, generic tile otherwise
+    // product brand marks — real logo where one exists; products without a
+    // mark (Clarity: wordmark-only brand; Job Agent, The Chronicler: internal
+    // tools with no public surface) carry no data-logo and the slot stays hidden
     const LOGO = {
-      dcc:      '<img src="img/logo-dcc.svg" alt="">',
-      kevscasa: '<img src="img/logo-kevscasa.png" alt="">',
-      twobirds: '<img src="img/logo-twobirds.svg" alt="">',
-      generic:  '<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2a3040"/><circle cx="16" cy="16" r="6" fill="none" stroke="#5a6478" stroke-width="2.2"/></svg>'
+      dcc:         '<img src="img/logo-dcc.svg" alt="">',
+      dcckids:     '<img src="img/logo-dcc-kids.svg" alt="">',
+      careercoach: '<img src="img/logo-career-coach.svg" alt="">',
+      kevscasa:    '<img src="img/logo-kevscasa.png" alt="">',
+      twobirds:    '<img src="img/logo-twobirds.svg" alt="">'
     };
 
     function showPopover(pill, e) {
