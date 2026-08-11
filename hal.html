@@ -595,6 +595,113 @@
       transition: transform 1.1s cubic-bezier(.4, 0, .2, 1);
       will-change: transform;
     }
+
+    /* ============================================================
+       Choreographed brand motion: two tiny birds visit the hero.
+       Same technique as the two-birds-innovation ambient hero pair
+       (CSS-only, aria-hidden markup, whole effect display:none
+       unless prefers-reduced-motion: no-preference). Three beats
+       on a 90s cycle: one bird arrives and perches on the hero's
+       bottom border, a second lands beside it and sizes it up,
+       both depart. Active for ~22s, then a long rest.
+       Spec: hal-stack/branding/motion/ambient-bird-motion.md
+       (two-birds-portfolio repo).
+       ============================================================ */
+    .hal-birds {
+      position: absolute;
+      inset: 0;
+      z-index: -1;             /* behind all hero content */
+      pointer-events: none;
+      overflow: hidden;        /* birds never escape the hero */
+      display: none;           /* shown only when motion is allowed */
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .hal-birds { display: block; }
+
+      .hal-bird {
+        position: absolute;
+        left: -4%;
+        bottom: 26px;
+        width: 15px;
+        height: auto;
+        color: var(--teal);
+        opacity: 0;
+        animation: hal-b1 90s ease-in-out infinite;
+      }
+
+      .hal-bird-2 {
+        width: 13px;                 /* a touch smaller, reads as the newcomer */
+        transform-origin: 50% 100%;  /* leans pivot from its feet */
+        animation-name: hal-b2;
+      }
+
+      /* Beat 1: arrive and perch. Beat 2: hop when the second bird
+         lands. Beat 3: depart. Perch point sits on the hero's
+         bottom border, in the empty band under the stats bar. */
+      @keyframes hal-b1 {
+        0%    { left: -4%;  bottom: 26px; opacity: 0;   transform: none; }
+        1.5%  { opacity: .34; }
+        3.5%  { left: 28%;  bottom: 36px; }
+        5.5%  { left: 56%;  bottom: 10px; }
+        6.6%  { left: 61%;  bottom: 0; }
+        12.9% { transform: none; }
+        13.3% { transform: translateY(-3px); }  /* startled hop as bird 2 lands */
+        13.7% { transform: none; }
+        19.5% { left: 61%;  bottom: 0;    opacity: .34; }
+        21.5% { left: 74%;  bottom: 22px; }
+        24%   { left: 104%; bottom: 46px; opacity: 0; }
+        100%  { left: 104%; bottom: 46px; opacity: 0; }
+      }
+
+      /* Bird 2: arrives later, lands just left of bird 1, bounces,
+         leans in twice to size it up, then leaves first. */
+      @keyframes hal-b2 {
+        0%, 8.5% { left: -4%;   bottom: 32px; opacity: 0;  transform: none; }
+        9.5%  { opacity: .3; }
+        10.8% { left: 36%;   bottom: 26px; }
+        12.2% { left: 50%;   bottom: 8px; }
+        12.9% { left: 52.5%; bottom: 0;    transform: none; }
+        13.3% { transform: translateY(-2px); }
+        13.7% { transform: none; }
+        14.6% { transform: translateX(3px) rotate(7deg); }  /* lean toward bird 1 */
+        15.4% { transform: none; }
+        16.2% { transform: translateX(3px) rotate(7deg); }  /* and again */
+        17%   { transform: none; }
+        19%   { left: 52.5%; bottom: 0;    opacity: .3; }
+        20.8% { left: 66%;   bottom: 26px; }
+        23%   { left: 103%;  bottom: 52px; opacity: 0; }
+        100%  { left: 103%;  bottom: 52px; opacity: 0; }
+      }
+
+      /* Glyph swap: wing chevron while flying, silhouette while
+         perched. Same 90s clock as the flight paths. */
+      .hal-bird .hb-fly   { animation: hal-b1-fly 90s linear infinite; }
+      .hal-bird .hb-perch { animation: hal-b1-perch 90s linear infinite; opacity: 0; }
+      .hal-bird-2 .hb-fly   { animation-name: hal-b2-fly; }
+      .hal-bird-2 .hb-perch { animation-name: hal-b2-perch; }
+
+      @keyframes hal-b1-fly {
+        0%, 6.4%    { opacity: 1; }
+        6.9%, 19.3% { opacity: 0; }
+        19.8%, 100% { opacity: 1; }
+      }
+      @keyframes hal-b1-perch {
+        0%, 6.4%    { opacity: 0; }
+        6.9%, 19.3% { opacity: 1; }
+        19.8%, 100% { opacity: 0; }
+      }
+      @keyframes hal-b2-fly {
+        0%, 12.5%    { opacity: 1; }
+        13%, 18.9%   { opacity: 0; }
+        19.4%, 100%  { opacity: 1; }
+      }
+      @keyframes hal-b2-perch {
+        0%, 12.5%    { opacity: 0; }
+        13%, 18.9%   { opacity: 1; }
+        19.4%, 100%  { opacity: 0; }
+      }
+    }
   </style>
 </head>
 <body>
@@ -615,6 +722,25 @@
 
 <!-- ═══ HERO ═══════════════════════════════════════════════════════════ -->
 <div class="hero">
+  <!-- Choreographed brand motion: two tiny birds arrive, perch on the hero's
+       bottom border, size each other up, and depart. Decorative only;
+       hidden entirely under prefers-reduced-motion. -->
+  <div class="hal-birds" aria-hidden="true">
+    <svg class="hal-bird hal-bird-1" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="hb-fly" d="M1 9 Q5.5 3 10 7 Q14.5 3 19 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <g class="hb-perch">
+        <path fill="currentColor" d="M2.2 3 L8 7.4 Q8.4 4.6 11.2 4.3 Q13.8 4.1 14.6 6 L17.4 6.9 L15 7.7 Q14.7 10 11.7 10.6 Q9.2 11 7.8 9.3 Z"/>
+        <path d="M10.3 10.8 L10.1 12 M12.3 10.7 L12.5 12" stroke="currentColor" stroke-width="0.7" stroke-linecap="round"/>
+      </g>
+    </svg>
+    <svg class="hal-bird hal-bird-2" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="hb-fly" d="M1 9 Q5.5 3 10 7 Q14.5 3 19 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <g class="hb-perch">
+        <path fill="currentColor" d="M2.2 3 L8 7.4 Q8.4 4.6 11.2 4.3 Q13.8 4.1 14.6 6 L17.4 6.9 L15 7.7 Q14.7 10 11.7 10.6 Q9.2 11 7.8 9.3 Z"/>
+        <path d="M10.3 10.8 L10.1 12 M12.3 10.7 L12.5 12" stroke="currentColor" stroke-width="0.7" stroke-linecap="round"/>
+      </g>
+    </svg>
+  </div>
   <div class="hero-logo-wrap">
     <a href="index.html" aria-label="Back to Aaron Patzalek home">
     <svg class="hero-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="72" height="72" role="img" aria-label="Two Birds Innovation logo">
