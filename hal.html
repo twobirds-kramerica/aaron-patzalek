@@ -763,9 +763,9 @@
   <div class="no-code-line">Built without writing a single line of code.</div>
 
   <div class="build-block" style="margin:6px 0 30px;">
-    <div class="build-num" id="build-count" data-claim="commit-count" data-src="github:twobirds-kramerica default-branch commits since 2026-01-01" data-v="2" data-c="3" data-verified="2026-08-11">4,834</div>
+    <div class="build-num" id="build-count" data-claim="commit-count" data-src="github:twobirds-kramerica default-branch commits since 2026-01-01" data-v="2" data-c="3" data-verified="2026-08-12">4,931</div>
     <div class="build-label">
-      <strong>Commits across 15 repositories, counted 11 August 2026.</strong>
+      <strong>Commits across 15 repositories, counted 12 August 2026.</strong>
       Every one written through an AI agent that reads the codebase, edits files,
       runs the tests, and commits to Git. One business person,
       no engineering team, zero lines of code written by hand.
@@ -786,7 +786,7 @@
       <span class="stat-label">software products<br>in development</span>
     </div>
     <div class="stat">
-      <span class="stat-num" data-counter="41" data-suffix="">41</span>
+      <span class="stat-num" data-counter="41" data-suffix="" data-claim="mcp-count" data-src="declared -- 6 always-on Claude Code + 35 on-demand Claude.ai, no file/API yields this (claim-spec.md §6.4)" data-v="4" data-c="3" data-verified="2026-08-12">41</span>
       <span class="stat-label">MCP<br>connections</span>
     </div>
     <div class="stat">
@@ -794,7 +794,7 @@
       <span class="stat-label">skills<br>available</span>
     </div>
     <div class="stat">
-      <span class="stat-num" data-claim="repo-count" data-src="github:twobirds-kramerica repos created in 2026" data-v="2" data-c="3" data-verified="2026-08-11">15</span>
+      <span class="stat-num" data-claim="repo-count-built" data-src="github:twobirds-kramerica repos created in 2026" data-v="2" data-c="3" data-verified="2026-08-12">15</span>
       <span class="stat-label">repositories<br>built</span>
     </div>
     <div class="stat">
@@ -802,7 +802,7 @@
       <span class="stat-label">hosting<br>cost</span>
     </div>
     <div class="stat">
-      <span class="stat-num" data-counter="51" data-suffix="">51</span>
+      <span class="stat-num" data-counter="51" data-suffix="" data-claim="persona-count" data-src="declared -- update-hal-stats.py's resolver is circular, claim-spec.md §6.2" data-v="4" data-c="3" data-verified="2026-08-12">51</span>
       <span class="stat-label">AI personas<br>in the stack</span>
     </div>
   </div>
@@ -997,12 +997,12 @@
     <div class="arch-row ai-layer">
       <div class="arch-num">L3</div>
       <div class="arch-content">
-        <div class="arch-label">AI + Governance — the engineer · 51 personas · hard rules</div>
+        <div class="arch-label" data-claim="persona-count" data-src="declared -- claim-spec.md §6.2" data-v="4" data-c="3" data-verified="2026-08-12">AI + Governance — the engineer · 51 personas · hard rules</div>
         <div class="arch-pills">
           <span class="pill" data-tip-title="Claude Code CLI" data-tip="The AI agent that executes sprints. Reads the codebase, writes and edits files, runs PowerShell and Python, commits to Git — all from the terminal. No human typing code.">Claude Code CLI</span>
-          <span class="pill hi" data-tip-title="41 MCPs connected" data-tip="MCP (Model Context Protocol) connections let the AI talk to external tools directly — 6 always-on in Claude Code (Notion, Playwright, GitHub and more) plus 35 loaded on demand in Claude.ai. Applied automatically when the task calls for them.">41 MCPs connected</span>
+          <span class="pill hi" data-claim="mcp-count" data-src="declared -- claim-spec.md §6.4" data-v="4" data-c="3" data-verified="2026-08-12" data-tip-title="41 MCPs connected" data-tip="MCP (Model Context Protocol) connections let the AI talk to external tools directly — 6 always-on in Claude Code (Notion, Playwright, GitHub and more) plus 35 loaded on demand in Claude.ai. Applied automatically when the task calls for them.">41 MCPs connected</span>
           <span class="pill hi" data-tip-title="200+ skills" data-tip="Skills are reusable instruction sets that Claude loads on demand — like a reference book the agent reads before executing a specialised task. Applied automatically; no explicit command needed. Examples: WCAG audit skill, learning design skill, sprint formatting skill.">200+ skills</span>
-          <span class="pill hi" data-tip-title="10 custom agents" data-tip="Purpose-built agents for specific sprint types: overnight build agent, autonomy audit agent, CoS briefing agent, and others. Each has its own instruction set and runs without human prompting.">10 custom agents</span>
+          <span class="pill hi" data-claim="agent-count" data-src="hal-stack/data/hal-stats.json:agent_count (non-README .md files in agents/)" data-v="2" data-c="3" data-verified="2026-08-12" data-tip-title="10 custom agents" data-tip="Purpose-built agents for specific sprint types: overnight build agent, autonomy audit agent, CoS briefing agent, and others. Each has its own instruction set and runs without human prompting.">10 custom agents</span>
           <span class="pill" data-tip-title="Scrappy Pack (6)" data-tip="Six advisory sub-personas that gut-check every substantive output: Mack (cash), Tess (visibility), Grit (time), Patch (simplicity), Sage (long game), and Sov (sovereignty). They catch blind spots before anything ships.">Scrappy Pack (6)</span>
           <span class="pill" data-tip-title="Founding Board (22)" data-tip="22 synthetic personas across six departments — strategy, legal, engineering, marketing, operations, product. They review Stage 3+ sprint outputs before commit. A REWORK verdict blocks the push.">Founding Board (22)</span>
           <span class="pill" data-tip-title="Inner Circle" data-tip="Two seats that report directly: The Hand (Chief of Staff equivalent — synthesises all team output) and the Love Balance Advisor (tracks workload and wellbeing, can override other agents).">Inner Circle</span>
@@ -1104,7 +1104,7 @@
         <div class="loop-icon">🔄</div>
         <div class="loop-time">2:00 am</div>
         <div>
-          <div class="loop-title">11 repos pulled and pushed</div>
+          <div class="loop-title" data-claim="repo-count-synced" data-src="hal-stack/scripts/run-overnight-build.bat nightly sync loop (repo count)" data-v="2" data-c="3" data-verified="2026-08-12">11 repos pulled and pushed</div>
           <p class="loop-detail">The 11 active product and portfolio repos synced from remote, pushed to GitHub and Codeberg mirror. Fewer than the 15 built, because archived and template repos are not in the nightly set.</p>
         </div>
       </div>
@@ -1530,8 +1530,10 @@
   //     gh api "repos/twobirds-kramerica/$r/commits?since=2026-01-01T00:00:00Z&per_page=1" -i \
   //       | grep -i '^link:' | grep -oP 'page=\K[0-9]+(?=>; rel="last")'; done
   // When you update the number, update the date in the label above it too.
+  // Recomputed by hal-stack/content-freshness/check-claims.js (S-RECENCY-CLAIM-CHECKER-001) --
+  // that script is now the source of "is this still true", not a human re-running the command above.
   (function() {
-    const COMMIT_COUNT = 4834; // counted 2026-08-11 across 15 repos (verified, not estimated)
+    const COMMIT_COUNT = 4931; // counted 2026-08-12 across 15 repos (verified, not estimated)
     const hero = document.getElementById('build-count');
     if (hero && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const dur = 1600;
