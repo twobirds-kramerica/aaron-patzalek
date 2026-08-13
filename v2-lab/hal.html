@@ -460,6 +460,32 @@
     .rule h3 { font-size: 1.05rem; margin-bottom: var(--space-2); }
     .rule p { font-size: 0.95rem; color: var(--color-text); margin: 0; }
 
+    /* Fire-drill icon: a tiny truck drives in and puts the flame out, once,
+       when the card scrolls into view. Plays on top of .reveal's own
+       .visible toggle -- no separate observer needed. One-shot only, per
+       brand-bible §8 "nothing loops in the interface." */
+    .drill-icon { display: inline-block; width: 22px; height: 16px; vertical-align: -3px; margin-right: 6px; overflow: visible; }
+    .drill-icon .truck { opacity: 0; transform: translateX(-14px); }
+    .drill-icon .flame { transform-origin: 50% 100%; }
+    .rule.reveal.visible .drill-icon .truck {
+      animation: drill-truck-in 0.6s 0.3s ease-out forwards;
+    }
+    .rule.reveal.visible .drill-icon .flame {
+      animation: drill-flame-out 0.5s 0.85s ease-in forwards;
+    }
+    @keyframes drill-truck-in {
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes drill-flame-out {
+      0% { transform: scale(1); opacity: 1; }
+      40% { transform: scale(1.15); opacity: 1; }
+      100% { transform: scale(0); opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .drill-icon .truck { opacity: 1; transform: none; animation: none; }
+      .drill-icon .flame { display: none; }
+    }
+
     /* Portfolio status badges reuse .badge; add a quieter variant */
     .badge.quiet { background: var(--color-surface-alt); color: var(--color-text); }
 
@@ -521,7 +547,7 @@
     <div class="wrap">
       <div class="numbers-grid">
         <div class="num"><span class="num-val">7</span><span class="num-label">products in the portfolio, each with a written strategy brief</span></div>
-        <div class="num"><span class="num-val">10</span><span class="num-label">repositories, synced and smoke-tested nightly</span></div>
+        <div class="num"><span class="num-val">11</span><span class="num-label">repositories, synced and smoke-tested nightly</span></div>
         <div class="num"><span class="num-val">30</span><span class="num-label">written governance rules, each one earned from a real failure</span></div>
         <div class="num"><span class="num-val">$0</span><span class="num-label">product hosting: static sites, no servers, no vendor lock-in</span></div>
       </div>
@@ -574,7 +600,7 @@
         <li class="loop-row reveal">
           <div class="loop-row-inner" style="--loop-i: 0;">
             <span class="loop-time">repos</span>
-            <div><p class="loop-title">All 10 repositories synced and mirrored</p><p class="loop-detail">Pulled, pushed, and backed up to an independent second host. If the primary host disappeared tomorrow, nothing is lost.</p></div>
+            <div><p class="loop-title">All 11 active repositories synced and mirrored</p><p class="loop-detail">Pulled, pushed, and backed up to an independent second host. If the primary host disappeared tomorrow, nothing is lost.</p></div>
           </div>
         </li>
         <li class="loop-row reveal">
@@ -749,6 +775,22 @@
           <h3>Own the exit</h3>
           <p>Before any external tool or service joins the stack, one question: if this vendor disappeared tomorrow, what breaks? Static hosting, standard-library scripts, and a mirrored second host mean the answer stays "nothing important."</p>
         </div>
+        <div class="rule reveal">
+          <h3><svg class="drill-icon" viewBox="0 0 40 24" aria-hidden="true">
+              <g class="flame">
+                <path d="M31 13c1.4-2 .6-4-.6-5 .3 1.4-.4 1.9-1 1.4.4-1.8-.7-3-2-3.4 1 2-.2 2.6-1 2 .2 1.6-.8 2-1.4 3-1 1.6.2 3.6 2 4 2.2.5 4.4-.5 4-2z" fill="var(--color-accent-raw)"/>
+              </g>
+              <g class="truck">
+                <rect x="2" y="10" width="16" height="7" rx="1.5" fill="var(--color-primary)"/>
+                <rect x="14" y="7" width="8" height="10" rx="1.2" fill="var(--color-primary)"/>
+                <rect x="16" y="9" width="4" height="3" rx="0.6" fill="var(--color-surface)"/>
+                <circle cx="6" cy="18" r="2.2" fill="var(--color-text)"/>
+                <circle cx="17" cy="18" r="2.2" fill="var(--color-text)"/>
+                <rect x="3" y="8" width="10" height="1.4" fill="var(--color-accent-raw)"/>
+              </g>
+            </svg>Fire drills, not fantasy</h3>
+          <p>Every fallback above gets tested, not just claimed. A scheduled drill pretends a core service is gone and proves the documented exit path actually works. The first one found two silent failures: a restore path broken on Windows, and a "weekly" backup that had run exactly once. Both were fixed the same hour.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -902,13 +944,15 @@
   <div class="wrap footer-row">
     <ul class="footer-links">
       <li><a href="index.html">Main site</a></li>
+      <li><a href="../sitemap.html">Site map</a></li>
       <li><a href="https://www.linkedin.com/in/aaronpatzalek/" target="_blank" rel="noopener">LinkedIn</a></li>
       <li><a href="https://cal.com/twobirds-4n5ajg/30min" target="_blank" rel="noopener">Book a call</a></li>
     </ul>
-    <span>&copy; 2026 Aaron Patzalek &middot; Two Birds Innovation &middot; St. Thomas, Ontario</span>
+    <span>&copy; <span id="copyright-year">2026</span> Aaron Patzalek &middot; Two Birds Innovation &middot; St. Thomas, Ontario</span>
   </div>
 </footer>
 
+<script>document.getElementById('copyright-year').textContent = new Date().getFullYear();</script>
 <script src="js/theme.js"></script>
   <script src="feedback-widget.js" defer></script>
 </body>

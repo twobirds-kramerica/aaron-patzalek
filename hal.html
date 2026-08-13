@@ -595,6 +595,113 @@
       transition: transform 1.1s cubic-bezier(.4, 0, .2, 1);
       will-change: transform;
     }
+
+    /* ============================================================
+       Choreographed brand motion: two tiny birds visit the hero.
+       Same technique as the two-birds-innovation ambient hero pair
+       (CSS-only, aria-hidden markup, whole effect display:none
+       unless prefers-reduced-motion: no-preference). Three beats
+       on a 90s cycle: one bird arrives and perches on the hero's
+       bottom border, a second lands beside it and sizes it up,
+       both depart. Active for ~22s, then a long rest.
+       Spec: hal-stack/branding/motion/ambient-bird-motion.md
+       (two-birds-portfolio repo).
+       ============================================================ */
+    .hal-birds {
+      position: absolute;
+      inset: 0;
+      z-index: -1;             /* behind all hero content */
+      pointer-events: none;
+      overflow: hidden;        /* birds never escape the hero */
+      display: none;           /* shown only when motion is allowed */
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .hal-birds { display: block; }
+
+      .hal-bird {
+        position: absolute;
+        left: -4%;
+        bottom: 26px;
+        width: 15px;
+        height: auto;
+        color: var(--teal);
+        opacity: 0;
+        animation: hal-b1 90s ease-in-out infinite;
+      }
+
+      .hal-bird-2 {
+        width: 13px;                 /* a touch smaller, reads as the newcomer */
+        transform-origin: 50% 100%;  /* leans pivot from its feet */
+        animation-name: hal-b2;
+      }
+
+      /* Beat 1: arrive and perch. Beat 2: hop when the second bird
+         lands. Beat 3: depart. Perch point sits on the hero's
+         bottom border, in the empty band under the stats bar. */
+      @keyframes hal-b1 {
+        0%    { left: -4%;  bottom: 26px; opacity: 0;   transform: none; }
+        1.5%  { opacity: .34; }
+        3.5%  { left: 28%;  bottom: 36px; }
+        5.5%  { left: 56%;  bottom: 10px; }
+        6.6%  { left: 61%;  bottom: 0; }
+        12.9% { transform: none; }
+        13.3% { transform: translateY(-3px); }  /* startled hop as bird 2 lands */
+        13.7% { transform: none; }
+        19.5% { left: 61%;  bottom: 0;    opacity: .34; }
+        21.5% { left: 74%;  bottom: 22px; }
+        24%   { left: 104%; bottom: 46px; opacity: 0; }
+        100%  { left: 104%; bottom: 46px; opacity: 0; }
+      }
+
+      /* Bird 2: arrives later, lands just left of bird 1, bounces,
+         leans in twice to size it up, then leaves first. */
+      @keyframes hal-b2 {
+        0%, 8.5% { left: -4%;   bottom: 32px; opacity: 0;  transform: none; }
+        9.5%  { opacity: .3; }
+        10.8% { left: 36%;   bottom: 26px; }
+        12.2% { left: 50%;   bottom: 8px; }
+        12.9% { left: 52.5%; bottom: 0;    transform: none; }
+        13.3% { transform: translateY(-2px); }
+        13.7% { transform: none; }
+        14.6% { transform: translateX(3px) rotate(7deg); }  /* lean toward bird 1 */
+        15.4% { transform: none; }
+        16.2% { transform: translateX(3px) rotate(7deg); }  /* and again */
+        17%   { transform: none; }
+        19%   { left: 52.5%; bottom: 0;    opacity: .3; }
+        20.8% { left: 66%;   bottom: 26px; }
+        23%   { left: 103%;  bottom: 52px; opacity: 0; }
+        100%  { left: 103%;  bottom: 52px; opacity: 0; }
+      }
+
+      /* Glyph swap: wing chevron while flying, silhouette while
+         perched. Same 90s clock as the flight paths. */
+      .hal-bird .hb-fly   { animation: hal-b1-fly 90s linear infinite; }
+      .hal-bird .hb-perch { animation: hal-b1-perch 90s linear infinite; opacity: 0; }
+      .hal-bird-2 .hb-fly   { animation-name: hal-b2-fly; }
+      .hal-bird-2 .hb-perch { animation-name: hal-b2-perch; }
+
+      @keyframes hal-b1-fly {
+        0%, 6.4%    { opacity: 1; }
+        6.9%, 19.3% { opacity: 0; }
+        19.8%, 100% { opacity: 1; }
+      }
+      @keyframes hal-b1-perch {
+        0%, 6.4%    { opacity: 0; }
+        6.9%, 19.3% { opacity: 1; }
+        19.8%, 100% { opacity: 0; }
+      }
+      @keyframes hal-b2-fly {
+        0%, 12.5%    { opacity: 1; }
+        13%, 18.9%   { opacity: 0; }
+        19.4%, 100%  { opacity: 1; }
+      }
+      @keyframes hal-b2-perch {
+        0%, 12.5%    { opacity: 0; }
+        13%, 18.9%   { opacity: 1; }
+        19.4%, 100%  { opacity: 0; }
+      }
+    }
   </style>
 </head>
 <body>
@@ -615,6 +722,25 @@
 
 <!-- ═══ HERO ═══════════════════════════════════════════════════════════ -->
 <div class="hero">
+  <!-- Choreographed brand motion: two tiny birds arrive, perch on the hero's
+       bottom border, size each other up, and depart. Decorative only;
+       hidden entirely under prefers-reduced-motion. -->
+  <div class="hal-birds" aria-hidden="true">
+    <svg class="hal-bird hal-bird-1" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="hb-fly" d="M1 9 Q5.5 3 10 7 Q14.5 3 19 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <g class="hb-perch">
+        <path fill="currentColor" d="M2.2 3 L8 7.4 Q8.4 4.6 11.2 4.3 Q13.8 4.1 14.6 6 L17.4 6.9 L15 7.7 Q14.7 10 11.7 10.6 Q9.2 11 7.8 9.3 Z"/>
+        <path d="M10.3 10.8 L10.1 12 M12.3 10.7 L12.5 12" stroke="currentColor" stroke-width="0.7" stroke-linecap="round"/>
+      </g>
+    </svg>
+    <svg class="hal-bird hal-bird-2" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="hb-fly" d="M1 9 Q5.5 3 10 7 Q14.5 3 19 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <g class="hb-perch">
+        <path fill="currentColor" d="M2.2 3 L8 7.4 Q8.4 4.6 11.2 4.3 Q13.8 4.1 14.6 6 L17.4 6.9 L15 7.7 Q14.7 10 11.7 10.6 Q9.2 11 7.8 9.3 Z"/>
+        <path d="M10.3 10.8 L10.1 12 M12.3 10.7 L12.5 12" stroke="currentColor" stroke-width="0.7" stroke-linecap="round"/>
+      </g>
+    </svg>
+  </div>
   <div class="hero-logo-wrap">
     <a href="index.html" aria-label="Back to Aaron Patzalek home">
     <svg class="hero-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="72" height="72" role="img" aria-label="Two Birds Innovation logo">
@@ -637,9 +763,9 @@
   <div class="no-code-line">Built without writing a single line of code.</div>
 
   <div class="build-block" style="margin:6px 0 30px;">
-    <div class="build-num" id="build-count">4,500+</div>
+    <div class="build-num" id="build-count" data-claim="commit-count" data-src="github:twobirds-kramerica default-branch commits since 2026-01-01" data-v="2" data-c="3" data-verified="2026-08-12">4,931</div>
     <div class="build-label">
-      <strong>Commits across 14 repositories since early 2026.</strong>
+      <strong>Commits across 15 repositories, counted 12 August 2026.</strong>
       Every one written through an AI agent that reads the codebase, edits files,
       runs the tests, and commits to Git. One business person,
       no engineering team, zero lines of code written by hand.
@@ -660,7 +786,7 @@
       <span class="stat-label">software products<br>in development</span>
     </div>
     <div class="stat">
-      <span class="stat-num" data-counter="41" data-suffix="">41</span>
+      <span class="stat-num" data-counter="41" data-suffix="" data-claim="mcp-count" data-src="declared -- 6 always-on Claude Code + 35 on-demand Claude.ai, no file/API yields this (claim-spec.md §6.4)" data-v="4" data-c="3" data-verified="2026-08-12">41</span>
       <span class="stat-label">MCP<br>connections</span>
     </div>
     <div class="stat">
@@ -668,7 +794,7 @@
       <span class="stat-label">skills<br>available</span>
     </div>
     <div class="stat">
-      <span class="stat-num">14</span>
+      <span class="stat-num" data-claim="repo-count-built" data-src="github:twobirds-kramerica repos created in 2026" data-v="2" data-c="3" data-verified="2026-08-12">15</span>
       <span class="stat-label">repositories<br>built</span>
     </div>
     <div class="stat">
@@ -676,7 +802,7 @@
       <span class="stat-label">hosting<br>cost</span>
     </div>
     <div class="stat">
-      <span class="stat-num" data-counter="51" data-suffix="">51</span>
+      <span class="stat-num" data-counter="51" data-suffix="" data-claim="persona-count" data-src="declared -- update-hal-stats.py's resolver is circular, claim-spec.md §6.2" data-v="4" data-c="3" data-verified="2026-08-12">51</span>
       <span class="stat-label">AI personas<br>in the stack</span>
     </div>
   </div>
@@ -841,12 +967,12 @@
         <div class="arch-label">Products — what users see · GitHub Pages</div>
         <div class="arch-pills">
           <span class="pill" data-logo="dcc" data-tip-title="DCC Adults" data-tip="29-module bilingual digital literacy platform for seniors. WCAG AA compliant. Licensing model for libraries and municipalities.">DCC Adults</span>
-          <span class="pill" data-logo="generic" data-tip-title="DCC Kids" data-tip="Digital literacy curriculum for children ages 4–9. Online safety, AI literacy, technology judgment. Built on the same codebase as the adult platform.">DCC Kids</span>
-          <span class="pill" data-logo="generic" data-tip-title="Career Coach" data-tip="AI-assisted job search tool. Pulls live StatCan unemployment data monthly. Targets employment agencies and college career centres.">Career Coach</span>
-          <span class="pill" data-logo="generic" data-tip-title="Clarity" data-tip="Free 15-minute AI readiness diagnostic for SME owners. Produces a SWOT and action plan. Qualifies consulting leads before they book a call.">Clarity</span>
+          <span class="pill" data-logo="dcckids" data-tip-title="DCC Kids" data-tip="Digital literacy curriculum for children ages 4–9. Online safety, AI literacy, technology judgment. Built on the same codebase as the adult platform.">DCC Kids</span>
+          <span class="pill" data-logo="careercoach" data-tip-title="Career Coach" data-tip="AI-assisted job search tool. Pulls live StatCan unemployment data monthly. Targets employment agencies and college career centres.">Career Coach</span>
+          <span class="pill" data-tip-title="Clarity" data-tip="Free 15-minute AI readiness diagnostic for SME owners. Produces a SWOT and action plan. Qualifies consulting leads before they book a call.">Clarity</span>
           <span class="pill" data-logo="kevscasa" data-tip-title="KevsCasa" data-tip="Apartment search and tracking dashboard. Portfolio piece exploring white-label housing navigation.">KevsCasa</span>
-          <span class="pill" data-logo="generic" data-tip-title="Job Agent" data-tip="Automated job search. Daily scanner monitors job boards, scores each posting against a CV profile, and routes the highest-fit roles into a Notion pipeline.">Job Agent</span>
-          <span class="pill" data-logo="generic" data-tip-title="The Chronicler" data-tip="Structured memory layer. Captures every decision, sprint, and pivot in a searchable log any agent can query.">The Chronicler</span>
+          <span class="pill" data-tip-title="Job Agent" data-tip="Automated job search. Daily scanner monitors job boards, scores each posting against a CV profile, and routes the highest-fit roles into a Notion pipeline.">Job Agent</span>
+          <span class="pill" data-tip-title="The Chronicler" data-tip="Structured memory layer. Captures every decision, sprint, and pivot in a searchable log any agent can query.">The Chronicler</span>
           <span class="pill" data-logo="twobirds" data-tip-title="2 Birds Innovation" data-tip="Business strategy consulting. Strategy, operations, and technology roadmaps for founders and growing businesses. Direct engagement model.">2 Birds Innovation</span>
         </div>
       </div>
@@ -871,12 +997,12 @@
     <div class="arch-row ai-layer">
       <div class="arch-num">L3</div>
       <div class="arch-content">
-        <div class="arch-label">AI + Governance — the engineer · 51 personas · hard rules</div>
+        <div class="arch-label" data-claim="persona-count" data-src="declared -- claim-spec.md §6.2" data-v="4" data-c="3" data-verified="2026-08-12">AI + Governance — the engineer · 51 personas · hard rules</div>
         <div class="arch-pills">
           <span class="pill" data-tip-title="Claude Code CLI" data-tip="The AI agent that executes sprints. Reads the codebase, writes and edits files, runs PowerShell and Python, commits to Git — all from the terminal. No human typing code.">Claude Code CLI</span>
-          <span class="pill hi" data-tip-title="41 MCPs connected" data-tip="MCP (Model Context Protocol) connections let the AI talk to external tools directly — 6 always-on in Claude Code (Notion, Playwright, GitHub and more) plus 35 loaded on demand in Claude.ai. Applied automatically when the task calls for them.">41 MCPs connected</span>
+          <span class="pill hi" data-claim="mcp-count" data-src="declared -- claim-spec.md §6.4" data-v="4" data-c="3" data-verified="2026-08-12" data-tip-title="41 MCPs connected" data-tip="MCP (Model Context Protocol) connections let the AI talk to external tools directly — 6 always-on in Claude Code (Notion, Playwright, GitHub and more) plus 35 loaded on demand in Claude.ai. Applied automatically when the task calls for them.">41 MCPs connected</span>
           <span class="pill hi" data-tip-title="200+ skills" data-tip="Skills are reusable instruction sets that Claude loads on demand — like a reference book the agent reads before executing a specialised task. Applied automatically; no explicit command needed. Examples: WCAG audit skill, learning design skill, sprint formatting skill.">200+ skills</span>
-          <span class="pill hi" data-tip-title="10 custom agents" data-tip="Purpose-built agents for specific sprint types: overnight build agent, autonomy audit agent, CoS briefing agent, and others. Each has its own instruction set and runs without human prompting.">10 custom agents</span>
+          <span class="pill hi" data-claim="agent-count" data-src="hal-stack/data/hal-stats.json:agent_count (non-README .md files in agents/)" data-v="2" data-c="3" data-verified="2026-08-12" data-tip-title="10 custom agents" data-tip="Purpose-built agents for specific sprint types: overnight build agent, autonomy audit agent, CoS briefing agent, and others. Each has its own instruction set and runs without human prompting.">10 custom agents</span>
           <span class="pill" data-tip-title="Scrappy Pack (6)" data-tip="Six advisory sub-personas that gut-check every substantive output: Mack (cash), Tess (visibility), Grit (time), Patch (simplicity), Sage (long game), and Sov (sovereignty). They catch blind spots before anything ships.">Scrappy Pack (6)</span>
           <span class="pill" data-tip-title="Founding Board (22)" data-tip="22 synthetic personas across six departments — strategy, legal, engineering, marketing, operations, product. They review Stage 3+ sprint outputs before commit. A REWORK verdict blocks the push.">Founding Board (22)</span>
           <span class="pill" data-tip-title="Inner Circle" data-tip="Two seats that report directly: The Hand (Chief of Staff equivalent — synthesises all team output) and the Love Balance Advisor (tracks workload and wellbeing, can override other agents).">Inner Circle</span>
@@ -894,7 +1020,7 @@
         <div class="arch-pills">
           <span class="pill" data-tip-title="GitHub Pages" data-tip="All products are hosted on GitHub Pages. Static HTML files, deployed on git push. $0 cost. No server to maintain or secure.">GitHub Pages</span>
           <span class="pill" data-tip-title="GitHub Actions (15+ workflows)" data-tip="Automated workflows that fire on every code push. Run WCAG accessibility checks, deploy to GitHub Pages, validate HTML, and more. No manual QA step.">GitHub Actions (15+ workflows)</span>
-          <span class="pill" data-tip-title="Git · 14 repos" data-tip="14 GitHub repositories: one per product plus portfolio and infrastructure repos. Examples: digital-confidence (DCC Adults), career-coach, aaron-patzalek (this site), two-birds-portfolio (HAL Stack command centre).">Git · 14 repos</span>
+          <span class="pill" data-tip-title="Git · 15 repos" data-tip="15 GitHub repositories created in 2026: one per product plus portfolio and infrastructure repos. Examples: digital-confidence (DCC Adults), career-coach, aaron-patzalek (this site), two-birds-portfolio (HAL Stack command centre). Of these, 11 are in the nightly sync set, and the rest are archived or template repos that do not change. Counted 11 August 2026.">Git · 15 repos</span>
           <span class="pill" data-tip-title="Codeberg mirror" data-tip="Every repo is mirrored nightly to Codeberg.org — an independent, non-commercial git host. If GitHub disappeared tomorrow, the entire codebase is safe and deployable elsewhere.">Codeberg mirror</span>
           <span class="pill" data-tip-title="Windows Task Scheduler" data-tip="The overnight build runs via Windows Task Scheduler at 2am — no cloud cron service, no subscription, no external dependency. The laptop runs it locally.">Windows Task Scheduler</span>
           <span class="pill" data-tip-title="Python stdlib" data-tip="All automation scripts use Python's built-in standard library only. No third-party packages to install, update, or break. Runs on any Python 3.x install.">Python stdlib</span>
@@ -978,8 +1104,8 @@
         <div class="loop-icon">🔄</div>
         <div class="loop-time">2:00 am</div>
         <div>
-          <div class="loop-title">11 repos pulled and pushed</div>
-          <p class="loop-detail">All product and portfolio repos synced from remote, pushed to GitHub and Codeberg mirror.</p>
+          <div class="loop-title" data-claim="repo-count-synced" data-src="hal-stack/scripts/run-overnight-build.bat nightly sync loop (repo count)" data-v="2" data-c="3" data-verified="2026-08-12">11 repos pulled and pushed</div>
+          <p class="loop-detail">The 11 active product and portfolio repos synced from remote, pushed to GitHub and Codeberg mirror. Fewer than the 15 built, because archived and template repos are not in the nightly set.</p>
         </div>
       </div>
     </div>
@@ -1089,7 +1215,7 @@
       <div class="product-name">KevsCasa</div>
       <span class="badge badge-build">In development</span>
       <div class="product-for">→ Rental Seekers · Housing Navigators</div>
-      <p class="product-body">Apartment search and tracking dashboard. Started as a personal civic tool for a friend in London, ON. Live portfolio piece. Being positioned as a white-label housing navigator.</p>
+      <p class="product-body">Apartment search and tracking dashboard. Started as a personal civic tool for a friend in London, ON. The repository is private and there is no public site, but the daily listing-refresh automation runs against it and has for months. Being positioned as a white-label housing navigator.</p>
     </div>
 
     <div class="product">
@@ -1326,6 +1452,7 @@
 <!-- ═══ FOOTER ════════════════════════════════════════════════════════════ -->
 <footer>
   <span>Two Birds Innovation · Ontario, Canada · Built on the HAL Stack</span>
+  <span><a href="index.html" style="color: inherit;">Main site</a> · <a href="sitemap.html" style="color: inherit;">Site map</a></span>
   <span>Figures verified 9 August 2026</span>
 </footer>
 
@@ -1393,11 +1520,20 @@
   document.querySelectorAll('.stats-bar').forEach(el => counterObserver.observe(el));
 
   // ── COMMIT COUNT ─────────────────────────────────────────────
-  // Verifiable snapshot: default-branch commits since 2026-01-01 across the
-  // 14 GitHub repos created in 2026 (GitHub GraphQL history totalCount, summed).
-  // Update by hand when it materially changes.
+  // Dated snapshot, NOT a live figure. The displayed number must equal the
+  // real count on the stated date. A rounded-down "close enough" value is the
+  // defect this comment used to admit to (it read "4,500 // actual 4,556").
+  // Source of truth: GitHub REST commits, default branch of every
+  // twobirds-kramerica repo created in 2026, since 2026-01-01, summed.
+  // Recount command (gh CLI authenticated):
+  //   for r in $(gh repo list twobirds-kramerica --limit 100 --json name -q '.[].name'); do
+  //     gh api "repos/twobirds-kramerica/$r/commits?since=2026-01-01T00:00:00Z&per_page=1" -i \
+  //       | grep -i '^link:' | grep -oP 'page=\K[0-9]+(?=>; rel="last")'; done
+  // When you update the number, update the date in the label above it too.
+  // Recomputed by hal-stack/content-freshness/check-claims.js (S-RECENCY-CLAIM-CHECKER-001) --
+  // that script is now the source of "is this still true", not a human re-running the command above.
   (function() {
-    const COMMIT_COUNT = 4500; // snapshot: 2026-08-09 (actual 4,556 across 14 repos)
+    const COMMIT_COUNT = 4931; // counted 2026-08-12 across 15 repos (verified, not estimated)
     const hero = document.getElementById('build-count');
     if (hero && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const dur = 1600;
@@ -1406,14 +1542,14 @@
         if (start === null) start = now;         // time from the first real frame — no load-jump
         const p = Math.min((now - start) / dur, 1);
         const e = 1 - Math.pow(1 - p, 2);         // easeOutQuad — smoother tail
-        hero.textContent = Math.round(COMMIT_COUNT * e).toLocaleString() + '+';
+        hero.textContent = Math.round(COMMIT_COUNT * e).toLocaleString();
         if (p < 1) requestAnimationFrame(tick);
       }
       // start only once the page has settled, so the count isn't starved during load
       if (document.readyState === 'complete') requestAnimationFrame(tick);
       else window.addEventListener('load', function() { requestAnimationFrame(tick); }, { once: true });
     } else if (hero) {
-      hero.textContent = COMMIT_COUNT.toLocaleString() + '+';
+      hero.textContent = COMMIT_COUNT.toLocaleString();
     }
   })();
   // ── PILL POPOVERS ──────────────────────────────────────────
@@ -1424,12 +1560,15 @@
     const popClose = document.getElementById('pill-popover-close');
     const popLogo  = document.getElementById('pill-popover-logo');
 
-    // product brand marks — real logo where one exists, generic tile otherwise
+    // product brand marks — real logo where one exists; products without a
+    // mark (Clarity: wordmark-only brand; Job Agent, The Chronicler: internal
+    // tools with no public surface) carry no data-logo and the slot stays hidden
     const LOGO = {
-      dcc:      '<img src="img/logo-dcc.svg" alt="">',
-      kevscasa: '<img src="img/logo-kevscasa.png" alt="">',
-      twobirds: '<img src="img/logo-twobirds.svg" alt="">',
-      generic:  '<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="7" fill="#2a3040"/><circle cx="16" cy="16" r="6" fill="none" stroke="#5a6478" stroke-width="2.2"/></svg>'
+      dcc:         '<img src="img/logo-dcc.svg" alt="">',
+      dcckids:     '<img src="img/logo-dcc-kids.svg" alt="">',
+      careercoach: '<img src="img/logo-career-coach.svg" alt="">',
+      kevscasa:    '<img src="img/logo-kevscasa.png" alt="">',
+      twobirds:    '<img src="img/logo-twobirds.svg" alt="">'
     };
 
     function showPopover(pill, e) {
