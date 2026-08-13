@@ -144,17 +144,19 @@
     .runlog h3 { font-size: 1.02rem; margin-bottom: 2px; }
     .runlog p { font-size: var(--font-size-sm); color: var(--color-text-light); margin: 0; max-width: none; }
 
-    /* Hero: copy left, brand plate right. */
+    /* Hero: single column. The brand plate used to sit here; it now lives
+       beside "This is how I would work for you" near the close instead —
+       Aaron's call, out of the top of the page entirely. */
     .hero-grid {
-      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.58fr);
+      display: grid; grid-template-columns: 1fr;
       gap: var(--space-10); align-items: center;
     }
-    /* Hero lockup. No container: Aaron's read was that the sitting box was the
-       problem, and he is right — a grey rectangle around a logo reads as a
-       placeholder. The beam still runs, tracing an invisible path where the
-       border used to be, so the motion survives without the frame.
-       Mark enlarged; it was too small to carry the space. */
-    .hero-mark { display: flex; justify-content: center; }
+    /* Brand lockup, shared by wherever .plate is placed on the page. No
+       container: Aaron's read was that the sitting box was the problem, and
+       he is right — a grey rectangle around a logo reads as a placeholder.
+       The beam still runs, tracing an invisible path where the border used to
+       be, so the motion survives without the frame. */
+    .hero-mark, .close-mark { display: flex; justify-content: center; }
     .plate {
       position: relative; width: 100%; max-width: 230px;
       padding: 16px 14px; text-align: center;
@@ -243,9 +245,17 @@
       100%{ opacity: 0; transform: scale(.5); }
     }
 
+    /* --- Close section: text beside the brand plate, same idea as the old
+       hero-grid. Scoped here only -- .section-head itself stays untouched,
+       shared by every other section on the page. --- */
+    .close-grid {
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.4fr);
+      gap: var(--space-10); align-items: center;
+      margin-bottom: var(--space-12);
+    }
     @media (max-width: 860px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero-mark { order: -1; }
+      .close-grid { grid-template-columns: 1fr; margin-bottom: var(--space-10); }
+      .close-mark { order: -1; }
     }
     @media (prefers-reduced-motion: reduce) {
       .plate-word, .plate-tag, .pm-dot { opacity: 1; animation: none; transform: none; }
@@ -512,62 +522,6 @@
         <li>Static products, $0 hosting</li>
         <li>Every claim on this page is verifiable in the repositories</li>
       </ul>
-     </div>
-
-     <!-- Ambient brand build: two chevrons converge, lock, the frame draws
-          itself, then a light traces the border. Decorative only, hidden from
-          assistive tech, and it stops entirely under reduced-motion. -->
-     <!-- Option C, "the plate". Transparent so it sits on whatever the page
-          background is in either theme, rather than introducing a slab of its
-          own colour. Wordmark on top, mark drawing itself, tagline under. -->
-     <div class="hero-mark" aria-hidden="true">
-       <div class="plate">
-         <svg class="plate-beam" viewBox="0 0 300 260" preserveAspectRatio="none">
-           <defs>
-             <linearGradient id="markGrad" x1="0" y1="0" x2="1" y2="1">
-               <stop offset="0%" stop-color="#6FA3DA"/><stop offset="100%" stop-color="#3D6FA8"/>
-             </linearGradient>
-             <linearGradient id="beamGrad" x1="0" y1="0" x2="1" y2="1">
-               <stop offset="0%"   stop-color="#0066CC" stop-opacity="0"/>
-               <stop offset="45%"  stop-color="#0066CC" stop-opacity=".95"/>
-               <stop offset="100%" stop-color="#0066CC" stop-opacity="0"/>
-             </linearGradient>
-           </defs>
-           <!-- pathLength normalises the perimeter to 1000 so the dash maths
-                cannot fall short of a full lap. The previous version used a
-                hand-guessed dasharray that was ~9 units under the real
-                perimeter, which is why the beam never finished. -->
-           <rect x="1.5" y="1.5" width="297" height="257" rx="17" pathLength="1000"/>
-           <!-- glints, in the order the beam reaches them: TR, BR, BL, TL -->
-           <circle class="glint g1" cx="281" cy="18"  r="2.6"/>
-           <circle class="glint g2" cx="281" cy="241" r="2.6"/>
-           <circle class="glint g3" cx="18"  cy="241" r="2.6"/>
-           <circle class="glint g4" cx="18"  cy="18"  r="2.6"/>
-         </svg>
-
-         <p class="plate-word">Two Birds Innovation</p>
-
-         <svg class="plate-mark" viewBox="150 140 730 750">
-           <polyline class="pm-line" points="210,195 550,335 210,475" pathLength="100" stroke="url(#markGrad)"/>
-           <polyline class="pm-line pm-line-2" points="814,549 474,689 814,829" pathLength="100" stroke="url(#markGrad)"/>
-           <circle class="pm-dot" cx="550" cy="335" r="34"/>
-           <circle class="pm-dot" cx="210" cy="195" r="34"/>
-           <circle class="pm-dot" cx="474" cy="689" r="34"/>
-           <circle class="pm-dot" cx="814" cy="829" r="34"/>
-         </svg>
-
-         <!-- Payoff weight, not emphasised initials: highlighting first letters
-              would spell S.I.S., which readers assemble whether or not it was
-              intended. Staggered as descending steps. Aligning the three i's
-              was tried and measured (see mark-lab.html option 5) — it works to
-              0.24px, but the resulting offsets read as a zigzag rather than
-              steps, because of where the i's happen to fall. Steps won. -->
-         <p class="plate-tag">
-           <span>Service.</span>
-           <span>Innovation.</span>
-           <span><b>Simplified.</b></span>
-         </p>
-       </div>
      </div>
     </div>
   </section>
@@ -908,10 +862,55 @@
   <!-- ================= CLOSE / CTA ================= -->
   <section class="section" id="contact" aria-labelledby="close-heading">
     <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">The point of all this</p>
-        <h2 id="close-heading">This is how I would work for you</h2>
-        <p>This is what it looks like when I'm given an ambiguous problem and room to operate. Direction gets set, systems get built, output gets verified, and the reporting is honest about what's done and what isn't. If you run a business: I've already made the mistakes on my own products, on my own time. You get the version that ships.</p>
+      <div class="close-grid">
+        <div class="section-head" style="margin-bottom: 0;">
+          <p class="eyebrow">The point of all this</p>
+          <h2 id="close-heading">This is how I would work for you</h2>
+          <p>This is what it looks like when I'm given an ambiguous problem and room to operate. Direction gets set, systems get built, output gets verified, and the reporting is honest about what's done and what isn't. If you run a business: I've already made the mistakes on my own products, on my own time. You get the version that ships.</p>
+        </div>
+
+        <!-- Ambient brand build, moved here from the hero: two chevrons
+             converge, lock, the frame draws itself, then a light traces the
+             border on an infinite loop. Decorative only, hidden from
+             assistive tech, and it stops entirely under reduced-motion. -->
+        <div class="close-mark" aria-hidden="true">
+          <div class="plate">
+            <svg class="plate-beam" viewBox="0 0 300 260" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="markGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#6FA3DA"/><stop offset="100%" stop-color="#3D6FA8"/>
+                </linearGradient>
+                <linearGradient id="beamGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%"   stop-color="#0066CC" stop-opacity="0"/>
+                  <stop offset="45%"  stop-color="#0066CC" stop-opacity=".95"/>
+                  <stop offset="100%" stop-color="#0066CC" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <rect x="1.5" y="1.5" width="297" height="257" rx="17" pathLength="1000"/>
+              <circle class="glint g1" cx="281" cy="18"  r="2.6"/>
+              <circle class="glint g2" cx="281" cy="241" r="2.6"/>
+              <circle class="glint g3" cx="18"  cy="241" r="2.6"/>
+              <circle class="glint g4" cx="18"  cy="18"  r="2.6"/>
+            </svg>
+
+            <p class="plate-word">Two Birds Innovation</p>
+
+            <svg class="plate-mark" viewBox="150 140 730 750">
+              <polyline class="pm-line" points="210,195 550,335 210,475" pathLength="100" stroke="url(#markGrad)"/>
+              <polyline class="pm-line pm-line-2" points="814,549 474,689 814,829" pathLength="100" stroke="url(#markGrad)"/>
+              <circle class="pm-dot" cx="550" cy="335" r="34"/>
+              <circle class="pm-dot" cx="210" cy="195" r="34"/>
+              <circle class="pm-dot" cx="474" cy="689" r="34"/>
+              <circle class="pm-dot" cx="814" cy="829" r="34"/>
+            </svg>
+
+            <p class="plate-tag">
+              <span>Service.</span>
+              <span>Innovation.</span>
+              <span><b>Simplified.</b></span>
+            </p>
+          </div>
+        </div>
       </div>
       <div class="cta-block" style="margin-top: 0;">
         <h2>Worth a conversation?</h2>
