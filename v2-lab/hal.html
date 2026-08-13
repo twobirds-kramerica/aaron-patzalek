@@ -144,21 +144,17 @@
     .runlog h3 { font-size: 1.02rem; margin-bottom: 2px; }
     .runlog p { font-size: var(--font-size-sm); color: var(--color-text-light); margin: 0; max-width: none; }
 
-    /* Hero: single column. The brand plate used to sit here (copy left, plate
-       right); it now lives in the closing CTA block instead — Aaron's call,
-       it didn't fit competing with the hero copy for attention at the top of
-       the page, and reads better as a "still building" signal beside the
-       book-a-call ask at the bottom. */
+    /* Hero: copy left, brand plate right. */
     .hero-grid {
-      display: grid; grid-template-columns: 1fr;
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.58fr);
       gap: var(--space-10); align-items: center;
     }
-    /* Brand lockup, shared by wherever .plate is placed on the page. No
-       container: Aaron's read was that the sitting box was the problem, and
-       he is right — a grey rectangle around a logo reads as a placeholder.
-       The beam still runs, tracing an invisible path where the border used to
-       be, so the motion survives without the frame. */
-    .hero-mark, .cta-mark { display: flex; justify-content: center; }
+    /* Hero lockup. No container: Aaron's read was that the sitting box was the
+       problem, and he is right — a grey rectangle around a logo reads as a
+       placeholder. The beam still runs, tracing an invisible path where the
+       border used to be, so the motion survives without the frame.
+       Mark enlarged; it was too small to carry the space. */
+    .hero-mark { display: flex; justify-content: center; }
     .plate {
       position: relative; width: 100%; max-width: 290px;
       padding: 20px 18px; text-align: center;
@@ -248,30 +244,10 @@
     }
 
     @media (max-width: 860px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-mark { order: -1; }
       .plate { max-width: 240px; }
       .plate-mark { width: 124px; height: 124px; }
-    }
-
-    /* --- Closing CTA: brand plate bottom-left, book-a-call copy shrunk and
-       right-justified beside it, same row. Scoped to this block only —
-       .cta-block is shared site-wide, so nothing here touches other pages. --- */
-    .cta-block-branded { text-align: left; }
-    .cta-flex {
-      display: flex; align-items: center; justify-content: flex-end;
-      gap: var(--space-8); flex-wrap: wrap;
-    }
-    .cta-mark { flex-shrink: 0; }
-    .cta-mark .plate { max-width: 170px; padding: 14px 12px; }
-    .cta-mark .plate-mark { width: 96px; height: 96px; margin-bottom: 10px; }
-    .cta-mark .plate-word { font-size: .82rem; padding: 8px 14px; margin-bottom: 14px; }
-    .cta-mark .plate-tag { font-size: .78rem; }
-    .cta-copy { flex: 1; min-width: 260px; max-width: 46ch; text-align: right; }
-    .cta-copy p { margin-left: auto; margin-right: 0; }
-    .cta-copy .btn { font-size: 1.08rem; padding: var(--space-4) var(--space-8); }
-    @media (max-width: 700px) {
-      .cta-flex { justify-content: center; }
-      .cta-copy { text-align: center; max-width: none; }
-      .cta-copy p { margin-left: auto; margin-right: auto; }
     }
     @media (prefers-reduced-motion: reduce) {
       .plate-word, .plate-tag, .pm-dot { opacity: 1; animation: none; transform: none; }
@@ -525,7 +501,7 @@
   <section class="hero" aria-labelledby="hero-heading">
     <div class="wrap hero-grid">
      <div class="hero-copy">
-      <p class="eyebrow">The Agentic Operating Harness ("HAL Stack") &middot; A working case study</p>
+      <p class="eyebrow">The HAL Stack &middot; A working case study</p>
       <h1 id="hero-heading">An operator's AI stack <span class="accent">that ships.</span></h1>
       <p class="hal-hero-note">Designed and orchestrated by a non-programmer. Every line of code written by AI agents. (The name's a nod to 2001: A Space Odyssey. Make of that what you will.)</p>
       <p class="lead">I'm not a developer. I'm an operator who spent 15 years turning "leadership wants this" into "the team shipped it." In early 2026 I pointed that skill at AI: instead of writing code, I designed the system, wrote the rules, and built the review gates. The system does the building. This page shows what that looks like when it's real.</p>
@@ -538,6 +514,62 @@
         <li>Static products, $0 hosting</li>
         <li>Every claim on this page is verifiable in the repositories</li>
       </ul>
+     </div>
+
+     <!-- Ambient brand build: two chevrons converge, lock, the frame draws
+          itself, then a light traces the border. Decorative only, hidden from
+          assistive tech, and it stops entirely under reduced-motion. -->
+     <!-- Option C, "the plate". Transparent so it sits on whatever the page
+          background is in either theme, rather than introducing a slab of its
+          own colour. Wordmark on top, mark drawing itself, tagline under. -->
+     <div class="hero-mark" aria-hidden="true">
+       <div class="plate">
+         <svg class="plate-beam" viewBox="0 0 300 260" preserveAspectRatio="none">
+           <defs>
+             <linearGradient id="markGrad" x1="0" y1="0" x2="1" y2="1">
+               <stop offset="0%" stop-color="#6FA3DA"/><stop offset="100%" stop-color="#3D6FA8"/>
+             </linearGradient>
+             <linearGradient id="beamGrad" x1="0" y1="0" x2="1" y2="1">
+               <stop offset="0%"   stop-color="#0066CC" stop-opacity="0"/>
+               <stop offset="45%"  stop-color="#0066CC" stop-opacity=".95"/>
+               <stop offset="100%" stop-color="#0066CC" stop-opacity="0"/>
+             </linearGradient>
+           </defs>
+           <!-- pathLength normalises the perimeter to 1000 so the dash maths
+                cannot fall short of a full lap. The previous version used a
+                hand-guessed dasharray that was ~9 units under the real
+                perimeter, which is why the beam never finished. -->
+           <rect x="1.5" y="1.5" width="297" height="257" rx="17" pathLength="1000"/>
+           <!-- glints, in the order the beam reaches them: TR, BR, BL, TL -->
+           <circle class="glint g1" cx="281" cy="18"  r="2.6"/>
+           <circle class="glint g2" cx="281" cy="241" r="2.6"/>
+           <circle class="glint g3" cx="18"  cy="241" r="2.6"/>
+           <circle class="glint g4" cx="18"  cy="18"  r="2.6"/>
+         </svg>
+
+         <p class="plate-word">Two Birds Innovation</p>
+
+         <svg class="plate-mark" viewBox="150 140 730 750">
+           <polyline class="pm-line" points="210,195 550,335 210,475" pathLength="100" stroke="url(#markGrad)"/>
+           <polyline class="pm-line pm-line-2" points="814,549 474,689 814,829" pathLength="100" stroke="url(#markGrad)"/>
+           <circle class="pm-dot" cx="550" cy="335" r="34"/>
+           <circle class="pm-dot" cx="210" cy="195" r="34"/>
+           <circle class="pm-dot" cx="474" cy="689" r="34"/>
+           <circle class="pm-dot" cx="814" cy="829" r="34"/>
+         </svg>
+
+         <!-- Payoff weight, not emphasised initials: highlighting first letters
+              would spell S.I.S., which readers assemble whether or not it was
+              intended. Staggered as descending steps. Aligning the three i's
+              was tried and measured (see mark-lab.html option 5) — it works to
+              0.24px, but the resulting offsets read as a zigzag rather than
+              steps, because of where the i's happen to fall. Steps won. -->
+         <p class="plate-tag">
+           <span>Service.</span>
+           <span>Innovation.</span>
+           <span><b>Simplified.</b></span>
+         </p>
+       </div>
      </div>
     </div>
   </section>
@@ -883,57 +915,11 @@
         <h2 id="close-heading">This is how I would work for you</h2>
         <p>This is what it looks like when I'm given an ambiguous problem and room to operate. Direction gets set, systems get built, output gets verified, and the reporting is honest about what's done and what isn't. If you run a business: I've already made the mistakes on my own products, on my own time. You get the version that ships.</p>
       </div>
-      <div class="cta-block cta-block-branded" style="margin-top: 0;">
-        <div class="cta-flex">
-          <!-- Ambient brand build, moved down from the hero: two chevrons
-               converge, lock, the frame draws itself, then a light traces the
-               border on an infinite loop. Decorative only, hidden from
-               assistive tech, and it stops entirely under reduced-motion. -->
-          <div class="cta-mark" aria-hidden="true">
-            <div class="plate">
-              <svg class="plate-beam" viewBox="0 0 300 260" preserveAspectRatio="none">
-                <defs>
-                  <linearGradient id="markGrad2" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#6FA3DA"/><stop offset="100%" stop-color="#3D6FA8"/>
-                  </linearGradient>
-                  <linearGradient id="beamGrad2" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%"   stop-color="#0066CC" stop-opacity="0"/>
-                    <stop offset="45%"  stop-color="#0066CC" stop-opacity=".95"/>
-                    <stop offset="100%" stop-color="#0066CC" stop-opacity="0"/>
-                  </linearGradient>
-                </defs>
-                <rect x="1.5" y="1.5" width="297" height="257" rx="17" pathLength="1000" stroke="url(#beamGrad2)"/>
-                <circle class="glint g1" cx="281" cy="18"  r="2.6"/>
-                <circle class="glint g2" cx="281" cy="241" r="2.6"/>
-                <circle class="glint g3" cx="18"  cy="241" r="2.6"/>
-                <circle class="glint g4" cx="18"  cy="18"  r="2.6"/>
-              </svg>
-
-              <p class="plate-word">Two Birds Innovation</p>
-
-              <svg class="plate-mark" viewBox="150 140 730 750">
-                <polyline class="pm-line" points="210,195 550,335 210,475" pathLength="100" stroke="url(#markGrad2)"/>
-                <polyline class="pm-line pm-line-2" points="814,549 474,689 814,829" pathLength="100" stroke="url(#markGrad2)"/>
-                <circle class="pm-dot" cx="550" cy="335" r="34"/>
-                <circle class="pm-dot" cx="210" cy="195" r="34"/>
-                <circle class="pm-dot" cx="474" cy="689" r="34"/>
-                <circle class="pm-dot" cx="814" cy="829" r="34"/>
-              </svg>
-
-              <p class="plate-tag">
-                <span>Service.</span>
-                <span>Innovation.</span>
-                <span><b>Simplified.</b></span>
-              </p>
-            </div>
-          </div>
-          <div class="cta-copy">
-            <h2>Worth a conversation?</h2>
-            <p>30 minutes. Bring a problem, ambiguity welcome. I'll tell you honestly whether I'm the right fit, and if I'm not, where to look instead.</p>
-            <a href="https://cal.com/twobirds-4n5ajg/30min" target="_blank" rel="noopener" class="btn">Book a free conversation <span class="arrow" aria-hidden="true">&rarr;</span></a>
-            <p class="cta-alt">Prefer to connect first? Reach me on <a href="https://www.linkedin.com/in/aaronpatzalek/" target="_blank" rel="noopener">LinkedIn</a>.</p>
-          </div>
-        </div>
+      <div class="cta-block" style="margin-top: 0;">
+        <h2>Worth a conversation?</h2>
+        <p>30 minutes. Bring a problem, ambiguity welcome. I'll tell you honestly whether I'm the right fit, and if I'm not, where to look instead.</p>
+        <a href="https://cal.com/twobirds-4n5ajg/30min" target="_blank" rel="noopener" class="btn">Book a free conversation <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <p class="cta-alt">Prefer to connect first? Reach me on <a href="https://www.linkedin.com/in/aaronpatzalek/" target="_blank" rel="noopener">LinkedIn</a>.</p>
       </div>
     </div>
   </section>
