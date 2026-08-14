@@ -202,15 +202,14 @@
     .plate-tag span:nth-child(3) { padding-left: 2.8em; }
     .plate-tag b { font-weight: 800; color: #0066CC; }
 
-    /* Stroke colour comes from the gradient in both themes; only the dots and
-       the payoff word need a per-theme value. */
-    .pm-dot { fill: #4E86C4; }
+    /* Dots share the exact same gradient as the chevron strokes (set via the
+       fill="url(#markGrad)" attribute on each circle) so the mark reads as
+       one colour system instead of three unrelated blues. Only the payoff
+       word still needs a per-theme value. */
     @media (prefers-color-scheme: dark) {
-      .pm-dot { fill: #6FA3DA; } .plate-tag b { color: #8FC4FA; }
+      .plate-tag b { color: #8FC4FA; }
     }
-    [data-theme="dark"] .pm-dot { fill: #6FA3DA; }
     [data-theme="dark"] .plate-tag b { color: #8FC4FA; }
-    [data-theme="light"] .pm-dot { fill: #4E86C4; }
     [data-theme="light"] .plate-tag b { color: #0066CC; }
 
     @keyframes plate-down { from { opacity:0; transform:translateY(-12px); } to { opacity:1; transform:none; } }
@@ -249,7 +248,7 @@
        hero-grid. Scoped here only -- .section-head itself stays untouched,
        shared by every other section on the page. --- */
     .close-grid {
-      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.4fr);
+      display: grid; grid-template-columns: minmax(0, 0.4fr) minmax(0, 1fr);
       gap: var(--space-10); align-items: center;
       margin-bottom: var(--space-12);
     }
@@ -863,12 +862,6 @@
   <section class="section" id="contact" aria-labelledby="close-heading">
     <div class="wrap">
       <div class="close-grid">
-        <div class="section-head" style="margin-bottom: 0;">
-          <p class="eyebrow">The point of all this</p>
-          <h2 id="close-heading">This is how I would work for you</h2>
-          <p>This is what it looks like when I'm given an ambiguous problem and room to operate. Direction gets set, systems get built, output gets verified, and the reporting is honest about what's done and what isn't. If you run a business: I've already made the mistakes on my own products, on my own time. You get the version that ships.</p>
-        </div>
-
         <!-- Ambient brand build, moved here from the hero: two chevrons
              converge, lock, the frame draws itself, then a light traces the
              border on an infinite loop. Decorative only, hidden from
@@ -898,10 +891,10 @@
             <svg class="plate-mark" viewBox="150 140 730 750">
               <polyline class="pm-line" points="210,195 550,335 210,475" pathLength="100" stroke="url(#markGrad)"/>
               <polyline class="pm-line pm-line-2" points="814,549 474,689 814,829" pathLength="100" stroke="url(#markGrad)"/>
-              <circle class="pm-dot" cx="550" cy="335" r="34"/>
-              <circle class="pm-dot" cx="210" cy="195" r="34"/>
-              <circle class="pm-dot" cx="474" cy="689" r="34"/>
-              <circle class="pm-dot" cx="814" cy="829" r="34"/>
+              <circle class="pm-dot" cx="550" cy="335" r="34" fill="url(#markGrad)"/>
+              <circle class="pm-dot" cx="210" cy="195" r="34" fill="url(#markGrad)"/>
+              <circle class="pm-dot" cx="474" cy="689" r="34" fill="url(#markGrad)"/>
+              <circle class="pm-dot" cx="814" cy="829" r="34" fill="url(#markGrad)"/>
             </svg>
 
             <p class="plate-tag">
@@ -910,6 +903,12 @@
               <span><b>Simplified.</b></span>
             </p>
           </div>
+        </div>
+
+        <div class="section-head" style="margin-bottom: 0;">
+          <p class="eyebrow">The point of all this</p>
+          <h2 id="close-heading">This is how I would work for you</h2>
+          <p>This is what it looks like when I'm given an ambiguous problem and room to operate. Direction gets set, systems get built, output gets verified, and the reporting is honest about what's done and what isn't. If you run a business: I've already worked through the trial and error on my own products, on my own time. You get it simplified.</p>
         </div>
       </div>
       <div class="cta-block" style="margin-top: 0;">
