@@ -289,11 +289,111 @@
     }
     .step:hover { border-color: rgba(255,255,255,.14); background: var(--bg-lift); }
 
-    .step-n { font-family: var(--mono); font-size: 1.3rem; font-weight: 700; color: var(--accent); padding-top: 2px; }
+    .step-n { font-family: var(--mono); font-size: 1.3rem; font-weight: 700; color: var(--accent); padding-top: 2px; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+    .step-icon { font-size: 1.05rem; line-height: 1; }
     .step-title { font-weight: 600; margin-bottom: 4px; }
     .step-body { font-size: .87rem; color: var(--muted); margin-bottom: 9px; }
     .tags { display: flex; flex-wrap: wrap; gap: 5px; }
     .tag { background: var(--accent-soft); color: var(--accent); border-radius: 4px; padding: 2px 7px; font-size: 10.5px; font-family: var(--mono); }
+
+    /* ── WORKFLOW DIAGRAM (S-HAL-WORKFLOW-DIAGRAM-001) ──
+       Three swim lanes (Trigger / Execution / Verification), each holding the
+       original two .step cards side by side, connected by arrows. A small dot
+       travels each connector and each step gets a brief border pulse timed to
+       when it "arrives" — a looping wave through the pipeline, not a marquee
+       chase around a border. Closes on a distinct human-in-the-loop node,
+       reusing loop-tug/ai-glow's existing --i-indexed animation-delay idiom. */
+    .wf-intro { color: var(--muted); max-width: 640px; margin-bottom: 26px; }
+    .workflow { display: flex; flex-direction: column; gap: 0; }
+
+    .wf-lane-label {
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 10px;
+    }
+    .wf-lane-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 3px var(--teal-soft); flex-shrink: 0; }
+
+    .wf-lane-row { display: grid; grid-template-columns: 1fr 32px 1fr; align-items: stretch; gap: 0; }
+    .wf-lane-row .step { margin: 0; }
+
+    /* connectors */
+    .wf-arrow { position: relative; display: flex; align-items: center; justify-content: center; }
+    .wf-arrow-h { min-height: 40px; }
+    .wf-arrow-h::before {
+      content: ''; width: 100%; height: 2px;
+      background: linear-gradient(90deg, var(--border), var(--accent-b));
+    }
+    .wf-arrow-h::after {
+      content: ''; position: absolute; right: 2px; top: 50%; transform: translateY(-50%);
+      width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent;
+      border-left: 6px solid var(--accent-b);
+    }
+    .wf-arrow-v { min-height: 30px; margin: 4px 0; }
+    .wf-arrow-v::before {
+      content: ''; width: 2px; height: 100%;
+      background: linear-gradient(180deg, var(--border), var(--accent-b));
+    }
+    .wf-arrow-v::after {
+      content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent;
+      border-top: 6px solid var(--accent-b);
+    }
+
+    .wf-dot {
+      position: absolute; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 8px 1px var(--accent-soft);
+      opacity: 0;
+    }
+    .wf-arrow-h .wf-dot { top: 50%; left: 0; transform: translate(-50%,-50%); animation: wf-travel-h 9s ease-in-out infinite; animation-delay: calc(var(--wf-i,0) * 1.5s); }
+    .wf-arrow-v .wf-dot { left: 50%; top: 0; transform: translate(-50%,-50%); animation: wf-travel-v 9s ease-in-out infinite; animation-delay: calc(var(--wf-i,0) * 1.5s); }
+
+    /* Each connector represents exactly one 1.5s step-to-step gap in the
+       9s/6-step cycle, so a dot's arrival (17% of 9s ≈ 1.5s after its own
+       delay) lands within ~30ms of the next step's wf-arrive pulse below —
+       the dot and the pop are the same event, not two uncoordinated loops. */
+    @keyframes wf-travel-h {
+      0%   { left: 0%;   opacity: 0; }
+      3%   { opacity: 1; }
+      17%  { left: 100%; opacity: 1; }
+      23%  { opacity: 0; left: 100%; }
+      100% { opacity: 0; left: 0%; }
+    }
+    @keyframes wf-travel-v {
+      0%   { top: 0%;   opacity: 0; }
+      3%   { opacity: 1; }
+      17%  { top: 100%; opacity: 1; }
+      23%  { opacity: 0; top: 100%; }
+      100% { opacity: 0; top: 0%; }
+    }
+
+    /* The moment an item "arrives" in a step, a brief pop — not a chase.
+       Pop starts at 0% of this step's own delay, which is the same instant
+       the incoming connector's dot lands (see wf-travel-h/v above): arrival
+       and pop are one synchronized event, not two independent loops. */
+    .wf-step { animation: wf-arrive 9s ease-in-out infinite; animation-delay: calc(var(--wf-i,0) * 1.5s); }
+    @keyframes wf-arrive {
+      0%   { border-color: var(--accent-b); box-shadow: 0 0 0 1px var(--accent-b), 0 0 18px -3px var(--accent-soft); }
+      8%, 100% { border-color: var(--border); box-shadow: none; }
+    }
+
+    .wf-human-link { position: relative; height: 34px; display: flex; align-items: center; justify-content: center; }
+    .wf-human-link::before { content: ''; width: 2px; height: 100%; background: linear-gradient(180deg, var(--accent-b), var(--border)); }
+    .wf-human-link::after {
+      content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent;
+      border-top: 6px solid var(--border);
+    }
+    /* departs at 7.5s — step 6's own pulse instant (--wf-i:5 * 1.5s) — same rule as every other connector */
+    .wf-dot-human { left: 50%; top: 0; transform: translate(-50%,-50%); animation: wf-travel-v 9s ease-in-out infinite; animation-delay: 7.5s; }
+
+    .wf-human {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: var(--bg-card); border: 1px dashed var(--border); border-radius: var(--r);
+      padding: 18px 20px;
+    }
+    .wf-human-icon { font-size: 1.35rem; flex-shrink: 0; padding-top: 2px; }
+    .wf-human-title { font-weight: 600; margin-bottom: 4px; }
+    .wf-human-body { font-size: .87rem; color: var(--muted); }
 
     /* ── ARCHITECTURE ── */
     .arch {
@@ -533,7 +633,12 @@
     @media (max-width: 620px) {
       .zero-block { flex-direction: column; gap: 12px; }
       .step { grid-template-columns: 1fr; gap: 8px; }
-      .step-n { font-size: 1.1rem; }
+      .step-n { flex-direction: row; justify-content: flex-start; font-size: 1.1rem; }
+
+      /* swim lanes collapse to a single stacked column; the horizontal
+         connector rotates to point down instead of disappearing */
+      .wf-lane-row { grid-template-columns: 1fr; }
+      .wf-arrow-h { width: 32px; height: 32px; margin: 2px auto; transform: rotate(90deg); }
       .loop-row-inner { grid-template-columns: 28px 1fr; }
       .loop-time { display: none; }
 
@@ -566,6 +671,8 @@
       .lm-r, .lm-l { animation: none !important; }
       .reveal, .stagger > *, .lm-r, .lm-l { opacity: 1 !important; transform: none !important; }
       .bg-bird-r, .bg-bird-l { transition: none !important; }
+      .wf-step, .wf-arrow-h .wf-dot, .wf-arrow-v .wf-dot, .wf-dot-human { animation: none !important; }
+      .wf-arrow-h .wf-dot, .wf-arrow-v .wf-dot, .wf-dot-human { opacity: .55 !important; }
     }
 
     /* ── LAYERING + SECTION SNAP + AMBIENT MARK (2026-07-22) ── */
@@ -900,54 +1007,89 @@
 <section class="reveal">
   <div class="eyebrow">The Workflow</div>
   <h2>From idea to live — one sprint</h2>
-  <div class="steps stagger">
-    <div class="step">
-      <div class="step-n">1</div>
-      <div>
-        <div class="step-title">Idea → Notion backlog</div>
-        <p class="step-body">Sprints are filed with priority, effort/return rating, and owner. A Python vetting script blocks any task the agent should handle autonomously — nothing hits the human queue that doesn't need a human.</p>
-        <div class="tags"><span class="tag">Python</span><span class="tag">Notion API</span></div>
+  <p class="wf-intro">Same six steps, grouped by what they actually do: a sprint gets triggered, the agent executes it, the result gets verified before anyone calls it done.</p>
+
+  <div class="workflow stagger">
+    <div class="wf-lane">
+      <div class="wf-lane-label"><span class="wf-lane-dot" aria-hidden="true"></span>Trigger</div>
+      <div class="wf-lane-row">
+        <div class="step wf-step" style="--wf-i:0;">
+          <div class="step-n"><span class="step-icon" aria-hidden="true">🐍</span>1</div>
+          <div>
+            <div class="step-title">Idea → Notion backlog</div>
+            <p class="step-body">Sprints are filed with priority, effort/return rating, and owner. A Python vetting script blocks any task the agent should handle autonomously — nothing hits the human queue that doesn't need a human.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">Notion API</span></div>
+          </div>
+        </div>
+        <div class="wf-arrow wf-arrow-h" style="--wf-i:0;" aria-hidden="true"><span class="wf-dot"></span></div>
+        <div class="step wf-step" style="--wf-i:1;">
+          <div class="step-n"><span class="step-icon" aria-hidden="true">🔁</span>2</div>
+          <div>
+            <div class="step-title">next-sprint.py locks the sprint</div>
+            <p class="step-body">A script pulls the top Ready item, marks it In Progress in Notion, prints the brief to the terminal. No manual copy-paste. Design-gated UI sprints are skipped automatically until the gate is cleared.</p>
+            <div class="tags"><span class="tag">Notion sync</span><span class="tag">auto-lock</span></div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="step">
-      <div class="step-n">2</div>
-      <div>
-        <div class="step-title">next-sprint.py locks the sprint</div>
-        <p class="step-body">A script pulls the top Ready item, marks it In Progress in Notion, prints the brief to the terminal. No manual copy-paste. Design-gated UI sprints are skipped automatically until the gate is cleared.</p>
-        <div class="tags"><span class="tag">Notion sync</span><span class="tag">auto-lock</span></div>
+
+    <div class="wf-arrow wf-arrow-v" style="--wf-i:1;" aria-hidden="true"><span class="wf-dot"></span></div>
+
+    <div class="wf-lane">
+      <div class="wf-lane-label"><span class="wf-lane-dot" aria-hidden="true"></span>Execution</div>
+      <div class="wf-lane-row">
+        <div class="step wf-step" style="--wf-i:2;">
+          <div class="step-n"><span class="step-icon" aria-hidden="true">🤖</span>3</div>
+          <div>
+            <div class="step-title">Claude Code CLI executes</div>
+            <p class="step-body">The AI agent reads the codebase, writes and edits files, runs PowerShell and Python, commits to Git — all in the terminal. A token guard limits runaway sessions to 50 tool calls per turn.</p>
+            <div class="tags"><span class="tag">Autonomous</span><span class="tag">monitored</span><span class="tag">token-guarded</span></div>
+          </div>
+        </div>
+        <div class="wf-arrow wf-arrow-h" style="--wf-i:2;" aria-hidden="true"><span class="wf-dot"></span></div>
+        <div class="step wf-step" style="--wf-i:3;">
+          <div class="step-n"><span class="step-icon" aria-hidden="true">🐙</span>4</div>
+          <div>
+            <div class="step-title">Static HTML pushed to GitHub Pages</div>
+            <p class="step-body">No build step, no Node.js, no npm in the product repos. Git push → GitHub deploys in seconds. $0 hosting. WCAG accessibility checks run automatically via GitHub Actions on every push.</p>
+            <div class="tags"><span class="tag">Git</span><span class="tag">GitHub Pages</span><span class="tag">axe-core CI</span></div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="step">
-      <div class="step-n">3</div>
-      <div>
-        <div class="step-title">Claude Code CLI executes</div>
-        <p class="step-body">The AI agent reads the codebase, writes and edits files, runs PowerShell and Python, commits to Git — all in the terminal. A token guard limits runaway sessions to 50 tool calls per turn.</p>
-        <div class="tags"><span class="tag">Autonomous</span><span class="tag">monitored</span><span class="tag">token-guarded</span></div>
+
+    <div class="wf-arrow wf-arrow-v" style="--wf-i:3;" aria-hidden="true"><span class="wf-dot"></span></div>
+
+    <div class="wf-lane">
+      <div class="wf-lane-label"><span class="wf-lane-dot" aria-hidden="true"></span>Verification</div>
+      <div class="wf-lane-row">
+        <div class="step wf-step" style="--wf-i:4;">
+          <div class="step-n"><span class="step-icon" aria-hidden="true">🎭</span>5</div>
+          <div>
+            <div class="step-title">Overnight build at 2am</div>
+            <p class="step-body">Playwright smoke tests, Lighthouse audits, backlog health, live data refresh, 11-repo sync, uptime monitor. Windows Task Scheduler — no external cron service.</p>
+            <div class="tags"><span class="tag">Playwright</span><span class="tag">Python</span><span class="tag">Task Scheduler</span></div>
+          </div>
+        </div>
+        <div class="wf-arrow wf-arrow-h" style="--wf-i:4;" aria-hidden="true"><span class="wf-dot"></span></div>
+        <div class="step wf-step" style="--wf-i:5;">
+          <div class="step-n"><span class="step-icon" aria-hidden="true">🩺</span>6</div>
+          <div>
+            <div class="step-title">Session-start health check</div>
+            <p class="step-body">Six checks fire when the terminal opens: smoke test status, overnight build age, autonomy audit, monitoring summary. Aaron sees only what genuinely requires a human.</p>
+            <div class="tags"><span class="tag">AWR enforcement</span></div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="step">
-      <div class="step-n">4</div>
-      <div>
-        <div class="step-title">Static HTML pushed to GitHub Pages</div>
-        <p class="step-body">No build step, no Node.js, no npm in the product repos. Git push → GitHub deploys in seconds. $0 hosting. WCAG accessibility checks run automatically via GitHub Actions on every push.</p>
-        <div class="tags"><span class="tag">Git</span><span class="tag">GitHub Pages</span><span class="tag">axe-core CI</span></div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-n">5</div>
-      <div>
-        <div class="step-title">Overnight build at 2am</div>
-        <p class="step-body">Playwright smoke tests, Lighthouse audits, backlog health, live data refresh, 11-repo sync, uptime monitor. Windows Task Scheduler — no external cron service.</p>
-        <div class="tags"><span class="tag">Playwright</span><span class="tag">Python</span><span class="tag">Task Scheduler</span></div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-n">6</div>
-      <div>
-        <div class="step-title">Session-start health check</div>
-        <p class="step-body">Six checks fire when the terminal opens: smoke test status, overnight build age, autonomy audit, monitoring summary. Aaron sees only what genuinely requires a human.</p>
-        <div class="tags"><span class="tag">AWR enforcement</span></div>
-      </div>
+  </div>
+
+  <div class="wf-human-link" aria-hidden="true"><span class="wf-dot wf-dot-human"></span></div>
+  <div class="wf-human">
+    <div class="wf-human-icon" aria-hidden="true">🧑‍💻</div>
+    <div>
+      <div class="wf-human-title">Human in the loop — Aaron</div>
+      <p class="wf-human-body">Every step above runs without him. This is the one node that isn't automatic — what the health check actually surfaces. Everything the agent can resolve on its own never reaches it.</p>
     </div>
   </div>
 </section>
