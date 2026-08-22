@@ -1405,6 +1405,7 @@
         <tr><td>Smoke tests</td><td><span class="yes">Playwright OSS</span></td><td><span class="no">BrowserStack</span></td></tr>
         <tr><td>Email send</td><td><span class="yes">smtplib (Gmail)</span></td><td><span class="no">SendGrid / Mailchimp</span></td></tr>
         <tr><td>Backup mirror</td><td><span class="yes">Codeberg.org</span></td><td><span class="no">GitHub only</span></td></tr>
+        <tr><td>Model routing</td><td><span class="yes">OmniRoute (self-hosted)</span></td><td><span class="no">OpenRouter / LiteLLM</span></td></tr>
         <tr><td>Frontend</td><td><span class="yes">Static HTML/CSS</span></td><td><span class="no">React / Next.js</span></td></tr>
       </tbody>
     </table>
@@ -1453,9 +1454,9 @@
     <div class="product">
       <div class="product-icon">🪺</div>
       <div class="product-name">The Roost — multi-agent orchestration</div>
-      <span class="badge badge-early">Evaluating</span>
-      <div class="product-for">→ More agents, coordinated</div>
-      <p class="product-body">Coordinating several AI command-line agents against one backlog, so independent work runs in parallel instead of one sprint at a time. Under evaluation against the sovereignty rules.</p>
+      <span class="badge badge-build">Building</span>
+      <div class="product-for">→ Right model, right job</div>
+      <p class="product-body">First layer shipped: a self-hosted model-routing gateway (OmniRoute) now runs live on the fleet's always-on machine — security-hardened, version-pinned, and watched by the stack's own health checks. Its job is capacity survival, not cost shaving: when one AI provider hits a usage wall, eligible work routes to the next best model instead of stopping. The dispatch rules deciding which work may route through it are written; coordinating several coding agents against one backlog is the layer above, still ahead.</p>
     </div>
 
     <div class="product">
