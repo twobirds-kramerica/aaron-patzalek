@@ -96,6 +96,21 @@ a:focus-visible {
 }
 .ap-nav-cta:hover { background: var(--ap-blue); color: #fff; }
 
+.ap-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ap-lang-link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ap-blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.ap-lang-link:hover { color: var(--ap-blue-hover); }
+
 /* ── Layout wrapper ───────────────────────────── */
 .ap-wrap {
   max-width: var(--ap-max);
@@ -291,6 +306,12 @@ a:focus-visible {
   text-decoration: none;
 }
 .ap-footer a:hover { color: var(--ap-ink); text-decoration: underline; }
+
+.ap-footer-note {
+  color: var(--ap-ink-2);
+  flex-basis: 100%;
+  margin: 0;
+}
 
 /* ── Dark mode ────────────────────────────────── */
 @media (prefers-color-scheme: dark) {
