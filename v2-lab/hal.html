@@ -562,6 +562,7 @@
           <h3>Build, test, verify, report</h3>
           <ul>
             <li><strong>Execute sprints.</strong> AI agents read the task queue, write the code, commit it, and push it. Work is broken into sprints with completion gates.</li>
+            <li><strong>Staff each sprint.</strong> Tasks are routed to the AI model whose judgment level they need, and scoped sub-agents handle narrow jobs in parallel. Model choice is a staffing decision made per task, the same call an operations lead makes when assigning work to a team.</li>
             <li><strong>Verify its own output.</strong> A product change can't be reported "done" until an automated browser test passes against the live page. Reporting success without proof is treated as the same failure class as fabricating data.</li>
             <li><strong>Run the night shift.</strong> Repository syncs, accessibility audits, smoke tests, uptime checks, and a morning briefing, unattended.</li>
             <li><strong>Filter my inbox.</strong> An autonomy audit scans every open task nightly. Anything the system can do itself never reaches me.</li>
