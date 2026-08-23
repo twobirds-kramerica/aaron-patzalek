@@ -171,10 +171,11 @@ a:focus-visible {
   border-top: 1px solid var(--ap-border);
 }
 
-.ap-headshot-placeholder {
+.ap-headshot {
   width: 56px;
   height: 56px;
   border-radius: 50%;
+  object-fit: cover;
   background: var(--ap-border);
   flex-shrink: 0;
 }

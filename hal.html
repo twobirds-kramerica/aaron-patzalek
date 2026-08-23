@@ -811,9 +811,24 @@
         19.4%, 100%  { opacity: 0; }
       }
     }
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      background: var(--accent);
+      color: #0c0e14;
+      padding: 10px 20px;
+      border-radius: 0 0 6px 6px;
+      font-weight: 600;
+      text-decoration: none;
+      z-index: 9999;
+    }
+    .skip-link:focus { top: 0; }
   </style>
 </head>
 <body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
 
 <!-- ═══ AMBIENT TWO-BIRDS WATERMARK ════════════════════════════════════ -->
 <div class="bg-birds" aria-hidden="true">
@@ -828,6 +843,8 @@
     </g>
   </svg>
 </div>
+
+<main id="main">
 
 <!-- ═══ HERO ═══════════════════════════════════════════════════════════ -->
 <div class="hero">
@@ -925,7 +942,7 @@
   </div>
 </div>
 
-<div id="tab-current">
+<div id="tab-current" role="tabpanel" aria-labelledby="tab-btn-current">
 
 <!-- ═══ MODEL ══════════════════════════════════════════════════════════ -->
 <section class="reveal">
@@ -1110,7 +1127,7 @@
       <div class="arch-content">
         <div class="arch-label">Products — what users see · GitHub Pages</div>
         <div class="arch-pills">
-          <span class="pill" data-logo="dcc" data-tip-title="DCC Adults" data-tip="29-module bilingual digital literacy platform for seniors. WCAG AA compliant. Licensing model for libraries and municipalities.">DCC Adults</span>
+          <span class="pill" data-logo="dcc" data-tip-title="DCC Adults" data-tip="35-module bilingual digital literacy platform for seniors. WCAG AA compliant. Licensing model for libraries and municipalities.">DCC Adults</span>
           <span class="pill" data-logo="dcckids" data-tip-title="DCC Kids" data-tip="Digital literacy curriculum for children ages 4–9. Online safety, AI literacy, technology judgment. Built on the same codebase as the adult platform.">DCC Kids</span>
           <span class="pill" data-logo="careercoach" data-tip-title="Career Coach" data-tip="AI-assisted job search tool. Pulls live StatCan unemployment data monthly. Targets employment agencies and college career centres.">Career Coach</span>
           <span class="pill" data-tip-title="Clarity" data-tip="Free 15-minute AI readiness diagnostic for SME owners. Produces a SWOT and action plan. Qualifies consulting leads before they book a call.">Clarity</span>
@@ -1327,7 +1344,7 @@
       <div class="product-name">Digital Confidence Centre — Adults</div>
       <span class="badge badge-pre">Pre-release</span>
       <div class="product-for">→ Libraries · Municipalities · Seniors</div>
-      <p class="product-body">29-module digital literacy platform. Bilingual EN/FR. WCAG AA. Built to replace 200,000+ seniors' access lost when federal DLEP funding was cut March 2025. Licensing model: CA$500–$2,000/yr per site.</p>
+      <p class="product-body">35-module digital literacy platform. Bilingual EN/FR. WCAG AA. Built to replace 200,000+ seniors' access lost when federal DLEP funding was cut March 2025. Licensing model: CA$500–$2,000/yr per site.</p>
     </div>
 
     <div class="product">
@@ -1475,7 +1492,7 @@
 <!-- ═══════════════════════════════════════════════════════════════════
      V2 — WORK IN PROGRESS
      ═══════════════════════════════════════════════════════════════════ -->
-<div id="tab-v2">
+<div id="tab-v2" role="tabpanel" aria-labelledby="tab-btn-v2">
 
 <div style="max-width:920px;margin:0 auto;padding:0 24px;">
   <div class="wip-banner">
@@ -1592,11 +1609,13 @@
 
 </div><!-- /#tab-v2 -->
 
+</main>
+
 <!-- ═══ FOOTER ════════════════════════════════════════════════════════════ -->
 <footer>
   <span>Two Birds Innovation · Ontario, Canada · Built on the HAL Stack</span>
   <span><a href="index.html" style="color: inherit;">Main site</a> · <a href="sitemap.html" style="color: inherit;">Site map</a></span>
-  <span>Figures verified 9 August 2026</span>
+  <span>Figures verified 23 August 2026</span>
 </footer>
 
 <!-- ═══ PILL POPOVER ═══════════════════════════════════════════════════════ -->
@@ -1626,6 +1645,10 @@
     if (isNaN(target)) return;
     const from  = parseInt(el.dataset.from || '0', 10);
     const suffix = el.dataset.suffix || '';
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.textContent = target + suffix;
+      return;
+    }
     const dur   = 1200;
     let start = null;
 
