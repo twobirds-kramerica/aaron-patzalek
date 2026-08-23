@@ -253,6 +253,11 @@ section{margin-bottom:30px}
           <h3>Subagents</h3>
           <div class="meta">Scoped roles for review, briefing, and job tailoring. Dispatched with a durability clause so partial work survives a session cap.</div>
         </div></div>
+
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>Fleet resource guard <span class="tag">m73</span></h3>
+          <div class="meta">Out-of-memory prevention daemon on the Linux box, live-fire tested 2026-08-23 (terminated a deliberate 4.3GB test allocation; journald evidence recorded). Windows-side rollout is staged, not yet installed.</div>
+        </div></div>
       </div>
 
       <!-- SCHEDULED WORK -->
@@ -296,7 +301,7 @@ section{margin-bottom:30px}
 
         <div class="node"><i class="dot d-run"></i><div>
           <h3>Decision records</h3>
-          <div class="meta">53 ADRs. A filed decision outranks a sprint note, which is what stops the same architecture argument recurring.</div>
+          <div class="meta">58 ADRs (recounted from the repository 2026-08-23). A filed decision outranks a sprint note, which is what stops the same architecture argument recurring.</div>
         </div></div>
 
         <div class="node"><i class="dot d-plan"></i><div>
@@ -412,6 +417,7 @@ section{margin-bottom:30px}
 
   <footer>
     Status reflects a live check of the task scheduler and repository on 2026-08-09.
+    The decision-record count and the fleet resource guard node were updated 2026-08-23 from recorded evidence in the repository; other rows have not been re-verified since 2026-08-09.
     Components are marked red where evidence of a run could not be found, not where a problem was assumed.
   </footer>
 
