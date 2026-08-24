@@ -34,4 +34,4 @@ Allow: /
 User-agent: Meta-ExternalAgent
 Allow: /
 
-Sitemap: https://aaron.twobirdsinnovation.com/sitemap.xml
+Sitemap: https://twobirds-kramerica.github.io/aaron-patzalek/sitemap.xml
