@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The HAL Stack — Aaron Patzalek's AI Operations System | Two Birds Innovation</title>
-  <meta name="description" content="Full detail on the HAL Stack: how Aaron Patzalek, a non-technical operator, runs an autonomous AI system that builds, tests, and ships real products. Live stats, verifiable claims.">
+  <title>The HAL Stack — Business Operations View | Two Birds Innovation</title>
+  <meta name="description" content="The HAL Stack in plain business terms: who does what, what it costs, and how a one-person studio runs like a five-person team. Aaron Patzalek, Two Birds Innovation.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://twobirds-kramerica.github.io/aaron-patzalek/hal.html">
-  <meta property="og:title" content="The HAL Stack — Aaron Patzalek's AI Operations System">
-  <meta property="og:description" content="How a non-technical operator runs an autonomous AI system that builds, tests, and ships real products. Live stats, verifiable claims.">
+  <link rel="canonical" href="https://twobirds-kramerica.github.io/aaron-patzalek/hal-business.html">
+  <meta property="og:title" content="The HAL Stack — Business Operations View">
+  <meta property="og:description" content="The org, the cost structure, and the risk posture behind Aaron Patzalek's AI operations system, in plain business terms.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://twobirds-kramerica.github.io/aaron-patzalek/hal.html">
+  <meta property="og:url" content="https://twobirds-kramerica.github.io/aaron-patzalek/hal-business.html">
   <meta property="og:image" content="https://twobirds-kramerica.github.io/aaron-patzalek/images/og-card.png">
   <meta property="og:locale" content="en_CA">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c0e14'/%3E%3Cline x1='10' y1='8' x2='22' y2='16' stroke='%23e09820' stroke-width='3.8' stroke-linecap='round'/%3E%3Cline x1='22' y1='16' x2='10' y2='24' stroke='%23e09820' stroke-width='3.8' stroke-linecap='round'/%3E%3C/svg%3E">
@@ -20,9 +20,9 @@
   {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
-    "name": "The HAL Stack",
-    "url": "https://twobirds-kramerica.github.io/aaron-patzalek/hal.html",
-    "description": "Full detail on the HAL Stack: how Aaron Patzalek, a non-technical operator, runs an autonomous AI system that builds, tests, and ships real products.",
+    "name": "The HAL Stack — Business Operations View",
+    "url": "https://twobirds-kramerica.github.io/aaron-patzalek/hal-business.html",
+    "description": "The HAL Stack in plain business terms: who does what, what it costs, and how a one-person studio runs like a five-person team.",
     "creator": {
       "@type": "Person",
       "name": "Aaron Patzalek",
@@ -964,210 +964,82 @@
 <!-- ═══ VIEW CHOOSER ═══════════════════════════════════════════════════ -->
 <div style="max-width:920px;margin:0 auto;padding:0 24px;">
   <div class="view-chooser">
-    <div class="view-tile-current" aria-current="page">
+    <a href="hal.html" class="view-tile">
       <div class="view-tile-icon">🛠️</div>
-      <div class="view-tile-title">Technical stack <span class="view-tile-badge">You're here</span></div>
+      <div class="view-tile-title">Technical stack</div>
       <div class="view-tile-desc">What's actually running: MCPs, agents, architecture, the sovereignty table, every product in build. For anyone who wants to see under the hood.</div>
-    </div>
-    <a href="hal-business.html" class="view-tile biz">
-      <div class="view-tile-icon">🏢</div>
-      <div class="view-tile-title">Business operations</div>
-      <div class="view-tile-desc">The org, who does what, and what it costs — the same system explained in plain business terms, no technical background required.</div>
     </a>
+    <div class="view-tile-current biz" aria-current="page">
+      <div class="view-tile-icon">🏢</div>
+      <div class="view-tile-title">Business operations <span class="view-tile-badge">You're here</span></div>
+      <div class="view-tile-desc">The org, who does what, and what it costs — the same system explained in plain business terms, no technical background required.</div>
+    </div>
   </div>
 </div>
 
-<!-- ═══ MODEL ══════════════════════════════════════════════════════════ -->
+<!-- ═══ WHAT THIS IS ═════════════════════════════════════════ -->
 <section class="reveal">
-  <div class="eyebrow">The Model</div>
-  <h2>A software studio that runs itself overnight</h2>
-  <p>Most people using AI are using it like an assistant. This is using it as the engineer. Months went into building the <strong>infrastructure</strong>, the shop floor, before worrying about the products that sit on top of it.</p>
-  <p>An idea can land in a backlog at midnight and have committed code, passing smoke tests, and a health report waiting by morning. One person running a studio that ships like a five-person team.</p>
-  <p>The cost structure: <strong>$0 hosting, $0 npm packages in any product repo.</strong> Sovereignty-first, and as close to free as possible: the stack runs on one LLM subscription by default, with a small number of named, bounded exceptions (currently a low-cost AI video tool), chosen because the output stays owned and portable, not because sovereignty stopped mattering. No vendor can price you out of the system you built.</p>
+  <div class="eyebrow">The Business Read</div>
+  <h2>The same system, read the way a business reads it</h2>
+  <p>Underneath the tooling is a real division of labour, a real cost structure, and a real risk posture. This page skips the technical detail and answers the questions a business person actually asks: who does the work, what does it cost, and what breaks if a vendor disappears.</p>
 </section>
 
-<!-- ═══ CONNECTED ══════════════════════════════════════════════════════ -->
+<!-- ═══ THE ORG ══════════════════════════════════════════════ -->
 <section class="reveal">
-  <div class="eyebrow">What's Connected</div>
-  <h2>The stack, as of July 2026</h2>
-  <p>Numbers from the most recent capability snapshot.</p>
+  <div class="eyebrow">The Org</div>
+  <h2>Who does what, in plain terms</h2>
+  <p style="margin-bottom:26px;">Not a metaphor — a real division of labour. Every "employee" below is an AI role with a defined job, running inside the same governed system. Aaron is still the only human, and still the only one who decides what ships.</p>
 
-  <div class="callout">
-    <div class="callout-eye">📊 Capability snapshot · July 2026</div>
-    <div class="callout-row">
-      <div>
-        <div class="callout-n">6</div>
-        <div class="callout-l">Claude Code MCPs<br>always-on in every sprint</div>
-      </div>
-      <div>
-        <div class="callout-n">35</div>
-        <div class="callout-l">Claude.ai MCPs<br>loaded on demand</div>
-      </div>
-      <div>
-        <div class="callout-n">200+</div>
-        <div class="callout-l">skills across<br>four tiers</div>
-      </div>
-      <div>
-        <div class="callout-n">10</div>
-        <div class="callout-l">custom agents<br>for specific sprint types</div>
-      </div>
+  <div class="org-grid stagger">
+    <div class="org-card">
+      <div class="org-role">Human · Final call</div>
+      <div class="org-name">Aaron — The Architect</div>
+      <div class="org-body">Sets strategy, taste, and priorities. Approves anything customer-facing or irreversible. The one person accountable for what the business ships.</div>
     </div>
-    <div class="callout-note">
-      Always-on in Claude Code: Notion, Playwright, GitHub, Context7, NotebookLM, Sequential Thinking.
-      The 35 Claude.ai MCPs load on demand when the task calls for them; the harness selects without explicit commands.
+    <div class="org-card">
+      <div class="org-role">Opus</div>
+      <div class="org-name">The Orchestrator</div>
+      <div class="org-body">Sequences the work. Decides what gets built next, locks each sprint, and makes the judgment calls that are expensive to get wrong — the layer closest to a technical lead.</div>
     </div>
-  </div>
-
-  <p style="font-size:.85rem;color:var(--muted);margin-bottom:9px;">Always-on in Claude Code:</p>
-  <div class="chip-cloud" style="margin-bottom:24px;">
-    <span class="chip on">Notion</span>
-    <span class="chip on">Playwright</span>
-    <span class="chip on">GitHub</span>
-    <span class="chip on">Context7</span>
-    <span class="chip on">NotebookLM</span>
-    <span class="chip on">Sequential Thinking</span>
-  </div>
-
-  <p style="font-size:.85rem;color:var(--muted);margin-bottom:9px;">On-demand in Claude.ai:</p>
-  <div class="chip-cloud">
-    <span class="chip">Gmail</span><span class="chip">Google Calendar</span>
-    <span class="chip">Google Drive</span><span class="chip">Slack</span>
-    <span class="chip">Notion</span><span class="chip">Airtable</span>
-    <span class="chip">Canva</span><span class="chip">Figma</span>
-    <span class="chip">Miro</span><span class="chip">Excalidraw</span>
-    <span class="chip">Gamma</span><span class="chip">Zoom for Claude</span>
-    <span class="chip">Calendly</span><span class="chip">Docusign</span>
-    <span class="chip">Todoist</span><span class="chip">Zapier</span>
-    <span class="chip">Cloudflare</span><span class="chip">Vercel</span>
-    <span class="chip">Semrush</span><span class="chip">Amplitude</span>
-    <span class="chip">Hugging Face</span><span class="chip">Stripe</span>
-    <span class="chip">Shopify</span><span class="chip">Bitly</span>
-    <span class="chip">Indeed</span><span class="chip">ZipRecruiter</span>
-    <span class="chip">Malwarebytes</span><span class="chip">Spotify</span>
-    <span class="chip">PDF Viewer</span><span class="chip">Mermaid Chart</span>
-    <span class="chip">Linear</span><span class="chip">Microsoft 365</span>
-    <span class="chip">Windsor.ai</span><span class="chip">Audible</span>
-    <span class="chip">Consensus</span>
-  </div>
-
-  <p style="margin-top:28px;">
-    <a href="stack.html" style="display:inline-block;background:var(--accent-soft);border:1px solid var(--accent-b);color:var(--accent);padding:11px 20px;border-radius:8px;font-size:.94rem;font-weight:600;text-decoration:none;">📖&nbsp; Stack&nbsp;101 — what each tool actually is, in plain English&nbsp; →</a>
-  </p>
-</section>
-
-<!-- ═══ WORKFLOW ═════════════════════════════════════════════════════════ -->
-<section class="reveal">
-  <div class="eyebrow">The Workflow</div>
-  <h2>From idea to live — one sprint</h2>
-  <p class="wf-intro">Same six steps, grouped by what they actually do: a sprint gets triggered, the agent executes it, the result gets verified before anyone calls it done.</p>
-
-  <div class="workflow stagger">
-    <div class="wf-lane">
-      <div class="wf-lane-label"><span class="wf-lane-dot" aria-hidden="true"></span>Trigger</div>
-      <div class="wf-lane-row">
-        <div class="step wf-step" style="--wf-i:0;">
-          <div class="step-n"><span class="step-icon" aria-hidden="true">🐍</span>1</div>
-          <div>
-            <div class="step-title">Idea → Notion backlog</div>
-            <p class="step-body">Sprints are filed with priority, effort/return rating, and owner. A Python vetting script blocks any task the agent should handle autonomously — nothing hits the human queue that doesn't need a human.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">Notion API</span></div>
-          </div>
-        </div>
-        <div class="wf-arrow wf-arrow-h" style="--wf-i:0;" aria-hidden="true"><span class="wf-dot"></span></div>
-        <div class="step wf-step" style="--wf-i:1;">
-          <div class="step-n"><span class="step-icon" aria-hidden="true">🔁</span>2</div>
-          <div>
-            <div class="step-title">next-sprint.py locks the sprint</div>
-            <p class="step-body">A script pulls the top Ready item, marks it In Progress in Notion, prints the brief to the terminal. No manual copy-paste. Design-gated UI sprints are skipped automatically until the gate is cleared.</p>
-            <div class="tags"><span class="tag">Notion sync</span><span class="tag">auto-lock</span></div>
-          </div>
-        </div>
-      </div>
+    <div class="org-card">
+      <div class="org-role">Sonnet</div>
+      <div class="org-name">The Builder</div>
+      <div class="org-body">Executes. Writes and edits the actual code, runs tests, commits to Git. The hands-on-keyboard layer — fast, mechanical, closely supervised.</div>
     </div>
-
-    <div class="wf-arrow wf-arrow-v" style="--wf-i:1;" aria-hidden="true"><span class="wf-dot"></span></div>
-
-    <div class="wf-lane">
-      <div class="wf-lane-label"><span class="wf-lane-dot" aria-hidden="true"></span>Execution</div>
-      <div class="wf-lane-row">
-        <div class="step wf-step" style="--wf-i:2;">
-          <div class="step-n"><span class="step-icon" aria-hidden="true">🤖</span>3</div>
-          <div>
-            <div class="step-title">Claude Code CLI executes</div>
-            <p class="step-body">The AI agent reads the codebase, writes and edits files, runs PowerShell and Python, commits to Git — all in the terminal. Work is staffed like a team: each task is routed to the AI model tier its judgment level calls for, and scoped sub-agents run narrow jobs in parallel on isolated copies of the code. A token guard limits runaway sessions to 50 tool calls per turn.</p>
-            <div class="tags"><span class="tag">Autonomous</span><span class="tag">model routing</span><span class="tag">sub-agents</span><span class="tag">token-guarded</span></div>
-          </div>
-        </div>
-        <div class="wf-arrow wf-arrow-h" style="--wf-i:2;" aria-hidden="true"><span class="wf-dot"></span></div>
-        <div class="step wf-step" style="--wf-i:3;">
-          <div class="step-n"><span class="step-icon" aria-hidden="true">🐙</span>4</div>
-          <div>
-            <div class="step-title">Static HTML pushed to GitHub Pages</div>
-            <p class="step-body">No build step, no Node.js, no npm in the product repos. Git push → GitHub deploys in seconds. $0 hosting. WCAG accessibility checks run automatically via GitHub Actions on every push.</p>
-            <div class="tags"><span class="tag">Git</span><span class="tag">GitHub Pages</span><span class="tag">axe-core CI</span></div>
-          </div>
-        </div>
-      </div>
+    <div class="org-card">
+      <div class="org-role">Fable</div>
+      <div class="org-name">The Researcher</div>
+      <div class="org-body">Deep research and planning — competitive analysis, market sizing, multi-week strategy. Used sparingly, reserved for decisions worth the extra judgment.</div>
     </div>
-
-    <div class="wf-arrow wf-arrow-v" style="--wf-i:3;" aria-hidden="true"><span class="wf-dot"></span></div>
-
-    <div class="wf-lane">
-      <div class="wf-lane-label"><span class="wf-lane-dot" aria-hidden="true"></span>Verification</div>
-      <div class="wf-lane-row">
-        <div class="step wf-step" style="--wf-i:4;">
-          <div class="step-n"><span class="step-icon" aria-hidden="true">🎭</span>5</div>
-          <div>
-            <div class="step-title">Overnight build at 2am</div>
-            <p class="step-body">Playwright smoke tests, Lighthouse audits, backlog health, live data refresh, 11-repo sync, uptime monitor. Windows Task Scheduler — no external cron service.</p>
-            <div class="tags"><span class="tag">Playwright</span><span class="tag">Python</span><span class="tag">Task Scheduler</span></div>
-          </div>
-        </div>
-        <div class="wf-arrow wf-arrow-h" style="--wf-i:4;" aria-hidden="true"><span class="wf-dot"></span></div>
-        <div class="step wf-step" style="--wf-i:5;">
-          <div class="step-n"><span class="step-icon" aria-hidden="true">🩺</span>6</div>
-          <div>
-            <div class="step-title">Session-start health check</div>
-            <p class="step-body">Six checks fire when the terminal opens: smoke test status, overnight build age, autonomy audit, monitoring summary. Aaron sees only what genuinely requires a human.</p>
-            <div class="tags"><span class="tag">AWR enforcement</span></div>
-          </div>
-        </div>
-      </div>
+    <div class="org-card">
+      <div class="org-role">51 personas</div>
+      <div class="org-name">Governance Board</div>
+      <div class="org-body">Reviews substantial work before it ships — a standing panel (strategy, legal, engineering, marketing, ops) that catches blind spots a solo operator would miss heads-down.</div>
     </div>
-  </div>
-
-  <div class="wf-human-link" aria-hidden="true"><span class="wf-dot wf-dot-human"></span></div>
-  <div class="wf-human">
-    <div class="wf-human-icon" aria-hidden="true">🧑‍💻</div>
-    <div>
-      <div class="wf-human-title">Human in the loop — Aaron</div>
-      <p class="wf-human-body">Every step above runs without him. This is the one node that isn't automatic — what the health check actually surfaces. Everything the agent can resolve on its own never reaches it.</p>
+    <div class="org-card">
+      <div class="org-role">Rules, not people</div>
+      <div class="org-name">The Gates</div>
+      <div class="org-body">Design gate, voice check, sovereignty check, token guard — hard stops that fire automatically. No one, human or AI, ships around them.</div>
     </div>
   </div>
 </section>
 
-<!-- ═══ ARCHITECTURE ══════════════════════════════════════════════════════ -->
+<!-- ═══ ARCHITECTURE — EXECUTIVE VIEW ══════════════════════════════ -->
 <section class="reveal">
-  <div class="eyebrow">Architecture</div>
-  <h2>Five layers. Built to run without babysitting.</h2>
-  <p style="margin-bottom:26px;">Products on top. Automation in the middle. AI as the engine. Sovereignty principles at the base. Every choice above L5 must survive the test: "if this vendor disappeared tomorrow, what breaks?" (The name's a nod to 2001: A Space Odyssey. Make of that what you will.)</p>
+  <div class="eyebrow">Architecture — Executive View</div>
+  <h2>The same five layers, read as a business would read them</h2>
+  <p style="margin-bottom:26px;">Same stack as the technical page's Architecture section, reframed around what each layer is <em>for</em> rather than what tools sit in it. (The name's a nod to 2001: A Space Odyssey. Make of that what you will.)</p>
 
   <div class="arch">
-    <div class="arch-header">HAL Stack · Architecture</div>
+    <div class="arch-header">HAL Stack · What Each Layer Is For</div>
 
     <div class="arch-row">
       <div class="arch-num">L1</div>
       <div class="arch-content">
-        <div class="arch-label">Products — what users see · GitHub Pages</div>
+        <div class="arch-label">Revenue — what customers actually pay for</div>
         <div class="arch-pills">
-          <span class="pill" data-logo="dcc" data-tip-title="DCC Adults" data-tip="35-module bilingual digital literacy platform for seniors. WCAG AA compliant. Licensing model for libraries and municipalities.">DCC Adults</span>
-          <span class="pill" data-logo="dcckids" data-tip-title="DCC Kids" data-tip="Digital literacy curriculum for children ages 4–9. Online safety, AI literacy, technology judgment. Built on the same codebase as the adult platform.">DCC Kids</span>
-          <span class="pill" data-logo="careercoach" data-tip-title="Career Coach" data-tip="AI-assisted job search tool. Pulls live StatCan unemployment data monthly. Targets employment agencies and college career centres.">Career Coach</span>
-          <span class="pill" data-tip-title="Clarity" data-tip="Free 15-minute AI readiness diagnostic for SME owners. Produces a SWOT and action plan. Qualifies consulting leads before they book a call.">Clarity</span>
-          <span class="pill" data-logo="kevscasa" data-tip-title="KevsCasa" data-tip="Apartment search and tracking dashboard. Portfolio piece exploring white-label housing navigation.">KevsCasa</span>
-          <span class="pill" data-tip-title="Job Agent" data-tip="Automated job search. Daily scanner monitors job boards, scores each posting against a CV profile, and routes the highest-fit roles into a Notion pipeline.">Job Agent</span>
-          <span class="pill" data-tip-title="The Chronicler" data-tip="Structured memory layer. Captures every decision, sprint, and pivot in a searchable log any agent can query.">The Chronicler</span>
-          <span class="pill" data-logo="twobirds" data-tip-title="2 Birds Innovation" data-tip="Business strategy consulting. Strategy, operations, and technology roadmaps for founders and growing businesses. Direct engagement model.">2 Birds Innovation</span>
+          <span class="pill">3 products in market, more in build</span>
+          <span class="pill">Licensing, B2B, and direct consulting models</span>
         </div>
       </div>
     </div>
@@ -1175,15 +1047,10 @@
     <div class="arch-row">
       <div class="arch-num">L2</div>
       <div class="arch-content">
-        <div class="arch-label">HAL Stack — automation · overnight build</div>
+        <div class="arch-label">Operations — how work gets scheduled and tracked without a project manager</div>
         <div class="arch-pills">
-          <span class="pill" data-tip-title="Sprint system" data-tip="Notion-backed queue of tasks filed with priority, effort/return rating, and owner. A Python vetting script filters what the agent handles autonomously.">Sprint system</span>
-          <span class="pill" data-tip-title="Notion sync" data-tip="Every sprint status, session state, and backlog item stays live in Notion. Claude Code reads and writes Notion directly via MCP — no manual updates.">Notion sync</span>
-          <span class="pill" data-tip-title="Overnight build (2am)" data-tip="Windows Task Scheduler fires at 2am every night. Runs repo syncs, Lighthouse audits, smoke tests, autonomy audit, outbox sender, and morning briefing. No external cron service.">Overnight build (2am)</span>
-          <span class="pill" data-tip-title="Playwright smoke tests" data-tip="Headless Chromium hits every live product nightly. Checks key page elements and user flows. Screenshots are saved on failure.">Playwright smoke tests</span>
-          <span class="pill" data-tip-title="Uptime monitor" data-tip="uptime-monitor.py checks all product URLs nightly. Logs status codes. Flags anything that returns an error before the morning session starts.">Uptime monitor</span>
-          <span class="pill" data-tip-title="Autonomy audit" data-tip="Scans every open backlog item each night. Anything the agent can execute without human input gets flagged EXECUTE_NOW and never hits Aaron's queue.">Autonomy audit</span>
-          <span class="pill" data-tip-title="Daily briefing (Logan v3)" data-tip="Logan is the morning briefing agent. Reads overnight results and Notion P1 items, writes a plain-English summary. Ready when the laptop opens.">Daily briefing (Logan v3)</span>
+          <span class="pill">Backlog, sprint queue, nightly build</span>
+          <span class="pill">Zero manual status meetings</span>
         </div>
       </div>
     </div>
@@ -1191,18 +1058,10 @@
     <div class="arch-row ai-layer">
       <div class="arch-num">L3</div>
       <div class="arch-content">
-        <div class="arch-label" data-claim="persona-count" data-src="declared -- claim-spec.md §6.2" data-v="4" data-c="3" data-verified="2026-08-12">AI + Governance — the engineer · 51 personas · hard rules</div>
+        <div class="arch-label">Labour — the org chart above, running in the terminal</div>
         <div class="arch-pills">
-          <span class="pill" data-tip-title="Claude Code CLI" data-tip="The AI agent that executes sprints. Reads the codebase, writes and edits files, runs PowerShell and Python, commits to Git — all from the terminal. No human typing code.">Claude Code CLI</span>
-          <span class="pill hi" data-claim="mcp-count" data-src="declared -- claim-spec.md §6.4" data-v="4" data-c="3" data-verified="2026-08-12" data-tip-title="41 MCPs connected" data-tip="MCP (Model Context Protocol) connections let the AI talk to external tools directly — 6 always-on in Claude Code (Notion, Playwright, GitHub and more) plus 35 loaded on demand in Claude.ai. Applied automatically when the task calls for them.">41 MCPs connected</span>
-          <span class="pill hi" data-tip-title="200+ skills" data-tip="Skills are reusable instruction sets that Claude loads on demand — like a reference book the agent reads before executing a specialised task. Applied automatically; no explicit command needed. Examples: WCAG audit skill, learning design skill, sprint formatting skill.">200+ skills</span>
-          <span class="pill hi" data-claim="agent-count" data-src="hal-stack/data/hal-stats.json:agent_count (non-README .md files in agents/)" data-v="2" data-c="3" data-verified="2026-08-12" data-tip-title="10 custom agents" data-tip="Purpose-built agents for specific sprint types: overnight build agent, autonomy audit agent, CoS briefing agent, and others. Each has its own instruction set and runs without human prompting.">10 custom agents</span>
-          <span class="pill" data-tip-title="Scrappy Pack (6)" data-tip="Six advisory sub-personas that gut-check every substantive output: Mack (cash), Tess (visibility), Grit (time), Patch (simplicity), Sage (long game), and Sov (sovereignty). They catch blind spots before anything ships.">Scrappy Pack (6)</span>
-          <span class="pill" data-tip-title="Founding Board (22)" data-tip="22 synthetic personas across six departments — strategy, legal, engineering, marketing, operations, product. They review Stage 3+ sprint outputs before commit. A REWORK verdict blocks the push.">Founding Board (22)</span>
-          <span class="pill" data-tip-title="Inner Circle" data-tip="Two seats that report directly: The Hand (Chief of Staff equivalent — synthesises all team output) and the Love Balance Advisor (tracks workload and wellbeing, can override other agents).">Inner Circle</span>
-          <span class="pill" data-tip-title="Design gate" data-tip="Four conditions must be met before any UI sprint starts: PRODUCT.md exists, an accessibility audit has run this quarter, Aaron approved the shape brief, dark mode tested on Android Chrome. One missing — sprint stops.">Design gate</span>
-          <span class="pill" data-tip-title="Voice-check protocol" data-tip="Every email, landing page, or grant submission is scanned against a banned word list before it leaves the system. A compliance tag is appended proving the scan ran.">Voice-check protocol</span>
-          <span class="pill" data-tip-title="Token guard (50 calls/turn)" data-tip="Hard limit of 50 tool calls per AI turn. Prevents runaway sessions where the agent loops without progress. Fired three times during system construction.">Token guard (50 calls/turn)</span>
+          <span class="pill hi">Orchestrator + Builder + Researcher</span>
+          <span class="pill hi">51-persona governance review</span>
         </div>
       </div>
     </div>
@@ -1210,15 +1069,10 @@
     <div class="arch-row">
       <div class="arch-num">L4</div>
       <div class="arch-content">
-        <div class="arch-label">Infrastructure — hosting · CI/CD · local compute</div>
+        <div class="arch-label">Capital expenditure — what it costs to run this</div>
         <div class="arch-pills">
-          <span class="pill" data-tip-title="GitHub Pages" data-tip="All products are hosted on GitHub Pages. Static HTML files, deployed on git push. $0 cost. No server to maintain or secure.">GitHub Pages</span>
-          <span class="pill" data-tip-title="GitHub Actions (15+ workflows)" data-tip="Automated workflows that fire on every code push. Run WCAG accessibility checks, deploy to GitHub Pages, validate HTML, and more. No manual QA step.">GitHub Actions (15+ workflows)</span>
-          <span class="pill" data-tip-title="Git · 15 repos" data-tip="15 GitHub repositories created in 2026: one per product plus portfolio and infrastructure repos. Examples: digital-confidence (DCC Adults), career-coach, aaron-patzalek (this site), two-birds-portfolio (HAL Stack command centre). Of these, 11 are in the nightly sync set, and the rest are archived or template repos that do not change. Counted 11 August 2026.">Git · 15 repos</span>
-          <span class="pill" data-tip-title="Codeberg mirror" data-tip="Every repo is mirrored nightly to Codeberg.org — an independent, non-commercial git host. If GitHub disappeared tomorrow, the entire codebase is safe and deployable elsewhere.">Codeberg mirror</span>
-          <span class="pill" data-tip-title="Windows Task Scheduler" data-tip="The overnight build runs via Windows Task Scheduler at 2am — no cloud cron service, no subscription, no external dependency. The laptop runs it locally.">Windows Task Scheduler</span>
-          <span class="pill" data-tip-title="Python stdlib" data-tip="All automation scripts use Python's built-in standard library only. No third-party packages to install, update, or break. Runs on any Python 3.x install.">Python stdlib</span>
-          <span class="pill" data-tip-title="smtplib (no SendGrid)" data-tip="Outbound emails are sent via Python's smtplib directly through Gmail. No SendGrid, no Mailchimp, no subscription. One less vendor in the stack.">smtplib (no SendGrid)</span>
+          <span class="pill">$0 hosting, $0 build tooling</span>
+          <span class="pill">One LLM subscription, named bounded exceptions</span>
         </div>
       </div>
     </div>
@@ -1226,296 +1080,11 @@
     <div class="arch-row sov-row">
       <div class="arch-num">L5</div>
       <div class="arch-content">
-        <div class="arch-label">Sovereignty Foundation — principles that constrain every choice above</div>
+        <div class="arch-label">Risk posture — what happens if any one vendor disappears tomorrow</div>
         <div class="arch-pills">
-          <span class="pill tl">Static HTML/CSS/JS only</span>
-          <span class="pill tl">No npm in products</span>
-          <span class="pill tl">Open-source first</span>
-          <span class="pill tl">Self-hosted before SaaS</span>
-          <span class="pill tl">Canadian English</span>
-          <span class="pill tl">SR&amp;ED-tracked research</span>
-          <span class="pill tl">Decapitation-checklist gated</span>
+          <span class="pill tl">Nothing breaks — portable by design</span>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ GOVERNANCE ════════════════════════════════════════════════════════ -->
-<section class="reveal">
-  <div class="eyebrow">Governance</div>
-  <h2>The hard rules — enforced on every sprint</h2>
-  <p style="margin-bottom:26px;">These aren't preferences. They're gates. If a rule fires, the sprint stops until it's cleared.</p>
-
-  <div class="gate-grid stagger">
-    <div class="gate">
-      <div class="gate-icon">🔒</div>
-      <div class="gate-name">Design Gate</div>
-      <div class="gate-when">Fires before any UI sprint starts</div>
-      <p class="gate-body">Four conditions required: PRODUCT.md exists, /impeccable audit has run this quarter, Aaron approved the shape brief for structural changes, dark mode tested on Android Chrome. Any one missing — sprint doesn't start.</p>
-    </div>
-    <div class="gate">
-      <div class="gate-icon">🧑‍🤝‍🧑</div>
-      <div class="gate-name">Persona Panel Review</div>
-      <div class="gate-when">Fires at every Stage 3+ sprint completion</div>
-      <p class="gate-body">Before results commit, the sprint is reviewed by 51 AI personas: the Scrappy Pack, the Founding Board, and the Inner Circle. A REWORK verdict blocks the commit. The panel catches what a solo operator misses when heads-down.</p>
-    </div>
-    <div class="gate">
-      <div class="gate-icon">🎙️</div>
-      <div class="gate-name">Voice Check</div>
-      <div class="gate-when">Fires before any content leaves the system</div>
-      <p class="gate-body">Every email, landing page, or grant submission is scanned against a banned word list. A compliance tag is appended proving the scan ran. Nothing goes out unscanned.</p>
-    </div>
-    <div class="gate">
-      <div class="gate-icon">🛡️</div>
-      <div class="gate-name">Sovereignty Check</div>
-      <div class="gate-when">Fires before any tool is added to the stack</div>
-      <p class="gate-body">Before any SaaS, API, or dependency lands, the decapitation checklist runs. If this service disappeared tomorrow, what breaks? No paid service without proof no sovereign alternative exists.</p>
-    </div>
-    <div class="gate">
-      <div class="gate-icon">⚡</div>
-      <div class="gate-name">Autonomy Gate (AWR)</div>
-      <div class="gate-when">Fires before any task hits Aaron's queue</div>
-      <p class="gate-body">Three checks: Can PowerShell or Python execute this? Can an MCP tool handle it? Does it only need files and scripts? If any yes — the agent does it. Only genuinely human tasks reach the queue.</p>
-    </div>
-    <div class="gate">
-      <div class="gate-icon">🔢</div>
-      <div class="gate-name">Token Guard</div>
-      <div class="gate-when">Always on — every AI session</div>
-      <p class="gate-body">Hard limit of 50 tool calls per AI turn. Prevents runaway sessions where the AI loops without progress. The guard fired three times during system construction — paid for itself on day one.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ OVERNIGHT ═════════════════════════════════════════════════════════ -->
-<section class="reveal">
-  <div class="eyebrow">The Overnight Loop</div>
-  <h2>What runs at 2am every night</h2>
-
-  <div class="loop stagger">
-    <div class="loop-row">
-      <div class="loop-row-inner" style="--loop-i: 0;">
-        <div class="loop-icon">🔄</div>
-        <div class="loop-time">2:00 am</div>
-        <div>
-          <div class="loop-title" data-claim="repo-count-synced" data-src="hal-stack/scripts/run-overnight-build.bat nightly sync loop (repo count)" data-v="2" data-c="3" data-verified="2026-08-12">11 repos pulled and pushed</div>
-          <p class="loop-detail">The 11 active product and portfolio repos synced from remote, pushed to GitHub and Codeberg mirror. Fewer than the 15 built, because archived and template repos are not in the nightly set.</p>
-        </div>
-      </div>
-    </div>
-    <div class="loop-row">
-      <div class="loop-row-inner" style="--loop-i: 1;">
-        <div class="loop-icon">📊</div>
-        <div class="loop-time">2:01 am</div>
-        <div>
-          <div class="loop-title">Lighthouse audits across all products</div>
-          <p class="loop-detail">Performance, Accessibility, Best Practices, SEO scored. Results written to quality/lighthouse-results/.</p>
-        </div>
-      </div>
-    </div>
-    <div class="loop-row">
-      <div class="loop-row-inner" style="--loop-i: 2;">
-        <div class="loop-icon">🧪</div>
-        <div class="loop-time">2:03 am</div>
-        <div>
-          <div class="loop-title">Playwright smoke tests</div>
-          <p class="loop-detail">Headless Chromium hits all products. Checks key elements, exercises user flows. Screenshots on failure.</p>
-        </div>
-      </div>
-    </div>
-    <div class="loop-row">
-      <div class="loop-row-inner" style="--loop-i: 3;">
-        <div class="loop-icon">🔍</div>
-        <div class="loop-time">2:05 am</div>
-        <div>
-          <div class="loop-title">Autonomy audit</div>
-          <p class="loop-detail">Scans every open backlog item. Anything the AI can handle gets flagged EXECUTE_NOW — it never reaches Aaron.</p>
-        </div>
-      </div>
-    </div>
-    <div class="loop-row">
-      <div class="loop-row-inner" style="--loop-i: 4;">
-        <div class="loop-icon">📬</div>
-        <div class="loop-time">2:06 am</div>
-        <div>
-          <div class="loop-title">Approved outbox sender</div>
-          <p class="loop-detail">Emails approved in the outbox folder are sent via smtplib. No SendGrid, no subscription.</p>
-        </div>
-      </div>
-    </div>
-    <div class="loop-row">
-      <div class="loop-row-inner" style="--loop-i: 5;">
-        <div class="loop-icon">📰</div>
-        <div class="loop-time">2:07 am</div>
-        <div>
-          <div class="loop-title">CoS daily briefing generated (Logan v3)</div>
-          <p class="loop-detail">Reads session wins and Notion P1 items, writes a morning briefing. Ready when the laptop opens.</p>
-        </div>
-      </div>
-    </div>
-    <div class="loop-row">
-      <div class="loop-row-inner" style="--loop-i: 6;">
-        <div class="loop-icon">📈</div>
-        <div class="loop-time">20th of month</div>
-        <div>
-          <div class="loop-title">StatCan LFS data refresh</div>
-          <p class="loop-detail">Pulls Statistics Canada Table 14-10-0287-01. Extracts national unemployment rate. Updates Career Coach automatically.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ PRODUCTS ══════════════════════════════════════════════════════════ -->
-<section class="reveal">
-  <div class="eyebrow">The Products</div>
-  <h2>What's running on the shop floor</h2>
-
-  <div class="product-grid stagger">
-    <div class="product">
-      <div class="product-icon">🧠</div>
-      <div class="product-name">Digital Confidence Centre — Adults</div>
-      <span class="badge badge-live">Live</span>
-      <div class="product-for">→ Libraries · Municipalities · Seniors</div>
-      <p class="product-body">35-module digital literacy platform. Bilingual EN/FR. WCAG AA. Built to replace 200,000+ seniors' access lost when federal DLEP funding was cut March 2025. Licensing model: CA$500–$2,000/yr per site.</p>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">🧒</div>
-      <div class="product-name">Digital Confidence Centre — Kids</div>
-      <span class="badge badge-build">In development</span>
-      <div class="product-for">→ School Boards · Libraries · Youth Programs</div>
-      <p class="product-body">26-topic digital literacy curriculum for children. Online safety, AI literacy, technology judgment. Same trust-first architecture as the adult platform. Built on the same codebase — not a separate product, a major line extension.</p>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">💼</div>
-      <div class="product-name">Career Coach</div>
-      <span class="badge badge-live">Live</span>
-      <div class="product-for">→ Employment Agencies · Career Centres · Job Seekers</div>
-      <p class="product-body">AI-assisted job search. Pulls live StatCan unemployment data monthly. CV customisation, salary research protocol. B2B model targets employment agencies and college career centres.</p>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">📡</div>
-      <div class="product-name">Clarity</div>
-      <span class="badge badge-live">Live</span>
-      <div class="product-for">→ Ontario SME Owners</div>
-      <p class="product-body">Free 15-minute AI readiness diagnostic. Seven questions. Personalised SWOT and action plan. Qualifies consulting leads before they book a call. Every local SME in Elgin County is a target.</p>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">🏠</div>
-      <div class="product-name">KevsCasa</div>
-      <span class="badge badge-build">In development</span>
-      <div class="product-for">→ Rental Seekers · Housing Navigators</div>
-      <p class="product-body">Apartment search and tracking dashboard. Started as a personal civic tool for a friend in London, ON. The repository is private and there is no public site, but the daily listing-refresh automation runs against it and has for months. Being positioned as a white-label housing navigator.</p>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">🤖</div>
-      <div class="product-name">Job Agent</div>
-      <span class="badge badge-build">In development</span>
-      <div class="product-for">→ Active Job Seekers</div>
-      <p class="product-body">Automated job search from end to end. A daily scanner monitors Indeed, LinkedIn, and ZipRecruiter, scores each posting against a live CV profile, and routes the highest-fit roles into a tracked pipeline. Application drafting and follow-up built in. Complement to Career Coach, not a replacement.</p>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">📖</div>
-      <div class="product-name">The Chronicler</div>
-      <span class="badge badge-build">In development</span>
-      <div class="product-for">→ Founders · Teams · Knowledge Workers</div>
-      <p class="product-body">A structured memory layer that captures what was built, why, and what the system learned. Every decision, sprint, and pivot stored in a searchable log any agent can query. The foundation for a story-building tool.</p>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">🏢</div>
-      <div class="product-name">Business Strategy Consulting</div>
-      <span class="badge badge-live">Live</span>
-      <div class="product-for">→ Founders · Operators · Growth-Stage Teams</div>
-      <p class="product-body">Strategy and operations work for businesses that are growing, stuck, or looking for new perspectives. Technology as one tool in the kit, not the pitch. Direct engagement model — you work with Aaron, not a team of juniors. Reach out via <a href="consulting.html">the consulting page</a> to explore fit.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ SOVEREIGNTY ════════════════════════════════════════════════════════ -->
-<section class="reveal">
-  <div class="eyebrow">Architecture Principle</div>
-  <h2>Sovereign by design — every tool gets audited</h2>
-  <p style="margin-bottom:22px;">Before any tool lands in the stack, it passes a sovereignty check. The question: if this service disappeared tomorrow, what breaks?</p>
-
-  <div class="sov-wrap">
-    <table class="sov-table">
-      <thead>
-        <tr><th>Function</th><th>What we use</th><th>What we rejected</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Hosting</td><td><span class="yes">GitHub Pages</span></td><td><span class="no">Vercel / Netlify</span></td></tr>
-        <tr><td>Scripting</td><td><span class="yes">Python stdlib</span></td><td><span class="no">npm packages</span></td></tr>
-        <tr><td>Scheduler</td><td><span class="yes">Task Scheduler</span></td><td><span class="no">Cloud cron SaaS</span></td></tr>
-        <tr><td>Monitoring</td><td><span class="yes">uptime-monitor.py</span></td><td><span class="no">Datadog / PagerDuty</span></td></tr>
-        <tr><td>Smoke tests</td><td><span class="yes">Playwright OSS</span></td><td><span class="no">BrowserStack</span></td></tr>
-        <tr><td>Email send</td><td><span class="yes">smtplib (Gmail)</span></td><td><span class="no">SendGrid / Mailchimp</span></td></tr>
-        <tr><td>Backup mirror</td><td><span class="yes">Codeberg.org</span></td><td><span class="no">GitHub only</span></td></tr>
-        <tr><td>Frontend</td><td><span class="yes">Static HTML/CSS</span></td><td><span class="no">React / Next.js</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- ═══ ON THE HORIZON ════════════════════════════════════════════════════ -->
-<section class="reveal">
-  <div class="eyebrow">On the Horizon</div>
-  <h2>What's being built next</h2>
-  <p style="margin-bottom:26px;">A live snapshot of what's in motion right now — some locked in, some still in design. The shop floor keeps adding capability.</p>
-
-  <div class="product-grid stagger">
-    <div class="product">
-      <div class="product-icon">🎬</div>
-      <div class="product-name">LOON — video engine</div>
-      <span class="badge badge-build">In development</span>
-      <div class="product-for">→ Explainer &amp; product video, in-house</div>
-      <p class="product-body">A near-zero-cost pipeline that turns a script into a narrated, animated explainer video — bilingual EN/FR. First outputs already rendered. Brings video production in-house without a studio or a subscription stack.</p>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">🐦</div>
-      <div class="product-name">Content intelligence — Scribe</div>
-      <span class="badge badge-build">In development</span>
-      <div class="product-for">→ Idea capture &amp; triage</div>
-      <p class="product-body">Forward a video or clip and the system pulls the transcript, scores it against what Two Birds is actually working on, routes the strong ones, and catalogues the rest for the record. Built from tools already in the stack.</p>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">🧪</div>
-      <div class="product-name">DCC beta program</div>
-      <span class="badge badge-build">In development</span>
-      <div class="product-for">→ Real users before launch</div>
-      <p class="product-body">An invite-based beta so real seniors and the family members supporting them shape the Digital Confidence Centre before public release. Feedback loop and invite flow drafted.</p>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">🎛️</div>
-      <div class="product-name">Command Deck consolidation</div>
-      <span class="badge badge-build">In development</span>
-      <div class="product-for">→ One control surface</div>
-      <p class="product-body">Folding the separate dashboards into a single command deck — every product's status, backlog, and health on one screen, reachable from the phone.</p>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">🪺</div>
-      <div class="product-name">The Roost — multi-agent orchestration</div>
-      <span class="badge badge-build">In development</span>
-      <div class="product-for">→ More agents, coordinated</div>
-      <p class="product-body">The multi-agent layer is real now: work is routed by model tier per task, scoped sub-agents run in parallel, and the shop floor spans four machines on a private mesh network, with resource guards that catch memory trouble before it kills a session. Full coordination of several command-line agents against one backlog is the next step, held to the same sovereignty rules.</p>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">🎨</div>
-      <div class="product-name">Design-language library</div>
-      <span class="badge badge-build">In development</span>
-      <div class="product-for">→ On-brand builds, faster</div>
-      <p class="product-body">Adopting vetted, open brand design systems so any new page can be scaffolded on-brand in one shot — each one cross-checked against the stack's sovereignty rules before it's pulled in.</p>
     </div>
   </div>
 </section>
