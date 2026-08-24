@@ -166,7 +166,15 @@
       gap: 12px;
     }
     @media (min-width: 700px) {
-      .stats-bar { grid-template-columns: repeat(5, 1fr); }
+      .stats-bar { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .claims-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 14px;
     }
 
     /* ── SOVEREIGNTY TABLE (reused from the technical page's pattern) ── */
@@ -993,14 +1001,11 @@
       <span class="stat-num" data-counter="51" data-suffix="" data-claim="persona-count" data-src="declared -- update-hal-stats.py's resolver is circular, claim-spec.md §6.2" data-v="4" data-c="3" data-verified="2026-08-12">51</span>
       <span class="stat-label">AI personas<br>in the stack</span>
     </div>
-    <div class="stat">
-      <span class="stat-num">&#10003;</span>
-      <span class="stat-label">sovereign<br>no vendor lock-in</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">&#10003;</span>
-      <span class="stat-label">open source core<br>$0 licensing</span>
-    </div>
+  </div>
+
+  <div class="claims-row">
+    <span class="pill hi">&#10003; Sovereign — no vendor lock-in</span>
+    <span class="pill hi">&#10003; Open source core — $0 licensing</span>
   </div>
 </div>
 
