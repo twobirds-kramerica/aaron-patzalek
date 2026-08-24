@@ -636,6 +636,22 @@
       line-height: 1;
     }
 
+    /* ── STICKY VIEW TOGGLE ──
+       Always-reachable technical/business switch, independent of the
+       heavier tile pair below -- Aaron, live, 2026-08-23. */
+    .view-sticky {
+      position: sticky; top: 0; z-index: 40;
+      display: flex; justify-content: center; gap: 4px;
+      padding: 8px; background: var(--bg); border-bottom: 1px solid var(--border);
+    }
+    .view-sticky-link {
+      font-family: var(--mono); font-size: .78rem; padding: 6px 14px;
+      border-radius: 999px; color: var(--muted); text-decoration: none;
+      transition: background .15s, color .15s;
+    }
+    .view-sticky-link:hover { color: var(--text); background: var(--bg-lift); }
+    .view-sticky-link.is-current { color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+
     /* ── VIEW CHOOSER ── */
     .view-chooser {
       display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 36px;
@@ -881,6 +897,11 @@
 
 <a href="#main" class="skip-link">Skip to main content</a>
 
+<nav class="view-sticky" aria-label="Switch between technical and business view">
+  <a href="hal.html" class="view-sticky-link">🛠️ Technical</a>
+  <a href="hal-business.html" class="view-sticky-link is-current" aria-current="page">🏢 Business</a>
+</nav>
+
 <!-- ═══ AMBIENT TWO-BIRDS WATERMARK ════════════════════════════════════ -->
 <div class="bg-birds" aria-hidden="true">
   <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="presentation">
@@ -1060,8 +1081,8 @@
       <div class="arch-content">
         <div class="arch-label">Revenue — what customers actually pay for</div>
         <div class="arch-pills">
-          <span class="pill">3 products in market, more in build</span>
-          <span class="pill">Licensing, B2B, and direct consulting models</span>
+          <span class="pill" data-tip-title="Products in market" data-tip="Digital Confidence Centre, Career Coach, and Clarity are live and in active use today. Four more products are in development.">3 products in market, more in build</span>
+          <span class="pill" data-tip-title="Revenue models" data-tip="Software revenue comes from licensing (for example, libraries and municipalities for DCC) and direct B2B sales, alongside Aaron's own consulting engagements.">Licensing, B2B, and direct consulting models</span>
         </div>
       </div>
     </div>
@@ -1071,8 +1092,8 @@
       <div class="arch-content">
         <div class="arch-label">Operations — how work gets scheduled and tracked without a project manager</div>
         <div class="arch-pills">
-          <span class="pill">Backlog, sprint queue, nightly build</span>
-          <span class="pill">Zero manual status meetings</span>
+          <span class="pill" data-tip-title="How work gets scheduled" data-tip="A prioritized backlog feeds a sprint queue. A scheduled task runs the build every night without anyone triggering it by hand.">Backlog, sprint queue, nightly build</span>
+          <span class="pill" data-tip-title="No status meetings" data-tip="Every sprint's outcome is logged automatically to a shared record, so there's no separate status-update ritual to maintain.">Zero manual status meetings</span>
         </div>
       </div>
     </div>
@@ -1082,8 +1103,8 @@
       <div class="arch-content">
         <div class="arch-label">Labour — the org chart above, running in the terminal</div>
         <div class="arch-pills">
-          <span class="pill hi">Orchestrator + Builder + Researcher</span>
-          <span class="pill hi">51-persona governance review</span>
+          <span class="pill hi" data-tip-title="The AI roles" data-tip="Three distinct AI roles split the work: one sequences and reviews, one writes and tests code, one handles deep research. See the org chart above for the full breakdown.">Orchestrator + Builder + Researcher</span>
+          <span class="pill hi" data-tip-title="Governance review board" data-tip="A standing panel of 51 defined review roles (strategy, legal, engineering, marketing, ops, and more) checks substantial work before it ships, catching blind spots a solo operator would miss.">51-persona governance review</span>
         </div>
       </div>
     </div>
@@ -1093,8 +1114,8 @@
       <div class="arch-content">
         <div class="arch-label">Capital expenditure — what it costs to run this</div>
         <div class="arch-pills">
-          <span class="pill">$0 hosting, $0 build tooling</span>
-          <span class="pill">One LLM subscription, named bounded exceptions</span>
+          <span class="pill" data-tip-title="Cost structure" data-tip="Every product runs on free static hosting with no build-tool subscriptions. The main recurring cost is a single LLM subscription.">$0 hosting, $0 build tooling</span>
+          <span class="pill" data-tip-title="Where money is spent" data-tip="One AI subscription covers the large majority of the work. A small number of paid tools are used only where a sovereign free alternative doesn't yet exist, each one named and justified rather than accepted by default.">One LLM subscription, named bounded exceptions</span>
         </div>
       </div>
     </div>
@@ -1104,7 +1125,7 @@
       <div class="arch-content">
         <div class="arch-label">Risk posture — what happens if any one vendor disappears tomorrow</div>
         <div class="arch-pills">
-          <span class="pill tl">Nothing breaks — portable by design</span>
+          <span class="pill tl" data-tip-title="Why nothing breaks" data-tip="Every dependency passes a sovereignty check before it's allowed in: if that vendor disappeared tomorrow, what would break? The stack is designed so the answer is always 'nothing important.'">Nothing breaks — portable by design</span>
         </div>
       </div>
     </div>

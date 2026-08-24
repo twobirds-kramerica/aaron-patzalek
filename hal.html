@@ -618,6 +618,22 @@
       line-height: 1;
     }
 
+    /* ── STICKY VIEW TOGGLE ──
+       Always-reachable technical/business switch, independent of the
+       heavier tile pair below -- Aaron, live, 2026-08-23. */
+    .view-sticky {
+      position: sticky; top: 0; z-index: 40;
+      display: flex; justify-content: center; gap: 4px;
+      padding: 8px; background: var(--bg); border-bottom: 1px solid var(--border);
+    }
+    .view-sticky-link {
+      font-family: var(--mono); font-size: .78rem; padding: 6px 14px;
+      border-radius: 999px; color: var(--muted); text-decoration: none;
+      transition: background .15s, color .15s;
+    }
+    .view-sticky-link:hover { color: var(--text); background: var(--bg-lift); }
+    .view-sticky-link.is-current { color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+
     /* ── VIEW CHOOSER ── */
     .view-chooser {
       display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 36px;
@@ -862,6 +878,11 @@
 <body>
 
 <a href="#main" class="skip-link">Skip to main content</a>
+
+<nav class="view-sticky" aria-label="Switch between technical and business view">
+  <a href="hal.html" class="view-sticky-link is-current" aria-current="page">🛠️ Technical</a>
+  <a href="hal-business.html" class="view-sticky-link">🏢 Business</a>
+</nav>
 
 <!-- ═══ AMBIENT TWO-BIRDS WATERMARK ════════════════════════════════════ -->
 <div class="bg-birds" aria-hidden="true">
