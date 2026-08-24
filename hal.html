@@ -91,7 +91,7 @@
 
     /* ── HERO ── */
     .hero {
-      padding: 80px 24px 60px;
+      padding: 80px 24px 36px;
       max-width: 920px;
       margin: 0 auto;
       border-bottom: 1px solid var(--border);
@@ -150,17 +150,23 @@
 
     .hero-intro {
       font-size: 1rem;
-      color: var(--muted);
+      color: var(--text);
       max-width: 640px;
-      margin-bottom: 48px;
+      margin-bottom: 28px;
       line-height: 1.75;
     }
 
-    /* ── STATS BAR ── */
+    /* ── STATS BAR ──
+       Fixed 3-column desktop layout (2 clean rows of 3 for the 6 stats here)
+       instead of auto-fit, which could wrap into an uneven row with dead
+       space beside it depending on viewport width (Aaron, live, 2026-08-23). */
     .stats-bar {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(110px,1fr));
       gap: 12px;
+    }
+    @media (min-width: 560px) {
+      .stats-bar { grid-template-columns: repeat(3, 1fr); }
     }
 
     .stat {

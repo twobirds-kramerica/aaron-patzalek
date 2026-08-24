@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://twobirds-kramerica.github.io/aaron-patzalek/hal-business.html">
   <meta property="og:image" content="https://twobirds-kramerica.github.io/aaron-patzalek/images/og-card.png">
   <meta property="og:locale" content="en_CA">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c0e14'/%3E%3Cline x1='10' y1='8' x2='22' y2='16' stroke='%23e09820' stroke-width='3.8' stroke-linecap='round'/%3E%3Cline x1='22' y1='16' x2='10' y2='24' stroke='%23e09820' stroke-width='3.8' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c0e14'/%3E%3Cline x1='10' y1='8' x2='22' y2='16' stroke='%2334d399' stroke-width='3.8' stroke-linecap='round'/%3E%3Cline x1='22' y1='16' x2='10' y2='24' stroke='%2334d399' stroke-width='3.8' stroke-linecap='round'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="fonts/inter/inter.css">
   <link rel="stylesheet" href="fonts/dm-serif-display/dm-serif-display.css">
   <script type="application/ld+json">
@@ -41,9 +41,9 @@
       --text:         #e2e5ef;
       --muted:        #7a8498;
       --dim:          #4a5268;
-      --accent:       #e09820;
-      --accent-soft:  rgba(224,152,32,.10);
-      --accent-b:     rgba(224,152,32,.22);
+      --accent:       #34d399;
+      --accent-soft:  rgba(52,211,153,.10);
+      --accent-b:     rgba(52,211,153,.22);
       --teal:         #2dd4bf;
       --teal-soft:    rgba(45,212,191,.09);
       --teal-b:       rgba(45,212,191,.22);
@@ -91,7 +91,7 @@
 
     /* ── HERO ── */
     .hero {
-      padding: 80px 24px 60px;
+      padding: 80px 24px 36px;
       max-width: 920px;
       margin: 0 auto;
       border-bottom: 1px solid var(--border);
@@ -150,17 +150,23 @@
 
     .hero-intro {
       font-size: 1rem;
-      color: var(--muted);
+      color: var(--text);
       max-width: 640px;
-      margin-bottom: 48px;
+      margin-bottom: 28px;
       line-height: 1.75;
     }
 
-    /* ── STATS BAR ── */
+    /* ── STATS BAR ──
+       Business page carries 2 stats, not 6 -- fixed 2-column desktop layout
+       so it reads as a deliberate, balanced pair rather than a stray row
+       with dead space beside it (Aaron, live, 2026-08-23). */
     .stats-bar {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(110px,1fr));
       gap: 12px;
+    }
+    @media (min-width: 560px) {
+      .stats-bar { grid-template-columns: repeat(2, minmax(0,260px)); }
     }
 
     .stat {
@@ -911,48 +917,34 @@
 
   <div class="wordmark">Two Birds Innovation · Ontario, Canada <span class="leaf-pulse">🍁</span></div>
 
-  <h1>One person, shipping&nbsp;<em>like a team</em>.</h1>
+  <h1>One operator.&nbsp;<em>Company-grade delivery.</em></h1>
 
-  <div class="no-code-line">Built without writing a single line of code.</div>
+  <div class="no-code-line">No developer payroll. No agency overhead.</div>
 
   <div class="build-block" style="margin:6px 0 30px;">
-    <div class="build-num" id="build-count" data-claim="commit-count" data-src="github:twobirds-kramerica default-branch commits since 2026-01-01" data-v="2" data-c="3" data-verified="2026-08-23">5,517</div>
+    <div class="build-num">$0</div>
     <div class="build-label">
-      <strong>Commits across 15 repositories, counted 23 August 2026.</strong>
-      Every one written through an AI agent that reads the codebase, edits files,
-      runs the tests, and commits to Git. One business person,
-      no engineering team, zero lines of code written by hand.
+      <strong>Hosting cost, across the whole studio.</strong>
+      Three products are live today &mdash; Digital Confidence Centre, Career Coach,
+      and Clarity &mdash; with four more in active development. All of it runs on
+      one governed system with no cloud hosting bills and no agency markup.
+      That cost structure is what one operator can offer that a traditional
+      build can't.
     </div>
   </div>
 
   <p class="hero-intro">
     The products aren't the hard part. The harness underneath them is: guardrails that keep it safe,
-    governance that keeps it honest, and enough flexibility that one business person can build, test,
+    governance that keeps it honest, and enough flexibility that one operator can build, test,
     and adapt real software with no developer and near-zero cost. Aaron Patzalek, 15+ years in category
     development, innovation, and customer experience, founded Two Birds Innovation in early 2026 and built
-    that system first. This page shows what's running on it.
+    that system first. This page shows how it's run.
   </p>
 
   <div class="stats-bar stagger">
     <div class="stat">
       <span class="stat-num" data-counter="7" data-suffix="">7</span>
       <span class="stat-label">software products<br>developing &amp; supporting</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num" data-counter="41" data-suffix="" data-claim="mcp-count" data-src="declared -- 6 always-on Claude Code + 35 on-demand Claude.ai, no file/API yields this (claim-spec.md §6.4)" data-v="4" data-c="3" data-verified="2026-08-12">41</span>
-      <span class="stat-label">MCP<br>connections</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num" data-counter="200" data-suffix="+">200+</span>
-      <span class="stat-label">skills<br>available</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num" data-claim="repo-count-built" data-src="github:twobirds-kramerica repos created in 2026" data-v="2" data-c="3" data-verified="2026-08-12">15</span>
-      <span class="stat-label">repositories<br>built</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">$0</span>
-      <span class="stat-label">hosting<br>cost</span>
     </div>
     <div class="stat">
       <span class="stat-num" data-counter="51" data-suffix="" data-claim="persona-count" data-src="declared -- update-hal-stats.py's resolver is circular, claim-spec.md §6.2" data-v="4" data-c="3" data-verified="2026-08-12">51</span>
@@ -1175,29 +1167,8 @@
   //   for r in $(gh repo list twobirds-kramerica --limit 100 --json name -q '.[].name'); do
   //     gh api "repos/twobirds-kramerica/$r/commits?since=2026-01-01T00:00:00Z&per_page=1" -i \
   //       | grep -i '^link:' | grep -oP 'page=\K[0-9]+(?=>; rel="last")'; done
-  // When you update the number, update the date in the label above it too.
-  // Recomputed by hal-stack/content-freshness/check-claims.js (S-RECENCY-CLAIM-CHECKER-001) --
-  // that script is now the source of "is this still true", not a human re-running the command above.
-  (function() {
-    const COMMIT_COUNT = 5517; // counted 2026-08-23 across 15 repos (verified via check-claims.js, not estimated)
-    const hero = document.getElementById('build-count');
-    if (hero && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      const dur = 1600;
-      let start = null;
-      function tick(now) {
-        if (start === null) start = now;         // time from the first real frame — no load-jump
-        const p = Math.min((now - start) / dur, 1);
-        const e = 1 - Math.pow(1 - p, 2);         // easeOutQuad — smoother tail
-        hero.textContent = Math.round(COMMIT_COUNT * e).toLocaleString();
-        if (p < 1) requestAnimationFrame(tick);
-      }
-      // start only once the page has settled, so the count isn't starved during load
-      if (document.readyState === 'complete') requestAnimationFrame(tick);
-      else window.addEventListener('load', function() { requestAnimationFrame(tick); }, { once: true });
-    } else if (hero) {
-      hero.textContent = COMMIT_COUNT.toLocaleString();
-    }
-  })();
+  // Business page's hero number is a static "$0" (hosting cost), not the
+  // animated commit counter -- that stat belongs on the technical page.
   // ── PILL POPOVERS ──────────────────────────────────────────
   (function() {
     const popover  = document.getElementById('pill-popover');
