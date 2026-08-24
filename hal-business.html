@@ -157,17 +157,35 @@
     }
 
     /* ── STATS BAR ──
-       Business page carries 2 stats, not 6 -- fixed 2-column desktop layout
-       so it reads as a deliberate, balanced pair rather than a stray row
-       with dead space beside it (Aaron, live, 2026-08-23). */
+       5 stats: 3 numeric + 2 checkmark badges (sovereign, open source),
+       fixed column count so it can't wrap into an uneven row with dead
+       space (Aaron, live, 2026-08-23). */
     .stats-bar {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(110px,1fr));
       gap: 12px;
     }
-    @media (min-width: 560px) {
-      .stats-bar { grid-template-columns: repeat(2, minmax(0,260px)); }
+    @media (min-width: 700px) {
+      .stats-bar { grid-template-columns: repeat(5, 1fr); }
     }
+
+    /* ── SOVEREIGNTY TABLE (reused from the technical page's pattern) ── */
+    .sov-wrap { overflow-x: auto; border-radius: var(--r); border: 1px solid var(--border); }
+    .sov-table { width: 100%; border-collapse: collapse; font-size: .87rem; }
+    .sov-table th, .sov-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+    .sov-table th { color: var(--muted); font-weight: 600; font-size: .74rem; text-transform: uppercase; letter-spacing: .06em; background: var(--bg-card); }
+    .sov-table tr:last-child td { border-bottom: none; }
+    .sov-table .yes { color: var(--accent); }
+    .sov-table .no { color: var(--muted); }
+
+    /* ── STATUS SNAPSHOT ── */
+    .status-grid { display: grid; gap: 10px; }
+    .status-row { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); }
+    .status-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+    .status-run { background: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+    .status-build { background: var(--warn); box-shadow: 0 0 0 3px var(--warn-soft); }
+    .status-text { font-size: .92rem; color: var(--muted); line-height: 1.6; }
+    .status-text strong { color: var(--text); }
 
     .stat {
       background: var(--bg-card);
@@ -947,8 +965,20 @@
       <span class="stat-label">software products<br>developing &amp; supporting</span>
     </div>
     <div class="stat">
+      <span class="stat-num" data-counter="200" data-suffix="+">200+</span>
+      <span class="stat-label">skills<br>available</span>
+    </div>
+    <div class="stat">
       <span class="stat-num" data-counter="51" data-suffix="" data-claim="persona-count" data-src="declared -- update-hal-stats.py's resolver is circular, claim-spec.md §6.2" data-v="4" data-c="3" data-verified="2026-08-12">51</span>
       <span class="stat-label">AI personas<br>in the stack</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">&#10003;</span>
+      <span class="stat-label">sovereign<br>no vendor lock-in</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">&#10003;</span>
+      <span class="stat-label">open source core<br>$0 licensing</span>
     </div>
   </div>
 </div>
@@ -1078,6 +1108,54 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ═══ SOVEREIGN BY DESIGN ═══════════════════════════════════════ -->
+<section class="reveal">
+  <div class="eyebrow">Why It's Built This Way</div>
+  <h2>Sovereign by design: no single vendor can hold this hostage</h2>
+  <p style="margin-bottom:22px;">
+    Most software gets built on top of someone else's platform, which means its cost, its uptime,
+    and its future all quietly depend on that platform's roadmap and pricing. This one is built the
+    opposite way. Before any tool, service, or dependency is allowed into the stack, it has to answer
+    one question: <strong>if this disappeared tomorrow, what breaks?</strong> If the honest answer is
+    "a lot," it doesn't get in &mdash; a sovereign alternative gets built or found instead.
+  </p>
+  <p style="margin-bottom:26px;">
+    In practice, that means the system is <em>headless</em>: no single piece is load-bearing for
+    everything else. A tool can be swapped, a vendor can walk away, a pricing model can change, and
+    the rest keeps running. That's not a technical preference &mdash; it's what makes the cost and the
+    delivery timeline something a client can actually rely on, instead of something that quietly rides
+    on one company's decisions.
+  </p>
+
+  <div class="sov-wrap">
+    <table class="sov-table">
+      <thead>
+        <tr><th>What it does</th><th>Built on</th><th>What that avoids</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Where the products live</td><td><span class="yes">Static pages, no cloud platform lock-in</span></td><td><span class="no">A hosting vendor that can raise prices or shut down</span></td></tr>
+        <tr><td>What the products are built from</td><td><span class="yes">Open web standards, no framework dependency</span></td><td><span class="no">A framework's breaking changes or abandonment</span></td></tr>
+        <tr><td>How work gets tracked</td><td><span class="yes">Plain files, versioned in Git</span></td><td><span class="no">A project-management SaaS holding the backlog hostage</span></td></tr>
+        <tr><td>How it's kept honest</td><td><span class="yes">A standing 51-persona review board, self-hosted</span></td><td><span class="no">Relying on one person's unchecked judgment</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══ STATUS SNAPSHOT ═══════════════════════════════════════════ -->
+<section class="reveal">
+  <div class="eyebrow">Right Now</div>
+  <h2>What's actually running today</h2>
+  <p style="margin-bottom:26px;">Not a roadmap slide &mdash; this is what's live, checked 23 August 2026.</p>
+
+  <div class="status-grid stagger">
+    <div class="status-row"><i class="status-dot status-run"></i><div class="status-text"><strong>Products in market</strong> &mdash; Digital Confidence Centre, Career Coach, and Clarity, all live and in active use.</div></div>
+    <div class="status-row"><i class="status-dot status-run"></i><div class="status-text"><strong>Nightly build &amp; QA</strong> &mdash; runs unattended every night, no manual deploy step.</div></div>
+    <div class="status-row"><i class="status-dot status-run"></i><div class="status-text"><strong>Governance review</strong> &mdash; the 51-persona board checks substantial work before it ships.</div></div>
+    <div class="status-row"><i class="status-dot status-build"></i><div class="status-text"><strong>In active development</strong> &mdash; four more products building now, including a beta program and a video-production pipeline.</div></div>
   </div>
 </section>
 
