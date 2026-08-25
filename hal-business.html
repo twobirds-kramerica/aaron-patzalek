@@ -806,8 +806,8 @@
       .hal-bird {
         position: absolute;
         left: -4%;
-        bottom: 26px;
-        width: 15px;
+        top: 34px;
+        width: 20px;
         height: auto;
         color: var(--teal);
         opacity: 0;
@@ -815,47 +815,47 @@
       }
 
       .hal-bird-2 {
-        width: 13px;                 /* a touch smaller, reads as the newcomer */
+        width: 17px;                 /* a touch smaller, reads as the newcomer */
         transform-origin: 50% 100%;  /* leans pivot from its feet */
         animation-name: hal-b2;
       }
 
       /* Beat 1: arrive and perch. Beat 2: hop when the second bird
-         lands. Beat 3: depart. Perch point sits on the hero's
-         bottom border, in the empty band under the stats bar. */
+         lands. Beat 3: depart. Perch point sits near the top of the
+         hero, just under the wordmark -- top of the fold. */
       @keyframes hal-b1 {
-        0%    { left: -4%;  bottom: 26px; opacity: 0;   transform: none; }
+        0%    { left: -4%;  top: 34px; opacity: 0;   transform: none; }
         1.5%  { opacity: .34; }
-        3.5%  { left: 28%;  bottom: 36px; }
-        5.5%  { left: 56%;  bottom: 10px; }
-        6.6%  { left: 61%;  bottom: 0; }
+        3.5%  { left: 28%;  top: 24px; }
+        5.5%  { left: 56%;  top: 50px; }
+        6.6%  { left: 61%;  top: 60px; }
         12.9% { transform: none; }
         13.3% { transform: translateY(-3px); }  /* startled hop as bird 2 lands */
         13.7% { transform: none; }
-        19.5% { left: 61%;  bottom: 0;    opacity: .34; }
-        21.5% { left: 74%;  bottom: 22px; }
-        24%   { left: 104%; bottom: 46px; opacity: 0; }
-        100%  { left: 104%; bottom: 46px; opacity: 0; }
+        19.5% { left: 61%;  top: 60px;    opacity: .34; }
+        21.5% { left: 74%;  top: 38px; }
+        24%   { left: 104%; top: 14px; opacity: 0; }
+        100%  { left: 104%; top: 14px; opacity: 0; }
       }
 
       /* Bird 2: arrives later, lands just left of bird 1, bounces,
          leans in twice to size it up, then leaves first. */
       @keyframes hal-b2 {
-        0%, 8.5% { left: -4%;   bottom: 32px; opacity: 0;  transform: none; }
+        0%, 8.5% { left: -4%;   top: 28px; opacity: 0;  transform: none; }
         9.5%  { opacity: .3; }
-        10.8% { left: 36%;   bottom: 26px; }
-        12.2% { left: 50%;   bottom: 8px; }
-        12.9% { left: 52.5%; bottom: 0;    transform: none; }
+        10.8% { left: 36%;   top: 34px; }
+        12.2% { left: 50%;   top: 52px; }
+        12.9% { left: 52.5%; top: 60px;    transform: none; }
         13.3% { transform: translateY(-2px); }
         13.7% { transform: none; }
         14.6% { transform: translateX(3px) rotate(7deg); }  /* lean toward bird 1 */
         15.4% { transform: none; }
         16.2% { transform: translateX(3px) rotate(7deg); }  /* and again */
         17%   { transform: none; }
-        19%   { left: 52.5%; bottom: 0;    opacity: .3; }
-        20.8% { left: 66%;   bottom: 26px; }
-        23%   { left: 103%;  bottom: 52px; opacity: 0; }
-        100%  { left: 103%;  bottom: 52px; opacity: 0; }
+        19%   { left: 52.5%; top: 60px;    opacity: .3; }
+        20.8% { left: 66%;   top: 34px; }
+        23%   { left: 103%;  top: 8px; opacity: 0; }
+        100%  { left: 103%;  top: 8px; opacity: 0; }
       }
 
       /* Glyph swap: wing chevron while flying, silhouette while

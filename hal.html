@@ -197,6 +197,18 @@
       display: block;
     }
 
+    /* ── CLAIMS ROW — boolean commitments, deliberately NOT styled like
+       the metric tiles above: a claim ("sovereign") and a quantity
+       ("41 MCP connections") must read as different kinds of fact.
+       Same treatment as hal-business.html's claims row. ── */
+    .claims-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 14px;
+    }
+
     /* ── HERO LOGO ── */
     .hero-logo-wrap { margin-bottom: 32px; }
 
@@ -943,7 +955,7 @@
   <div class="no-code-line">Built without writing a single line of code.</div>
 
   <div class="build-block" style="margin:6px 0 30px;">
-    <div class="build-num" id="build-count" data-claim="commit-count" data-src="github:twobirds-kramerica default-branch commits since 2026-01-01" data-v="2" data-c="3" data-verified="2026-08-23">0</div>
+    <div class="build-num" id="build-count" data-claim="commit-count" data-src="github:twobirds-kramerica default-branch commits since 2026-01-01" data-v="2" data-c="3" data-verified="2026-08-23">5,517</div>
     <div class="build-label">
       <strong>Commits across 15 repositories, counted 23 August 2026.</strong>
       Every one written through an AI agent that reads the codebase, edits files,
@@ -951,6 +963,9 @@
       no engineering team, zero lines of code written by hand.
     </div>
   </div>
+  <!-- Zero the counter before first paint so the real figure never flashes;
+       markup keeps 5,517 so no-JS visitors and reduced-motion see the truth. -->
+  <script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.getElementById('build-count').textContent='0';}</script>
 
   <p class="hero-intro">
     The products aren't the hard part. The harness underneath them is: guardrails that keep it safe,
@@ -985,6 +1000,11 @@
       <span class="stat-num" data-counter="51" data-suffix="" data-claim="persona-count" data-src="declared -- update-hal-stats.py's resolver is circular, claim-spec.md §6.2" data-v="4" data-c="3" data-verified="2026-08-12">51</span>
       <span class="stat-label">AI personas<br>in the stack</span>
     </div>
+  </div>
+
+  <div class="claims-row">
+    <span class="pill hi">&#10003; Sovereign — no vendor lock-in</span>
+    <span class="pill hi">&#10003; Open source core — $0 licensing</span>
   </div>
 </div>
 
