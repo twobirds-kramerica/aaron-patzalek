@@ -8,7 +8,7 @@
 :root {
   --ap-max:        680px;
   --ap-ink:        #111111;
-  --ap-ink-2:      #6B7280;
+  --ap-ink-2:      #4B5563; /* was #6B7280 (4.86:1) — darkened one step, 7.5:1; all body copy shares this token */
   --ap-blue:       #0066CC;
   --ap-blue-hover: #0052A3;
   --ap-border:     #E5E7EB;
