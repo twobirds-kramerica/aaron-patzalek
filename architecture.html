@@ -25,7 +25,7 @@
 :root{
   /* warm paper + copper, matching the case study */
   --bg:#FAF9F7; --panel:#FFFFFF; --panel2:#F2F0EC; --line:#E2DED7;
-  --text:#20262E; --dim:#4E5A66; --faint:#7B8590;
+  --text:#20262E; --dim:#4E5A66; --faint:#68717D;
   --accent:#9C4A0A; --accent-raw:#C86B1E; --accent-light:#F7ECE1;
   --run:#1A7F37; --warn:#9A6700; --dead:#CF222E; --plan:#7B8590; --link:#9C4A0A;
   --ink:#151A20;
@@ -174,7 +174,7 @@ section{margin-bottom:30px}
   </div>
   <h1>What runs, and what talks to what.</h1>
   <p class="sub">The working map of the stack behind the products. One operator, four machines, no team.</p>
-  <p class="stamp">State verified 2026-08-09 against the live task scheduler and repository, not from documentation.</p>
+  <p class="stamp">State verified 2026-08-09 against the live task scheduler and repository, not from documentation. Rechecked quarterly.</p>
   <a class="backlink" href="v2-lab/hal.html">&larr; Back to the case study</a>
 </div></header>
 
@@ -253,6 +253,11 @@ section{margin-bottom:30px}
           <h3>Subagents</h3>
           <div class="meta">Scoped roles for review, briefing, and job tailoring. Dispatched with a durability clause so partial work survives a session cap.</div>
         </div></div>
+
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>Fleet resource guard <span class="tag">m73</span></h3>
+          <div class="meta">Out-of-memory prevention daemon on the Linux box, live-fire tested 2026-08-23 (terminated a deliberate 4.3GB test allocation; journald evidence recorded). Windows-side rollout is staged, not yet installed.</div>
+        </div></div>
       </div>
 
       <!-- SCHEDULED WORK -->
@@ -296,7 +301,7 @@ section{margin-bottom:30px}
 
         <div class="node"><i class="dot d-run"></i><div>
           <h3>Decision records</h3>
-          <div class="meta">53 ADRs. A filed decision outranks a sprint note, which is what stops the same architecture argument recurring.</div>
+          <div class="meta">58 ADRs (recounted from the repository 2026-08-23). A filed decision outranks a sprint note, which is what stops the same architecture argument recurring.</div>
         </div></div>
 
         <div class="node"><i class="dot d-plan"></i><div>
@@ -326,7 +331,7 @@ section{margin-bottom:30px}
 
         <div class="node"><i class="dot d-run"></i><div>
           <h3>Incident ledger</h3>
-          <div class="meta">14 numbered reliability issues with root causes. Write path is strong; nothing reads it automatically, which is the next gap.</div>
+          <div class="meta">29 numbered reliability issues with root causes. Write path is strong; nothing reads it automatically, which is the next gap.</div>
         </div></div>
       </div>
 
@@ -412,6 +417,7 @@ section{margin-bottom:30px}
 
   <footer>
     Status reflects a live check of the task scheduler and repository on 2026-08-09.
+    The decision-record count and the fleet resource guard node were updated 2026-08-23 from recorded evidence in the repository; other rows have not been re-verified since 2026-08-09.
     Components are marked red where evidence of a run could not be found, not where a problem was assumed.
   </footer>
 
