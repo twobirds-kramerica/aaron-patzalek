@@ -194,7 +194,7 @@ section{margin-bottom:30px}
     <div class="flow">
       <div><b>Capture</b><span>Voice, phone, inbox, browser. Input arrives asynchronously and is never trusted to be complete.</span></div>
       <div><b>Queue</b><span>Everything lands as a durable row or file first. Nothing is processed in the same breath it is received.</span></div>
-      <div><b>Orchestrate</b><span>Claude Code reads the queue, routes work by model tier, and executes against the repo.</span></div>
+      <div><b>Orchestrate</b><span>Claude Code remains an execution layer. Plan A adds automatic capacity-aware routing across Codex and OpenCode Go; status: Building — built and locally tested, but limited to supervised trials.</span></div>
       <div><b>Verify</b><span>Gates run before anything is called done. A failed gate blocks the claim, not just the log.</span></div>
       <div><b>Publish</b><span>Static output to Pages. Git is the transport; there is no deploy server.</span></div>
     </div>
@@ -237,6 +237,11 @@ section{margin-bottom:30px}
         <div class="node"><i class="dot d-run"></i><div>
           <h3>Claude Code <span class="tag">4 hosts</span></h3>
           <div class="meta">The execution layer. Same repo, same rules file, different machines. Sessions are stateless; the repo is the memory.</div>
+        </div></div>
+
+        <div class="node warn"><i class="dot d-warn"></i><div>
+          <h3>Plan A <span class="tag">Building</span></h3>
+          <div class="meta">The automatic capacity-aware orchestrator is built, merged, and locally tested. Codex and OpenCode Go are connected, and a real OpenCode Go completion through the live OmniRoute gateway is proven. It is not yet trusted for unattended use: candidate-controlled verification lacks operating-system sandboxing, and recovery cannot move to another machine by current design. Automatic failover is limited to supervised trials while those blockers are hardened.</div>
         </div></div>
 
         <div class="node"><i class="dot d-run"></i><div>

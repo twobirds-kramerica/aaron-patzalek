@@ -1553,9 +1553,9 @@
     <div class="product">
       <div class="product-icon">🪺</div>
       <div class="product-name">The Roost — multi-agent orchestration</div>
-      <span class="badge badge-build">In development</span>
+      <span class="badge badge-build">Building</span>
       <div class="product-for">→ More agents, coordinated</div>
-      <p class="product-body">The multi-agent layer is real now: OmniRoute, a self-hosted model-routing gateway, sits underneath it as a capacity-overflow valve — automatic failover once the primary model's capacity is spent, not a general-purpose router; scoped sub-agents run in parallel, and the shop floor spans four machines on a private mesh network, with resource guards that catch memory trouble before it kills a session. Cross-vendor CLI dispatch conventions are already live (OpenCode routes to DeepSeek, Kimi, and Qwen today), with Goose conditionally approved as a fourth engine. What's left: connecting the paid Codex and OpenCode Go tiers — both installed fleet-wide already, just waiting on the account sign-ups.</p>
+      <p class="product-body">Plan A, the automatic capacity-aware orchestrator, is built, merged, and locally tested. Codex and OpenCode Go are connected and working, and a real OpenCode Go completion through the live OmniRoute gateway is proven. Status: Building — built and being hardened, not yet trusted for unattended use. Candidate-controlled verification still lacks operating-system sandboxing, and recovery cannot move to another machine by current design, so automatic failover remains limited to supervised trials.</p>
     </div>
 
     <div class="product">
