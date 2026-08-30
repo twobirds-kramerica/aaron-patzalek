@@ -557,6 +557,9 @@
 
     .product-for { font-size: 10.5px; color: var(--teal); font-family: var(--mono); margin-bottom: 8px; }
     .product-body { font-size: .84rem; color: var(--muted); line-height: 1.6; flex: 1; }
+    .symphonica-wordmark { font-style: italic; letter-spacing: .025em; }
+    .symphonica-subtitle { display: block; margin-top: 2px; font-size: .72rem; font-weight: 500; color: var(--muted); }
+    .symphonica-note { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--accent-b); font-size: .76rem; color: var(--muted); line-height: 1.55; }
 
     /* ── SOV TABLE ── */
     .sov-wrap { overflow-x: auto; border-radius: var(--r); border: 1px solid var(--border); }
@@ -1544,10 +1547,11 @@
 
     <div class="product">
       <div class="product-icon">🪺</div>
-      <div class="product-name">The Roost — multi-agent orchestration</div>
+      <div class="product-name"><span class="symphonica-wordmark">Symphonica</span><span class="symphonica-subtitle">(Multi-Harness Build Orchestrator)</span></div>
       <span class="badge badge-build">Building</span>
-      <div class="product-for">→ More agents, coordinated</div>
-      <p class="product-body">Plan A, the automatic capacity-aware orchestrator, is built, merged, and locally tested. Codex and OpenCode Go are connected and working, and a real OpenCode Go completion through the live OmniRoute gateway is proven. Status: Building — built and being hardened, not yet trusted for unattended use. Candidate-controlled verification still lacks operating-system sandboxing, and recovery cannot move to another machine by current design, so automatic failover remains limited to supervised trials.</p>
+      <div class="product-for">→ Coding work that keeps moving</div>
+      <p class="product-body">Symphonica routes coding work across Claude Code, Codex, and OpenCode Go based on real-time capacity, so work can keep moving when one tool reaches a usage limit. It safely reviews and lands the resulting changes into the codebase automatically. Custom-built after research into how comparable open-source projects approach coordination, Symphonica has a Building status: it is built, merged, and locally tested, with OpenCode Go proven live, but it is not yet trusted for unattended use because verification still lacks operating-system sandboxing and recovery cannot move to another machine, so failover remains limited to supervised trials.</p>
+      <p class="symphonica-note">Comparable projects solve a related problem: Nous Research's Hermes includes Kanban for coordinating multiple full AI-agent instances on a shared task board, while Claudexor and Hydra also coordinate work across tools. Symphonica addresses a different, narrower need: routing around real capacity limits on paid AI coding subscriptions so work does not stop, then safely landing the results.</p>
     </div>
 
     <div class="product">
