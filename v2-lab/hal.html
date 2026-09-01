@@ -56,6 +56,10 @@
     .role-col ul { margin: 0; padding: 0 0 0 1.2em; }
     .role-col li { margin-bottom: var(--space-3); font-size: 0.98rem; }
     .role-col li:last-child { margin-bottom: 0; }
+    .product-name { flex-wrap: wrap; }
+    .symphonica-wordmark { font-style: italic; letter-spacing: 0.025em; }
+    .symphonica-subtitle { display: block; flex-basis: 100%; margin-top: 4px; font-size: var(--font-size-sm); font-weight: 500; color: var(--color-text-light); }
+    .symphonica-note { display: block; margin-top: var(--space-3); padding: var(--space-3) var(--space-4); border-top: 1px solid var(--color-border); background: var(--color-surface-alt); font-size: var(--font-size-sm); color: var(--color-text-light); line-height: 1.55; }
     .role-tag {
       display: inline-block;
       font-family: var(--font-heading); font-size: 0.75rem; font-weight: 660;
@@ -563,7 +567,7 @@
           <h3>Build, test, verify, report</h3>
           <ul>
             <li><strong>Execute sprints.</strong> AI agents read the task queue, write the code, commit it, and push it. Work is broken into sprints with completion gates.</li>
-            <li><strong>Staff each sprint.</strong> Tasks are routed to the AI model whose judgment level they need, and scoped sub-agents handle narrow jobs in parallel. Model choice is a staffing decision made per task, the same call an operations lead makes when assigning work to a team. Underneath that decision sits OmniRoute, a self-hosted model-routing gateway running on my own infrastructure — built for capacity survival, not cost arbitrage: when one provider hits its usage cap, work can fail over to another provider I already pay for, instead of stalling out.</li>
+            <li><strong>Staff each sprint.</strong> Tasks are routed to the AI model whose judgement level they need, and scoped sub-agents handle narrow jobs in parallel. Model choice is a staffing decision made per task, the same call an operations lead makes when assigning work to a team. <strong class="symphonica-wordmark">Symphonica</strong><span class="symphonica-subtitle">(Multi-Harness Build Orchestrator)</span> Routes coding work across Claude Code, Codex, and OpenCode Go by real-time capacity, so work keeps moving when one tool hits a usage limit, then reviews and lands the result automatically. Built in-house; not yet trusted for unattended use.</li>
             <li><strong>Verify its own output.</strong> A product change can't be reported "done" until an automated browser test passes against the live page. Reporting success without proof is treated as the same failure class as fabricating data.</li>
             <li><strong>Run the night shift.</strong> Repository syncs, accessibility audits, smoke tests, uptime checks, and a morning briefing, unattended.</li>
             <li><strong>Filter my inbox.</strong> An autonomy audit scans every open task nightly. Anything the system can do itself never reaches me.</li>

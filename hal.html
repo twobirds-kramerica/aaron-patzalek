@@ -545,7 +545,7 @@
     .product:hover { border-color: rgba(255,255,255,.14); background: var(--bg-lift); }
 
     .product-icon { font-size: 1.35rem; margin-bottom: 9px; }
-    .product-name { font-weight: 600; margin-bottom: 3px; min-height: 2.6em; display: flex; align-items: flex-start; }
+    .product-name { font-weight: 600; margin-bottom: 3px; min-height: 2.6em; display: flex; align-items: flex-start; flex-wrap: wrap; }
     .badge {
       display: inline-block; font-size: 10px; padding: 2px 7px;
       border-radius: 4px; font-family: var(--mono); margin-bottom: 9px;
@@ -557,6 +557,9 @@
 
     .product-for { font-size: 10.5px; color: var(--teal); font-family: var(--mono); margin-bottom: 8px; }
     .product-body { font-size: .84rem; color: var(--muted); line-height: 1.6; flex: 1; }
+    .symphonica-wordmark { font-style: italic; letter-spacing: .025em; }
+    .symphonica-subtitle { display: block; flex-basis: 100%; margin-top: 4px; font-size: .72rem; font-weight: 500; color: var(--muted); }
+    .symphonica-note { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--accent-b); font-size: .76rem; color: var(--muted); line-height: 1.55; }
 
     /* ── SOV TABLE ── */
     .sov-wrap { overflow-x: auto; border-radius: var(--r); border: 1px solid var(--border); }
@@ -1544,10 +1547,10 @@
 
     <div class="product">
       <div class="product-icon">🪺</div>
-      <div class="product-name">The Roost — multi-agent orchestration</div>
-      <span class="badge badge-build">In development</span>
-      <div class="product-for">→ More agents, coordinated</div>
-      <p class="product-body">The multi-agent layer is real now: OmniRoute, a self-hosted model-routing gateway, sits underneath it as a capacity-overflow valve — automatic failover once the primary model's capacity is spent, not a general-purpose router; scoped sub-agents run in parallel, and the shop floor spans four machines on a private mesh network, with resource guards that catch memory trouble before it kills a session. Cross-vendor CLI dispatch conventions are already live (OpenCode routes to DeepSeek, Kimi, and Qwen today), with Goose conditionally approved as a fourth engine. Both paid tiers — Codex (ChatGPT seat) and OpenCode Go — are now connected and live-tested. What's left: rolling the same OpenCode Go login out to the remaining machines, and a first real workload routed through it end to end.</p>
+      <div class="product-name"><span class="symphonica-wordmark">Symphonica</span><span class="symphonica-subtitle">(Multi-Harness Build Orchestrator)</span></div>
+      <span class="badge badge-build">Building</span>
+      <div class="product-for">→ Coding work that keeps moving</div>
+      <p class="product-body">Routes coding work across Claude Code, Codex, and OpenCode Go by real-time capacity, so work keeps moving when one tool hits a usage limit, then reviews and lands the result automatically. The routing layer itself is live — both paid tiers, Codex (ChatGPT seat) and OpenCode Go, are connected and tested — but the fuller review-and-land loop is built and not yet trusted for unattended use.</p>
     </div>
 
     <div class="product">
