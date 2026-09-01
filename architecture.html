@@ -194,7 +194,7 @@ section{margin-bottom:30px}
     <div class="flow">
       <div><b>Capture</b><span>Voice, phone, inbox, browser. Input arrives asynchronously and is never trusted to be complete.</span></div>
       <div><b>Queue</b><span>Everything lands as a durable row or file first. Nothing is processed in the same breath it is received.</span></div>
-      <div><b>Orchestrate</b><span>Claude Code reads the queue, routes work by model tier, and executes against the repo.</span></div>
+      <div><b>Orchestrate</b><span>Claude Code reads the queue, routes work by model tier through OmniRoute across Claude, Codex, and OpenCode Go, and executes against the repo.</span></div>
       <div><b>Verify</b><span>Gates run before anything is called done. A failed gate blocks the claim, not just the log.</span></div>
       <div><b>Publish</b><span>Static output to Pages. Git is the transport; there is no deploy server.</span></div>
     </div>
@@ -242,6 +242,11 @@ section{margin-bottom:30px}
         <div class="node"><i class="dot d-run"></i><div>
           <h3>Model routing</h3>
           <div class="meta">Opus orchestrates and decides. Sonnet executes determined work. Fable takes judgment passes. Tier is chosen per unit of work, not per session.</div>
+        </div></div>
+
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>OmniRoute <span class="tag">cross-provider</span></h3>
+          <div class="meta">A self-hosted gateway that sends work to whichever seat makes sense — Claude, ChatGPT/Codex, or the OpenCode Go model pool — so Claude usage is not the only lever available.</div>
         </div></div>
 
         <div class="node"><i class="dot d-run"></i><div>
