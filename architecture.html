@@ -206,6 +206,7 @@ section{margin-bottom:30px}
   <!-- ============ ZONES ============ -->
   <section>
     <h2>Components</h2>
+    <p style="opacity:.65;font-size:.9em;margin-top:-8px">Manually updated, last verified 2026-09-11. Not a live feed.</p>
     <div class="zones">
 
       <!-- CAPTURE -->
@@ -219,12 +220,12 @@ section{margin-bottom:30px}
 
         <div class="node warn"><i class="dot d-warn"></i><div>
           <h3>Kokoro TTS <span class="tag">:8880</span></h3>
-          <div class="meta">Local speech synthesis. Contends with Claude Code for CPU on the same box; migration to the always-on host is the fix.</div>
+          <div class="meta">Local speech synthesis. Not independently reverified this pass — checked live 2026-09-11, no process found running on either the primary host or the designated always-on host, so the earlier CPU-contention diagnosis could not be confirmed or ruled out. Flagged rather than repeated as current fact.</div>
         </div></div>
 
-        <div class="node bad"><i class="dot d-dead"></i><div>
+        <div class="node warn"><i class="dot d-warn"></i><div>
           <h3>Magpie <span class="tag">telegram</span></h3>
-          <div class="meta">Idea intake from phone. <b>Scheduled task absent as of 2026-08-09</b> — registered and acceptance-tested one day earlier, gone since.</div>
+          <div class="meta">Idea intake from phone. Scheduled task itself is registered and running (15-min cadence, confirmed live 2026-09-11) — the 2026-08-09 "task absent" issue is resolved. Current, narrower issue: the Telegram reporting channel specifically is down on a missing credential file, Gmail intake unaffected. Fix queued.</div>
         </div></div>
 
         <div class="node bad"><i class="dot d-dead"></i><div>
@@ -272,9 +273,9 @@ section{margin-bottom:30px}
       <div class="zone">
         <h2 style="margin-bottom:8px">Scheduled work</h2>
 
-        <div class="node warn"><i class="dot d-warn"></i><div>
+        <div class="node"><i class="dot d-run"></i><div>
           <h3>Overnight build <span class="tag">daily 02:00</span></h3>
-          <div class="meta">Lighthouse, health checks, freshness. <b>Returned task-terminated two nights running</b> (0x41306). Fires, does not finish. Separately, the 10 Aug run was cut at 03:25 by an account spend limit — a second, unrelated cause.</div>
+          <div class="meta">Lighthouse, health checks, freshness. The task-terminated pattern from August is resolved — completing cleanly on recent nights, confirmed via its own commit trail.</div>
         </div></div>
 
         <div class="node"><i class="dot d-run"></i><div>

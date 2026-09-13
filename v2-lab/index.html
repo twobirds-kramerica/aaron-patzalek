@@ -151,6 +151,11 @@
 
   /* ── Hero ── */
   .hero { padding: 4.5rem 0 3.5rem; }
+  .hero-photo {
+    width: 96px; height: 96px; border-radius: 50%; object-fit: cover;
+    object-position: center 15%; border: 2px solid var(--border);
+    margin-bottom: 1.25rem; display: block;
+  }
   .hero .kicker {
     font-size: .8125rem; font-weight: 600; letter-spacing: .09em;
     text-transform: uppercase; color: var(--accent-deep);
@@ -295,12 +300,13 @@
   <!-- ── Hero ─────────────────────────────────────────────── -->
   <div class="wrap">
     <section class="hero" aria-labelledby="hero-h" style="border-top:none;">
+      <img class="hero-photo" src="../images/aaron-headshot.jpg" alt="Aaron Patzalek" width="96" height="96">
       <p class="kicker">Operations and Service Transformation Leader</p>
       <h1 id="hero-h">I drive AI adoption. And I ship the thing.</h1>
       <p class="one-line">
         Most transformation leaders advise. Most builders have never run operations.
         I have spent <strong>15+ years leading operations and product across retail, eCommerce, telecom, and nonprofit</strong>,
-        and in the last year I have <strong>designed and built a shelf of live AI products myself</strong>.
+        and in the last year I have <strong>designed and built a shelf of alpha-stage AI products myself</strong>.
         That combination is the whole point.
       </p>
       <p class="sub">
@@ -309,8 +315,8 @@
         that genuinely helps the person at the end of the chain. Based in St. Thomas, Ontario.
       </p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="https://cal.com/twobirds-4n5ajg/30min" target="_blank" rel="noopener">Book a 30-minute conversation</a>
-        <a class="btn btn-ghost" href="#proof">See what I have built</a>
+        <a class="btn btn-primary" href="https://cal.com/twobirds-4n5ajg/30min" target="_blank" rel="noopener">Let's connect</a>
+        <a class="btn btn-ghost" href="hal.html">See what I have built</a>
       </div>
     </section>
   </div>
