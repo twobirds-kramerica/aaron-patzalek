@@ -252,7 +252,7 @@
 </nav>
 
 <header class="work-hero" role="banner">
-  <div class="eyebrow">Operational evidence · June 2026</div>
+  <div class="eyebrow">Operational evidence · September 2026</div>
   <h1>Not a demo.<br><span>A working operation.</span></h1>
   <p class="hero-sub">
     Four capabilities — documented with receipts. Metrics are drawn directly from git history,
@@ -306,11 +306,11 @@
           <span class="ev-icon" aria-hidden="true">⚙️</span>
           <h3>Overnight autonomous builds</h3>
           <p>A Windows Task Scheduler job runs nightly. It checks the sprint queue, pulls the next item, executes it end-to-end, files any required human actions to Notion, and logs the result — without waking anyone up.</p>
-          <div class="ev-receipt">logs/automated-run-log.md · 162 entries, counted 11 Aug 2026</div>
+          <div class="ev-receipt">logs/automated-run-log.md · <span data-claim="overnight-build-count" data-v="2" data-c="2" data-verified="2026-08-11">162 entries</span>, counted 11 Aug 2026</div>
         </div>
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">📋</span>
-          <h3>133-item sprint backlog, fully queued</h3>
+          <h3><span data-claim="backlog-item-count" data-v="2" data-c="2" data-verified="2026-09-14">133-item</span> sprint backlog, fully queued</h3>
           <p>Every item in the backlog carries a priority level, effort estimate, return estimate, and a brief that can be executed cold — no context required from the person who filed it.</p>
           <div class="ev-receipt">Notion backlog · hal-stack/sprint-system/sprint-queue.md</div>
         </div>
@@ -318,7 +318,7 @@
           <span class="ev-icon" aria-hidden="true">🏗️</span>
           <h3>Sovereign stack — no SaaS lock-in</h3>
           <p>Every product runs on self-hosted infrastructure: GitHub Pages, Cloudflare Pages, static HTML/CSS/JS with no framework dependencies. Zero monthly platform fees. Zero data handed to third parties.</p>
-          <div class="ev-receipt">hal-stack/architecture/decapitation-checklist.md · 5 ADRs on record</div>
+          <div class="ev-receipt">hal-stack/architecture/decapitation-checklist.md · <span data-claim="adr-count" data-src="hal-stack/architecture/decisions/README.md row count" data-v="2" data-c="3" data-verified="2026-09-14">58 ADRs</span> on record</div>
         </div>
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">🌐</span>
@@ -361,14 +361,14 @@
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">🔄</span>
           <h3>KevsCasa — daily automated listing refresh</h3>
-          <p>A GitHub Actions workflow runs every morning. It scrapes London ON rental listings, normalises the data, updates <code>data/listings.json</code>, and commits the result. No human trigger required. 144 automated refreshes completed.</p>
-          <div class="ev-receipt">twobirds-kramerica/kevins-apartment-search · .github/workflows/refresh.yml · 144 runs, counted 16 Aug 2026</div>
+          <p>A GitHub Actions workflow runs every morning. It scrapes London ON rental listings, normalises the data, updates <code>data/listings.json</code>, and commits the result. No human trigger required. <span data-claim="kevscasa-refresh-count" data-v="2" data-c="2" data-verified="2026-08-16">144 automated refreshes</span> completed.</p>
+          <div class="ev-receipt">twobirds-kramerica/kevins-apartment-search · .github/workflows/refresh.yml · <span data-claim="kevscasa-refresh-count" data-v="2" data-c="2" data-verified="2026-08-16">144 runs</span>, counted 16 Aug 2026</div>
         </div>
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">♿</span>
           <h3>DCC — accessibility CI/CD on every push</h3>
           <p>Every push to the Digital Confidence Centre triggers an axe-core automated accessibility audit via GitHub Actions. Failures block the build. Zero manual test runs needed — WCAG 2.2 AA is enforced by the pipeline.</p>
-          <div class="ev-receipt">twobirds-kramerica/digital-confidence · .github/workflows/ · 968 commits tested, counted 16 Aug 2026</div>
+          <div class="ev-receipt">twobirds-kramerica/digital-confidence · .github/workflows/ · <span data-claim="dcc-commits-tested-count" data-v="2" data-c="2" data-verified="2026-08-16">968 commits tested</span>, counted 16 Aug 2026</div>
         </div>
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">🤖</span>
@@ -380,7 +380,7 @@
           <span class="ev-icon" aria-hidden="true">📡</span>
           <h3>Notion bidirectional sync</h3>
           <p>All human-required actions are filed to Notion programmatically — with a full brief, effort/return rating, and exact steps — by the same pipeline that files the build tasks. No copy-paste, no formatting by hand.</p>
-          <div class="ev-receipt">hal-stack/notion-sync/SYNC-LOG.md · 132+ actions filed programmatically</div>
+          <div class="ev-receipt">hal-stack/notion-sync/SYNC-LOG.md · <span data-claim="notion-actions-filed-count" data-v="2" data-c="2" data-verified="2026-09-14">132+ actions</span> filed programmatically</div>
         </div>
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">📊</span>
@@ -504,9 +504,9 @@
         </div>
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">🎯</span>
-          <h3>Persona review panel — 51 reviewers</h3>
+          <h3>Persona review panel — <span data-claim="persona-count" data-src="declared -- update-hal-stats.py's resolver is circular, claim-spec.md §6.2" data-v="4" data-c="2" data-verified="2026-08-12">51 reviewers</span></h3>
           <p>Before any sprint ships, it passes a structured review by a panel of relevant personas: founder, senior PM, accessibility specialist, privacy counsel, budget holder, and others depending on the work. Verdicts are filed to the session record. A REWORK verdict blocks the sprint.</p>
-          <div class="ev-receipt">hal-stack/personas/ · hal-stack/founding-board/ · 51 active personas</div>
+          <div class="ev-receipt">hal-stack/personas/ · hal-stack/founding-board/ · <span data-claim="persona-count" data-src="declared -- update-hal-stats.py's resolver is circular, claim-spec.md §6.2" data-v="4" data-c="2" data-verified="2026-08-12">51 active personas</span></div>
         </div>
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">🗺️</span>

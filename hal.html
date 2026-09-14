@@ -973,7 +973,7 @@
   <p class="hero-intro">
     The products aren't the hard part. The harness underneath them is: guardrails that keep it safe,
     governance that keeps it honest, and enough flexibility that one business person can build, test,
-    and adapt real software with no developer and near-zero cost. Aaron Patzalek, 15+ years in category
+    and adapt real software with no developer and near-zero cost. Aaron Patzalek, <span data-claim="years-experience" data-v="1" data-c="3" data-verified="2026-09-14">15+ years</span> in category
     development, innovation, and customer experience, founded Two Birds Innovation in early 2026 and built
     that system first. This page shows what's running on it.
   </p>
@@ -1039,11 +1039,11 @@
 <!-- ═══ CONNECTED ══════════════════════════════════════════════════════ -->
 <section class="reveal">
   <div class="eyebrow">What's Connected</div>
-  <h2>The stack, as of August 2026</h2>
+  <h2>The stack</h2>
   <p>Numbers from the most recent capability snapshot.</p>
 
   <div class="callout">
-    <div class="callout-eye">📊 Capability snapshot · August 2026</div>
+    <div class="callout-eye">📊 Capability snapshot</div>
     <div class="callout-row">
       <div>
         <div class="callout-n">6</div>
@@ -1264,7 +1264,7 @@
         <div class="arch-pills">
           <span class="pill" data-tip-title="GitHub Pages" data-tip="All products are hosted on GitHub Pages. Static HTML files, deployed on git push. $0 cost. No server to maintain or secure.">GitHub Pages</span>
           <span class="pill" data-tip-title="GitHub Actions (15+ workflows)" data-tip="Automated workflows that fire on every code push. Run WCAG accessibility checks, deploy to GitHub Pages, validate HTML, and more. No manual QA step.">GitHub Actions (15+ workflows)</span>
-          <span class="pill" data-tip-title="Git · 15 repos" data-tip="15 GitHub repositories created in 2026: one per product plus portfolio and infrastructure repos. Examples: digital-confidence (DCC Adults), career-coach, aaron-patzalek (this site), two-birds-portfolio (HAL Stack command centre). Of these, 11 are in the nightly sync set, and the rest are archived or template repos that do not change. Counted 11 August 2026.">Git · 15 repos</span>
+          <span class="pill" data-tip-title="Git · 15 repos" data-tip="15 GitHub repositories created in 2026: one per product plus portfolio and infrastructure repos. Examples: digital-confidence (DCC Adults), career-coach, aaron-patzalek (this site), two-birds-portfolio (HAL Stack command centre). Of these, 11 are in the nightly sync set, and the rest are archived or template repos that do not change. Counted 11 August 2026." data-claim="repo-count-built" data-src="github:twobirds-kramerica repos created in 2026" data-v="2" data-c="3" data-verified="2026-09-14">Git · 15 repos</span>
           <span class="pill" data-tip-title="Codeberg mirror" data-tip="Every repo is mirrored nightly to Codeberg.org — an independent, non-commercial git host. If GitHub disappeared tomorrow, the entire codebase is safe and deployable elsewhere.">Codeberg mirror</span>
           <span class="pill" data-tip-title="Windows Task Scheduler" data-tip="The overnight build runs via Windows Task Scheduler at 2am — no cloud cron service, no subscription, no external dependency. The laptop runs it locally.">Windows Task Scheduler</span>
           <span class="pill" data-tip-title="Python stdlib" data-tip="All automation scripts use Python's built-in standard library only. No third-party packages to install, update, or break. Runs on any Python 3.x install.">Python stdlib</span>
@@ -1569,7 +1569,6 @@
 <footer>
   <span>Two Birds Innovation · Ontario, Canada · Built on the HAL Stack</span>
   <span><a href="index.html" style="color: inherit;">Main site</a> · <a href="sitemap.html" style="color: inherit;">Site map</a></span>
-  <span>Figures verified 23 August 2026</span>
 </footer>
 
 <!-- ═══ PILL POPOVER ═══════════════════════════════════════════════════════ -->
@@ -1653,8 +1652,10 @@
   // Recomputed by hal-stack/content-freshness/check-claims.js (S-RECENCY-CLAIM-CHECKER-001) --
   // that script is now the source of "is this still true", not a human re-running the command above.
   (function() {
-    const COMMIT_COUNT = 5517; // counted 2026-08-23 across 15 repos (verified via check-claims.js, not estimated)
     const hero = document.getElementById('build-count');
+    // Source of truth is the data-claim="commit-count" annotation on #build-count itself
+    // (see claim-spec.md §5.2) -- read it live instead of duplicating the number here.
+    const COMMIT_COUNT = hero ? parseInt(hero.textContent.replace(/[^0-9]/g, ''), 10) || 0 : 0;
     if (hero && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const dur = 1600;
       let start = null;
