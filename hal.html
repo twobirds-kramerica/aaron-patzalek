@@ -199,7 +199,7 @@
 
     /* ── CLAIMS ROW — boolean commitments, deliberately NOT styled like
        the metric tiles above: a claim ("sovereign") and a quantity
-       ("41 MCP connections") must read as different kinds of fact.
+       ("42 MCP servers configured") must read as different kinds of fact.
        Same treatment as hal-business.html's claims row. ── */
     .claims-row {
       display: flex;
@@ -960,15 +960,15 @@
   <div class="build-block" style="margin:6px 0 30px;">
     <div class="build-num" id="build-count" data-claim="commit-count" data-src="github:twobirds-kramerica default-branch commits since 2026-01-01" data-v="2" data-c="3" data-verified="2026-09-10">6,169</div>
     <div class="build-label">
-      <strong>Commits across 15 repositories, counted 10 September 2026.</strong>
+      <strong>Commits across 15 repositories, counted September 2026.</strong>
       Every one written through an AI agent that reads the codebase, edits files,
       runs the tests, and commits to Git. One business person,
       no engineering team, zero lines of code written by hand.
     </div>
   </div>
   <!-- Zero the counter before first paint so the real figure never flashes;
-       markup keeps 5,517 so no-JS visitors and reduced-motion see the truth. -->
-  <script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.getElementById('build-count').textContent='0';}</script>
+       markup keeps the real figure (stashed in data-final) so the animation, no-JS visitors and reduced-motion all see the truth. -->
+  <script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){var _bc=document.getElementById('build-count');_bc.dataset.final=_bc.textContent;_bc.textContent='0';}</script>
 
   <p class="hero-intro">
     The products aren't the hard part. The harness underneath them is: guardrails that keep it safe,
@@ -984,12 +984,12 @@
       <span class="stat-label">alpha-stage products<br>DCC the most mature</span>
     </div>
     <div class="stat">
-      <span class="stat-num" data-counter="41" data-suffix="" data-claim="mcp-count" data-src="declared -- 6 always-on Claude Code + 35 on-demand Claude.ai, no file/API yields this (claim-spec.md §6.4)" data-v="4" data-c="3" data-verified="2026-08-12">41</span>
-      <span class="stat-label">MCP<br>connections</span>
+      <span class="stat-num" data-counter="42" data-suffix="" data-claim="mcp-count" data-src="declared -- counted 2026-09-28: 6 servers configured in Claude Code (~/.claude.json + project scope) + 36 Claude.ai connectors visible in-session; no file/API yields this (claim-spec.md 6.4)" data-v="4" data-c="3" data-verified="2026-09-28">42</span>
+      <span class="stat-label">MCP servers<br>configured</span>
     </div>
     <div class="stat">
-      <span class="stat-num" data-counter="200" data-suffix="+">200+</span>
-      <span class="stat-label">skills<br>available</span>
+      <span class="stat-num" data-counter="65" data-suffix="" data-claim="skill-count" data-src="declared -- counted 2026-09-28: 51 project skills (.claude/skills) + 14 user-scope skills (~/.claude/skills)" data-v="4" data-c="3" data-verified="2026-09-28">65</span>
+      <span class="stat-label">skills in the<br>repo and library</span>
     </div>
     <div class="stat">
       <span class="stat-num" data-claim="repo-count-built" data-src="github:twobirds-kramerica repos created in 2026" data-v="2" data-c="3" data-verified="2026-08-12">15</span>
@@ -1040,31 +1040,32 @@
 <section class="reveal">
   <div class="eyebrow">What's Connected</div>
   <h2>The stack</h2>
-  <p>Numbers from the most recent capability snapshot.</p>
+  <p>Counted from the live configuration in September 2026.</p>
 
   <div class="callout">
     <div class="callout-eye">📊 Capability snapshot</div>
     <div class="callout-row">
       <div>
         <div class="callout-n">6</div>
-        <div class="callout-l">Claude Code MCPs<br>always-on in every sprint</div>
+        <div class="callout-l">MCP servers configured<br>in Claude Code</div>
       </div>
       <div>
-        <div class="callout-n">35</div>
-        <div class="callout-l">Claude.ai MCPs<br>loaded on demand</div>
+        <div class="callout-n">36</div>
+        <div class="callout-l">Claude.ai connectors<br>(30 signed in)</div>
       </div>
       <div>
-        <div class="callout-n">200+</div>
-        <div class="callout-l">skills across<br>four tiers</div>
+        <div class="callout-n">65</div>
+        <div class="callout-l">skills in the repo<br>and user library</div>
       </div>
       <div>
-        <div class="callout-n">10</div>
+        <div class="callout-n">21</div>
         <div class="callout-l">custom agents<br>for specific sprint types</div>
       </div>
     </div>
     <div class="callout-note">
-      Always-on in Claude Code: Notion, Playwright, GitHub, Context7, NotebookLM, Sequential Thinking.
-      The 35 Claude.ai MCPs load on demand when the task calls for them; the harness selects without explicit commands.
+      Configured in Claude Code: Context7, NotebookLM, Playwright, Sequential Thinking, Exa and Sentry.
+      Claude.ai connectors load on demand when the task calls for them; 30 of the 36 are signed in today.
+      Counted 28 September 2026 from the live configuration, not a live feed.
     </div>
   </div>
 
@@ -1244,9 +1245,9 @@
         <div class="arch-label" data-claim="persona-count" data-src="declared -- claim-spec.md §6.2" data-v="4" data-c="3" data-verified="2026-08-12">AI + Governance — the engineer · 51 personas · hard rules</div>
         <div class="arch-pills">
           <span class="pill" data-tip-title="Claude Code CLI" data-tip="The AI agent that executes sprints. Reads the codebase, writes and edits files, runs PowerShell and Python, commits to Git — all from the terminal. No human typing code.">Claude Code CLI</span>
-          <span class="pill hi" data-claim="mcp-count" data-src="declared -- claim-spec.md §6.4" data-v="4" data-c="3" data-verified="2026-08-12" data-tip-title="41 MCPs connected" data-tip="MCP (Model Context Protocol) connections let the AI talk to external tools directly — 6 always-on in Claude Code (Notion, Playwright, GitHub and more) plus 35 loaded on demand in Claude.ai. Applied automatically when the task calls for them.">41 MCPs connected</span>
-          <span class="pill hi" data-tip-title="200+ skills" data-tip="Skills are reusable instruction sets that Claude loads on demand — like a reference book the agent reads before executing a specialised task. Applied automatically; no explicit command needed. Examples: WCAG audit skill, learning design skill, sprint formatting skill.">200+ skills</span>
-          <span class="pill hi" data-claim="agent-count" data-src="hal-stack/data/hal-stats.json:agent_count (non-README .md files in agents/)" data-v="2" data-c="3" data-verified="2026-08-12" data-tip-title="10 custom agents" data-tip="Purpose-built agents for specific sprint types: overnight build agent, autonomy audit agent, CoS briefing agent, and others. Each has its own instruction set and runs without human prompting.">10 custom agents</span>
+          <span class="pill hi" data-claim="mcp-count" data-src="declared -- counted 2026-09-28 (6 Claude Code + 36 Claude.ai connectors)" data-v="4" data-c="3" data-verified="2026-09-28" data-tip-title="42 MCP servers configured" data-tip="MCP (Model Context Protocol) servers let the AI talk to external tools directly: 6 configured in Claude Code (Context7, NotebookLM, Playwright, Sequential Thinking, Exa, Sentry) plus 36 Claude.ai connectors, 30 of them signed in. Loaded when the task calls for them.">42 MCP servers configured</span>
+          <span class="pill hi" data-claim="skill-count" data-src="declared -- counted 2026-09-28: 51 project + 14 user-scope" data-v="4" data-c="3" data-verified="2026-09-28" data-tip-title="65 skills" data-tip="Skills are reusable instruction sets that Claude loads on demand, like a reference book the agent reads before a specialised task. 51 live in this repository and 14 in the user library. Examples: WCAG audit skill, learning design skill, sprint formatting skill.">65 skills</span>
+          <span class="pill hi" data-claim="agent-count" data-src="hal-stack/data/hal-stats.json:agent_count (non-README .md files in .claude/agents/)" data-v="2" data-c="3" data-verified="2026-09-28" data-tip-title="21 custom agents" data-tip="Purpose-built agents for specific jobs: architecture review, build validation, CV tailoring, daily briefing, sprint validation, UX and IA review, and others. Each has its own instruction set.">21 custom agents</span>
           <span class="pill" data-tip-title="Scrappy Pack (6)" data-tip="Six advisory sub-personas that gut-check every substantive output: Mack (cash), Tess (visibility), Grit (time), Patch (simplicity), Sage (long game), and Sov (sovereignty). They catch blind spots before anything ships.">Scrappy Pack (6)</span>
           <span class="pill" data-tip-title="Founding Board (22)" data-tip="22 synthetic personas across six departments — strategy, legal, engineering, marketing, operations, product. They review Stage 3+ sprint outputs before commit. A REWORK verdict blocks the push.">Founding Board (22)</span>
           <span class="pill" data-tip-title="Inner Circle" data-tip="Two seats that report directly: The Hand (Chief of Staff equivalent — synthesises all team output) and the Love Balance Advisor (tracks workload and wellbeing, can override other agents).">Inner Circle</span>
@@ -1655,7 +1656,7 @@
     const hero = document.getElementById('build-count');
     // Source of truth is the data-claim="commit-count" annotation on #build-count itself
     // (see claim-spec.md §5.2) -- read it live instead of duplicating the number here.
-    const COMMIT_COUNT = hero ? parseInt(hero.textContent.replace(/[^0-9]/g, ''), 10) || 0 : 0;
+    const COMMIT_COUNT = hero ? parseInt((hero.dataset.final || hero.textContent).replace(/[^0-9]/g, ''), 10) || 0 : 0;
     if (hero && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const dur = 1600;
       let start = null;
