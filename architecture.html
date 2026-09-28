@@ -177,7 +177,7 @@ section{margin-bottom:30px}
   </div>
   <h1>What runs, and what talks to what.</h1>
   <p class="sub">The working map of the stack behind the products. One operator, four machines, no team.</p>
-  <p class="stamp">Manually updated, last touched 2026-08-23. This is a dated snapshot, not an automatically refreshed status feed.</p>
+  <p class="stamp">Manually updated, last touched 2026-09-28. Each status below was checked against the task scheduler, logs, ports and repository that day. This is a dated snapshot, not an automatically refreshed status feed.</p>
   <a class="backlink" href="v2-lab/hal.html">&larr; Back to the case study</a>
 </div></header>
 
@@ -206,7 +206,7 @@ section{margin-bottom:30px}
   <!-- ============ ZONES ============ -->
   <section>
     <h2>Components</h2>
-    <p style="opacity:.65;font-size:.9em;margin-top:-8px">Manually updated, last verified 2026-09-11. Not a live feed.</p>
+    <p style="opacity:.65;font-size:.9em;margin-top:-8px">Manually updated, last verified 2026-09-28. Not a live feed.</p>
     <div class="zones">
 
       <!-- CAPTURE -->
@@ -218,19 +218,19 @@ section{margin-bottom:30px}
           <div class="meta">Dictation into the CLI. Primary interface — most work starts spoken, not typed.</div>
         </div></div>
 
-        <div class="node warn"><i class="dot d-warn"></i><div>
+        <div class="node bad"><i class="dot d-dead"></i><div>
           <h3>Kokoro TTS <span class="tag">:8880</span></h3>
-          <div class="meta">Local speech synthesis. Not independently reverified this pass — checked live 2026-09-11, no process found running on either the primary host or the designated always-on host, so the earlier CPU-contention diagnosis could not be confirmed or ruled out. Flagged rather than repeated as current fact.</div>
+          <div class="meta">Local speech synthesis. Not running: nothing is listening on port 8880 on the primary host (checked live 2026-09-28). The designated always-on host was not rechecked this pass.</div>
         </div></div>
 
         <div class="node warn"><i class="dot d-warn"></i><div>
           <h3>Magpie <span class="tag">telegram</span></h3>
-          <div class="meta">Idea intake from phone. Scheduled task itself is registered and running (15-min cadence, confirmed live 2026-09-11) — the 2026-08-09 "task absent" issue is resolved. Current, narrower issue: the Telegram reporting channel specifically is down on a missing credential file, Gmail intake unaffected. Fix queued.</div>
+          <div class="meta">Idea intake from phone. Both intake channels (Telegram and Gmail) reported status ok in the 15:10 run on 2026-09-28, with nothing to process. The scheduler's last result code for the task at 15:25 shows a refused start, which is under investigation (RI-052).</div>
         </div></div>
 
-        <div class="node bad"><i class="dot d-dead"></i><div>
+        <div class="node warn"><i class="dot d-warn"></i><div>
           <h3>Perch <span class="tag">capture</span></h3>
-          <div class="meta">Raw video capture with local transcription. Built and hardened; its scheduled transcribe job is not registered.</div>
+          <div class="meta">Raw video capture with local transcription. The transcribe job is now registered and its watcher logged "no pending captures" at 15:05 on 2026-09-28. Its last scheduler result code is a refused start, under investigation (RI-052).</div>
         </div></div>
       </div>
 
@@ -238,19 +238,54 @@ section{margin-bottom:30px}
       <div class="zone">
         <h2 style="margin-bottom:8px">Orchestration</h2>
 
-        <div class="node"><i class="dot d-run"></i><div>
+        <div class="node warn"><i class="dot d-warn"></i><div>
           <h3>Claude Code <span class="tag">4 hosts</span></h3>
-          <div class="meta">The execution layer. Same repo, same rules file, different machines. Sessions are stateless; the repo is the memory.</div>
+          <div class="meta">The execution layer. Same repo, same rules file, different machines. Sessions are stateless; the repo is the memory. Honest fleet state 2026-09-28: this laptop is current; the always-on Linux host is running a checkout 1,065 commits behind; one machine was unreachable at last check; the overnight supervisor was reported disabled or missing on the other three.</div>
         </div></div>
 
         <div class="node warn"><i class="dot d-warn"></i><div>
           <h3><span class="symphonica-wordmark">Symphonica</span> <span class="tag">Building</span><span class="symphonica-subtitle">(Multi-Harness Build Orchestrator)</span></h3>
-          <div class="meta">Routes coding work across Claude Code, Codex, and OpenCode Go by real-time capacity, so work keeps moving when one tool hits a usage limit. The routing layer itself (OmniRoute, a self-hosted gateway) is live and verified; the fuller loop — review and land the result automatically, unattended — is built but not yet trusted.</div>
+          <div class="meta">Routes coding work across Claude Code, Codex, OpenCode Go and Antigravity (Gemini) by capacity, so work keeps moving when one tool hits a usage limit. Heavy unattended work is deliberately kept off the primary paid accounts (policy filed 2026-09-21). The routing gateway (OmniRoute) answers on the always-on host. The unattended loop is not yet trusted: last night it attempted 0 sprints because every runnable sprint was blocked by a safety gate, and an Antigravity run hit a prepaid-credit wall on 2026-09-21.</div>
         </div></div>
 
         <div class="node"><i class="dot d-run"></i><div>
           <h3>Model routing</h3>
-          <div class="meta">Opus orchestrates and decides. Sonnet executes determined work. Fable takes judgment passes. Tier is chosen per unit of work, not per session.</div>
+          <div class="meta">The orchestrating model decides; cheaper models execute work whose shape is already determined; the tier is chosen per unit of work, not per session. Since 2026-09-21 a written policy keeps heavy or autonomous execution off the primary paid accounts and routes it through other subscriptions.</div>
+        </div></div>
+
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>Native dynamic workflows <span class="tag">decided 2026-09-21</span></h3>
+          <div class="meta">Chosen on 2026-09-21 as the primary single-harness orchestrator after a written review of Orca, Hermes Agent, Omarchy, Goose and Ruflo, none of which cleared the stack's locked constraints.</div>
+        </div></div>
+
+        <div class="node warn"><i class="dot d-warn"></i><div>
+          <h3>Codex headless dispatch <span class="tag">ChatGPT seat</span></h3>
+          <div class="meta">Runs a sprint on a separate ChatGPT-authenticated engine inside a throwaway clone, so a bad run cannot touch the live repository. Proven end to end; results are never auto-merged.</div>
+        </div></div>
+
+        <div class="node warn"><i class="dot d-warn"></i><div>
+          <h3>Antigravity / Gemini <span class="tag">SDK</span></h3>
+          <div class="meta">Runs headless sprints through Google's agent SDK; several ran 2026-09-21 to 2026-09-24. Not free: it draws a prepaid balance and hit an HTTP 402 credits-depleted wall on 2026-09-21. Not usable on the primary laptop today because no API key is set there.</div>
+        </div></div>
+
+        <div class="node warn"><i class="dot d-warn"></i><div>
+          <h3>OpenCode Go <span class="tag">browser route</span></h3>
+          <div class="meta">Multi-model subscription route, authorised only for browser-driving tasks. Browser dispatch failed three distinct ways in one night on 2026-09-24 (RI-044); a persistent authenticated profile was built afterward.</div>
+        </div></div>
+
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>Agent browser <span class="tag">hidden, persistent profile</span></h3>
+          <div class="meta">A dedicated, already-signed-in Chrome profile kept alive by a scheduled task, so automation can drive real sites without spending model tokens on a visible browser. Running 2026-09-28; its window is parked off-screen.</div>
+        </div></div>
+
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>Direct Drive upload <span class="tag">since 2026-09-27</span></h3>
+          <div class="meta">Files go to Google Drive straight from disk with the existing OAuth tokens, not through a model's context. Replaces a base64 route that was slow and costly.</div>
+        </div></div>
+
+        <div class="node bad"><i class="dot d-dead"></i><div>
+          <h3>NotebookLM link <span class="tag">MCP</span></h3>
+          <div class="meta">Not connected. The login-detection fault after Google's rebrand to notebook.google.com was traced to the upstream tool and swapped for a patched fork on 2026-09-28; the server still timed out on connect in the session that followed (RI-050).</div>
         </div></div>
 
         <div class="node"><i class="dot d-run"></i><div>
@@ -275,22 +310,22 @@ section{margin-bottom:30px}
 
         <div class="node"><i class="dot d-run"></i><div>
           <h3>Overnight build <span class="tag">daily 02:00</span></h3>
-          <div class="meta">Lighthouse, health checks, freshness. The task-terminated pattern from August is resolved — completing cleanly on recent nights, confirmed via its own commit trail.</div>
+          <div class="meta">Lighthouse, health checks, freshness. Ran 2026-09-28 at 02:00 with task result 0 and a build-complete commit at 02:07. The August task-terminated pattern has not recurred.</div>
         </div></div>
 
         <div class="node"><i class="dot d-run"></i><div>
           <h3>Talon <span class="tag">daily 06:00</span></h3>
-          <div class="meta">Job scan, scoring, and archive of full postings. Exit 0 this morning. Writes a tracked health record every run.</div>
+          <div class="meta">Job scan, scoring, and archive of full postings. Daily scan committed 2026-09-28; the scheduled task ran clean (result 0) the same afternoon. Writes a tracked health record every run.</div>
         </div></div>
 
-        <div class="node"><i class="dot d-run"></i><div>
+        <div class="node warn"><i class="dot d-warn"></i><div>
           <h3>Cloud agents <span class="tag">gh actions</span></h3>
-          <div class="meta">Failed ten consecutive scheduled runs over five days on a missing API credential (1–10 Aug). Credential set 10 Aug; eight scheduled runs have passed since (11–14 Aug), all succeeded, re-verified via <code>gh run list</code> 16 Aug. Green.</div>
+          <div class="meta">Scheduled cloud runs failed for five days in August on a missing credential, fixed 10 Aug. Not verifiable today: the CLI could not read the run list, and the health check flags its own alarm record as 9 days old, so its "ok" cannot be trusted.</div>
         </div></div>
 
-        <div class="node"><i class="dot d-plan"></i><div>
+        <div class="node warn"><i class="dot d-warn"></i><div>
           <h3>Heartbeat registry</h3>
-          <div class="meta">One generic liveness check to replace ~29 hand-written ones. Designed, not built. Absence of a heartbeat should alarm; today it does not.</div>
+          <div class="meta">Built since the last update, and only partly working. A capability registry and heartbeat files now exist; the 2026-09-28 health check reports 10 of 24 heartbeat-checked capabilities unprovable or dead. Absence of a heartbeat should alarm; for those ten it does not yet.</div>
         </div></div>
       </div>
 
@@ -310,7 +345,7 @@ section{margin-bottom:30px}
 
         <div class="node"><i class="dot d-run"></i><div>
           <h3>Decision records</h3>
-          <div class="meta" data-claim="adr-count" data-src="hal-stack/architecture/decisions/README.md row count" data-v="2" data-c="3" data-verified="2026-09-14">58 ADRs (recounted from the repository 2026-08-23). A filed decision outranks a sprint note, which is what stops the same architecture argument recurring.</div>
+          <div class="meta" data-claim="adr-count" data-src="hal-stack/architecture/decisions/ADR-*.md file count" data-v="2" data-c="3" data-verified="2026-09-28">76 ADRs (counted from the repository 2026-09-28). A filed decision outranks a sprint note, which is what stops the same architecture argument recurring.</div>
         </div></div>
 
         <div class="node"><i class="dot d-plan"></i><div>
@@ -325,7 +360,7 @@ section{margin-bottom:30px}
 
         <div class="node"><i class="dot d-run"></i><div>
           <h3>Session health check</h3>
-          <div class="meta">~30 checks at session start. Its own blind spot is documented: it folded non-critical workflow failures into an OK line.</div>
+          <div class="meta">65 checks at session start (2026-09-28 run), each marked ok, warn or flag. Its own blind spot is documented: it once folded non-critical workflow failures into an OK line, and it read a dead task as a "stale log".</div>
         </div></div>
 
         <div class="node"><i class="dot d-run"></i><div>
@@ -335,12 +370,12 @@ section{margin-bottom:30px}
 
         <div class="node warn"><i class="dot d-warn"></i><div>
           <h3>Wiring audit</h3>
-          <div class="meta">Checks that credentialed capabilities are actually invoked. Its definition of "wired" is a substring match against prose docs, so it reports green on dead jobs. Report is stale.</div>
+          <div class="meta">Checks that credentialed capabilities are actually invoked. Reported 7 orphaned capabilities on 2026-09-28. Its definition of "wired" is a substring match against prose docs, so it can report green on something that never runs.</div>
         </div></div>
 
         <div class="node"><i class="dot d-run"></i><div>
           <h3>Incident ledger</h3>
-          <div class="meta">29 numbered reliability issues with root causes. Write path is strong; nothing reads it automatically, which is the next gap.</div>
+          <div class="meta">52 numbered reliability issues with root causes; 40 still open. A nightly check now reads the open items, which closes the gap earlier versions of this page named. One internal analysis (under independent review) puts about half of them in one root-cause shape: a fix at the source that never reached what was built from it.</div>
         </div></div>
       </div>
 
@@ -363,9 +398,9 @@ section{margin-bottom:30px}
           <div class="meta">Single-file client-only app. Reminders written as calendar events because a static host cannot run a schedule.</div>
         </div></div>
 
-        <div class="node"><i class="dot d-plan"></i><div>
+        <div class="node warn"><i class="dot d-warn"></i><div>
           <h3>Always-on host</h3>
-          <div class="meta">Small Linux box taking the voice server and the scheduled jobs off the laptop, so automation stops depending on one lid being open.</div>
+          <div class="meta">A small Linux box that takes the gateway and the resource guard off the laptop. It exists and answers, but its checkout is 1,065 commits stale and its overnight supervisor is disabled, so it is not yet carrying the scheduled jobs.</div>
         </div></div>
       </div>
 
@@ -425,8 +460,8 @@ section{margin-bottom:30px}
   </section>
 
   <footer>
-    Status reflects a live check of the task scheduler and repository on 2026-08-09.
-    The decision-record count and the fleet resource guard node were updated 2026-08-23 from recorded evidence in the repository; other rows have not been re-verified since 2026-08-09.
+    Status reflects a live check of the task scheduler, service ports, public URLs, logs and repository on 2026-09-28.
+    Where a task's last scheduler result is a refusal code that the logs contradict, the row says so rather than picking a colour.
     Components are marked red where evidence of a run could not be found, not where a problem was assumed.
   </footer>
 
