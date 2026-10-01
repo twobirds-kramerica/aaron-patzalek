@@ -847,8 +847,12 @@
         100%  { left: 103%;  top: 8px; opacity: 0; }
       }
 
-      /* Glyph swap: wing chevron while flying, silhouette while
-         perched. Same 90s clock as the flight paths. */
+      /* One bird, one drawing: flapping copy in flight, still copy when perched. */
+      .hb-flap { transform-box: fill-box; transform-origin: 50% 100%; animation: hal-flap .42s ease-in-out infinite alternate; }
+      @keyframes hal-flap { from { transform: scaleY(1) skewX(0); } to { transform: scaleY(.62) skewX(-4deg); } }
+
+      /* Glyph swap: flapping copy while flying, still copy while
+         perched (same drawing). Same 90s clock as the flight paths. */
       .hal-bird .hb-fly   { animation: hal-b1-fly 90s linear infinite; }
       .hal-bird .hb-perch { animation: hal-b1-perch 90s linear infinite; opacity: 0; }
       .hal-bird-2 .hb-fly   { animation-name: hal-b2-fly; }
@@ -922,14 +926,20 @@
        hidden entirely under prefers-reduced-motion. -->
   <div class="hal-birds" aria-hidden="true">
     <svg class="hal-bird hal-bird-1" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path class="hb-fly" d="M1 9 Q5.5 3 10 7 Q14.5 3 19 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <g class="hb-fly"><g class="hb-flap">
+        <path fill="currentColor" d="M2.2 3 L8 7.4 Q8.4 4.6 11.2 4.3 Q13.8 4.1 14.6 6 L17.4 6.9 L15 7.7 Q14.7 10 11.7 10.6 Q9.2 11 7.8 9.3 Z"/>
+        <path d="M10.3 10.8 L10.1 12 M12.3 10.7 L12.5 12" stroke="currentColor" stroke-width="0.7" stroke-linecap="round"/>
+      </g></g>
       <g class="hb-perch">
         <path fill="currentColor" d="M2.2 3 L8 7.4 Q8.4 4.6 11.2 4.3 Q13.8 4.1 14.6 6 L17.4 6.9 L15 7.7 Q14.7 10 11.7 10.6 Q9.2 11 7.8 9.3 Z"/>
         <path d="M10.3 10.8 L10.1 12 M12.3 10.7 L12.5 12" stroke="currentColor" stroke-width="0.7" stroke-linecap="round"/>
       </g>
     </svg>
     <svg class="hal-bird hal-bird-2" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path class="hb-fly" d="M1 9 Q5.5 3 10 7 Q14.5 3 19 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <g class="hb-fly"><g class="hb-flap">
+        <path fill="currentColor" d="M2.2 3 L8 7.4 Q8.4 4.6 11.2 4.3 Q13.8 4.1 14.6 6 L17.4 6.9 L15 7.7 Q14.7 10 11.7 10.6 Q9.2 11 7.8 9.3 Z"/>
+        <path d="M10.3 10.8 L10.1 12 M12.3 10.7 L12.5 12" stroke="currentColor" stroke-width="0.7" stroke-linecap="round"/>
+      </g></g>
       <g class="hb-perch">
         <path fill="currentColor" d="M2.2 3 L8 7.4 Q8.4 4.6 11.2 4.3 Q13.8 4.1 14.6 6 L17.4 6.9 L15 7.7 Q14.7 10 11.7 10.6 Q9.2 11 7.8 9.3 Z"/>
         <path d="M10.3 10.8 L10.1 12 M12.3 10.7 L12.5 12" stroke="currentColor" stroke-width="0.7" stroke-linecap="round"/>
@@ -999,10 +1009,6 @@
       <span class="stat-num">$0</span>
       <span class="stat-label">hosting<br>cost</span>
     </div>
-    <div class="stat">
-      <span class="stat-num" data-counter="51" data-suffix="" data-claim="persona-count" data-src="declared -- update-hal-stats.py's resolver is circular, claim-spec.md §6.2" data-v="4" data-c="3" data-verified="2026-08-12">51</span>
-      <span class="stat-label">AI personas<br>in the stack</span>
-    </div>
   </div>
 
   <div class="claims-row">
@@ -1016,7 +1022,7 @@
   <div class="view-chooser">
     <div class="view-tile-current" aria-current="page">
       <div class="view-tile-icon">🛠️</div>
-      <div class="view-tile-title">Technical stack <span class="view-tile-badge">You're here</span></div>
+      <div class="view-tile-title">Technical stack</div>
       <div class="view-tile-desc">What's actually running: MCPs, agents, architecture, the sovereignty table, every product in build. For anyone who wants to see under the hood.</div>
     </div>
     <a href="hal-business.html" class="view-tile biz">
@@ -1242,7 +1248,7 @@
     <div class="arch-row ai-layer">
       <div class="arch-num">L3</div>
       <div class="arch-content">
-        <div class="arch-label" data-claim="persona-count" data-src="declared -- claim-spec.md §6.2" data-v="4" data-c="3" data-verified="2026-08-12">AI + Governance — the engineer · 51 personas · hard rules</div>
+        <div class="arch-label" data-claim="persona-count" data-src="declared -- claim-spec.md §6.2" data-v="4" data-c="3" data-verified="2026-08-12">AI + Governance — the engineer · review personas · hard rules</div>
         <div class="arch-pills">
           <span class="pill" data-tip-title="Claude Code CLI" data-tip="The AI agent that executes sprints. Reads the codebase, writes and edits files, runs PowerShell and Python, commits to Git — all from the terminal. No human typing code.">Claude Code CLI</span>
           <span class="pill hi" data-claim="mcp-count" data-src="declared -- counted 2026-09-28 (6 Claude Code + 36 Claude.ai connectors)" data-v="4" data-c="3" data-verified="2026-09-28" data-tip-title="42 MCP servers configured" data-tip="MCP (Model Context Protocol) servers let the AI talk to external tools directly: 6 configured in Claude Code (Context7, NotebookLM, Playwright, Sequential Thinking, Exa, Sentry) plus 36 Claude.ai connectors, 30 of them signed in. Loaded when the task calls for them.">42 MCP servers configured</span>
@@ -1309,7 +1315,7 @@
       <div class="gate-icon">🧑‍🤝‍🧑</div>
       <div class="gate-name">Persona Panel Review</div>
       <div class="gate-when">Fires at every Stage 3+ sprint completion</div>
-      <p class="gate-body">Before results commit, the sprint is reviewed by 51 AI personas: the Scrappy Pack, the Founding Board, and the Inner Circle. A REWORK verdict blocks the commit. The panel catches what a solo operator misses when heads-down.</p>
+      <p class="gate-body">Before results commit, the sprint is reviewed by a panel of AI personas: the Scrappy Pack, the Founding Board, and the Inner Circle. A REWORK verdict blocks the commit. The panel catches what a solo operator misses when heads-down.</p>
     </div>
     <div class="gate">
       <div class="gate-icon">🎙️</div>
@@ -1569,7 +1575,7 @@
 <!-- ═══ FOOTER ════════════════════════════════════════════════════════════ -->
 <footer>
   <span>Two Birds Innovation · Ontario, Canada · Built on the HAL Stack</span>
-  <span><a href="index.html" style="color: inherit;">Main site</a> · <a href="sitemap.html" style="color: inherit;">Site map</a></span>
+  <span><a href="index.html" style="color: inherit;">Main site</a> · <a href="sitemap.html" style="color: inherit;">Site map</a> · <a href="images/qr-hal-plain.png" style="display:inline-flex;align-items:center;gap:6px;color:inherit;" aria-label="QR code for the HAL page, opens a large scannable version"><img src="images/qr-hal-plain.png" alt="" width="20" height="20" style="background:#fff;border-radius:2px;"> QR code</a></span>
 </footer>
 
 <!-- ═══ PILL POPOVER ═══════════════════════════════════════════════════════ -->
