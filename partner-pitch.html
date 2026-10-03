@@ -645,11 +645,11 @@ strong { color: var(--text); }
 <div class="hero">
   <div class="hero-label">Two Birds Innovation · St. Thomas, Ontario</div>
   <h1>I built the<br><em>shop floor</em> first.<br>The products<br>come second.</h1>
-  <p class="hero-sub">A one-person AI product studio running a fully autonomous development workflow — 3 products live, nightly automated builds, zero hosting costs.</p>
+  <p class="hero-sub">A one-person AI product studio running a fully autonomous development workflow — 6 products in development, nightly automated builds, $0 hosting.</p>
   <div class="hero-meta">
     <div class="hero-stat">
-      <div class="hero-stat-n">3</div>
-      <div class="hero-stat-l">products<br>live</div>
+      <div class="hero-stat-n">6</div>
+      <div class="hero-stat-l">products<br>in development</div>
     </div>
     <div class="hero-stat">
       <div class="hero-stat-n">2am</div>
@@ -706,7 +706,7 @@ strong { color: var(--text); }
       </div>
       <div class="flow-body">
         <div class="flow-title">Claude Code CLI executes</div>
-        <div class="flow-desc">The AI agent reads the codebase, writes and edits files, runs PowerShell and Python, commits to Git — all in the terminal. I can walk away. A token guard limits runaway sessions to 50 tool calls per turn.</div>
+        <div class="flow-desc">The AI agent reads the codebase, writes and edits files, runs PowerShell and Python, commits to Git — all in the terminal. I can walk away. A token guard warns and logs when a session runs unusually long.</div>
         <span class="flow-tag">Autonomous · monitored</span>
       </div>
     </div>
@@ -792,7 +792,7 @@ strong { color: var(--text); }
       <rect x="55" y="154" width="250" height="44" rx="6" fill="none" stroke="#7c3aed" stroke-width="0.8" stroke-opacity="0.55"/>
       <text x="66" y="171" fill="#c4b5fd" font-size="8" font-weight="700" font-family="system-ui,sans-serif" letter-spacing="1.2">L3</text>
       <text x="81" y="171" fill="#c4b5fd" font-size="8" font-weight="700" font-family="system-ui,sans-serif">AI + GOVERNANCE</text>
-      <text x="66" y="186" fill="#9570d4" font-size="7" font-family="system-ui,sans-serif">Claude Code · 51 personas · Design gate · Voice check</text>
+      <text x="66" y="186" fill="#9570d4" font-size="7" font-family="system-ui,sans-serif">Claude Code · AI personas · Design gate · Voice check</text>
       <rect x="55" y="154" width="250" height="44" rx="6" fill="none" stroke="#c4b5fd" stroke-width="1.2" stroke-opacity="0">
         <animate attributeName="stroke-opacity" values="0;0.35;0" dur="4s" begin="1.6s" repeatCount="indefinite"/>
       </rect>
@@ -880,15 +880,15 @@ strong { color: var(--text); }
         <div class="arch-lnum"><div class="arch-lnum-num">3</div><div class="arch-lnum-lbl">L3</div></div>
         <div class="arch-pyr-headtext">
           <div class="arch-pyr-name">AI + Governance</div>
-          <div class="arch-pyr-role">The engineer · 51 personas · hard rules</div>
+          <div class="arch-pyr-role">The engineer · AI personas · hard rules</div>
         </div>
       </div>
       <div class="arch-pyr-body">
         <span class="arch-pchip">Claude Code CLI</span>
         <span class="arch-pchip">Scrappy Pack (6)</span>
-        <span class="arch-pchip">Founding Board (6)</span>
-        <span class="arch-pchip">Boardroom (22)</span>
-        <span class="arch-pchip">Mentor committee (4)</span>
+        <span class="arch-pchip">Founding Board</span>
+        <span class="arch-pchip">Boardroom</span>
+        <span class="arch-pchip">Mentor committee</span>
         <span class="arch-pchip">Inner Circle</span>
         <span class="arch-pchip">MCP — Notion / Gmail / Calendly</span>
         <span class="arch-pchip">Design gate</span>
@@ -911,7 +911,7 @@ strong { color: var(--text); }
         <span class="arch-pchip">GitHub Pages</span>
         <span class="arch-pchip">GitHub Actions (WCAG CI)</span>
         <span class="arch-pchip">Git · 11 repos</span>
-        <span class="arch-pchip">Codeberg mirror</span>
+        <span class="arch-pchip">Codeberg mirror (not yet active)</span>
         <span class="arch-pchip">Windows Task Scheduler</span>
         <span class="arch-pchip">Python stdlib</span>
         <span class="arch-pchip">smtplib (no SendGrid)</span>
@@ -971,7 +971,7 @@ strong { color: var(--text); }
         </div>
       </div>
       <div class="rule-body">
-        Before results are committed, the sprint is reviewed by a panel of <strong>51 AI personas</strong>: the Scrappy Pack (The Researcher, Why Not, The Fifth Why, The Ripper, The Sovereignty Check), the Founding Board (22 personas across six departments), and the Inner Circle. A <strong>REWORK verdict blocks the commit</strong>. The panel exists to catch what a solo operator misses when heads-down in the work.
+        Before results are committed, the sprint is reviewed by a panel of <strong>AI personas</strong>: the Scrappy Pack (six founder gut-check personas, including a Sovereignty Check), the Founding Board and operating boardroom (personas across several departments), and the Inner Circle. A <strong>REWORK verdict blocks the commit</strong>. The panel exists to catch what a solo operator misses when heads-down in the work.
       </div>
     </div>
 
@@ -1023,7 +1023,7 @@ strong { color: var(--text); }
         </div>
       </div>
       <div class="rule-body">
-        Hard limit of <strong>50 tool calls per AI turn</strong>. Prevents runaway sessions where the AI loops without making progress, burning compute and context window. Resets on each new message. The guard fired three times while building this system — it paid for itself on day one.
+        A <strong>token guard</strong> watches every AI session. It <strong>blocks</strong> an identical call repeated three times in a row and any attempt to touch credential files, and <strong>warns and logs</strong> when one turn passes 120 and then 200 tool calls. The warnings never stop the work; they are there so a runaway loop is visible, not silent.
       </div>
     </div>
 
@@ -1132,28 +1132,28 @@ strong { color: var(--text); }
       <span class="product-emoji">🧠</span>
       <div class="product-name">Digital Confidence Centre</div>
       <span class="product-badge badge-live">Live</span>
-      <div class="product-desc">29-module digital literacy platform for seniors. Built to fill the gap left when federal DLEP funding was cut in March 2025 — 200,000+ seniors lost access to digital skills programs. DCC fills it. Quiz system, bionic reading, dyslexia font, dark mode. Target: library licensing at CA$500–$2,000/yr per site.</div>
+      <div class="product-desc">29-module digital literacy platform for seniors (the count the product itself publishes). Built for the gap left when federal DLEP funding ended on 31 March 2025; the program had reached over 650,000 participants. DCC aims to fill it. Quiz system, bionic reading, dyslexia font, dark mode. Target: library licensing (pricing is on the DCC for libraries page).</div>
     </div>
 
     <div class="product-card cc">
       <span class="product-emoji">💼</span>
       <div class="product-name">Career Coach</div>
       <span class="product-badge badge-live">Live</span>
-      <div class="product-desc">AI-assisted job search. Pulls live StatCan unemployment data monthly. CV customisation, salary research protocol.</div>
+      <div class="product-desc">AI-assisted job search. Pulls live StatCan unemployment data monthly. CV customization, salary research protocol.</div>
     </div>
 
     <div class="product-card clarity">
       <span class="product-emoji">📡</span>
       <div class="product-name">Clarity</div>
       <span class="product-badge badge-live">Live</span>
-      <div class="product-desc">Free AI readiness diagnostic for Canadian SME owners. Seven-question assessment generates a personalised SWOT and action plan. Qualifies leads before they book a call with Aaron.</div>
+      <div class="product-desc">Free AI readiness diagnostic for Canadian SME owners. Seven-question assessment generates a personalized SWOT and action plan. Qualifies leads before they book a call with Aaron.</div>
     </div>
 
     <div class="product-card kevsca">
       <span class="product-emoji">🏠</span>
       <div class="product-name">KevsCasa</div>
       <span class="product-badge badge-building">In development</span>
-      <div class="product-desc">Apartment search and tracking dashboard. Started as a personal tool for a friend navigating London, ON rentals under a hard deadline. Being commercialised as a white-label housing navigator.</div>
+      <div class="product-desc">Apartment search and tracking dashboard. Started as a personal tool for a friend navigating London, ON rentals under a hard deadline. Being commercialized as a white-label housing navigator.</div>
     </div>
 
     <div class="product-card tbi">
@@ -1259,8 +1259,8 @@ strong { color: var(--text); }
 <div class="closing">
   <h2>Where it's heading</h2>
   <p>DCC institutional licensing to libraries, Career Coach lead capture, first outbound consulting client through Two Birds. The shop floor is built — now it's time to fill it with orders.</p>
-  <p style="font-size:13px; color: rgba(255,255,255,0.35); margin-top: 8px;">The SR&amp;ED program considers this qualifying research. Time logs tracked from May 2026 (reviewed 2026-09-14).</p>
-  <div class="closing-fine">Two Birds Innovation · St. Thomas, Ontario · Built with the HAL Stack · last updated August 2026</div>
+  <p style="font-size:13px; color: rgba(255,255,255,0.35); margin-top: 8px;">Time logs have been kept since May 2026 with a possible SR&amp;ED claim in mind. No claim has been filed and no determination has been made (reviewed 2026-10-03).</p>
+  <div class="closing-fine">Two Birds Innovation · St. Thomas, Ontario · Built with the HAL Stack · manually reviewed 2026-10-03, not a live feed</div>
 </div>
 
 </body>
