@@ -39,8 +39,8 @@
       --bg-card:      #141820;
       --bg-lift:      #1d2130;
       --text:         #e2e5ef;
-      --muted:        #7a8498;
-      --dim:          #4a5268;
+      --muted:        #9aa4ba;
+      --dim:          #8791a8;
       --accent:       #e09820;
       --accent-soft:  rgba(224,152,32,.10);
       --accent-b:     rgba(224,152,32,.22);
@@ -556,6 +556,10 @@
     .badge-early { background: rgba(255,255,255,.06); color: var(--muted); }
 
     .product-for { font-size: 10.5px; color: var(--teal); font-family: var(--mono); margin-bottom: 8px; }
+    /* in-copy links: default browser blue/purple is unreadable on dark */
+    .product-body a, .hero a:not([class]) { color: #f0b84a; text-decoration: underline; text-underline-offset: 2px; }
+    .product-body a:visited { color: #f0b84a; }
+    .product-body a:hover { color: #ffd98a; }
     .product-body { font-size: .84rem; color: var(--muted); line-height: 1.6; flex: 1; }
     .symphonica-wordmark { font-style: italic; letter-spacing: .025em; }
     .symphonica-subtitle { display: block; flex-basis: 100%; margin-top: 4px; font-size: .72rem; font-weight: 500; color: var(--muted); }

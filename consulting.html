@@ -260,14 +260,28 @@
 
     /* ── Credential strip ── */
     .cred-strip {
-      display: flex;
-      gap: var(--space-8);
-      flex-wrap: wrap;
-      align-items: center;
       border-top: 2px solid var(--border-light);
       border-bottom: 2px solid var(--border-light);
-      padding: var(--space-6) 0;
+      padding: var(--space-8) 0;
       margin-bottom: var(--space-12);
+      text-align: center;
+    }
+    .cred-tagline {
+      font-size: var(--text-3xl);
+      font-weight: var(--font-bold);
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin: 0 0 var(--space-6);
+    }
+    .cred-tagline span { color: var(--tbi-blue); }
+    .cred-row {
+      display: grid;
+      grid-template-columns: auto repeat(3, minmax(0, 1fr));
+      gap: var(--space-8);
+      align-items: center;
+      text-align: left;
+      max-width: 900px;
+      margin: 0 auto;
     }
     .cred-photo {
       width: 132px;
@@ -276,12 +290,15 @@
       object-fit: cover;
       object-position: center 15%;
       border: 2px solid var(--border-light);
-      flex-shrink: 0;
     }
     .cred-item {
       display: flex;
       flex-direction: column;
-      gap: var(--space-1);
+      gap: var(--space-2);
+      align-self: stretch;
+      justify-content: center;
+      padding-left: var(--space-5);
+      border-left: 2px solid var(--border-light);
     }
     .cred-num {
       font-size: var(--text-2xl);
@@ -292,6 +309,23 @@
     .cred-label {
       font-size: var(--text-sm);
       color: var(--text-secondary);
+      line-height: 1.4;
+    }
+    .built-cats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.25rem;
+    }
+    .built-cats li {
+      background: #e8edf8;
+      color: #1a2744;
+      border-radius: 999px;
+      padding: 0.3rem 0.85rem;
+      font-size: 0.82rem;
+      font-weight: 600;
     }
 
     /* ── How it works ── */
@@ -536,7 +570,9 @@
     @media (max-width: 600px) {
       .consult-hero { padding: var(--space-12) var(--space-4) var(--space-10); }
       .offer-section, .booking-section { padding: var(--space-8) var(--space-5); }
-      .cred-strip { gap: var(--space-5); }
+      .cred-tagline { font-size: var(--text-2xl); }
+      .cred-row { grid-template-columns: 1fr; justify-items: center; gap: var(--space-5); }
+      .cred-item { width: 100%; max-width: 320px; }
       .audit-cols { grid-template-columns: 1fr; gap: var(--space-6); }
       .social-proof { padding: var(--space-8) var(--space-5); }
     }
@@ -606,22 +642,21 @@
 
     <!-- Credentials -->
     <div class="cred-strip">
-      <img src="images/aaron-headshot.jpg" alt="Aaron Patzalek" class="cred-photo" width="132" height="132">
-      <div class="cred-item">
-        <span class="cred-num">6</span>
-        <span class="cred-label">alpha-stage AI products built solo</span>
-      </div>
-      <div class="cred-item">
-        <span class="cred-num">15+</span>
-        <span class="cred-label">years leading product &amp; operations across retail, eCommerce, and telecom</span>
-      </div>
-      <div class="cred-item">
-        <span class="cred-num">Ontario</span>
-        <span class="cred-label">based in southwestern Ontario</span>
-      </div>
-      <div class="cred-item">
-        <span class="cred-num">No retainer</span>
-        <span class="cred-label">project-based, no lock-in</span>
+      <p class="cred-tagline">Service. Innovation. <span>Simplified.</span></p>
+      <div class="cred-row">
+        <img src="images/aaron-headshot.jpg" alt="Aaron Patzalek" class="cred-photo" width="132" height="132">
+        <div class="cred-item">
+          <span class="cred-num">15+</span>
+          <span class="cred-label">years leading product &amp; operations across retail, eCommerce, and telecom</span>
+        </div>
+        <div class="cred-item">
+          <span class="cred-num">Ontario</span>
+          <span class="cred-label">based in southwestern Ontario</span>
+        </div>
+        <div class="cred-item">
+          <span class="cred-num">No retainer</span>
+          <span class="cred-label">project-based, no lock-in</span>
+        </div>
       </div>
     </div>
 
@@ -705,6 +740,13 @@
       <p style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#4a6fa5;margin-bottom:0.5rem">Proof of work</p>
       <h2 style="font-size:1.5rem;color:#1a2744;margin-bottom:0.5rem">I don't sell AI theory. I build with it.</h2>
       <p style="color:#444;max-width:580px;line-height:1.6;margin-bottom:0.75rem;font-size:0.95rem">I built a portfolio of products with AI doing the heavy lifting. Below are four of them. All built fast, all owned by the people who use them. The same approach I bring to your business.</p>
+      <ul class="built-cats" aria-label="Areas I have built in">
+        <li>Education &amp; digital literacy</li>
+        <li>Job search &amp; career tools</li>
+        <li>Small-business diagnostics</li>
+        <li>Housing &amp; civic tools</li>
+        <li>Advisor technology readiness</li>
+      </ul>
       <p style="margin-bottom:1.5rem"><a href="work.html" style="font-size:0.9rem;color:#0066CC;font-weight:600;text-decoration:none">See the full operational evidence: automation logs, governance, metrics →</a></p>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem">
