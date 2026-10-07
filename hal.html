@@ -968,9 +968,9 @@
   <div class="no-code-line">Built without writing a single line of code.</div>
 
   <div class="build-block" style="margin:6px 0 30px;">
-    <div class="build-num" id="build-count" data-claim="commit-count" data-src="github:twobirds-kramerica default-branch commits since 2026-01-01" data-v="2" data-c="3" data-verified="2026-10-05">6,955</div>
+    <div class="build-num" id="build-count" data-claim="commit-count" data-src="github:twobirds-kramerica default-branch commits since 2026-01-01" data-v="2" data-c="3" data-verified="2026-10-07">7,017</div>
     <div class="build-label">
-      <strong>Commits across 15 repositories, counted 5 October 2026.</strong>
+      <strong>Commits across 15 repositories, counted 7 October 2026.</strong>
       Every one written through an AI agent that reads the codebase, edits files,
       runs the tests, and commits to Git. One business person,
       no engineering team, zero lines of code written by hand.
@@ -990,19 +990,19 @@
 
   <div class="stats-bar stagger">
     <div class="stat">
-      <span class="stat-num" data-counter="6" data-suffix="">6</span>
+      <span class="stat-num" data-counter="6" data-suffix="" data-claim="product-count" data-src="declared -- definition in hal-stack/content-freshness/declared-facts.json (the six shop-floor products)" data-v="4" data-c="3" data-verified="2026-10-07">6</span>
       <span class="stat-label">alpha-stage products<br>DCC the most mature</span>
     </div>
     <div class="stat">
-      <span class="stat-num" data-counter="42" data-suffix="" data-claim="mcp-count" data-src="declared -- counted 2026-09-28: 6 servers configured in Claude Code (~/.claude.json + project scope) + 36 Claude.ai connectors visible in-session; no file/API yields this (claim-spec.md 6.4)" data-v="4" data-c="3" data-verified="2026-09-28">42</span>
-      <span class="stat-label">MCP servers<br>configured</span>
+      <span class="stat-num" data-counter="4" data-suffix="" data-claim="engine-count" data-src="hal-stack/orchestration/overnight-loop.py ENGINE_ORDER" data-v="2" data-c="3" data-verified="2026-10-07">4</span>
+      <span class="stat-label">AI engines<br>working in turns</span>
     </div>
     <div class="stat">
-      <span class="stat-num" data-counter="65" data-suffix="" data-claim="skill-count" data-src="declared -- counted 2026-09-28: 51 project skills (.claude/skills) + 14 user-scope skills (~/.claude/skills)" data-v="4" data-c="3" data-verified="2026-09-28">65</span>
-      <span class="stat-label">skills in the<br>repo and library</span>
+      <span class="stat-num" data-counter="63" data-suffix="" data-claim="skill-count" data-src="git ls-files: SKILL.md files committed in two-birds-portfolio" data-v="2" data-c="3" data-verified="2026-10-07">63</span>
+      <span class="stat-label">skills committed<br>to the repo</span>
     </div>
     <div class="stat">
-      <span class="stat-num" data-claim="repo-count-built" data-src="github:twobirds-kramerica repos created in 2026" data-v="2" data-c="3" data-verified="2026-10-03">15</span>
+      <span class="stat-num" data-claim="repo-count-built" data-src="github:twobirds-kramerica repos created in 2026" data-v="2" data-c="3" data-verified="2026-10-07">15</span>
       <span class="stat-label">repositories<br>built</span>
     </div>
     <div class="stat">
@@ -1038,30 +1038,30 @@
   <div class="eyebrow">The Model</div>
   <h2>A software studio that runs itself overnight</h2>
   <p>Most people using AI are using it like an assistant. This is using it as the engineer. Months went into building the <strong>infrastructure</strong>, the shop floor, before worrying about the products that sit on top of it.</p>
-  <p>An idea can land in a backlog at midnight and have committed code, passing smoke tests, and a health report waiting by morning. One person running a studio that ships like a five-person team.</p>
-  <p>The cost structure: <strong>$0 hosting, $0 npm packages in any product repo.</strong> Sovereignty-first, and as close to free as possible: the stack runs on one LLM subscription by default, with a small number of named, bounded exceptions (currently a low-cost AI video tool), chosen because the output stays owned and portable, not because sovereignty stopped mattering. No vendor can price you out of the system you built.</p>
+  <p>An idea can land in a backlog at midnight and have committed code, passing smoke tests, and a health report waiting by morning. It does not even have to be typed: hold a key and talk, or send a voice note from a phone. Speech is transcribed on the machine, so the audio never leaves it. One person running a studio that ships like a five-person team.</p>
+  <p>The cost structure: <strong>$0 hosting, $0 npm packages in any product repo.</strong> Sovereignty-first, and as close to free as possible. Nothing runs on pay-per-use AI by default: the work rides subscriptions already paid for (Claude, ChatGPT, Google AI Pro and OpenCode Go), spread across four engines so no single vendor is a single point of failure. There are a small number of named, bounded exceptions (currently a low-cost AI video tool), chosen because the output stays owned and portable, not because sovereignty stopped mattering. No vendor can price you out of the system you built.</p>
 </section>
 
 <!-- ═══ CONNECTED ══════════════════════════════════════════════════════ -->
 <section class="reveal">
   <div class="eyebrow">What's Connected</div>
   <h2>The stack</h2>
-  <p>Counted from the live configuration in September 2026.</p>
+  <p>Counted from the repository and the live configuration. The figures below are recomputed by the nightly build, and the date on each one says when it last was.</p>
 
   <div class="callout">
     <div class="callout-eye">📊 Capability snapshot</div>
     <div class="callout-row">
       <div>
-        <div class="callout-n">6</div>
-        <div class="callout-l">MCP servers configured<br>in Claude Code</div>
+        <div class="callout-n"><span data-claim="engine-count" data-src="hal-stack/orchestration/overnight-loop.py ENGINE_ORDER" data-v="2" data-c="3" data-verified="2026-10-07">4</span></div>
+        <div class="callout-l">AI engines in the<br>overnight loop</div>
       </div>
       <div>
-        <div class="callout-n">36</div>
-        <div class="callout-l">Claude.ai connectors<br>(30 signed in)</div>
+        <div class="callout-n"><span data-claim="skill-count" data-src="git ls-files: SKILL.md files committed in two-birds-portfolio" data-v="2" data-c="3" data-verified="2026-10-07">63</span></div>
+        <div class="callout-l">skills committed<br>to the repo</div>
       </div>
       <div>
-        <div class="callout-n">65</div>
-        <div class="callout-l">skills in the repo<br>and user library</div>
+        <div class="callout-n"><span data-claim="mcp-shared-count" data-src="distinct MCP servers across the committed engine configs" data-v="2" data-c="3" data-verified="2026-10-07">4</span></div>
+        <div class="callout-l">MCP servers wired into<br>the engine configs</div>
       </div>
       <div>
         <div class="callout-n">21</div>
@@ -1069,23 +1069,29 @@
       </div>
     </div>
     <div class="callout-note">
-      Configured in Claude Code: Context7, NotebookLM, Playwright, Sequential Thinking, Exa and Sentry.
-      Claude.ai connectors load on demand when the task calls for them; 30 of the 36 are signed in today.
-      Counted 28 September 2026 from the live configuration, not a live feed.
+      Engines: Claude Code orchestrates and judges, Codex runs the overnight work, OpenCode handles browser work and open models through a local gateway,
+      and Antigravity with Gemini is used as an IDE and CLI (its unattended route is paused). Every engine has a weekly usage cap and can be switched off with one line in a file.
+      MCP servers wired into the engine configs: GitHub, Notion, Playwright and NotebookLM. Coverage across engines is uneven today; closing that gap is queued work.
+      Claude.ai account connectors are listed separately below and are not part of these counts.
     </div>
   </div>
 
-  <p style="font-size:.85rem;color:var(--muted);margin-bottom:9px;">Always-on in Claude Code:</p>
+  <p style="font-size:.85rem;color:var(--muted);margin-bottom:9px;">Engines (who does the work):</p>
   <div class="chip-cloud" style="margin-bottom:24px;">
-    <span class="chip on">Notion</span>
-    <span class="chip on">Playwright</span>
-    <span class="chip on">GitHub</span>
-    <span class="chip on">Context7</span>
-    <span class="chip on">NotebookLM</span>
-    <span class="chip on">Sequential Thinking</span>
+    <span class="chip on">Claude Code</span><span class="chip on">Codex</span><span class="chip on">OpenCode</span><span class="chip on">Antigravity / Gemini</span>
   </div>
 
-  <p style="font-size:.85rem;color:var(--muted);margin-bottom:9px;">On-demand in Claude.ai:</p>
+  <p style="font-size:.85rem;color:var(--muted);margin-bottom:9px;">MCP servers (how engines reach tools):</p>
+  <div class="chip-cloud" style="margin-bottom:24px;">
+    <span class="chip on">GitHub</span><span class="chip on">Notion</span><span class="chip on">Playwright</span><span class="chip on">NotebookLM</span><span class="chip on">Context7</span><span class="chip on">Sequential Thinking</span>
+  </div>
+
+  <p style="font-size:.85rem;color:var(--muted);margin-bottom:9px;">Voice and phone:</p>
+  <div class="chip-cloud" style="margin-bottom:24px;">
+    <span class="chip on">Local dictation (Whisper)</span><span class="chip on">Telegram voice notes</span><span class="chip on">Text-to-speech (Kokoro)</span><span class="chip on">Business phone line (VoIP.ms)</span><span class="chip on">Project Harrier (alpha)</span>
+  </div>
+
+  <p style="font-size:.85rem;color:var(--muted);margin-bottom:9px;">Also available on demand in Claude.ai (account connectors, not counted above):</p>
   <div class="chip-cloud">
     <span class="chip">Gmail</span><span class="chip">Google Calendar</span>
     <span class="chip">Google Drive</span><span class="chip">Slack</span>
@@ -1108,85 +1114,105 @@
   </div>
 
   <p style="margin-top:28px;">
-    <a href="stack.html" style="display:inline-block;background:var(--accent-soft);border:1px solid var(--accent-b);color:var(--accent);padding:11px 20px;border-radius:8px;font-size:.94rem;font-weight:600;text-decoration:none;">📖&nbsp; Stack&nbsp;101 — what each tool actually is, in plain English&nbsp; →</a>
+    <a href="stack.html" style="display:inline-block;background:var(--accent-soft);border:1px solid var(--accent-b);color:var(--accent);padding:11px 20px;border-radius:8px;font-size:.94rem;font-weight:600;text-decoration:none;">📖&nbsp; Stack&nbsp;101: every tool in the stack, in plain English&nbsp; →</a>
   </p>
+  <p style="font-size:.85rem;color:var(--muted);margin-top:8px;">What each tool does, whether it is in or out, and why.</p>
 </section>
 
 <!-- ═══ WORKFLOW ═════════════════════════════════════════════════════════ -->
 <section class="reveal">
   <div class="eyebrow">The Workflow</div>
   <h2>From idea to live — one sprint</h2>
-  <p class="wf-intro">Same six steps, grouped by what they actually do: a sprint gets triggered, the agent executes it, the result gets verified before anyone calls it done.</p>
+  <p class="wf-intro">Same flow, grouped by what each stage does: an idea is captured, routed to an engine, executed in isolation, and verified before anyone calls it done.</p>
 
   <div class="workflow stagger">
     <div class="wf-lane">
-      <div class="wf-lane-label"><span class="wf-lane-dot" aria-hidden="true"></span>Trigger</div>
+      <div class="wf-lane-label"><span class="wf-lane-dot" aria-hidden="true"></span>Capture</div>
       <div class="wf-lane-row">
         <div class="step wf-step" style="--wf-i:0;">
-          <div class="step-n"><span class="step-icon" aria-hidden="true">🐍</span>1</div>
+          <div class="step-n"><span class="step-icon" aria-hidden="true">🎙️</span>1</div>
           <div>
-            <div class="step-title">Idea → Notion backlog</div>
-            <p class="step-body">Sprints are filed with priority, effort/return rating, and owner. A Python vetting script blocks any task the agent should handle autonomously — nothing hits the human queue that doesn't need a human.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">Notion API</span></div>
+            <div class="step-title">Say it or send it</div>
+            <p class="step-body">Hold Ctrl+Space and talk, or send a Telegram voice note from a phone. Speech is transcribed on the machine with Whisper, so the audio never leaves it. Forwarded videos and links are transcribed, scored and filed the same way.</p>
+            <div class="tags"><span class="tag">Whisper (local)</span><span class="tag">Telegram</span><span class="tag">live preview</span></div>
           </div>
         </div>
         <div class="wf-arrow wf-arrow-h" style="--wf-i:0;" aria-hidden="true"><span class="wf-dot"></span></div>
         <div class="step wf-step" style="--wf-i:1;">
-          <div class="step-n"><span class="step-icon" aria-hidden="true">🔁</span>2</div>
+          <div class="step-n"><span class="step-icon" aria-hidden="true">🗂️</span>2</div>
           <div>
-            <div class="step-title">next-sprint.py locks the sprint</div>
-            <p class="step-body">A script pulls the top Ready item, marks it In Progress in Notion, prints the brief to the terminal. No manual copy-paste. Design-gated UI sprints are skipped automatically until the gate is cleared.</p>
-            <div class="tags"><span class="tag">Notion sync</span><span class="tag">auto-lock</span></div>
+            <div class="step-title">Filed with an owner</div>
+            <p class="step-body">The idea becomes a backlog item with a priority, an effort and return rating, and an owner. An autonomy check blocks anything an agent can do itself, so only work that truly needs a person reaches the human queue.</p>
+            <div class="tags"><span class="tag">Notion</span><span class="tag">Git sprint queue</span><span class="tag">autonomy check</span></div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="wf-arrow wf-arrow-v" style="--wf-i:1;" aria-hidden="true"><span class="wf-dot"></span></div>
-
+    <div class="wf-arrow wf-arrow-v" style="--wf-i:2;" aria-hidden="true"><span class="wf-dot"></span></div>
     <div class="wf-lane">
-      <div class="wf-lane-label"><span class="wf-lane-dot" aria-hidden="true"></span>Execution</div>
+      <div class="wf-lane-label"><span class="wf-lane-dot" aria-hidden="true"></span>Route</div>
       <div class="wf-lane-row">
         <div class="step wf-step" style="--wf-i:2;">
-          <div class="step-n"><span class="step-icon" aria-hidden="true">🤖</span>3</div>
+          <div class="step-n"><span class="step-icon" aria-hidden="true">🧭</span>3</div>
           <div>
-            <div class="step-title">Claude Code CLI executes</div>
-            <p class="step-body">The AI agent reads the codebase, writes and edits files, runs PowerShell and Python, commits to Git — all in the terminal. Work is staffed like a team: each task is routed to the AI model tier its judgment level calls for, and scoped sub-agents run narrow jobs in parallel on isolated copies of the code. A token guard limits runaway sessions to 50 tool calls per turn.</p>
-            <div class="tags"><span class="tag">Autonomous</span><span class="tag">model routing</span><span class="tag">sub-agents</span><span class="tag">token-guarded</span></div>
+            <div class="step-title">The orchestrator picks the job</div>
+            <p class="step-body">An operating-system timer, not an open terminal, wakes the supervisor every ten minutes. It picks the next job by priority, checks it for collisions and design gates, and sends it to an engine that has headroom.</p>
+            <div class="tags"><span class="tag">overnight-loop.py</span><span class="tag">systemd / Task Scheduler</span><span class="tag">priority order</span></div>
           </div>
         </div>
         <div class="wf-arrow wf-arrow-h" style="--wf-i:2;" aria-hidden="true"><span class="wf-dot"></span></div>
         <div class="step wf-step" style="--wf-i:3;">
-          <div class="step-n"><span class="step-icon" aria-hidden="true">🐙</span>4</div>
+          <div class="step-n"><span class="step-icon" aria-hidden="true">🔀</span>4</div>
+          <div>
+            <div class="step-title">Engines take turns</div>
+            <p class="step-body">Claude Code, Codex, OpenCode and Antigravity share the work. Each engine has a weekly usage cap, so none gets drained. A capped, down or switched-off engine is skipped automatically and the next one takes the job.</p>
+            <div class="tags"><span class="tag">weekly caps</span><span class="tag">failover</span><span class="tag">on/off file</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-arrow wf-arrow-v" style="--wf-i:4;" aria-hidden="true"><span class="wf-dot"></span></div>
+    <div class="wf-lane">
+      <div class="wf-lane-label"><span class="wf-lane-dot" aria-hidden="true"></span>Execute</div>
+      <div class="wf-lane-row">
+        <div class="step wf-step" style="--wf-i:4;">
+          <div class="step-n"><span class="step-icon" aria-hidden="true">🧪</span>5</div>
+          <div>
+            <div class="step-title">Work happens in a disposable copy</div>
+            <p class="step-body">The engine works in a throwaway clone and never touches the live working tree. It may only edit the paths the job declares, it cannot delete or rename files, and its result is secret-scanned before it can land.</p>
+            <div class="tags"><span class="tag">severed clone</span><span class="tag">allowed paths</span><span class="tag">secret scan</span></div>
+          </div>
+        </div>
+        <div class="wf-arrow wf-arrow-h" style="--wf-i:4;" aria-hidden="true"><span class="wf-dot"></span></div>
+        <div class="step wf-step" style="--wf-i:5;">
+          <div class="step-n"><span class="step-icon" aria-hidden="true">🐙</span>6</div>
           <div>
             <div class="step-title">Static HTML pushed to GitHub Pages</div>
-            <p class="step-body">No build step, no Node.js, no npm in the product repos. Git push → GitHub deploys in seconds. $0 hosting. WCAG accessibility checks run automatically via GitHub Actions on every push.</p>
+            <p class="step-body">No build step, no Node.js, no npm in the product repos. Git push, and GitHub deploys in seconds. $0 hosting. WCAG accessibility checks run automatically via GitHub Actions on every push.</p>
             <div class="tags"><span class="tag">Git</span><span class="tag">GitHub Pages</span><span class="tag">axe-core CI</span></div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="wf-arrow wf-arrow-v" style="--wf-i:3;" aria-hidden="true"><span class="wf-dot"></span></div>
-
+    <div class="wf-arrow wf-arrow-v" style="--wf-i:6;" aria-hidden="true"><span class="wf-dot"></span></div>
     <div class="wf-lane">
-      <div class="wf-lane-label"><span class="wf-lane-dot" aria-hidden="true"></span>Verification</div>
+      <div class="wf-lane-label"><span class="wf-lane-dot" aria-hidden="true"></span>Verify</div>
       <div class="wf-lane-row">
-        <div class="step wf-step" style="--wf-i:4;">
-          <div class="step-n"><span class="step-icon" aria-hidden="true">🎭</span>5</div>
+        <div class="step wf-step" style="--wf-i:6;">
+          <div class="step-n"><span class="step-icon" aria-hidden="true">✅</span>7</div>
           <div>
-            <div class="step-title">Overnight build at 2am</div>
-            <p class="step-body">Playwright smoke tests, Lighthouse audits, backlog health, live data refresh, 11-repo sync, uptime monitor. Windows Task Scheduler — no external cron service.</p>
-            <div class="tags"><span class="tag">Playwright</span><span class="tag">Python</span><span class="tag">Task Scheduler</span></div>
+            <div class="step-title">Checked before it counts as done</div>
+            <p class="step-body">Tests run first. For anything on a live site, the real page then has to pass a Playwright check. Landing is fast-forward only, so a failed job cannot overwrite good work.</p>
+            <div class="tags"><span class="tag">Playwright</span><span class="tag">live verification</span><span class="tag">fast-forward only</span></div>
           </div>
         </div>
-        <div class="wf-arrow wf-arrow-h" style="--wf-i:4;" aria-hidden="true"><span class="wf-dot"></span></div>
-        <div class="step wf-step" style="--wf-i:5;">
-          <div class="step-n"><span class="step-icon" aria-hidden="true">🩺</span>6</div>
+        <div class="wf-arrow wf-arrow-h" style="--wf-i:6;" aria-hidden="true"><span class="wf-dot"></span></div>
+        <div class="step wf-step" style="--wf-i:7;">
+          <div class="step-n"><span class="step-icon" aria-hidden="true">🩺</span>8</div>
           <div>
-            <div class="step-title">Session-start health check</div>
-            <p class="step-body">Six checks fire when the terminal opens: smoke test status, overnight build age, autonomy audit, monitoring summary. Aaron sees only what genuinely requires a human.</p>
-            <div class="tags"><span class="tag">AWR enforcement</span></div>
+            <div class="step-title">Nightly build and health checks</div>
+            <p class="step-body">At 2am the overnight build re-checks every product, re-syncs the repos and recomputes the numbers on this page. A health check runs whenever a session starts, and scheduled jobs leave a heartbeat, so a job that goes quiet raises a flag instead of failing silently.</p>
+            <div class="tags"><span class="tag">Task Scheduler</span><span class="tag">heartbeats</span><span class="tag">claims check</span></div>
           </div>
         </div>
       </div>
@@ -1197,8 +1223,8 @@
   <div class="wf-human">
     <div class="wf-human-icon" aria-hidden="true">🧑‍💻</div>
     <div>
-      <div class="wf-human-title">Human in the loop — Aaron</div>
-      <p class="wf-human-body">Every step above runs without him. This is the one node that isn't automatic — what the health check actually surfaces. Everything the agent can resolve on its own never reaches it.</p>
+      <div class="wf-human-title">Human in the loop</div>
+      <p class="wf-human-body">Every step above runs without a person. This is the one node that is not automatic: the decisions, approvals and judgment calls that only a human can make. Everything an agent can resolve on its own never reaches it.</p>
     </div>
   </div>
 </section>
@@ -1207,7 +1233,7 @@
 <section class="reveal">
   <div class="eyebrow">Architecture</div>
   <h2>Five layers. Built to run without babysitting.</h2>
-  <p style="margin-bottom:26px;">Products on top. Automation in the middle. AI as the engine. Sovereignty principles at the base. Every choice above L5 must survive the test: "if this vendor disappeared tomorrow, what breaks?" (The name's a nod to 2001: A Space Odyssey. Make of that what you will.)</p>
+  <p style="margin-bottom:26px;">Products on top. Automation and orchestration in the middle. Several AI engines, held to hard rules, as the workforce. Sovereignty principles at the base. Every choice above L5 must survive the test: "if this vendor disappeared tomorrow, what breaks?" (The name's a nod to 2001: A Space Odyssey. Make of that what you will.)</p>
 
   <div class="arch">
     <div class="arch-header">HAL Stack · Architecture</div>
@@ -1222,9 +1248,8 @@
           <span class="pill" data-logo="careercoach" data-tip-title="Career Coach" data-tip="AI-assisted job search tool. Pulls live StatCan unemployment data monthly. Targets employment agencies and college career centres.">Career Coach</span>
           <span class="pill" data-tip-title="Clarity" data-tip="Free 15-minute AI readiness diagnostic for SME owners. Produces a SWOT and action plan. Qualifies consulting leads before they book a call.">Clarity</span>
           <span class="pill" data-logo="kevscasa" data-tip-title="KevsCasa" data-tip="Apartment search and tracking dashboard. Portfolio piece exploring white-label housing navigation.">KevsCasa</span>
-          <span class="pill" data-tip-title="Job Agent" data-tip="Automated job search. Daily scanner monitors job boards, scores each posting against a CV profile, and routes the highest-fit roles into a Notion pipeline.">Job Agent</span>
-          <span class="pill" data-tip-title="The Chronicler" data-tip="Structured memory layer. Captures every decision, sprint, and pivot in a searchable log any agent can query.">The Chronicler</span>
-          <span class="pill" data-logo="twobirds" data-tip-title="2 Birds Innovation" data-tip="Business strategy consulting. Strategy, operations, and technology roadmaps for founders and growing businesses. Direct engagement model.">2 Birds Innovation</span>
+          <span class="pill" data-tip-title="NormeScore" data-tip="A technology-readiness diagnostic with sourced Canadian benchmarks, so an adviser can see where their own practice stands. Spec complete; held at the gate until one positioning decision is made.">NormeScore</span>
+          <span class="pill" data-logo="twobirds" data-tip-title="2 Birds Innovation" data-tip="Business strategy consulting. Strategy, operations, and technology roadmaps for founders and growing businesses. Direct engagement model.">2 Birds Innovation (consulting)</span>
         </div>
       </div>
     </div>
@@ -1232,15 +1257,22 @@
     <div class="arch-row">
       <div class="arch-num">L2</div>
       <div class="arch-content">
-        <div class="arch-label">HAL Stack — automation · overnight build</div>
+        <div class="arch-label">HAL Stack: automation and orchestration · overnight build</div>
         <div class="arch-pills">
-          <span class="pill" data-tip-title="Sprint system" data-tip="Notion-backed queue of tasks filed with priority, effort/return rating, and owner. A Python vetting script filters what the agent handles autonomously.">Sprint system</span>
-          <span class="pill" data-tip-title="Notion sync" data-tip="Every sprint status, session state, and backlog item stays live in Notion. Claude Code reads and writes Notion directly via MCP — no manual updates.">Notion sync</span>
-          <span class="pill" data-tip-title="Overnight build (2am)" data-tip="Windows Task Scheduler fires at 2am every night. Runs repo syncs, Lighthouse audits, smoke tests, autonomy audit, outbox sender, and morning briefing. No external cron service.">Overnight build (2am)</span>
+          <span class="pill" data-tip-title="Sprint queue" data-tip="Every job is filed in Git (and mirrored in Notion) with a priority, an effort and return rating, and an owner. An autonomy check filters what an agent handles by itself.">Sprint queue</span>
+          <span class="pill" data-tip-title="Orchestrator" data-tip="An operating-system timer wakes a supervisor every ten minutes. It picks the next job by priority, watches the running one, and survives closed terminals and reboots. Closing the laptop lid on a terminal does not stop it.">Orchestrator</span>
+          <span class="pill" data-tip-title="Headless sprint runner" data-tip="Runs one job unattended in a disposable clone of the repo. The engine only sees the clone, may only edit declared paths, cannot delete or rename, and its result is secret-scanned and landed fast-forward only.">Headless sprint runner</span>
+          <span class="pill" data-tip-title="Engine routing and weekly caps" data-tip="Chooses an engine for each job. Each paid account has a weekly usage cap; a capped, failed or switched-off engine is skipped and the next eligible one takes the job. Engines can be switched off with one line in a file.">Engine routing + weekly caps</span>
+          <span class="pill" data-tip-title="Overnight build (2am)" data-tip="Windows Task Scheduler fires at 2am every night. Runs repo syncs, Lighthouse audits, smoke tests, autonomy audit, outbox sender, claims check and morning briefing. No external cron service.">Overnight build (2am)</span>
           <span class="pill" data-tip-title="Playwright smoke tests" data-tip="Headless Chromium hits every live product nightly. Checks key page elements and user flows. Screenshots are saved on failure.">Playwright smoke tests</span>
-          <span class="pill" data-tip-title="Uptime monitor" data-tip="uptime-monitor.py checks all product URLs nightly. Logs status codes. Flags anything that returns an error before the morning session starts.">Uptime monitor</span>
-          <span class="pill" data-tip-title="Autonomy audit" data-tip="Scans every open backlog item each night. Anything the agent can execute without human input gets flagged EXECUTE_NOW and never hits Aaron's queue.">Autonomy audit</span>
-          <span class="pill" data-tip-title="Daily briefing (Logan v3)" data-tip="Logan is the morning briefing agent. Reads overnight results and Notion P1 items, writes a plain-English summary. Ready when the laptop opens.">Daily briefing (Logan v3)</span>
+          <span class="pill" data-tip-title="Uptime monitor" data-tip="uptime-monitor.py checks all product URLs nightly. Logs status codes and flags anything that returns an error before the morning session starts.">Uptime monitor</span>
+          <span class="pill" data-tip-title="Autonomy audit" data-tip="Scans every open backlog item each night. Anything an agent can execute without human input gets flagged for the agent and never reaches the human queue.">Autonomy audit</span>
+          <span class="pill" data-tip-title="Health checks and heartbeats" data-tip="A health check runs when a session starts. Scheduled jobs write a heartbeat; a job that goes quiet raises a flag with a threshold, instead of failing silently.">Health checks + heartbeats</span>
+          <span class="pill" data-tip-title="Scribe intake" data-tip="Checks a Telegram inbox every 15 minutes for forwarded videos, links and voice notes, transcribes them on the machine, scores them against current work and files them.">Scribe intake</span>
+          <span class="pill" data-tip-title="Project Harrier" data-tip="A mobile voice and text agent. A voice note from a phone is transcribed locally, then turned into a calendar invite, a formatted Google Doc or a Notion page. Built to keep personal data local, with a safe hold in place of any pay-per-use fallback.">Project Harrier (alpha)</span>
+          <span class="pill" data-tip-title="The Chronicler" data-tip="Structured memory layer. Captures every decision, sprint, and pivot in a searchable log any agent can query.">The Chronicler</span>
+          <span class="pill" data-tip-title="Job scanner" data-tip="Daily scan of job boards. Scores each posting against a CV profile and routes the highest-fit roles into a pipeline file. Runs on a schedule, with a freshness check on its output.">Job scanner</span>
+          <span class="pill" data-tip-title="Daily briefing (Logan v3)" data-tip="Logan is the morning briefing agent. Reads overnight results and priority items, writes a plain-English summary. Ready when the laptop opens.">Daily briefing (Logan v3)</span>
         </div>
       </div>
     </div>
@@ -1248,16 +1280,19 @@
     <div class="arch-row ai-layer">
       <div class="arch-num">L3</div>
       <div class="arch-content">
-        <div class="arch-label" data-claim="persona-count" data-src="declared -- claim-spec.md §6.2" data-v="4" data-c="3" data-verified="2026-08-12">AI + Governance — the engineer · review personas · hard rules</div>
+        <div class="arch-label" data-claim="persona-count" data-src="declared -- claim-spec.md §6.2" data-v="4" data-c="3" data-verified="2026-08-12">AI + Governance: the workforce · review personas · hard rules</div>
         <div class="arch-pills">
-          <span class="pill" data-tip-title="Claude Code CLI" data-tip="The AI agent that executes sprints. Reads the codebase, writes and edits files, runs PowerShell and Python, commits to Git — all from the terminal. No human typing code.">Claude Code CLI</span>
-          <span class="pill hi" data-claim="mcp-count" data-src="declared -- counted 2026-09-28 (6 Claude Code + 36 Claude.ai connectors)" data-v="4" data-c="3" data-verified="2026-09-28" data-tip-title="42 MCP servers configured" data-tip="MCP (Model Context Protocol) servers let the AI talk to external tools directly: 6 configured in Claude Code (Context7, NotebookLM, Playwright, Sequential Thinking, Exa, Sentry) plus 36 Claude.ai connectors, 30 of them signed in. Loaded when the task calls for them.">42 MCP servers configured</span>
-          <span class="pill hi" data-claim="skill-count" data-src="declared -- counted 2026-09-28: 51 project + 14 user-scope" data-v="4" data-c="3" data-verified="2026-09-28" data-tip-title="65 skills" data-tip="Skills are reusable instruction sets that Claude loads on demand, like a reference book the agent reads before a specialized task. 51 live in this repository and 14 in the user library. Examples: WCAG audit skill, learning design skill, sprint formatting skill.">65 skills</span>
-          <span class="pill hi" data-claim="agent-count" data-src="hal-stack/data/hal-stats.json:agent_count (non-README .md files in .claude/agents/)" data-v="2" data-c="3" data-verified="2026-09-28" data-tip-title="21 custom agents" data-tip="Purpose-built agents for specific jobs: architecture review, build validation, CV tailoring, daily briefing, sprint validation, UX and IA review, and others. Each has its own instruction set.">21 custom agents</span>
+          <span class="pill" data-tip-title="Claude Code" data-tip="Orchestrates and judges. Reads the codebase, edits files, runs scripts, commits to Git, and decides what the other engines are given.">Claude Code</span>
+          <span class="pill" data-tip-title="Codex" data-tip="Runs unattended overnight work in disposable clones, on an existing ChatGPT subscription.">Codex</span>
+          <span class="pill" data-tip-title="OpenCode" data-tip="Handles browser work and open models, reached through a local gateway (OmniRoute) on an existing OpenCode Go subscription.">OpenCode</span>
+          <span class="pill" data-tip-title="Antigravity and Gemini" data-tip="Used as an IDE and a command-line tool on an existing Google AI Pro plan. Its unattended API route is paused, and no pay-per-use fallback is allowed.">Antigravity + Gemini</span>
+          <span class="pill hi" data-tip-title="MCP servers wired into the engine configs" data-tip="MCP (Model Context Protocol) servers connect an engine to tools. The committed engine configs wire in GitHub, Notion, Playwright and NotebookLM. Claude Code adds Context7 and Sequential Thinking. Coverage is uneven across engines today."><span data-claim="mcp-shared-count" data-src="distinct MCP servers across the committed engine configs" data-v="2" data-c="3" data-verified="2026-10-07">4</span> MCP servers wired</span>
+          <span class="pill hi" data-tip-title="Skills" data-tip="Skills are reusable instruction sets an agent loads for a type of work: design review, sprint formatting, sales and finance packs. Counted as the SKILL.md files committed to the repo."><span data-claim="skill-count" data-src="git ls-files: SKILL.md files committed in two-birds-portfolio" data-v="2" data-c="3" data-verified="2026-10-07">63</span> skills</span>
+          <span class="pill hi" data-claim="agent-count" data-src="hal-stack/data/hal-stats.json:agent_count (non-README .md files in .claude/agents/)" data-v="2" data-c="3" data-verified="2026-10-07" data-tip-title="21 custom agents" data-tip="Purpose-built agents for specific sprint types: build validation, sprint validation, security review, UX launch audit, CV tailoring and more. Each has a narrow job and runs on isolated copies of the code.">21 custom agents</span>
           <span class="pill" data-tip-title="Scrappy Pack (6)" data-tip="Six advisory sub-personas that gut-check every substantive output: Mack (cash), Tess (visibility), Grit (time), Patch (simplicity), Sage (long game), and Sov (sovereignty). They catch blind spots before anything ships.">Scrappy Pack (6)</span>
           <span class="pill" data-tip-title="Founding Board" data-tip="Synthetic personas across departments such as strategy, legal, engineering, marketing, operations and product. They review Stage 3+ sprint outputs before commit. A REWORK verdict blocks the push.">Founding Board</span>
           <span class="pill" data-tip-title="Inner Circle" data-tip="Two seats that report directly: The Hand (Chief of Staff equivalent — synthesizes all team output) and the Love Balance Advisor (tracks workload and wellbeing, can override other agents).">Inner Circle</span>
-          <span class="pill" data-tip-title="Design gate" data-tip="Four conditions must be met before any UI sprint starts: PRODUCT.md exists, an accessibility audit has run this quarter, Aaron approved the shape brief, dark mode tested on Android Chrome. One missing — sprint stops.">Design gate</span>
+          <span class="pill" data-tip-title="Design gate" data-tip="Four conditions must be met before any UI sprint starts: PRODUCT.md exists, an accessibility audit has run this quarter, a human approved the shape brief, dark mode tested on Android Chrome. One missing — sprint stops.">Design gate</span>
           <span class="pill" data-tip-title="Voice-check protocol" data-tip="Every email, landing page, or grant submission is scanned against a banned word list before it leaves the system. A compliance tag is appended proving the scan ran.">Voice-check protocol</span>
           <span class="pill" data-tip-title="Token guard" data-tip="Blocks an identical tool call repeated three times in a row and any touch of credential files. Warns and logs (never blocks) when a single turn passes 120 and then 200 tool calls, so a runaway loop is visible.">Token guard</span>
         </div>
@@ -1267,15 +1302,18 @@
     <div class="arch-row">
       <div class="arch-num">L4</div>
       <div class="arch-content">
-        <div class="arch-label">Infrastructure — hosting · CI/CD · local compute</div>
+        <div class="arch-label">Infrastructure — hosting · CI/CD · local compute · fleet</div>
         <div class="arch-pills">
           <span class="pill" data-tip-title="GitHub Pages" data-tip="All products are hosted on GitHub Pages. Static HTML files, deployed on git push. $0 cost. No server to maintain or secure.">GitHub Pages</span>
           <span class="pill" data-tip-title="GitHub Actions (15+ workflows)" data-tip="Automated workflows that fire on every code push. Run WCAG accessibility checks, deploy to GitHub Pages, validate HTML, and more. No manual QA step.">GitHub Actions (15+ workflows)</span>
-          <span class="pill" data-tip-title="Git · 15 repos" data-tip="15 GitHub repositories created in 2026: one per product plus portfolio and infrastructure repos. Examples: digital-confidence (DCC Adults), career-coach, aaron-patzalek (this site), two-birds-portfolio (HAL Stack command centre). Of these, 11 are in the nightly sync set; the rest are archived, template or utility repos. Counted 3 October 2026." data-claim="repo-count-built" data-src="github:twobirds-kramerica repos created in 2026" data-v="2" data-c="3" data-verified="2026-10-03">Git · 15 repos</span>
-          <span class="pill" data-tip-title="Codeberg mirror (not yet active)" data-tip="The nightly script can push to a Codeberg.org mirror if a remote is configured, but none is configured on the primary machine today, so this is a planned exit path, not a running one. The code itself is on GitHub.">Codeberg mirror (not yet active)</span>
-          <span class="pill" data-tip-title="Windows Task Scheduler" data-tip="The overnight build runs via Windows Task Scheduler at 2am — no cloud cron service, no subscription, no external dependency. The laptop runs it locally.">Windows Task Scheduler</span>
+          <span class="pill" data-claim="repo-count-built" data-src="github:twobirds-kramerica repos created in 2026" data-v="2" data-c="3" data-verified="2026-10-07" data-tip-title="Git · 15 repos" data-tip="15 GitHub repositories created in 2026: one per product plus portfolio and infrastructure repos. Examples: digital-confidence (DCC Adults), career-coach, aaron-patzalek (this site), two-birds-portfolio (the HAL Stack itself).">Git · 15 repos</span>
+          <span class="pill" data-tip-title="Four-machine fleet" data-tip="Four machines, Linux and Windows, linked over a private network. Each can run the same launchers and the same scheduled jobs, so work does not depend on one laptop being awake.">Four-machine fleet</span>
+          <span class="pill" data-tip-title="Local model gateway (OmniRoute)" data-tip="A gateway on the local network that reaches open models through an existing subscription, so the stack is not tied to one model vendor.">Local model gateway</span>
+          <span class="pill" data-tip-title="Local speech" data-tip="Whisper for speech-to-text and Kokoro for text-to-speech both run on the machine. Voice never goes to a cloud service.">Local speech</span>
+          <span class="pill" data-tip-title="Private Command Deck" data-tip="A password-gated dashboard on Cloudflare Pages: today&#x27;s priorities, the backlog and each product&#x27;s health on one screen, reachable from a phone.">Private Command Deck</span>
+          <span class="pill" data-tip-title="Windows Task Scheduler + systemd timers" data-tip="The overnight build runs on Windows Task Scheduler; the orchestrator runs on systemd timers on Linux. No cloud cron service, no subscription, no external dependency.">Task Scheduler + systemd</span>
           <span class="pill" data-tip-title="Python stdlib" data-tip="All automation scripts use Python's built-in standard library only. No third-party packages to install, update, or break. Runs on any Python 3.x install.">Python stdlib</span>
-          <span class="pill" data-tip-title="smtplib (no SendGrid)" data-tip="Outbound emails are sent via Python's smtplib directly through Gmail. No SendGrid, no Mailchimp, no subscription. One less vendor in the stack.">smtplib (no SendGrid)</span>
+          <span class="pill" data-tip-title="Codeberg mirror (not yet active)" data-tip="The nightly script can push to a Codeberg.org mirror if a remote is configured, but none is configured on the primary machine today, so this is a planned exit path, not a live one.">Codeberg mirror (not yet active)</span>
         </div>
       </div>
     </div>
@@ -1289,6 +1327,9 @@
           <span class="pill tl">No npm in products</span>
           <span class="pill tl">Open-source first</span>
           <span class="pill tl">Self-hosted before SaaS</span>
+          <span class="pill tl">Subscription-first, no surprise API bills</span>
+          <span class="pill tl">Audio stays local</span>
+          <span class="pill tl">A reason on file for every tool</span>
           <span class="pill tl">Canadian English</span>
           <span class="pill tl">SR&amp;ED-tracked research</span>
           <span class="pill tl">Decapitation-checklist gated</span>
@@ -1309,7 +1350,7 @@
       <div class="gate-icon">🔒</div>
       <div class="gate-name">Design Gate</div>
       <div class="gate-when">Fires before any UI sprint starts</div>
-      <p class="gate-body">Four conditions required: PRODUCT.md exists, /impeccable audit has run this quarter, Aaron approved the shape brief for structural changes, dark mode tested on Android Chrome. Any one missing — sprint doesn't start.</p>
+      <p class="gate-body">Four conditions required: PRODUCT.md exists, /impeccable audit has run this quarter, a human approved the shape brief for structural changes, dark mode tested on Android Chrome. Any one missing — sprint doesn't start.</p>
     </div>
     <div class="gate">
       <div class="gate-icon">🧑‍🤝‍🧑</div>
@@ -1327,12 +1368,12 @@
       <div class="gate-icon">🛡️</div>
       <div class="gate-name">Sovereignty Check</div>
       <div class="gate-when">Fires before any tool is added to the stack</div>
-      <p class="gate-body">Before any SaaS, API, or dependency lands, the decapitation checklist runs. If this service disappeared tomorrow, what breaks? No paid service without proof no sovereign alternative exists.</p>
+      <p class="gate-body">Before any SaaS, API, or dependency lands, the decapitation checklist runs, and the tool's written rationale is read first: why it was chosen, what it replaced, and what a swap would have to beat. If this service disappeared tomorrow, what breaks? No paid service without proof no sovereign alternative exists.</p>
     </div>
     <div class="gate">
       <div class="gate-icon">⚡</div>
       <div class="gate-name">Autonomy Gate (AWR)</div>
-      <div class="gate-when">Fires before any task hits Aaron's queue</div>
+      <div class="gate-when">Fires before any task reaches the human queue</div>
       <p class="gate-body">Three checks: Can PowerShell or Python execute this? Can an MCP tool handle it? Does it only need files and scripts? If any yes — the agent does it. Only genuinely human tasks reach the queue.</p>
     </div>
     <div class="gate">
@@ -1341,13 +1382,37 @@
       <div class="gate-when">Always on — every AI session</div>
       <p class="gate-body">The guard blocks an identical call repeated three times in a row and any touch of credential files, and warns and logs when a single turn passes 120 and then 200 tool calls. The warnings never stop the work; they make a runaway loop visible.</p>
     </div>
+    <div class="gate">
+      <div class="gate-icon">✅</div>
+      <div class="gate-name">Live Verification</div>
+      <div class="gate-when">Fires before anything on a live site is called done</div>
+      <p class="gate-body">Nothing that touches a live site is done until a Playwright check passes against the real URL. Domain and DNS changes also get a check through the real public path, on a deep page, not just the home page. A &quot;done&quot; past a failing check is treated as a fabrication.</p>
+    </div>
+    <div class="gate">
+      <div class="gate-icon">🛑</div>
+      <div class="gate-name">Deletion Guard</div>
+      <div class="gate-when">Fires before anything destructive</div>
+      <p class="gate-body">Deleting data, rewriting git history, or removing cloud resources needs an explicit yes from a human in that session. A hook enforces it, so an agent cannot talk its way past it.</p>
+    </div>
+    <div class="gate">
+      <div class="gate-icon">⚖️</div>
+      <div class="gate-name">Capacity Caps</div>
+      <div class="gate-when">Fires before an engine takes a job</div>
+      <p class="gate-body">Each paid AI account has a weekly usage cap (75% for the two main ones). Past it, the engine is skipped until its weekly reset, so no subscription is run dry and no engine becomes a hidden single point of failure.</p>
+    </div>
+    <div class="gate">
+      <div class="gate-icon">🔬</div>
+      <div class="gate-name">Proof It Works</div>
+      <div class="gate-when">Fires before a scheduled job counts as done</div>
+      <p class="gate-body">A new scheduled job is not done when it runs once. It needs a trigger confirmed on the live scheduler, a heartbeat, an alert threshold, and a test where the trigger is removed and the health check turns red.</p>
+    </div>
   </div>
 </section>
 
 <!-- ═══ OVERNIGHT ═════════════════════════════════════════════════════════ -->
 <section class="reveal">
   <div class="eyebrow">The Overnight Loop</div>
-  <h2>What runs at 2am every night</h2>
+  <h2>What runs at 2am every night, and all day</h2>
 
   <div class="loop stagger">
     <div class="loop-row">
@@ -1355,7 +1420,7 @@
         <div class="loop-icon">🔄</div>
         <div class="loop-time">2:00 am</div>
         <div>
-          <div class="loop-title" data-claim="repo-count-synced" data-src="hal-stack/scripts/run-overnight-build.bat nightly sync loop (repo count)" data-v="2" data-c="3" data-verified="2026-10-03">11 repos pulled and pushed</div>
+          <div class="loop-title" data-claim="repo-count-synced" data-src="hal-stack/scripts/run-overnight-build.bat nightly sync loop (repo count)" data-v="2" data-c="3" data-verified="2026-10-07">11 repos pulled and pushed</div>
           <p class="loop-detail">The 11 active product and portfolio repos synced from remote and pushed to GitHub. Fewer than the 15 built, because archived, template and utility repos are not in the nightly set.</p>
         </div>
       </div>
@@ -1386,7 +1451,7 @@
         <div class="loop-time">2:05 am</div>
         <div>
           <div class="loop-title">Autonomy audit</div>
-          <p class="loop-detail">Scans every open backlog item. Anything the AI can handle gets flagged EXECUTE_NOW — it never reaches Aaron.</p>
+          <p class="loop-detail">Scans every open backlog item. Anything the AI can handle gets flagged for the agent. It never reaches a human.</p>
         </div>
       </div>
     </div>
@@ -1417,6 +1482,46 @@
         <div>
           <div class="loop-title">StatCan LFS data refresh</div>
           <p class="loop-detail">Pulls Statistics Canada Table 14-10-0287-01. Extracts national unemployment rate. Updates Career Coach automatically.</p>
+        </div>
+      </div>
+    </div>
+    <div class="loop-row">
+      <div class="loop-row-inner" style="--loop-i: 20;">
+        <div class="loop-icon">📈</div>
+        <div class="loop-time">2:08 am</div>
+        <div>
+          <div class="loop-title">Numbers on this page recomputed</div>
+          <p class="loop-detail">The claims check re-counts commits, repositories, skills, engines and products from their sources and stamps the date it ran. If this job does not run, the date visibly stops moving.</p>
+        </div>
+      </div>
+    </div>
+    <div class="loop-row">
+      <div class="loop-row-inner" style="--loop-i: 21;">
+        <div class="loop-icon">🧭</div>
+        <div class="loop-time">Every 10 min</div>
+        <div>
+          <div class="loop-title">Orchestrator tick</div>
+          <p class="loop-detail">An operating-system timer wakes the supervisor. It dispatches the next eligible job, watches the one in flight, and moves a stuck job to another engine. No terminal has to stay open.</p>
+        </div>
+      </div>
+    </div>
+    <div class="loop-row">
+      <div class="loop-row-inner" style="--loop-i: 22;">
+        <div class="loop-icon">🐦</div>
+        <div class="loop-time">Every 15 min</div>
+        <div>
+          <div class="loop-title">Scribe intake</div>
+          <p class="loop-detail">Checks the Telegram inbox for forwarded videos, links and voice notes, transcribes them on the machine, scores them against current work and files them.</p>
+        </div>
+      </div>
+    </div>
+    <div class="loop-row">
+      <div class="loop-row-inner" style="--loop-i: 23;">
+        <div class="loop-icon">🫀</div>
+        <div class="loop-time">All day</div>
+        <div>
+          <div class="loop-title">Heartbeats</div>
+          <p class="loop-detail">Scheduled jobs write a heartbeat as they finish. A missing or stale one raises a flag at the next health check, so a job that quietly stops is noticed.</p>
         </div>
       </div>
     </div>
@@ -1531,7 +1636,7 @@
     <div class="product">
       <div class="product-icon">🐦</div>
       <div class="product-name">Content intelligence — Scribe</div>
-      <span class="badge badge-build">In development</span>
+      <span class="badge badge-build">Running, alpha</span>
       <div class="product-for">→ Idea capture &amp; triage</div>
       <p class="product-body">Forward a video or clip and the system pulls the transcript, scores it against what Two Birds is actually working on, routes the strong ones, and catalogues the rest for the record. Built from tools already in the stack.</p>
     </div>
@@ -1557,7 +1662,7 @@
       <div class="product-name"><span class="symphonica-wordmark">Symphonica</span><span class="symphonica-subtitle">(Multi-Harness Build Orchestrator)</span></div>
       <span class="badge badge-build">Building</span>
       <div class="product-for">→ Coding work that keeps moving</div>
-      <p class="product-body">Routes coding work across Claude Code, Codex, and OpenCode Go by real-time capacity, so work keeps moving when one tool hits a usage limit, then reviews and lands the result automatically. The routing layer itself is live — both paid tiers, Codex (ChatGPT seat) and OpenCode Go, are connected and tested — but the fuller review-and-land loop is built and not yet trusted for unattended use.</p>
+      <p class="product-body">Routes coding work across Claude Code, Codex, OpenCode and Antigravity by real-time capacity and weekly usage caps, so work keeps moving when one tool hits a limit. The supervisor, the disposable-copy runner and the landing checks are live: an overnight run is started on request, then runs without anyone watching. What is still being built is the safety net around it: canary jobs, clearer failure alerts, and engine coverage that is the same everywhere.</p>
     </div>
 
     <div class="product">
@@ -1566,6 +1671,22 @@
       <span class="badge badge-build">In development</span>
       <div class="product-for">→ On-brand builds, faster</div>
       <p class="product-body">Adopting vetted, open brand design systems so any new page can be scaffolded on-brand in one shot — each one cross-checked against the stack's sovereignty rules before it's pulled in.</p>
+    </div>
+
+    <div class="product">
+      <div class="product-icon">📱</div>
+      <div class="product-name">Project Harrier — mobile voice agent</div>
+      <span class="badge badge-build">Alpha</span>
+      <div class="product-for">→ Acting on a voice note from a phone</div>
+      <p class="product-body">Send a voice note or a text from a phone and it acts: the audio is transcribed on the machine, then turned into a calendar invite, a formatted Google Doc or a Notion page. It runs on subscriptions already paid for, with a safe hold in place of any pay-per-use fallback, and keeps personal data local. Next: voicemail triage and a morning briefing.</p>
+    </div>
+
+    <div class="product">
+      <div class="product-icon">🎙️</div>
+      <div class="product-name">Voice in every coding tool</div>
+      <span class="badge badge-build">In development</span>
+      <div class="product-for">→ Hold a key, talk, see the words as you speak</div>
+      <p class="product-body">Hold Ctrl+Space and talk, with live text while you speak, in any coding tool. The live preview and local transcription work today. Delivering the final text into every tool the same way is being hardened.</p>
     </div>
   </div>
 </section>
