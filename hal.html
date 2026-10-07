@@ -968,7 +968,7 @@
   <div class="no-code-line">Built without writing a single line of code.</div>
 
   <div class="build-block" style="margin:6px 0 30px;">
-    <div class="build-num" id="build-count" data-claim="commit-count" data-src="github:twobirds-kramerica default-branch commits since 2026-01-01" data-v="2" data-c="3" data-verified="2026-10-07">7,017</div>
+    <div class="build-num" id="build-count" data-claim="commit-count" data-src="github:twobirds-kramerica default-branch commits since 2026-01-01" data-v="2" data-c="3" data-verified="2026-10-07">7,024</div>
     <div class="build-label">
       <strong>Commits across 15 repositories, counted 7 October 2026.</strong>
       Every one written through an AI agent that reads the codebase, edits files,
@@ -991,7 +991,7 @@
   <div class="stats-bar stagger">
     <div class="stat">
       <span class="stat-num" data-counter="6" data-suffix="" data-claim="product-count" data-src="declared -- definition in hal-stack/content-freshness/declared-facts.json (the six shop-floor products)" data-v="4" data-c="3" data-verified="2026-10-07">6</span>
-      <span class="stat-label">alpha-stage products<br>DCC the most mature</span>
+      <span class="stat-label">products in build<br>DCC the most mature</span>
     </div>
     <div class="stat">
       <span class="stat-num" data-counter="4" data-suffix="" data-claim="engine-count" data-src="hal-stack/orchestration/overnight-loop.py ENGINE_ORDER" data-v="2" data-c="3" data-verified="2026-10-07">4</span>
@@ -999,7 +999,7 @@
     </div>
     <div class="stat">
       <span class="stat-num" data-counter="63" data-suffix="" data-claim="skill-count" data-src="git ls-files: SKILL.md files committed in two-birds-portfolio" data-v="2" data-c="3" data-verified="2026-10-07">63</span>
-      <span class="stat-label">skills committed<br>to the repo</span>
+      <span class="stat-label">skills committed<br>incl. vendored packs</span>
     </div>
     <div class="stat">
       <span class="stat-num" data-claim="repo-count-built" data-src="github:twobirds-kramerica repos created in 2026" data-v="2" data-c="3" data-verified="2026-10-07">15</span>
@@ -1038,8 +1038,8 @@
   <div class="eyebrow">The Model</div>
   <h2>A software studio that runs itself overnight</h2>
   <p>Most people using AI are using it like an assistant. This is using it as the engineer. Months went into building the <strong>infrastructure</strong>, the shop floor, before worrying about the products that sit on top of it.</p>
-  <p>An idea can land in a backlog at midnight and have committed code, passing smoke tests, and a health report waiting by morning. It does not even have to be typed: hold a key and talk, or send a voice note from a phone. Speech is transcribed on the machine, so the audio never leaves it. One person running a studio that ships like a five-person team.</p>
-  <p>The cost structure: <strong>$0 hosting, $0 npm packages in any product repo.</strong> Sovereignty-first, and as close to free as possible. Nothing runs on pay-per-use AI by default: the work rides subscriptions already paid for (Claude, ChatGPT, Google AI Pro and OpenCode Go), spread across four engines so no single vendor is a single point of failure. There are a small number of named, bounded exceptions (currently a low-cost AI video tool), chosen because the output stays owned and portable, not because sovereignty stopped mattering. No vendor can price you out of the system you built.</p>
+  <p>An idea can land in a backlog at midnight and have committed code, passing smoke tests, and a health report waiting by morning. It does not even have to be typed: hold a key and talk, or send a voice note from a phone. Speech is transcribed on the machine with Whisper, not by a cloud transcription service. One person running a studio that ships like a five-person team.</p>
+  <p>The cost structure: <strong>$0 hosting, $0 npm packages in any product repo.</strong> Sovereignty-first, and as close to free as possible. Nothing runs on pay-per-use AI. The work rides subscriptions already paid for (Claude, ChatGPT, Google AI Pro and OpenCode Go), spread across four engines so no single vendor is a single point of failure, and the one unattended route that used prepaid API credit is switched off. There are a small number of named, bounded exceptions (currently a low-cost AI video tool), chosen because the output stays owned and portable, not because sovereignty stopped mattering. No vendor can price you out of the system you built.</p>
 </section>
 
 <!-- ═══ CONNECTED ══════════════════════════════════════════════════════ -->
@@ -1057,7 +1057,7 @@
       </div>
       <div>
         <div class="callout-n"><span data-claim="skill-count" data-src="git ls-files: SKILL.md files committed in two-birds-portfolio" data-v="2" data-c="3" data-verified="2026-10-07">63</span></div>
-        <div class="callout-l">skills committed<br>to the repo</div>
+        <div class="callout-l">skills committed to the repo<br>(incl. reviewed vendored packs)</div>
       </div>
       <div>
         <div class="callout-n"><span data-claim="mcp-shared-count" data-src="distinct MCP servers across the committed engine configs" data-v="2" data-c="3" data-verified="2026-10-07">4</span></div>
@@ -1065,13 +1065,13 @@
       </div>
       <div>
         <div class="callout-n">21</div>
-        <div class="callout-l">custom agents<br>for specific sprint types</div>
+        <div class="callout-l">Claude Code custom agents<br>for specific sprint types</div>
       </div>
     </div>
     <div class="callout-note">
       Engines: Claude Code orchestrates and judges, Codex runs the overnight work, OpenCode handles browser work and open models through a local gateway,
-      and Antigravity with Gemini is used as an IDE and CLI (its unattended route is paused). Every engine has a weekly usage cap and can be switched off with one line in a file.
-      MCP servers wired into the engine configs: GitHub, Notion, Playwright and NotebookLM. Coverage across engines is uneven today; closing that gap is queued work.
+      and Antigravity with Gemini is used as an IDE and CLI (its unattended route is paused). The two main paid accounts (Claude and Codex) each have a weekly usage cap, and any engine can be switched off with one line in a file.
+      MCP servers wired into the engine configs: GitHub, Notion, Playwright and NotebookLM. Known gaps: coverage across engines is uneven (queued work), the unattended Antigravity route is paused, and the architecture page is still a hand-typed snapshot.
       Claude.ai account connectors are listed separately below and are not part of these counts.
     </div>
   </div>
@@ -1114,7 +1114,7 @@
   </div>
 
   <p style="margin-top:28px;">
-    <a href="stack.html" style="display:inline-block;background:var(--accent-soft);border:1px solid var(--accent-b);color:var(--accent);padding:11px 20px;border-radius:8px;font-size:.94rem;font-weight:600;text-decoration:none;">📖&nbsp; Stack&nbsp;101: every tool in the stack, in plain English&nbsp; →</a>
+    <a href="stack.html" style="display:inline-block;background:var(--accent-soft);border:1px solid var(--accent-b);color:var(--accent);padding:11px 20px;border-radius:8px;font-size:.94rem;font-weight:600;text-decoration:none;">📖&nbsp; Stack&nbsp;101: the tools in the stack, in plain English&nbsp; →</a>
   </p>
   <p style="font-size:.85rem;color:var(--muted);margin-top:8px;">What each tool does, whether it is in or out, and why.</p>
 </section>
@@ -1133,7 +1133,7 @@
           <div class="step-n"><span class="step-icon" aria-hidden="true">🎙️</span>1</div>
           <div>
             <div class="step-title">Say it or send it</div>
-            <p class="step-body">Hold Ctrl+Space and talk, or send a Telegram voice note from a phone. Speech is transcribed on the machine with Whisper, so the audio never leaves it. Forwarded videos and links are transcribed, scored and filed the same way.</p>
+            <p class="step-body">Hold Ctrl+Space and talk, or send a Telegram voice note from a phone. Dictation and Telegram voice notes are transcribed on the machine with Whisper, not by a cloud transcription service. Forwarded videos and links are transcribed, scored and filed the same way.</p>
             <div class="tags"><span class="tag">Whisper (local)</span><span class="tag">Telegram</span><span class="tag">live preview</span></div>
           </div>
         </div>
@@ -1165,7 +1165,7 @@
           <div class="step-n"><span class="step-icon" aria-hidden="true">🔀</span>4</div>
           <div>
             <div class="step-title">Engines take turns</div>
-            <p class="step-body">Claude Code, Codex, OpenCode and Antigravity share the work. Each engine has a weekly usage cap, so none gets drained. A capped, down or switched-off engine is skipped automatically and the next one takes the job.</p>
+            <p class="step-body">Claude Code, Codex, OpenCode and Antigravity share the work. The two main paid accounts have a weekly usage cap, so neither gets drained. A capped, down or switched-off engine is skipped automatically and the next one takes the job.</p>
             <div class="tags"><span class="tag">weekly caps</span><span class="tag">failover</span><span class="tag">on/off file</span></div>
           </div>
         </div>
@@ -1211,7 +1211,7 @@
           <div class="step-n"><span class="step-icon" aria-hidden="true">🩺</span>8</div>
           <div>
             <div class="step-title">Nightly build and health checks</div>
-            <p class="step-body">At 2am the overnight build re-checks every product, re-syncs the repos and recomputes the numbers on this page. A health check runs whenever a session starts, and scheduled jobs leave a heartbeat, so a job that goes quiet raises a flag instead of failing silently.</p>
+            <p class="step-body">At 2am the overnight build re-checks every product, re-syncs the repos and recomputes the numbers on this page. A health check runs whenever a session starts, and scheduled jobs leave a heartbeat, so a job that goes quiet is flagged within a day or two.</p>
             <div class="tags"><span class="tag">Task Scheduler</span><span class="tag">heartbeats</span><span class="tag">claims check</span></div>
           </div>
         </div>
@@ -1262,14 +1262,14 @@
           <span class="pill" data-tip-title="Sprint queue" data-tip="Every job is filed in Git (and mirrored in Notion) with a priority, an effort and return rating, and an owner. An autonomy check filters what an agent handles by itself.">Sprint queue</span>
           <span class="pill" data-tip-title="Orchestrator" data-tip="An operating-system timer wakes a supervisor every ten minutes. It picks the next job by priority, watches the running one, and survives closed terminals and reboots. Closing the laptop lid on a terminal does not stop it.">Orchestrator</span>
           <span class="pill" data-tip-title="Headless sprint runner" data-tip="Runs one job unattended in a disposable clone of the repo. The engine only sees the clone, may only edit declared paths, cannot delete or rename, and its result is secret-scanned and landed fast-forward only.">Headless sprint runner</span>
-          <span class="pill" data-tip-title="Engine routing and weekly caps" data-tip="Chooses an engine for each job. Each paid account has a weekly usage cap; a capped, failed or switched-off engine is skipped and the next eligible one takes the job. Engines can be switched off with one line in a file.">Engine routing + weekly caps</span>
+          <span class="pill" data-tip-title="Engine routing and weekly caps" data-tip="Chooses an engine for each job. The two main paid accounts have a weekly usage cap; a capped, failed or switched-off engine is skipped and the next eligible one takes the job. Engines can be switched off with one line in a file.">Engine routing + weekly caps</span>
           <span class="pill" data-tip-title="Overnight build (2am)" data-tip="Windows Task Scheduler fires at 2am every night. Runs repo syncs, Lighthouse audits, smoke tests, autonomy audit, outbox sender, claims check and morning briefing. No external cron service.">Overnight build (2am)</span>
           <span class="pill" data-tip-title="Playwright smoke tests" data-tip="Headless Chromium hits every live product nightly. Checks key page elements and user flows. Screenshots are saved on failure.">Playwright smoke tests</span>
           <span class="pill" data-tip-title="Uptime monitor" data-tip="uptime-monitor.py checks all product URLs nightly. Logs status codes and flags anything that returns an error before the morning session starts.">Uptime monitor</span>
           <span class="pill" data-tip-title="Autonomy audit" data-tip="Scans every open backlog item each night. Anything an agent can execute without human input gets flagged for the agent and never reaches the human queue.">Autonomy audit</span>
           <span class="pill" data-tip-title="Health checks and heartbeats" data-tip="A health check runs when a session starts. Scheduled jobs write a heartbeat; a job that goes quiet raises a flag with a threshold, instead of failing silently.">Health checks + heartbeats</span>
           <span class="pill" data-tip-title="Scribe intake" data-tip="Checks a Telegram inbox every 15 minutes for forwarded videos, links and voice notes, transcribes them on the machine, scores them against current work and files them.">Scribe intake</span>
-          <span class="pill" data-tip-title="Project Harrier" data-tip="A mobile voice and text agent. A voice note from a phone is transcribed locally, then turned into a calendar invite, a formatted Google Doc or a Notion page. Built to keep personal data local, with a safe hold in place of any pay-per-use fallback.">Project Harrier (alpha)</span>
+          <span class="pill" data-tip-title="Project Harrier" data-tip="A mobile voice and text agent. A voice note from a phone is transcribed locally, then turned into a calendar invite, a formatted Google Doc or a Notion page. Transcription is local, and a safe hold replaces any pay-per-use fallback.">Project Harrier (alpha)</span>
           <span class="pill" data-tip-title="The Chronicler" data-tip="Structured memory layer. Captures every decision, sprint, and pivot in a searchable log any agent can query.">The Chronicler</span>
           <span class="pill" data-tip-title="Job scanner" data-tip="Daily scan of job boards. Scores each posting against a CV profile and routes the highest-fit roles into a pipeline file. Runs on a schedule, with a freshness check on its output.">Job scanner</span>
           <span class="pill" data-tip-title="Daily briefing (Logan v3)" data-tip="Logan is the morning briefing agent. Reads overnight results and priority items, writes a plain-English summary. Ready when the laptop opens.">Daily briefing (Logan v3)</span>
@@ -1287,8 +1287,8 @@
           <span class="pill" data-tip-title="OpenCode" data-tip="Handles browser work and open models, reached through a local gateway (OmniRoute) on an existing OpenCode Go subscription.">OpenCode</span>
           <span class="pill" data-tip-title="Antigravity and Gemini" data-tip="Used as an IDE and a command-line tool on an existing Google AI Pro plan. Its unattended API route is paused, and no pay-per-use fallback is allowed.">Antigravity + Gemini</span>
           <span class="pill hi" data-tip-title="MCP servers wired into the engine configs" data-tip="MCP (Model Context Protocol) servers connect an engine to tools. The committed engine configs wire in GitHub, Notion, Playwright and NotebookLM. Claude Code adds Context7 and Sequential Thinking. Coverage is uneven across engines today."><span data-claim="mcp-shared-count" data-src="distinct MCP servers across the committed engine configs" data-v="2" data-c="3" data-verified="2026-10-07">4</span> MCP servers wired</span>
-          <span class="pill hi" data-tip-title="Skills" data-tip="Skills are reusable instruction sets an agent loads for a type of work: design review, sprint formatting, sales and finance packs. Counted as the SKILL.md files committed to the repo."><span data-claim="skill-count" data-src="git ls-files: SKILL.md files committed in two-birds-portfolio" data-v="2" data-c="3" data-verified="2026-10-07">63</span> skills</span>
-          <span class="pill hi" data-claim="agent-count" data-src="hal-stack/data/hal-stats.json:agent_count (non-README .md files in .claude/agents/)" data-v="2" data-c="3" data-verified="2026-10-07" data-tip-title="21 custom agents" data-tip="Purpose-built agents for specific sprint types: build validation, sprint validation, security review, UX launch audit, CV tailoring and more. Each has a narrow job and runs on isolated copies of the code.">21 custom agents</span>
+          <span class="pill hi" data-tip-title="Skills" data-tip="Skills are reusable instruction sets an agent loads for a type of work: design review, sprint formatting, sales and finance packs. Counted as the SKILL.md files committed to the repo, including reviewed vendored packs for sales, finance and marketing."><span data-claim="skill-count" data-src="git ls-files: SKILL.md files committed in two-birds-portfolio" data-v="2" data-c="3" data-verified="2026-10-07">63</span> skills</span>
+          <span class="pill hi" data-claim="agent-count" data-src="hal-stack/data/hal-stats.json:agent_count (non-README .md files in .claude/agents/)" data-v="2" data-c="3" data-verified="2026-10-07" data-tip-title="21 custom agents" data-tip="Purpose-built Claude Code agents for specific sprint types: build validation, sprint validation, security review, UX launch audit, CV tailoring and more. Each has a narrow job and runs on isolated copies of the code.">21 custom agents</span>
           <span class="pill" data-tip-title="Scrappy Pack (6)" data-tip="Six advisory sub-personas that gut-check every substantive output: Mack (cash), Tess (visibility), Grit (time), Patch (simplicity), Sage (long game), and Sov (sovereignty). They catch blind spots before anything ships.">Scrappy Pack (6)</span>
           <span class="pill" data-tip-title="Founding Board" data-tip="Synthetic personas across departments such as strategy, legal, engineering, marketing, operations and product. They review Stage 3+ sprint outputs before commit. A REWORK verdict blocks the push.">Founding Board</span>
           <span class="pill" data-tip-title="Inner Circle" data-tip="Two seats that report directly: The Hand (Chief of Staff equivalent — synthesizes all team output) and the Love Balance Advisor (tracks workload and wellbeing, can override other agents).">Inner Circle</span>
@@ -1309,7 +1309,7 @@
           <span class="pill" data-claim="repo-count-built" data-src="github:twobirds-kramerica repos created in 2026" data-v="2" data-c="3" data-verified="2026-10-07" data-tip-title="Git · 15 repos" data-tip="15 GitHub repositories created in 2026: one per product plus portfolio and infrastructure repos. Examples: digital-confidence (DCC Adults), career-coach, aaron-patzalek (this site), two-birds-portfolio (the HAL Stack itself).">Git · 15 repos</span>
           <span class="pill" data-tip-title="Four-machine fleet" data-tip="Four machines, Linux and Windows, linked over a private network. Each can run the same launchers and the same scheduled jobs, so work does not depend on one laptop being awake.">Four-machine fleet</span>
           <span class="pill" data-tip-title="Local model gateway (OmniRoute)" data-tip="A gateway on the local network that reaches open models through an existing subscription, so the stack is not tied to one model vendor.">Local model gateway</span>
-          <span class="pill" data-tip-title="Local speech" data-tip="Whisper for speech-to-text and Kokoro for text-to-speech both run on the machine. Voice never goes to a cloud service.">Local speech</span>
+          <span class="pill" data-tip-title="Local speech" data-tip="Whisper for speech-to-text and Kokoro for text-to-speech both run on the machine. No cloud speech service is used.">Local speech</span>
           <span class="pill" data-tip-title="Private Command Deck" data-tip="A password-gated dashboard on Cloudflare Pages: today&#x27;s priorities, the backlog and each product&#x27;s health on one screen, reachable from a phone.">Private Command Deck</span>
           <span class="pill" data-tip-title="Windows Task Scheduler + systemd timers" data-tip="The overnight build runs on Windows Task Scheduler; the orchestrator runs on systemd timers on Linux. No cloud cron service, no subscription, no external dependency.">Task Scheduler + systemd</span>
           <span class="pill" data-tip-title="Python stdlib" data-tip="All automation scripts use Python's built-in standard library only. No third-party packages to install, update, or break. Runs on any Python 3.x install.">Python stdlib</span>
@@ -1386,7 +1386,7 @@
       <div class="gate-icon">✅</div>
       <div class="gate-name">Live Verification</div>
       <div class="gate-when">Fires before anything on a live site is called done</div>
-      <p class="gate-body">Nothing that touches a live site is done until a Playwright check passes against the real URL. Domain and DNS changes also get a check through the real public path, on a deep page, not just the home page. A &quot;done&quot; past a failing check is treated as a fabrication.</p>
+      <p class="gate-body">Nothing that touches a live site is done until a Playwright check passes against the real URL. Domain and DNS changes also get a check through the real public path, on a deep page, not just the home page. Reporting &quot;done&quot; past a failing check is treated as a serious defect.</p>
     </div>
     <div class="gate">
       <div class="gate-icon">🛑</div>
@@ -1398,7 +1398,7 @@
       <div class="gate-icon">⚖️</div>
       <div class="gate-name">Capacity Caps</div>
       <div class="gate-when">Fires before an engine takes a job</div>
-      <p class="gate-body">Each paid AI account has a weekly usage cap (75% for the two main ones). Past it, the engine is skipped until its weekly reset, so no subscription is run dry and no engine becomes a hidden single point of failure.</p>
+      <p class="gate-body">The two main paid AI accounts each have a weekly usage cap of 75%. Past it, the engine is skipped until its weekly reset, so no subscription is run dry and no engine becomes a hidden single point of failure.</p>
     </div>
     <div class="gate">
       <div class="gate-icon">🔬</div>
@@ -1521,7 +1521,7 @@
         <div class="loop-time">All day</div>
         <div>
           <div class="loop-title">Heartbeats</div>
-          <p class="loop-detail">Scheduled jobs write a heartbeat as they finish. A missing or stale one raises a flag at the next health check, so a job that quietly stops is noticed.</p>
+          <p class="loop-detail">Scheduled jobs write a heartbeat as they finish. A missing or stale one raises a flag at the next health check, so a job that quietly stops is noticed within a day or two.</p>
         </div>
       </div>
     </div>
@@ -1577,7 +1577,7 @@
     <div class="product">
       <div class="product-icon">📊</div>
       <div class="product-name">NormeScore</div>
-      <span class="badge badge-build">Alpha</span>
+      <span class="badge badge-build">Specified</span>
       <div class="product-for">→ Regulated Canadian Professionals</div>
       <p class="product-body">A technology-readiness diagnostic with sourced Canadian benchmarks, so an adviser can see where their own practice stands before advising clients on technology. Spec complete; deliberately held at the gate until one positioning decision is made.</p>
     </div>
@@ -1675,10 +1675,10 @@
 
     <div class="product">
       <div class="product-icon">📱</div>
-      <div class="product-name">Project Harrier — mobile voice agent</div>
+      <div class="product-name">Project Harrier (mobile voice agent)</div>
       <span class="badge badge-build">Alpha</span>
       <div class="product-for">→ Acting on a voice note from a phone</div>
-      <p class="product-body">Send a voice note or a text from a phone and it acts: the audio is transcribed on the machine, then turned into a calendar invite, a formatted Google Doc or a Notion page. It runs on subscriptions already paid for, with a safe hold in place of any pay-per-use fallback, and keeps personal data local. Next: voicemail triage and a morning briefing.</p>
+      <p class="product-body">Send a voice note or a text from a phone and it acts: the audio is transcribed on the machine, then turned into a calendar invite, a formatted Google Doc or a Notion page. Transcription happens on the machine, it runs on subscriptions already paid for, and a safe hold replaces any pay-per-use fallback. Next: voicemail triage and a morning briefing.</p>
     </div>
 
     <div class="product">
