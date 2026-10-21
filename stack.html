@@ -564,6 +564,11 @@
     </div>
 
     <div class="concept-card">
+      <h3>Thin Dispatcher</h3>
+      <p>An orchestration model where the interactive conversational AI focuses strictly on intent, task design, and dispatching, delegating multi-file code editing and heavy research to isolated background workers to prevent token exhaustion.</p>
+    </div>
+
+    <div class="concept-card">
       <h3>Weekly cap</h3>
       <p>A limit on how much of the two main paid AI accounts (Claude and Codex) the stack may use in a week. Past the cap an engine is skipped until its weekly reset, so no subscription is run dry and no single engine becomes a point of failure.</p>
     </div>
@@ -870,7 +875,7 @@ As of 2026, the platform has expanded its ecosystem to support integrations acro
         <span class="cat">AI engines</span>
       </div>
       <p class="card-summary">A command-line AI coding assistant from Anthropic. You give it a goal in plain English; it reads the project, edits files, runs commands and commits the result.</p>
-      <p class="card-use"><span class="lbl">How we use it</span> The primary terminal agent and the governance spine: it orchestrates the work, hands jobs to the other engines, and holds the rules every engine is held to.</p>
+      <p class="card-use"><span class="lbl">How we use it</span> The interactive front desk and governance dispatcher: it engages with Aaron to clarify goals, designs sprints, and dispatches heavy execution to headless workers (Codex CLI) or deep research engines (Antigravity). Under locked Constraint #22, it operates as a thin dispatcher to eliminate token waste.</p>
       <p class="card-comps"><span class="lbl">Similar tools</span> <a href="https://developers.openai.com/codex/cli" target="_blank" rel="noopener noreferrer">Codex CLI</a> · <a href="https://opencode.ai/" target="_blank" rel="noopener noreferrer">OpenCode</a> · <a href="https://aider.chat/" target="_blank" rel="noopener noreferrer">Aider</a></p>
       <p class="card-meta"><span class="meta-item"><span class="lbl">Type</span> Paid subscription</span><span class="meta-item"><span class="lbl">Country</span> USA</span><span class="meta-item"><span class="lbl">Sovereignty</span> Hosted AI service. All work product is local files in Git, so it survives the vendor. One of four engines, held to a weekly usage cap.</span></p>
       <div class="card-foot">
@@ -886,7 +891,7 @@ As of 2026, the platform has expanded its ecosystem to support integrations acro
         <span class="cat">AI engines</span>
       </div>
       <p class="card-summary">OpenAI&#x27;s command-line coding agent. It reads a project, makes changes and runs tests from a terminal.</p>
-      <p class="card-use"><span class="lbl">How we use it</span> The overnight workhorse: runs unattended jobs in disposable copies of the repo, on an existing ChatGPT subscription (ADR-0067).</p>
+      <p class="card-use"><span class="lbl">How we use it</span> The headless code runner: executes autonomous sprints in disposable repo clones with physical object isolation (ADR-0067) on an existing ChatGPT subscription. Runs unattended work without tying up the interactive terminal.</p>
       <p class="card-comps"><span class="lbl">Similar tools</span> <a href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener noreferrer">Claude Code</a> · <a href="https://opencode.ai/" target="_blank" rel="noopener noreferrer">OpenCode</a></p>
       <p class="card-meta"><span class="meta-item"><span class="lbl">Type</span> Paid subscription</span><span class="meta-item"><span class="lbl">Country</span> USA</span><span class="meta-item"><span class="lbl">Sovereignty</span> Hosted AI service on a subscription already paid for. Output is local Git files; if Codex hits a limit or goes down, the job moves to the next engine.</span></p>
       <div class="card-foot">
@@ -918,7 +923,7 @@ As of 2026, the platform has expanded its ecosystem to support integrations acro
         <span class="cat">AI engines</span>
       </div>
       <p class="card-summary">Google&#x27;s desktop environment for working with AI coding agents. It puts several frontier models in one place, including Gemini, Claude-class and open models.</p>
-      <p class="card-use"><span class="lbl">How we use it</span> Used as an IDE and as a command-line tool (agy) on an existing Google AI Pro plan. It offers Gemini, Claude Opus and Sonnet, and GPT-OSS models without drawing on the personal Anthropic or OpenAI subscriptions, and the CLI has a non-interactive print mode. The older unattended API-key route is paused.</p>
+      <p class="card-use"><span class="lbl">How we use it</span> Used as an IDE and capacity overflow engine on an existing Google AI Pro plan ($0 marginal spend). Pairs multi-model capabilities (Gemini 3.8 Flash High, Claude-class, and GPT models) for deep codebase research, broad repo audits, and complex planning without burning interactive token allowances.</p>
       <p class="card-comps"><span class="lbl">Similar tools</span> <a href="https://cursor.com/" target="_blank" rel="noopener noreferrer">Cursor</a> · <a href="https://windsurf.com/" target="_blank" rel="noopener noreferrer">Windsurf</a></p>
       <p class="card-meta"><span class="meta-item"><span class="lbl">Type</span> Subscription (Google AI Pro)</span><span class="meta-item"><span class="lbl">Country</span> USA</span><span class="meta-item"><span class="lbl">Sovereignty</span> Hosted service. Vendor-held state is treated as an appendage, never as the source of truth; all work stays in local Git.</span></p>
       <div class="card-foot">

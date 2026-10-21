@@ -197,7 +197,7 @@ section{margin-bottom:30px}
     <div class="flow">
       <div><b>Capture</b><span>Voice, phone, inbox, browser. Input arrives asynchronously and is never trusted to be complete.</span></div>
       <div><b>Queue</b><span>Everything lands as a durable row or file first. Nothing is processed in the same breath it is received.</span></div>
-      <div><b>Orchestrate: <span class="symphonica-wordmark">Symphonica</span></b><span class="symphonica-subtitle">(Multi-Harness Build Orchestrator)</span><span>Routes coding work across Claude Code, Codex, OpenCode Go and Antigravity by real-time capacity, so work keeps moving when one tool hits a usage limit, then reviews and lands the result automatically. Built in-house; not yet trusted for unattended use.</span></div>
+      <div><b>Orchestrate: <span class="symphonica-wordmark">Symphonica</span></b><span class="symphonica-subtitle">(Thin Dispatcher & Multi-Harness Orchestrator)</span><span>Interactive Claude Code acts as a thin front-desk dispatcher (max 3 lookups, 1 write per request). Heavy multi-file coding and deep research offload automatically into headless background workers (Codex and Antigravity) in isolated scratch clones under ADR-0067.</span></div>
       <div><b>Verify</b><span>Gates run before anything is called done. A failed gate blocks the claim, not just the log.</span></div>
       <div><b>Publish</b><span>Static output to Pages. Git is the transport; there is no deploy server.</span></div>
     </div>
@@ -238,19 +238,19 @@ section{margin-bottom:30px}
       <div class="zone">
         <h2 style="margin-bottom:8px">Orchestration</h2>
 
-        <div class="node warn"><i class="dot d-warn"></i><div>
-          <h3>Claude Code <span class="tag">4 hosts</span></h3>
-          <div class="meta">One of the engines in the execution layer, and the one that orchestrates and judges. Same repo, same rules file, different machines. Sessions are stateless; the repo is the memory. Honest fleet state, from the 2026-10-02 drift probe: this laptop is current; the always-on Linux host (m73) was brought to origin on 2026-10-02 and was <span data-claim="fleet-drift-commits" data-src="declared -- hal-stack/reliability/deploy-drift.json, probe 2026-10-02 14:45 (always-on host vs origin/master)" data-v="4" data-c="2" data-verified="2026-10-02">12 commits</span> behind again by that afternoon, because its GitHub login is invalid and it can only be updated by hand; one machine was offline and one refused the probe; the overnight supervisor was last reported disabled or missing on the EliteBook and the ThinkPad.</div>
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>Claude Code <span class="tag">Thin Dispatcher</span></h3>
+          <div class="meta">The interactive front desk where Aaron directs work. Operates under a mechanical ceiling (Locked Constraint #22: maximum 3 lookups and 1 write per turn) to prevent context choke and preserve weekly rate limits. Tasks exceeding this budget are automatically delegated to headless background workers.</div>
         </div></div>
 
-        <div class="node warn"><i class="dot d-warn"></i><div>
-          <h3><span class="symphonica-wordmark">Symphonica</span> <span class="tag">Building</span><span class="symphonica-subtitle">(Multi-Harness Build Orchestrator)</span></h3>
-          <div class="meta">Routes coding work across Claude Code, Codex, OpenCode Go and Antigravity (Gemini) by capacity, so work keeps moving when one tool hits a usage limit. Heavy unattended work is deliberately kept off the primary paid accounts (policy filed 2026-09-21). The routing gateway (OmniRoute) answers on the always-on host. The unattended loop is not yet trusted: last night it attempted 0 sprints because every runnable sprint was blocked by a safety gate, and an Antigravity run hit a prepaid-credit wall on 2026-09-21.</div>
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3><span class="symphonica-wordmark">Symphonica</span> <span class="tag">Active</span><span class="symphonica-subtitle">(Multi-Harness Build Orchestrator)</span></h3>
+          <div class="meta">Routes coding and research across Claude Code, Codex, and Antigravity (Gemini 3.8) by capacity and cost. Heavy unattended work runs at $0 marginal spend across existing subscriptions. Employs the FirstMate delegation pattern with ADR-0067 disposable clone containment.</div>
         </div></div>
 
         <div class="node"><i class="dot d-run"></i><div>
           <h3>Model routing</h3>
-          <div class="meta">The orchestrating model decides; cheaper models execute work whose shape is already determined; the tier is chosen per unit of work, not per session. Since 2026-09-21 a written policy keeps heavy or autonomous execution off the primary paid accounts and routes it through other subscriptions.</div>
+          <div class="meta">The orchestrating model decides; cheaper or included models execute work whose shape is already determined; the tier is chosen per unit of work, not per session. Heavy or autonomous execution is kept off the primary Claude account to protect Aaron's interactive bandwidth.</div>
         </div></div>
 
         <div class="node"><i class="dot d-run"></i><div>
@@ -258,19 +258,19 @@ section{margin-bottom:30px}
           <div class="meta">Chosen on 2026-09-21 as the primary single-harness orchestrator after a written review of Orca, Hermes Agent, Omarchy, Goose and Ruflo, none of which cleared the stack's locked constraints.</div>
         </div></div>
 
-        <div class="node warn"><i class="dot d-warn"></i><div>
+        <div class="node"><i class="dot d-run"></i><div>
           <h3>Codex headless dispatch <span class="tag">ChatGPT seat</span></h3>
-          <div class="meta">Runs a sprint on a separate ChatGPT-authenticated engine inside a throwaway clone, so a bad run cannot touch the live repository. Proven end to end; results are never auto-merged.</div>
+          <div class="meta">Runs heavy code sprints on a separate ChatGPT-authenticated engine (gpt-6-astra) inside a disposable clone under ADR-0067, so a bad run cannot touch the live repository. Proven end to end at $0 marginal spend.</div>
         </div></div>
 
-        <div class="node warn"><i class="dot d-warn"></i><div>
-          <h3>Antigravity / Gemini <span class="tag">SDK</span></h3>
-          <div class="meta">Runs headless sprints through Google's agent SDK; several ran 2026-09-21 to 2026-09-24. Not free: it draws a prepaid balance and hit an HTTP 402 credits-depleted wall on 2026-09-21. Not usable on the primary laptop today because no API key is set there.</div>
+        <div class="node"><i class="dot d-run"></i><div>
+          <h3>Antigravity / Gemini <span class="tag">Google AI Pro</span></h3>
+          <div class="meta">Primary deep research engine running Gemini 3.8 Flash High (1M context) via Aaron's Google AI Pro subscription quota (1,500 req/day included, $0 marginal spend under ADR-0082 / ADR-0088). Enforces a 3-primary-source mechanical depth gate.</div>
         </div></div>
 
         <div class="node warn"><i class="dot d-warn"></i><div>
           <h3>OpenCode Go <span class="tag">browser route</span></h3>
-          <div class="meta">Multi-model subscription route, authorised only for browser-driving tasks. Browser dispatch failed three distinct ways in one night on 2026-09-24 (RI-044); a persistent authenticated profile was built afterward.</div>
+          <div class="meta">Multi-model subscription route on m73, authorised for browser-driving tasks with persistent authenticated profile and offline severed clone execution (ADR-0089).</div>
         </div></div>
 
         <div class="node"><i class="dot d-run"></i><div>

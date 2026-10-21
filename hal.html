@@ -1073,8 +1073,8 @@
       </div>
     </div>
     <div class="callout-note">
-      Engines: Claude Code orchestrates and judges, Codex runs the overnight work, OpenCode handles browser work and open models through a local gateway,
-      and Antigravity with Gemini is used as an IDE and CLI (its pay-per-use API route stays off, and it now runs through its command-line print mode on the Google plan). The two main paid accounts (Claude and Codex) each have a weekly usage cap, and any engine can be switched off with one line in a file.
+      Engines: Claude Code operates as the thin interactive dispatcher and governance spine (under Constraint #22 inline budget), Codex runs headless autonomous code execution in disposable clones (ADR-0067), OpenCode handles browser work and open models through a local gateway,
+      and Antigravity provides multi-model deep research and capacity overflow on the Google AI Pro plan ($0 marginal spend). The two main paid accounts (Claude and Codex) each have a weekly usage cap, and any engine can be switched off with one line in a file.
       MCP servers wired into the engine configs: GitHub, Notion, Playwright and NotebookLM. Known gaps: coverage across engines is uneven (queued work), and the architecture page is still a hand-typed snapshot.
       Claude.ai account connectors are listed separately below and are not part of these counts.
     </div>
@@ -1165,7 +1165,7 @@
           <div class="step-n"><span class="step-icon" aria-hidden="true">🧭</span>3</div>
           <div>
             <div class="step-title">The orchestrator picks the job</div>
-            <p class="step-body">An operating-system timer, not an open terminal, wakes the supervisor every ten minutes. It picks the next job by priority, checks it for collisions and design gates, and sends it to an engine that has headroom.</p>
+            <p class="step-body">An operating-system timer, not an open terminal, wakes the supervisor every ten minutes. It picks the next job by priority, checks it for collisions and design gates, and dispatches it to headless workers so Aaron's interactive terminal stays free of sprawl.</p>
             <div class="tags"><span class="tag">overnight-loop.py</span><span class="tag">systemd / Task Scheduler</span><span class="tag">priority order</span></div>
           </div>
         </div>
@@ -1174,7 +1174,7 @@
           <div class="step-n"><span class="step-icon" aria-hidden="true">🔀</span>4</div>
           <div>
             <div class="step-title">Engines take turns</div>
-            <p class="step-body">Claude Code, Codex, OpenCode and Antigravity share the work. The two main paid accounts have a weekly usage cap, so neither gets drained. A capped, down or switched-off engine is skipped automatically and the next one takes the job.</p>
+            <p class="step-body">Claude Code dispatches, while Codex, OpenCode and Antigravity share execution and research. Paid accounts are held to weekly usage caps to prevent exhaustion. A capped, down or switched-off engine is skipped automatically and the next one takes the job.</p>
             <div class="tags"><span class="tag">weekly caps</span><span class="tag">failover</span><span class="tag">on/off file</span></div>
           </div>
         </div>
@@ -1293,10 +1293,10 @@
       <div class="arch-content">
         <div class="arch-label" data-claim="persona-count" data-src="declared -- claim-spec.md §6.2" data-v="4" data-c="3" data-verified="2026-08-12">AI + Governance: the workforce · review personas · hard rules</div>
         <div class="arch-pills">
-          <span class="pill" data-tip-title="Claude Code" data-tip="Orchestrates and judges. Reads the codebase, edits files, runs scripts, commits to Git, and decides what the other engines are given.">Claude Code</span>
-          <span class="pill" data-tip-title="Codex" data-tip="Runs unattended overnight work in disposable clones, on an existing ChatGPT subscription.">Codex</span>
+          <span class="pill" data-tip-title="Claude Code" data-tip="Thin interactive dispatcher and governance spine. Engages with Aaron to shape tasks, dispatches multi-file coding to headless runners and research to Antigravity to eliminate token waste.">Claude Code</span>
+          <span class="pill" data-tip-title="Codex" data-tip="Headless code runner. Executes autonomous sprints unattended in disposable clones with separate git stores (ADR-0067), reporting results for morning review.">Codex</span>
           <span class="pill" data-tip-title="OpenCode" data-tip="Handles browser work and open models, reached through a local gateway (OmniRoute) on an existing OpenCode Go subscription.">OpenCode</span>
-          <span class="pill" data-tip-title="Antigravity and Gemini" data-tip="Used as an IDE and a command-line tool on an existing Google AI Pro plan. Its unattended API route is paused, and no pay-per-use fallback is allowed.">Antigravity + Gemini</span>
+          <span class="pill" data-tip-title="Antigravity and Gemini" data-tip="Multi-model deep research and capacity overflow engine on Google AI Pro ($0 marginal spend). Pairs Gemini 3.8 Flash High with open models for broad audits without consuming interactive tokens.">Antigravity + Gemini</span>
           <span class="pill" data-tip-title="Hermes Agent (installed, trial not started)" data-tip="Open-source (MIT licence), self-hosted agent from Nous Research, meant as a Telegram front door, the courier. Installed on the always-on machine but not configured: no model provider chosen, no Telegram bot paired. A gated trial has not started.">Hermes Agent (installed, trial not started)</span>
           <span class="pill" data-tip-title="Orca (under consideration)" data-tip="A desktop app for running several coding AIs side by side, each in its own working copy. Evaluated and declined as the orchestrator because it met too few of the required conditions. Stays on the consider list for running several tools side by side.">Orca (under consideration)</span>
           <span class="pill hi" data-tip-title="MCP servers wired into the engine configs" data-tip="MCP (Model Context Protocol) servers connect an engine to tools. The committed engine configs wire in GitHub, Notion, Playwright and NotebookLM. Claude Code adds Context7 and Sequential Thinking. Coverage is uneven across engines today."><span data-claim="mcp-shared-count" data-src="distinct MCP servers across the committed engine configs" data-v="2" data-c="3" data-verified="2026-10-12">5</span> MCP servers wired</span>
