@@ -236,7 +236,17 @@ section{margin-bottom:30px}
 
       <!-- ORCHESTRATION -->
       <div class="zone">
-        <h2 style="margin-bottom:8px">Orchestration</h2>
+        <h2 style="margin-bottom:8px">Orchestration & Autonomous Execution</h2>
+        <div class="meta" style="margin-bottom:16px;background:rgba(45,212,191,.06);border:1px solid rgba(45,212,191,.2);border-radius:8px;padding:12px 14px;font-size:.84rem;line-height:1.65;color:var(--text);">
+          <strong style="color:var(--teal);display:block;margin-bottom:4px;text-transform:uppercase;font-family:var(--mono);font-size:.74rem;letter-spacing:.05em;">The Sovereign Autonomous Fleet vs. Desktop GUI Sprawl</strong>
+          Most agent setups rely on multi-tab desktop GUIs (like Orca) that require active open windows, manually clicked panes, and shared git worktrees that risk repository corruption. HAL Stack operates on four fundamental differentiators:
+          <ul style="margin:8px 0 4px 18px;display:flex;flex-direction:column;gap:4px;">
+            <li><strong>Headless & OS-Owned:</strong> Runs on native operating-system timers (Windows Task Scheduler / systemd). Survives closed terminals, closed laptop lids, and machine reboots.</li>
+            <li><strong>Severed Sandbox Isolation (ADR-0067):</strong> Uses disposable clones with physically separate git object stores instead of shared worktrees. If a background agent fails, the clone is discarded with zero risk to the primary codebase.</li>
+            <li><strong>Multi-Model Cost Routing:</strong> Paces weekly allowances across four engines, offloading heavy execution and research to Google AI Pro ($0 marginal spend) and Codex to preserve interactive bandwidth.</li>
+            <li><strong>Rigid Governance Fences:</strong> Unattended runs cannot touch undeclared paths, cannot email or delete data, and must pass secret scans and Playwright tests before landing.</li>
+          </ul>
+        </div>
 
         <div class="node"><i class="dot d-run"></i><div>
           <h3>Claude Code <span class="tag">Thin Dispatcher</span></h3>

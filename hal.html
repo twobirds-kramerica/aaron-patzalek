@@ -1241,8 +1241,13 @@
 <!-- ═══ ARCHITECTURE ══════════════════════════════════════════════════════ -->
 <section class="reveal">
   <div class="eyebrow">Architecture</div>
-  <h2>Five layers. Built to run without babysitting.</h2>
-  <p style="margin-bottom:26px;">Products on top. Automation and orchestration in the middle. Several AI engines, held to hard rules, as the workforce. Sovereignty principles at the base. Every choice above L5 must survive the test: "if this vendor disappeared tomorrow, what breaks?" (The name's a nod to 2001: A Space Odyssey. Make of that what you will.)</p>
+  <p style="margin-bottom:20px;">Products on top. Automation and orchestration in the middle. Several AI engines, held to hard rules, as the workforce. Sovereignty principles at the base. Every choice above L5 must survive the test: "if this vendor disappeared tomorrow, what breaks?" (The name's a nod to 2001: A Space Odyssey. Make of that what you will.)</p>
+
+  <div style="margin-bottom:28px;background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:var(--r);padding:18px 22px;">
+    <h3 style="font-size:1.05rem;color:var(--text);margin-bottom:6px;font-weight:700;">Why this matters to an operator: the difference between AI toys and an operations engine</h3>
+    <p style="font-size:.9rem;color:var(--muted);line-height:1.7;margin-bottom:10px;">Most businesses attempting to adopt AI get trapped in multi-tab desktop sprawl: opening endless chat windows, pasting code back and forth, and manually babysitting models that hallucinate or overwrite working files. Real operational leverage requires treating AI not as an interactive novelty, but as a governed background workforce.</p>
+    <p style="font-size:.88rem;color:var(--text);line-height:1.65;">The operator sets direction at a thin conversational front desk. The heavy execution happens headless, in throwaway sandbox clones with physical git isolation (ADR-0067), surviving closed terminals and laptop reboots. Completed work is smoke-tested, verified against live URLs, and waiting for morning review with zero manual babysitting.</p>
+  </div>
 
   <div class="arch">
     <div class="arch-header">HAL Stack · Architecture</div>
