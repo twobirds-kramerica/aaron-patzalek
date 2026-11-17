@@ -282,7 +282,7 @@
     </div>
     <div class="counter-item">
       <div class="counter-num" id="cnt-builds">—</div>
-      <div class="counter-label">overnight autonomous builds</div>
+      <div class="counter-label">recorded overnight builds</div>
     </div>
   </div>
 </div>
@@ -299,15 +299,15 @@
         a digital literacy programme, an apartment search tool, an AI job hunt toolkit,
         a business AI diagnostic, a personal consulting practice, and a full operational
         control layer — without employees, agency support, or venture funding.
-        AI handles the build queue. The human handles strategy and judgement calls.
+        AI assists with the build queue. The human handles strategy and judgement calls.
       </p>
 
       <div class="evidence-grid">
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">⚙️</span>
-          <h3>Overnight autonomous builds</h3>
-          <p>A Windows Task Scheduler job runs nightly. It checks the sprint queue, pulls the next item, executes it end-to-end, files any required human actions to Notion, and logs the result — without waking anyone up.</p>
-          <div class="ev-receipt">logs/automated-run-log.md · <span data-claim="overnight-build-count" data-v="2" data-c="2" data-tol="10%" data-verified="2026-10-19">265 entries</span>, counted 3 Oct 2026</div>
+          <h3>Supervised overnight builds</h3>
+          <p>A supervised overnight build system can check the sprint queue, execute a scoped item, file required human actions to Notion, and log the result. Its current state is checked before use.</p>
+          <div class="ev-receipt">logs/automated-run-log.md · <span data-claim="overnight-build-count" data-v="2" data-c="2" data-tol="10%" data-verified="2026-10-19">265 historical entries</span>, counted 3 Oct 2026</div>
         </div>
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">📋</span>
@@ -348,17 +348,17 @@
     <!-- ── Theme 2: Real workflow automation ── -->
     <section class="theme-section" aria-labelledby="theme2-heading">
       <p class="theme-tag">02 · AI in real workflows — not demos</p>
-      <h2 id="theme2-heading">Automation that runs in production, not in a slide deck.</h2>
+      <h2 id="theme2-heading">Automation with production evidence, not a slide deck.</h2>
       <p class="theme-intro">
-        The tools listed below are not prototypes or proof-of-concepts. Each runs on a live
-        product and has verifiable output. The commit history and log files are the receipts.
+        The tools listed below have evidence of real use. Their current state is checked
+        separately before use; the commit history and log files are the receipts.
       </p>
 
       <div class="evidence-grid">
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">🔄</span>
-          <h3>KevsCasa — daily automated listing refresh</h3>
-          <p>A GitHub Actions workflow runs every morning. It scrapes London ON rental listings, normalizes the data, updates <code>data/listings.json</code>, and commits the result. No human trigger required. <span data-claim="kevscasa-refresh-count" data-v="4" data-c="2" data-verified="2026-08-16">144 automated refreshes</span> had completed when last counted on 16 Aug 2026.</p>
+          <h3>KevsCasa — automated listing refresh</h3>
+          <p>A GitHub Actions workflow was built to refresh London ON rental listings, normalize the data, update <code>data/listings.json</code>, and commit the result. <span data-claim="kevscasa-refresh-count" data-v="4" data-c="2" data-verified="2026-08-16">144 automated refreshes</span> had completed when last counted on 16 Aug 2026.</p>
           <div class="ev-receipt">twobirds-kramerica/kevins-apartment-search · .github/workflows/refresh.yml · <span data-claim="kevscasa-refresh-count" data-v="4" data-c="2" data-verified="2026-08-16">144 runs</span>, dated snapshot, counted 16 Aug 2026</div>
         </div>
         <div class="evidence-card">
@@ -370,19 +370,19 @@
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">🤖</span>
           <h3>Sprint queue automation</h3>
-          <p>A Python script queries the Notion API, pulls the next highest-priority "Claude Code" sprint item, and routes it to one of the engines for execution. The human decides what goes into the queue; the system handles dispatch and sequencing.</p>
+          <p>A Python workflow can query the Notion API, identify a priority sprint item, and route it to an approved execution engine. The human decides what goes into the queue; the system handles the dispatch sequence.</p>
           <div class="ev-receipt">hal-stack/notion-sync/next-sprint.py · hal-stack/notion-sync/file-aaron-action.py</div>
         </div>
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">📡</span>
           <h3>Notion bidirectional sync</h3>
-          <p>All human-required actions are filed to Notion programmatically — with a full brief, effort/return rating, and exact steps — by the same pipeline that files the build tasks. No copy-paste, no formatting by hand.</p>
+          <p>The workflow can file human-required actions to Notion with a full brief, effort and return rating, and exact steps. This creates a repeatable handoff path between build work and human decisions.</p>
           <div class="ev-receipt">hal-stack/notion-sync/SYNC-LOG.md · <span data-claim="notion-actions-filed-count" data-v="2" data-c="2" data-tol="10%" data-verified="2026-10-26">690 filing events</span> logged programmatically</div>
         </div>
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">📊</span>
           <h3>Session health check at startup</h3>
-          <p>Every work session begins with an automated health report: overnight build status, CI/CD pass/fail, sprint queue depth, autonomy audit results, and changelog integrity — before any new work starts.</p>
+          <p>Each attended work session opens with an automated health report covering overnight-build status, CI/CD results, sprint-queue depth, autonomy-audit results, and changelog integrity before new work starts.</p>
           <div class="ev-receipt">hal-stack/scripts/session-healthcheck.py · runs every session</div>
         </div>
         <div class="evidence-card">
@@ -445,19 +445,19 @@
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">🔁</span>
           <h3>Autonomy audit loop</h3>
-          <p>A nightly script scans the human-action queue for items that an AI agent can now execute autonomously. If found, they are pulled from the human queue and executed — preventing agent-doable work from consuming human time. The audit runs before every sprint session.</p>
+          <p>An autonomy audit scans the human-action queue for items an AI agent can execute. It identifies work that should not consume human time and is reviewed as part of sprint planning.</p>
           <div class="ev-receipt">hal-stack/scripts/autonomy-audit.py · hal-stack/docs/autonomy-audit-latest.md</div>
         </div>
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">🧮</span>
           <h3>Token governance</h3>
-          <p>A monitoring layer tracks tool call volume per session. It warns at configurable thresholds and logs anomalies — built after recognizing that unconstrained AI automation can generate costs faster than revenue. Volume ceiling: 200 calls triggers a warning; sensitive file access triggers a hard block.</p>
+          <p>A monitoring layer tracks tool-call volume per session, warns at configurable thresholds, and logs anomalies. It was built after recognizing that unconstrained automation can generate costs faster than revenue.</p>
           <div class="ev-receipt">hal-stack/guardrails/token-guard-log.md · provider-agnostic design</div>
         </div>
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">📝</span>
           <h3>Human action brief standard</h3>
-          <p>Every task filed to the human queue must include: what it is in plain English, when and why it came up, why it matters and what gate it unlocks, exact numbered steps with URLs and phone numbers, time estimate in minutes, and what success looks like. Shorthand is banned — the brief must be cold-executable by someone returning after hours of absence.</p>
+          <p>Human action briefs are required to state what the task is, why it matters, what it unlocks, the exact steps and URL, a time estimate, and what success looks like. The aim is a brief that can be picked up after an absence.</p>
           <div class="ev-receipt">hal-stack/governance/rules.md · welcome-back-brief rule</div>
         </div>
       </div>
@@ -487,35 +487,34 @@
       <p class="theme-tag">04 · Prioritization as a system</p>
       <h2 id="theme4-heading">15+ years of product strategy, applied to the operation itself.</h2>
       <p class="theme-intro">
-        Effort-benefit prioritization is not a philosophy here. It is a field in the database.
-        Every task in the backlog has an effort rating and a return rating assigned at creation,
-        not retrospectively. The sprint queue uses those fields to decide what runs next.
+        Effort-benefit prioritization is part of the operating system. Backlog items are assessed
+        for effort and expected return before they are prioritized.
       </p>
 
       <div class="evidence-grid">
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">⚖️</span>
-          <h3>Effort × Return on every backlog item</h3>
-          <p>The script that files tasks to Notion (<code>file-aaron-action.py</code>) requires <code>--effort</code> and <code>--return</code> parameters. Neither is optional. The fields are exposed in the sprint queue view so the highest-return, lowest-effort items run first.</p>
+          <h3>Effort × Return prioritization</h3>
+          <p>The task-filing workflow records <code>--effort</code> and <code>--return</code> values. Those fields support a clear comparison between likely return and required effort.</p>
           <div class="ev-receipt">hal-stack/notion-sync/file-aaron-action.py --effort Low|Medium|High --return High|Medium|Low</div>
         </div>
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">🎯</span>
           <h3>Persona review panel</h3>
-          <p>Before any sprint ships, it passes a structured review by a panel of relevant personas: founder, senior PM, accessibility specialist, privacy counsel, budget holder, and others depending on the work. Verdicts are filed to the session record. A REWORK verdict blocks the sprint.</p>
+          <p>Relevant work can be reviewed by a structured panel of personas, including a senior PM, accessibility specialist, privacy counsel, and budget holder. Verdicts are filed to the session record; a REWORK verdict blocks shipment.</p>
           <div class="ev-receipt">hal-stack/personas/ · hal-stack/founding-board/ · a panel of AI personas</div>
         </div>
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">🗺️</span>
-          <h3>Architecture status map — always current</h3>
-          <p>A living document tracks every component in the stack: status (planned / built / wired / running / deprecated), what it connects to, and what changed in the last sprint. Updated on every push. The map is the source of truth for what the operation actually is.</p>
-          <div class="ev-receipt">hal-stack/docs/ARCHITECTURE-STATUS.md · updated every sprint</div>
+          <h3>Architecture status map</h3>
+          <p>A living document records each component's status (planned / built / wired / running / deprecated), what it connects to, and what changed in the last sprint. It is the source of truth for the recorded state of the operation.</p>
+          <div class="ev-receipt">hal-stack/docs/ARCHITECTURE-STATUS.md · reviewed during sprint close</div>
         </div>
         <div class="evidence-card">
           <span class="ev-icon" aria-hidden="true">🛤️</span>
           <h3>Session state — continuous thread across sessions</h3>
-          <p>Every work session begins by reading the previous session's state, ends by writing the current session's state. No context is lost between sessions. The record is the institutional memory of the operation — not a person.</p>
-          <div class="ev-receipt">SESSION-STATE.md · updated every sprint · never cleared</div>
+          <p>Work sessions use a shared session record to carry forward context, record results, and identify the next action. The record is the institutional memory of the operation, not a person's recollection.</p>
+          <div class="ev-receipt">SESSION-STATE.md · reviewed at the start and close of sprint work</div>
         </div>
       </div>
 
